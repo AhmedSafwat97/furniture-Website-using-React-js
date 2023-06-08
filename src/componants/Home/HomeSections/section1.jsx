@@ -1,36 +1,48 @@
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Unstable_Grid2';
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
+import * as React from 'react';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 
 
-const Section1 = () => {
-    return (
-        <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2}>
-          <Grid xs={8}>
-            <Item>xs=8</Item>
-          </Grid>
-          <Grid xs={4}>
-            <Item>xs=4</Item>
-          </Grid>
-          <Grid xs={4}>
-            <Item>xs=4</Item>
-          </Grid>
-          <Grid xs={8}>
-            <Item>xs=8</Item>
-          </Grid>
-        </Grid>
-      </Box>
-    );
+export default function QuiltedImageList() {
+  return (
+    <ImageList
+      sx={{ width: "75%", height: "auto" , mx: "auto", 
+    }}
+      gap = {20}
+      variant="quilted"
+      cols={5}
+      rowHeight={255}
+    >
+      {itemData.map((item) => (
+        <ImageListItem key={item.title} cols={item.cols} rows={item.rows} 
+        sx={{borderRadius: '15px',
+        backgroundImage: `url(${item.img})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat'
+      }}>
+         
+        </ImageListItem>
+      ))}
+    </ImageList>
+  );
 }
 
-export default Section1;
+const itemData = [
+  {
+    img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+    title: 'Breakfast',
+    rows: 2,
+    cols: 3,
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+    title: 'Burger',
+    cols: 2,
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
+    title: 'Camera',
+    cols: 2,
+  },
+];
