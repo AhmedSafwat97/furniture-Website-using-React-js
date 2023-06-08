@@ -1,6 +1,7 @@
 import * as React from 'react';
-import Section1 from './HomeSections/section1';
 import { Box } from '@mui/material';
+import Section1 from './HomeSections/section1';
+
 
 
 
