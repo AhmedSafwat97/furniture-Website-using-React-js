@@ -3,25 +3,29 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
 
-const Section1 = () => {
-    return (
-        <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2}>
-          <Grid xs={8}>
-            <Item>xs=8</Item>
-          </Grid>
-          <Grid xs={4}>
-            <Item>xs=4</Item>
-          </Grid>
-          <Grid xs={4}>
-            <Item>xs=4</Item>
-          </Grid>
-          <Grid xs={8}>
-            <Item>xs=8</Item>
-          </Grid>
-        </Grid>
-      </Box>
-    );
+export default function section1() {
+  return (
+    <ImageList
+      sx={{ width: "75%", height: "auto" , mx: "auto", 
+    }}
+      gap = {20}
+      variant="quilted"
+      cols={5}
+      rowHeight={255}
+    >
+      {itemData.map((item) => (
+        <ImageListItem key={item.title} cols={item.cols} rows={item.rows} 
+        sx={{borderRadius: '15px',
+        backgroundImage: url(${item.img}),
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat'
+      }}>
+
+        </ImageListItem>
+      ))}
+    </ImageList>
+  );
 }
 
 const itemData = [
