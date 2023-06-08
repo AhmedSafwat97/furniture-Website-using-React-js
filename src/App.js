@@ -9,6 +9,7 @@ import Header from "../src/componants/Header/Header"
 import Footer from "../src/componants/Footer/Footer"
 import Check from '../src/componants/Checkout/Check';
 import Cart from "../src/componants/Cart//Cart"
+import Blog from './componants/Blog/Blog';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       < Route path="/About" element={<About/>} />
       < Route path="/Contact" element={<Contact/>} />
       < Route path="/Shop" element={<Shop/>} />
+      < Route path="/Blog" element={<Blog/>} />
       < Route path="/prodetails:id" element={<Shopdetails/>} />
       < Route path="/Cart" element={<Cart/>} />
       < Route path="/Checkout" element={<Check/>} />
