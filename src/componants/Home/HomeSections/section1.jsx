@@ -11,7 +11,8 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-
+// ________________________________________________________________________
+// The Color Of The Images has been adjusted  :D :D
 const Section1 = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
