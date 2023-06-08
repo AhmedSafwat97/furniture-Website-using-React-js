@@ -1,148 +1,266 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import Button from "@mui/material/Button";
+import { Badge, Container, Input, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import { useNavigate } from "react-router-dom";
 
-const pages = ['Home', 'About', 'Contact' , 'Shop'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = [
+  { name: "Home", Link: "/" },
+  { name: "About", Link: "About" },
+  { name: "Shop", Link: "Shop" },
+  { name: "Blog", Link: "Blog" },
+  { name: "Contact", Link: "Contact" },
+];
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [viewlist, setviewlist] = React.useState(false);
+  const [Up, setUp] = React.useState(false);
+  const [Down, setDown] = React.useState(true);
+  const [ShowSearch, setShowSearch] = React.useState(false);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  const navigate = useNavigate();
 
   return (
-    <AppBar position="static" sx={{bgcolor : "red" , padding : "0 100px" , display:"flex" , justifyContent : "space-between"}}>
-        <Toolbar disableGutters>
-            <Box sx={{width : "120px"}}>
-            <img
-            style={{width : "100%" , Height : "100%"}}
-            
-            src='../../../Imgs/Logo.png' alt='Furni Pro'/>
-
+    <>
+      <AppBar
+        position="static"
+        sx={{
+          height: { xs: "fit-content", md: "65px" },
+          mb: "5px",
+          bgcolor: "#FFFFFF",
+          padding: { xs: "0 5px", md: "0 100px" },
+        }}
+      >
+        <Container
+          sx={{
+            display: { xs: "none", md: "flex" },
+            justifyContent: "space-between",
+          }}
+        >
+          <Toolbar disableGutters>
+            <Box
+              sx={{ width: "120px", cursor: "pointer" }}
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              <img
+                style={{ width: "100%", Height: "100%" }}
+                src="../../../Imgs/Logo.png"
+                alt="Furni Pro"
+              />
             </Box>
+          </Toolbar>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
+          <Box
             sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              display: { xs: "none", md: "flex" },
             }}
           >
-            LOGO
-          </Typography>
-          <Box sx={{ border : "2px solid yellow" ,display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                key={page.name}
+                sx={{ my: 2, display: "block", color: "black" }}
+                onClick={() => {
+                  navigate(`${page.Link}`);
+                }}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+          <Box sx={{ display: "flex" }}>
+            <Box sx={{ position: "relative" }}>
+              <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+                <TextField label="Search" variant="standard" />
+                <SearchIcon
+                  sx={{ color: "black", position: "absolute", right: "5px" }}
+                />
+              </Box>
+            </Box>
+            <Box sx={{ display: "flex" }}>
+              <IconButton size="large" aria-label="Favorite" color="inherit">
+                <FavoriteBorderIcon sx={{ fontSize: "30px", color: "black" }} />
+                <Badge badgeContent={4} color="error"></Badge>
               </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+
+              <IconButton size="large" aria-label="Shop" color="inherit">
+                <ShoppingBagOutlinedIcon
+                  sx={{ fontSize: "30px", color: "black" }}
+                />
+                <Badge badgeContent={4} color="error"></Badge>
+              </IconButton>
+
+              <IconButton size="large" aria-label="profile" color="inherit">
+                <AccountCircleOutlinedIcon
+                  sx={{ fontSize: "30px", color: "black" }}
+                />
+              </IconButton>
+            </Box>
           </Box>
-        </Toolbar>
-    </AppBar>
+        </Container>
+        {/* ___________________________________________________________________________ */}
+        {/* For Mopile  */}
+
+        <Container
+          className="ForMopile"
+          sx={{
+            display: { xs: "block", md: "none" },
+          }}
+        >
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Toolbar disableGutters>
+              <Box
+                sx={{ width: "80px", cursor: "pointer" }}
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                <img
+                  style={{ width: "100%", Height: "100%" }}
+                  src="../../../Imgs/Logo.png"
+                  alt="Furni Pro"
+                />
+              </Box>
+            </Toolbar>
+
+            <Box sx={{ display: { xs: "flex", md: "none" } }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  position: "relative",
+                }}
+              >
+                {ShowSearch && <Input placeholder="Search" label="Search" sx={{ border : "none" , borderBottom :"1px solid black"  , bgcolor : "#FFF"}} />}
+
+                <SearchIcon
+                  sx={{cursor :"pointer"  ,color: "black", position: "absolute", right: "5px" }}
+                  onClick={() => {
+                    ShowSearch ? setShowSearch(false) : setShowSearch(true)
+                  }}
+                />
+              </Box>
+
+              {/* _______________________________________________________________ */}
+              {/* For shown and hide up and down buttons */}
+
+              {Down && (
+                <IconButton
+                  size="large"
+                  color="black"
+                  onClick={() => {
+                    viewlist ? setviewlist(false) : setviewlist(true);
+                    setDown(false);
+                    setUp(true);
+                  }}
+                >
+                  <ExpandMoreIcon sx={{ fontSize: "30px" }} />
+                </IconButton>
+              )}
+
+              {Up && (
+                <IconButton
+                  size="large"
+                  color="black"
+                  onClick={() => {
+                    viewlist ? setviewlist(false) : setviewlist(true);
+                    setDown(true);
+                    setUp(false);
+                  }}
+                >
+                  <ExpandLessIcon sx={{ fontSize: "30px" }} />
+                </IconButton>
+              )}
+              {/* ____________________________________________________________________________ */}
+            </Box>
+          </Box>
+          {/* _________________________________________________________________ */}
+          {viewlist && (
+            <Box>
+              <Box
+                className="MopIconBar"
+                sx={{
+                  padding: "0 50px",
+                  display: { xs: "flex", md: "none" },
+                  justifyContent: "center",
+                  height: "60px",
+                }}
+              >
+                <IconButton size="large" aria-label="favorit" color="inherit">
+                  <FavoriteBorderIcon
+                    sx={{ fontSize: "30px", color: "black" }}
+                  />
+                  <Badge badgeContent={4} color="error"></Badge>
+                </IconButton>
+
+                <IconButton
+                  size="large"
+                  aria-label="Cart"
+                  color="inherit"
+                  sx={{ m: "0 30px" }}
+                >
+                  <ShoppingBagOutlinedIcon
+                    sx={{ fontSize: "30px", color: "black" }}
+                  />
+                  <Badge badgeContent={4} color="error"></Badge>
+                </IconButton>
+
+                <IconButton size="large" aria-label="Profile" color="inherit">
+                  <AccountCircleOutlinedIcon
+                    sx={{ fontSize: "30px", color: "black" }}
+                  />
+                </IconButton>
+              </Box>
+              <Box
+                sx={{
+                  width: "100%",
+                  height: "fit-content",
+                  left: "0",
+                  top: "110px",
+                }}
+              >
+                <Box
+                  sx={{
+                    color: "black",
+                    mb: "10px",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  {pages.map((page) => (
+                    <Button
+                      key={page.name}
+                      sx={{
+                        my: 2,
+                        display: "block",
+                        color: "black",
+                      }}
+                      onClick={() => {
+                        navigate(`${page.Link}`);
+                      }}
+                    >
+                      {page.name}
+                    </Button>
+                  ))}
+                </Box>
+              </Box>
+            </Box>
+          )}
+          {/* _________________________________________________________________  */}
+        </Container>
+      </AppBar>
+    </>
   );
 }
 export default ResponsiveAppBar;
