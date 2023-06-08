@@ -16,6 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const Home = () =>{
   return (
+    
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid xs={8}>
