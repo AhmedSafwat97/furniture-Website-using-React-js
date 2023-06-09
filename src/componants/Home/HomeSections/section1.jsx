@@ -1,7 +1,10 @@
-import { Box, ImageList, ImageListItem } from '@mui/material';
+import { Box, Container, ImageList, ImageListItem } from '@mui/material';
 import React from 'react';
+import { useState } from 'react';
+
 
 const Section1 = () => {
+  
     const itemData = [
       {
         img: '../../../../Imgs/Design1.jpg',
@@ -23,7 +26,7 @@ const Section1 = () => {
     
     return (
       <>
-        <ImageList
+        {/* <ImageList
           sx={{ width: "75%", height: "auto" , mx: "auto", 
           display : {xs : "none" , md : "grid"}
         }}
@@ -42,7 +45,37 @@ const Section1 = () => {
             }}>
               </ImageListItem>
             ))}
-        </ImageList>
+        </ImageList> */}
+
+
+
+      <Container sx={{display : "flex" , height : "100vh"}}>
+        <Box
+        className="IMG"
+           sx={{borderRadius: '15px' , 
+           backgroundPosition: 'center',
+           backgroundSize: 'cover',
+           backgroundRepeat: 'no-repeat',
+           backgroundOrigin : "content-box",
+          width : "50%" , height : "200px"
+          }}
+        >
+          Hello
+
+        </Box>
+        <Box>
+
+        </Box>
+
+      </Container>
+
+
+
+
+
+
+
+
       </>
     );
 }
