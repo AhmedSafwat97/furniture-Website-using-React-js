@@ -40,8 +40,11 @@ const Section1 = () => {
     
     return (
       <>
+
+
         <ImageList
-          sx={{ width: "75%", height: "auto" , mx: "auto", 
+          sx={{ width: "75%", height: "auto" , mx: "auto"
+          , 
         }}
           gap = {20}
           variant="quilted"
