@@ -1,4 +1,4 @@
-import { Box, Container, ImageList, ImageListItem } from '@mui/material';
+import { Box, Container, Grid, ImageList, ImageListItem } from '@mui/material';
 import React from 'react';
 import { useState } from 'react';
 
@@ -26,48 +26,19 @@ const Section1 = () => {
     
     return (
       <>
-        {/* <ImageList
-          sx={{ width: "75%", height: "auto" , mx: "auto", 
-          display : {xs : "none" , md : "grid"}
-        }}
-          gap = {20}
-          variant="quilted"
-          cols={5}
-          rowHeight={255}
-        >
-            {itemData.map((item) => (
-              <ImageListItem key={item.title} cols={item.cols} rows={item.rows} 
-              sx={{borderRadius: '15px' , 
-              backgroundImage: `url(${item.img})`,
-              backgroundPosition: '50% 50%',
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat'
-            }}>
-              </ImageListItem>
-            ))}
-        </ImageList> */}
+      
 
 
 
-      <Container sx={{display : "flex" , height : "100vh"}}>
-        <Box
-        className="IMG"
-           sx={{borderRadius: '15px' , 
-           backgroundPosition: 'center',
-           backgroundSize: 'cover',
-           backgroundRepeat: 'no-repeat',
-           backgroundOrigin : "content-box",
-          width : "50%" , height : "200px"
-          }}
-        >
-          Hello
-
-        </Box>
-        <Box>
-
-        </Box>
-
-      </Container>
+      <Grid container spacing={2}>
+      <Grid item xs={12} sm={6} md={4}>
+        <img src="../../../../Imgs/Design1.jpg" alt="Left Image" style={{ width: '100%' }} />
+      </Grid>
+      <Grid item xs={12} sm={6} md={8} container justifyContent="flex-end" alignItems="flex-end">
+        <img src="../../../../Imgs/design2.jpg" alt="Top Right Image" style={{ width: '60%' }} />
+        <img src="../../../../Imgs/design3.jpg" alt="Bottom Right Image" style={{ width: '40%' }} />
+      </Grid>
+    </Grid>
 
 
 
