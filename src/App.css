@@ -38,12 +38,6 @@
 }
 
 
-.IMG1{
-  background-image: url("../public/Imgs/Design1.jpg");
-}
-.IMG2{
-  background-image: url("../public/Imgs/design2.jpg");
-}
-.IMG3{
-  background-image: url("../public/Imgs/design3.jpg");
+.IMG{
+  background-image: url("../public/Imgs/design1.jpg");
 }
