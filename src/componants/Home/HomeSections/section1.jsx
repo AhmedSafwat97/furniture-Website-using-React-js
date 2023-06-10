@@ -14,7 +14,7 @@ const Section1 = () => {
         price : 250,
       },
       {
-        img: '../../../../Imgs/design2.jpg',
+        img: '../../../../Imgs/design3.jpg',
         cols: 2,
         discount : "Mega Offer 36% Off",
         title: 'The Latest Collection of Furniture',
@@ -22,7 +22,7 @@ const Section1 = () => {
         price : 280,
       },
       {
-        img: '../../../../Imgs/design3.jpg',
+        img: '../../../../Imgs/design2.jpg',
         cols: 2,
         discount : "Exclusive Offer 50% Off",
         title: 'Farmaat Wooden Chaire',
