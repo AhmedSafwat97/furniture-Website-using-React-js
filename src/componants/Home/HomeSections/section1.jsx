@@ -5,7 +5,6 @@ const Section1 = () => {
     const itemData = [
       {
         img: '../../../../Imgs/Design1.jpg',
-        title: 'Breakfast',
         rows: 2,
         cols: 3,
         discount : "30% Discount",
@@ -14,8 +13,7 @@ const Section1 = () => {
         price : 250,
       },
       {
-        img: '../../../../Imgs/design2.jpg',
-        title: 'Burger',
+        img: '../../../../Imgs/design3.jpg',
         cols: 2,
         discount : "Mega Offer 36% Off",
         title: 'The Latest Collection of Furniture',
@@ -23,8 +21,7 @@ const Section1 = () => {
         price : 280,
       },
       {
-        img: '../../../../Imgs/design3.jpg',
-        title: 'Camera',
+        img: '../../../../Imgs/design2.jpg',
         cols: 2,
         discount : "Exclusive Offer 50% Off",
         title: 'Farmaat Wooden Chaire',
@@ -40,31 +37,31 @@ const Section1 = () => {
     
     return (
       <>
-
-
-        <ImageList
-          sx={{ width: "75%", height: "auto" , mx: "auto"
-          , 
-        }}
-          gap = {20}
-          variant="quilted"
-          cols={5}
-          rowHeight={220}
-        >
-            {itemData.map((item) => (
-              <ImageListItem key={item.title} cols={matchDownMd ? 5 : item.cols }
-              rows={matchDownMd ? 1 : item.rows } 
-              sx={{borderRadius: '15px' , 
-              backgroundImage: `url(${item.img})`,
-              backgroundPosition: '50% 50%',
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              backgroundOrigin: 'content-box',
-
-            }}>
-              </ImageListItem>
-            ))}
-        </ImageList>
+      <Box sx={{bgcolor : "#CECECA" , padding: "16px"}}>
+          <ImageList
+            sx={{ width: "75%", height: "auto" , mx: "auto"
+            , 
+          }}
+            gap = {20}
+            variant="quilted"
+            cols={5}
+            rowHeight={220}
+          >
+              {itemData.map((item) => (
+                <ImageListItem key={item.title} cols={matchDownMd ? 5 : item.cols }
+                rows={matchDownMd ? 1 : item.rows } 
+                sx={{borderRadius: '15px' , 
+                backgroundImage: `url(${item.img})`,
+                backgroundPosition: '50% 50%',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundOrigin: 'content-box',
+    
+              }}>
+                </ImageListItem>
+              ))}
+          </ImageList>
+  </Box>
       </>
     );
 }

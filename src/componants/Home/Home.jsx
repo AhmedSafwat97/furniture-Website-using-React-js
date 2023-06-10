@@ -8,10 +8,9 @@ import Section1 from './HomeSections/section1';
 
 const Home = () =>{
   return (
- <><Box sx={{bgcolor : "lightgoldenrodyellow" , padding: "16px"}}>
+ <>
     <Section1/>
 
- </Box>
  </>
   );
 };
