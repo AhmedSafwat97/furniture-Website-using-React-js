@@ -12,7 +12,7 @@ const Subscribe = () => {
 
         <Box sx={{ position: "relative" }}>
               <Box sx={{ display: "flex", alignItems: "flex-end" , width : "300px" }}>
-                <Input placeholder='Enter your email address' sx={{p : "0 10px" ,width : "100%", height : "50px" ,bgcolor : "#FFF" , borderRadius:"20px" , width : "100%"   }} />
+                <Input placeholder='Enter your email address' sx={{p : "0 10px" ,width : "100%", height : "50px" ,bgcolor : "#FFF" , borderRadius:"20px"  }} />
                 <Button
                   sx={{ color: "black", bgcolor : "orange" , borderRadius :"15px" ,position: "absolute", right: "5px" , top : "7px" }}>Subscribe</Button>
               </Box>
