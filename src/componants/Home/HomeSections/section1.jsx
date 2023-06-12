@@ -107,7 +107,7 @@ const Section1 = () => {
                       backgroundColor: "#FCC012",
                       cursor: "pointer",
                       color: "black",
-                      padding: "10px 16px",
+                      padding: "5px 16px",
                       borderRadius: "20px",
                       ":hover": {
                         color: "#FCC012",
