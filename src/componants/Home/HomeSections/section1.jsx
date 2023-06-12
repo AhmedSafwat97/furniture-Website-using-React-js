@@ -5,11 +5,10 @@ import {
   ImageList,
   ImageListItem,
   Typography,
-  useMediaQuery,
-  useTheme,
 } from "@mui/material";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import  matchDownMd from '../../../ExternalMethods/matchDownMd';
 
 const Section1 = () => {
   const itemData = [
@@ -40,9 +39,6 @@ const Section1 = () => {
     },
   ];
 
-  // this hook used to make responsive from xs to md => cols={matchDownMd ? 5 : item.cols }
-  const theme = useTheme();
-  const matchDownMd = useMediaQuery(theme.breakpoints.down("md"));
 
   const Navigate = useNavigate();
 
@@ -59,8 +55,8 @@ const Section1 = () => {
           {itemData.map((item) => (
             <ImageListItem
               key={item.title}
-              cols={matchDownMd ? 5 : item.cols}
-              rows={matchDownMd ? 1 : item.rows}
+              cols={matchDownMd() ? 5 : item.cols}
+              rows={matchDownMd() ? 1 : item.rows}
               sx={{
                 borderRadius: "15px",
                 backgroundImage: `url(${item.img})`,
@@ -91,19 +87,19 @@ const Section1 = () => {
                 />
                 <Typography
                   variant={item.cols === 3 ? "h3" : "h5"}
-                  sx={{ fontSize: matchDownMd ? "20px" : null }}
+                  sx={{ fontSize: matchDownMd() ? "20px" : null }}
                 >
                   {item.title}
                 </Typography>
-                <Typography sx={{ fontSize: matchDownMd ? "12px" : "18px" }}>
+                <Typography sx={{ fontSize: matchDownMd() ? "12px" : "18px" }}>
                   <del style={{ color: "lightgray" }}>${item.deletedPrice}</del>{" "}
                   ${item.price}
                 </Typography>
                 {item.cols === 3 ? (
                   <Button
                     sx={{
-                      fontSize: matchDownMd ? "10px" : "16px",
-                      mt: matchDownMd ? "10px" : "50px",
+                      fontSize: matchDownMd() ? "10px" : "16px",
+                      mt: matchDownMd() ? "10px" : "50px",
                       backgroundColor: "#FCC012",
                       cursor: "pointer",
                       color: "black",
@@ -126,7 +122,7 @@ const Section1 = () => {
                     style={{
                       textDecoration: "underline",
                       color: "lightgray",
-                      fontSize: matchDownMd ? "10px" : "16px",
+                      fontSize: matchDownMd() ? "10px" : "16px",
                     }}
                   >
                     Shop Now
@@ -167,8 +163,8 @@ const Section1 = () => {
               display: "flex",
               width: {xs : "85%" , md : "45%"},
               ml: "12px",
-              mx : matchDownMd ? "auto" : null ,
-              mb : matchDownMd ? "10px" : null 
+              mx : matchDownMd() ? "auto" : null ,
+              mb : matchDownMd() ? "10px" : null 
             }}
           >
             <Box
@@ -207,7 +203,7 @@ const Section1 = () => {
               </Typography>
               <Button
                 sx={{
-                  fontSize: matchDownMd ? "10px" : "12px",
+                  fontSize: matchDownMd() ? "10px" : "12px",
                   mt: "8px",
                   backgroundColor: "#AC8C5B",
                   fontWeight: "200",
@@ -232,24 +228,24 @@ const Section1 = () => {
 
         
         <Box sx={{display : "flex" , justifyContent : "space-around" , width : {xs : "70%", md : "55%"} 
-        , mx : matchDownMd ? "auto" : null ,
-       mb : matchDownMd ? "10px" : null 
+        , mx : matchDownMd() ? "auto" : null ,
+       mb : matchDownMd() ? "10px" : null 
       
       }}>
 <Box sx={{width : "30%" , height : "100%" ,  display : "flex" , flexDirection : "column" ,justifyContent : "center" , alignItems : "center"}}>
-  <Typography className="outline-text" fontSize={matchDownMd ? "25px" : "40px"} >975+</Typography>
+  <Typography className="outline-text" fontSize={matchDownMd() ? "25px" : "40px"} >975+</Typography>
   <Typography color="gray">Home furniture</Typography>
 </Box>
 
 
 <Box sx={{width : "30%" , height : "100%"  ,  display : "flex" , flexDirection : "column" ,justifyContent : "center" , alignItems : "center" }}>
-<Typography className="outline-text" fontSize={matchDownMd ? "25px" : "40px"} >320+</Typography>
+<Typography className="outline-text" fontSize={matchDownMd() ? "25px" : "40px"} >320+</Typography>
 <Typography color="gray">interior Designs</Typography>
 </Box>
 
 
 <Box sx={{width : "30%" , height : "100%" , display : "flex" , flexDirection : "column" ,justifyContent : "center" , alignItems : "center" }}>
-<Typography className="outline-text" fontSize={matchDownMd ? "25px" : "40px"} >980+</Typography>
+<Typography className="outline-text" fontSize={matchDownMd() ? "25px" : "40px"} >980+</Typography>
 <Typography color="gray">Happy Clients</Typography>
 </Box>
 
@@ -265,6 +261,6 @@ const Section1 = () => {
       </Box>
     </Box>
   );
-};
+  };
 
 export default Section1;
