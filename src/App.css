@@ -1,60 +1,80 @@
-:root{
-  --color-main : #AC8C5B;
-  --color-second : #FCC012;
+:root {
+  --color-main: #ac8c5b;
+  --color-second: #fcc012;
 }
-
 
 /* This is for footer */
 
-.footer{
+.footer {
   background-image: url(../public/Imgs/footer.jpg);
   background-size: cover;
-  background-position: center ;
-  width: 100% ;
-  height: 100% ;
+  background-position: center;
+  width: 100%;
+  height: 100%;
 }
 
-.Sub{
+.Sub {
   background-image: url(../public/Imgs/Sub.jpg);
   background-size: cover;
-  background-position: center ;
-  width: 100% ;
-  height: 100% ;
+  background-position: center;
+  width: 100%;
+  height: 100%;
 }
 
 /* This is for section1 */
 /* stoke font */
-.outline-text{
-  color: #F3F2EE;
-  text-shadow:1px 0 0 black,0 1px 0 black,-1px 0 0 black,0 -1px 0 black;
-
+.outline-text {
+  color: #f3f2ee;
+  text-shadow: 1px 0 0 black, 0 1px 0 black, -1px 0 0 black, 0 -1px 0 black;
 }
 
 /* This is for productsection */
 
-.Card:hover{
+.Card:hover .cardcontent {
+  height: fit-content;
+  padding-bottom: 10px;
+  transform: translateY(-24%);
+  transition: transform 1s;
+}
+
+.Card:hover .btn-tocart {
+  display: block;
+}
+
+
+.Card:hover {
   transform: scale(1.1);
   transition: transform 1s;
-
 }
 
-.Card:hover .cardcontent
-{
-    height: fit-content;
-    padding-bottom: 10px;
-    transform: translateY(-24%);
-    transition: transform 1s;
-  }
-  
-
-.Card:hover .btn-tocart{
-display: block;
+.Link-hover:hover {
+  color: #ac8c5b !important;
 }
 
+.swiper-button-next,
+.swiper-button-prev {
+  border-radius: 100%;
+  border: 1px solid gray;
+  color: gray !important ;
+  width: 40px !important ;
+  height: 40px !important ;
+  position: absolute;
+  top: 25px !important ;
+}
 
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 30px !important;
+}
 
+.swiper-button-next {
+  right: 0 !important;
+}
 
+.swiper-button-prev {
+  left: calc(100% - 90px) !important ;
+}
 
-.Link-hover:hover{
-  color: #AC8C5B !important;
+.swiper-wrapper {
+  align-items: center;
 }
