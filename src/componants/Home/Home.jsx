@@ -3,6 +3,8 @@ import Section1 from './HomeSections/section1';
 import Section2 from './HomeSections/section2';
 import Productsection from './HomeSections/Productsection';
 import Section5 from './HomeSections/Section5';
+import CategorySection from './HomeSections/CategorySection';
+import AllProductsSection from './HomeSections/AllProductsSection';
 
 
 
@@ -14,6 +16,8 @@ const Home = () =>{
     <Section2/>
     <Productsection/>
     <Section5/>
+    <CategorySection/>
+    <AllProductsSection/>
  </>
 
 
