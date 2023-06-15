@@ -21,11 +21,17 @@
   height: 100%;
 }
 
+
 /* This is for section1 */
 /* stoke font */
 .outline-text {
   color: #f3f2ee;
   text-shadow: 1px 0 0 black, 0 1px 0 black, -1px 0 0 black, 0 -1px 0 black;
+}
+
+.outline-Text {
+  color: #AC8C5B;
+  text-shadow: 1px 0 0 #FFF, 0 1px 0 #FFF, -1px 0 0 #FFF, 0 -1px 0 #FFF;
 }
 
 /* This is for productsection */

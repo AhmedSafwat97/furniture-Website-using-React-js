@@ -74,7 +74,7 @@ const Footer = () => {
               sx={{
                 padding: "20px",
                 border: "1px solid gray",
-                width: { xs: "70%", md: "35%" },
+                width: { xs: "80%", md: "35%" },
                 height: "110px",
                 borderRadius: "15px",
                 display: "flex",
@@ -97,19 +97,19 @@ const Footer = () => {
                   Follow Us
                 </Typography>
                 <IconButton  sx={{ color: "orange"}}>
-                  <FacebookOutlinedIcon sx={{fontSize : "20px"}} />
+                  <FacebookOutlinedIcon sx={{fontSize : {xs : "16px" , md : "20px"}}} />
                 </IconButton>
                 <IconButton  sx={{ color: "orange"}}>
-                  <TwitterIcon sx={{fontSize : "20px"}} />
+                  <TwitterIcon sx={{fontSize : {xs : "16px" , md : "20px"}}} />
                 </IconButton>{" "}
                 <IconButton  sx={{ color: "orange" }}>
-                  <PinterestIcon sx={{fontSize : "20px"}} />
+                  <PinterestIcon sx={{fontSize : {xs : "16px" , md : "20px"}}} />
                 </IconButton>{" "}
                 <IconButton  sx={{ color: "orange"}}>
-                  <LinkedInIcon sx={{fontSize : "20px"}} />
+                  <LinkedInIcon sx={{fontSize : {xs : "16px" , md : "20px"}}} />
                 </IconButton>{" "}
                 <IconButton  sx={{ color: "orange" }}>
-                  <WhatsAppIcon sx={{fontSize : "20px"}} />
+                  <WhatsAppIcon sx={{fontSize : {xs : "16px" , md : "20px"}}} />
                 </IconButton>
               </Box>
 
@@ -117,6 +117,8 @@ const Footer = () => {
                 sx={{
                   mb: "10px",
                   display: "flex",
+                  justifyContent : "center" , 
+                  width : "100%" , 
                 }}
               >
                 {pages.map((page) => (
