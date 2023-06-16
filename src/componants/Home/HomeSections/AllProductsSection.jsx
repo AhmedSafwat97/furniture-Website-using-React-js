@@ -24,7 +24,7 @@ function TabPanel(props) {
     const { children, value, index, ...other } = props;
   
     return (
-      <div
+      <Box
         role="tabpanel"
         hidden={value !== index}
         id={`vertical-tabpanel-${index}`}
@@ -36,7 +36,7 @@ function TabPanel(props) {
             {children}
           </Box>
         )}
-      </div>
+      </Box>
     );
   }
 
@@ -75,9 +75,10 @@ const AllProductsSection = () => {
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
+
     }}
   >
-    <Box sx={{ width: "75%"  , mt: "40px"}}>
+    <Box sx={{ width: "75%"  , mt: "40px" }}>
       <Typography
         sx={{ fontWeight: "900", width : "100%" }}
         variant={isSmallScreen ? "h5" : "h4"}
@@ -88,31 +89,30 @@ const AllProductsSection = () => {
         Collections
       </Typography>
     </Box>
-    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+    <Box sx={{ borderBottom: 1, borderColor: 'divider'  }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Item One" {...a11yProps(0)} />
           <Tab label="Item Two" {...a11yProps(1)} />
           <Tab label="Item Three" {...a11yProps(2)} />
         </Tabs>
       </Box>
-      <TabPanel style={{display: "flex" , justifyContent: "space-between"}} value={value} index={0}>
-      
-      </TabPanel>
-      <TabPanel style={{display: "flex" , justifyContent: "space-between"}}  value={value} index={1}>
+
+     
+      <TabPanel style={{width : "75%"}}  value={value} index={0}>
       <Box
         sx={{
-            paddingY: "10px",
+            width:"100%" ,
+            display : "flex" , 
+            justifyContent : "center" , 
+            flexWrap :"wrap" ,
         }}>
-        <Grid 
-            container
-            spacing={6}
-            style={{ padding: "20px 0 40px 0" }}
-        >
-            <Grid xs={12} sm={6} md={3} >
+
+
+
             <Box
               className="Card"
-              style={{
-                width: {xs : '60%', sm: '80%',md:"100%"},
+              sx={{
+                width : "180px" ,
                 height: "290px",
                 backgroundColor: "#F3F2EE",
                 borderRadius: "15px",
@@ -120,6 +120,7 @@ const AllProductsSection = () => {
                 position: "relative",
                 overflow: "hidden",
                 cursor: "pointer",
+                m : "15px"
               }}
             >
               <Chip
@@ -201,12 +202,11 @@ const AllProductsSection = () => {
                 </Button>
               </Box>
             </Box>
-            </Grid>
-            <Grid  xs={12} sm={6} md={3} >
+
             <Box
               className="Card"
-              style={{
-                width: {xs : '60%', sm: '80%',md:"100%"},
+              sx={{
+                width : "180px" ,
                 height: "290px",
                 backgroundColor: "#F3F2EE",
                 borderRadius: "15px",
@@ -214,6 +214,8 @@ const AllProductsSection = () => {
                 position: "relative",
                 overflow: "hidden",
                 cursor: "pointer",
+                m : "15px"
+
               }}
             >
               <Chip
@@ -295,12 +297,11 @@ const AllProductsSection = () => {
                 </Button>
               </Box>
             </Box>
-            </Grid>
-            <Grid  xs={12} sm={6} md={3} >
+
             <Box
               className="Card"
-              style={{
-                width: {xs : '60%', sm: '80%',md:"100%"},
+              sx={{
+                width : "180px" ,
                 height: "290px",
                 backgroundColor: "#F3F2EE",
                 borderRadius: "15px",
@@ -308,6 +309,8 @@ const AllProductsSection = () => {
                 position: "relative",
                 overflow: "hidden",
                 cursor: "pointer",
+                m : "15px"
+
               }}
             >
               <Chip
@@ -389,12 +392,11 @@ const AllProductsSection = () => {
                 </Button>
               </Box>
             </Box>
-            </Grid>
-            <Grid  xs={12} sm={6} md={3} >
+
             <Box
               className="Card"
-              style={{
-                width: {xs : '60%', sm: '80%',md:"100%"},
+              sx={{
+                width : "180px" ,
                 height: "290px",
                 backgroundColor: "#F3F2EE",
                 borderRadius: "15px",
@@ -402,6 +404,8 @@ const AllProductsSection = () => {
                 position: "relative",
                 overflow: "hidden",
                 cursor: "pointer",
+                m : "15px"
+
               }}
             >
               <Chip
@@ -483,11 +487,397 @@ const AllProductsSection = () => {
                 </Button>
               </Box>
             </Box>
-            </Grid>
-        </Grid>
-        </Box>
+            <Box
+              className="Card"
+              sx={{
+                width : "180px" ,
+                height: "290px",
+                backgroundColor: "#F3F2EE",
+                borderRadius: "15px",
+                padding: "10px",
+                position: "relative",
+                overflow: "hidden",
+                cursor: "pointer",
+                m : "15px"
+              }}
+            >
+              <Chip
+                label="-25%"
+                sx={{
+                  height: "20px",
+                  borderRadius: "5px",
+                  backgroundColor: "#AC8C5B",
+                  color: "#FFF",
+                  position: "absolute",
+                }}
+              />
+
+              {outlinefav && (
+                <IconButton
+                  onClick={() => {
+                    setfav(true);
+                    setoutlinefav(false);
+                  }}
+                  sx={{ color: "gray", position: "absolute", right: "5px" }}
+                >
+                  <FavoriteBorderIcon />
+                </IconButton>
+              )}
+
+              {fav && (
+                <IconButton
+                  onClick={() => {
+                    setfav(false);
+                    setoutlinefav(true);
+                  }}
+                  sx={{ color: "gray", position: "absolute", right: "5px" }}
+                >
+                  <FavoriteIcon />
+                </IconButton>
+              )}
+
+              <Box sx={{ width: "90%", height: "65%", mx: "auto" }}>
+                <img
+                  style={{ width: "100%", height: "100%" }}
+                  src="../../../../Imgs/Productss.png"
+                  alt=""
+                />
+              </Box>
+              <Box
+                className="cardcontent"
+                sx={{
+                  p: "5px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  bgcolor: "#FFF",
+                  mx: "auto",
+                  width: "95%",
+                  height: "32%",
+                  borderRadius: "15px",
+                }}
+              >
+                <Typography variant="h6">Chair</Typography>
+                <Stack spacing={1}>
+                  <Rating
+                    name="half-rating-read"
+                    defaultValue={4.5}
+                    precision={0.5}
+                    readOnly
+                  />
+                </Stack>
+                <Box sx={{ mt: "5px", display: "flex" }}>
+                  <del style={{ marginRight: "7px" }}> $110</del>
+                  <Typography>$100</Typography>
+                </Box>
+
+                <Button
+                  className="btn-tocart"
+                  sx={{ bgcolor: "#AC8C5B", display: "none" }}
+                  variant="contained"
+                >
+                  add to cart
+                </Button>
+              </Box>
+            </Box>
+
+            <Box
+              className="Card"
+              sx={{
+                width : "180px" ,
+                height: "290px",
+                backgroundColor: "#F3F2EE",
+                borderRadius: "15px",
+                padding: "10px",
+                position: "relative",
+                overflow: "hidden",
+                cursor: "pointer",
+                m : "15px"
+
+              }}
+            >
+              <Chip
+                label="-25%"
+                sx={{
+                  height: "20px",
+                  borderRadius: "5px",
+                  backgroundColor: "#AC8C5B",
+                  color: "#FFF",
+                  position: "absolute",
+                }}
+              />
+
+              {outlinefav && (
+                <IconButton
+                  onClick={() => {
+                    setfav(true);
+                    setoutlinefav(false);
+                  }}
+                  sx={{ color: "gray", position: "absolute", right: "5px" }}
+                >
+                  <FavoriteBorderIcon />
+                </IconButton>
+              )}
+
+              {fav && (
+                <IconButton
+                  onClick={() => {
+                    setfav(false);
+                    setoutlinefav(true);
+                  }}
+                  sx={{ color: "gray", position: "absolute", right: "5px" }}
+                >
+                  <FavoriteIcon />
+                </IconButton>
+              )}
+
+              <Box sx={{ width: "90%", height: "65%", mx: "auto" }}>
+                <img
+                  style={{ width: "100%", height: "100%" }}
+                  src="../../../../Imgs/Productss.png"
+                  alt=""
+                />
+              </Box>
+              <Box
+                className="cardcontent"
+                sx={{
+                  p: "5px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  bgcolor: "#FFF",
+                  mx: "auto",
+                  width: "95%",
+                  height: "32%",
+                  borderRadius: "15px",
+                }}
+              >
+                <Typography variant="h6">Chair</Typography>
+                <Stack spacing={1}>
+                  <Rating
+                    name="half-rating-read"
+                    defaultValue={4.5}
+                    precision={0.5}
+                    readOnly
+                  />
+                </Stack>
+                <Box sx={{ mt: "5px", display: "flex" }}>
+                  <del style={{ marginRight: "7px" }}> $110</del>
+                  <Typography>$100</Typography>
+                </Box>
+
+                <Button
+                  className="btn-tocart"
+                  sx={{ bgcolor: "#AC8C5B", display: "none" }}
+                  variant="contained"
+                >
+                  add to cart
+                </Button>
+              </Box>
+            </Box>
+
+            <Box
+              className="Card"
+              sx={{
+                width : "180px" ,
+                height: "290px",
+                backgroundColor: "#F3F2EE",
+                borderRadius: "15px",
+                padding: "10px",
+                position: "relative",
+                overflow: "hidden",
+                cursor: "pointer",
+                m : "15px"
+              }}
+            >
+              <Chip
+                label="-25%"
+                sx={{
+                  height: "20px",
+                  borderRadius: "5px",
+                  backgroundColor: "#AC8C5B",
+                  color: "#FFF",
+                  position: "absolute",
+                }}
+              />
+
+              {outlinefav && (
+                <IconButton
+                  onClick={() => {
+                    setfav(true);
+                    setoutlinefav(false);
+                  }}
+                  sx={{ color: "gray", position: "absolute", right: "5px" }}
+                >
+                  <FavoriteBorderIcon />
+                </IconButton>
+              )}
+
+              {fav && (
+                <IconButton
+                  onClick={() => {
+                    setfav(false);
+                    setoutlinefav(true);
+                  }}
+                  sx={{ color: "gray", position: "absolute", right: "5px" }}
+                >
+                  <FavoriteIcon />
+                </IconButton>
+              )}
+
+              <Box sx={{ width: "90%", height: "65%", mx: "auto" }}>
+                <img
+                  style={{ width: "100%", height: "100%" }}
+                  src="../../../../Imgs/Productss.png"
+                  alt=""
+                />
+              </Box>
+              <Box
+                className="cardcontent"
+                sx={{
+                  p: "5px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  bgcolor: "#FFF",
+                  mx: "auto",
+                  width: "95%",
+                  height: "32%",
+                  borderRadius: "15px",
+                }}
+              >
+                <Typography variant="h6">Chair</Typography>
+                <Stack spacing={1}>
+                  <Rating
+                    name="half-rating-read"
+                    defaultValue={4.5}
+                    precision={0.5}
+                    readOnly
+                  />
+                </Stack>
+                <Box sx={{ mt: "5px", display: "flex" }}>
+                  <del style={{ marginRight: "7px" }}> $110</del>
+                  <Typography>$100</Typography>
+                </Box>
+
+                <Button
+                  className="btn-tocart"
+                  sx={{ bgcolor: "#AC8C5B", display: "none" }}
+                  variant="contained"
+                >
+                  add to cart
+                </Button>
+              </Box>
+            </Box>
+
+                        <Box
+              className="Card"
+              sx={{
+                width : "180px" ,
+                height: "290px",
+                backgroundColor: "#F3F2EE",
+                borderRadius: "15px",
+                padding: "10px",
+                position: "relative",
+                overflow: "hidden",
+                cursor: "pointer",
+                m : "15px"
+
+              }}
+            >
+              <Chip
+                label="-25%"
+                sx={{
+                  height: "20px",
+                  borderRadius: "5px",
+                  backgroundColor: "#AC8C5B",
+                  color: "#FFF",
+                  position: "absolute",
+                }}
+              />
+
+              {outlinefav && (
+                <IconButton
+                  onClick={() => {
+                    setfav(true);
+                    setoutlinefav(false);
+                  }}
+                  sx={{ color: "gray", position: "absolute", right: "5px" }}
+                >
+                  <FavoriteBorderIcon />
+                </IconButton>
+              )}
+
+              {fav && (
+                <IconButton
+                  onClick={() => {
+                    setfav(false);
+                    setoutlinefav(true);
+                  }}
+                  sx={{ color: "gray", position: "absolute", right: "5px" }}
+                >
+                  <FavoriteIcon />
+                </IconButton>
+              )}
+
+              <Box sx={{ width: "90%", height: "65%", mx: "auto" }}>
+                <img
+                  style={{ width: "100%", height: "100%" }}
+                  src="../../../../Imgs/Productss.png"
+                  alt=""
+                />
+              </Box>
+              <Box
+                className="cardcontent"
+                sx={{
+                  p: "5px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  bgcolor: "#FFF",
+                  mx: "auto",
+                  width: "95%",
+                  height: "32%",
+                  borderRadius: "15px",
+                }}
+              >
+                <Typography variant="h6">Chair</Typography>
+                <Stack spacing={1}>
+                  <Rating
+                    name="half-rating-read"
+                    defaultValue={4.5}
+                    precision={0.5}
+                    readOnly
+                  />
+                </Stack>
+                <Box sx={{ mt: "5px", display: "flex" }}>
+                  <del style={{ marginRight: "7px" }}> $110</del>
+                  <Typography>$100</Typography>
+                </Box>
+
+                <Button
+                  className="btn-tocart"
+                  sx={{ bgcolor: "#AC8C5B", display: "none" }}
+                  variant="contained"
+                >
+                  add to cart
+                </Button>
+              </Box>
+            </Box>
+      
+      
+      
+      
+      </Box>
       </TabPanel>
-      <TabPanel value={value} index={2}>
+
+
+
+      <TabPanel style={{ width : "75%"}} value={value} index={1}>
+      
+      </TabPanel>
+
+      <TabPanel style={{ width : "75%"}} value={value} index={2}>
         Item Three
       </TabPanel>
     </Box>
