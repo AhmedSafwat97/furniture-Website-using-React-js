@@ -16,7 +16,6 @@ import {
   import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
   import FavoriteIcon from "@mui/icons-material/Favorite";
 import PropTypes from 'prop-types';
-import Grid from '@mui/material/Unstable_Grid2';
 
 
 
@@ -68,7 +67,6 @@ const AllProductsSection = () => {
   return (
     <Box
     sx={{
-        width: "75%" ,
         mx:"auto",
       bgcolor: "#FFF",
       display: "flex",
@@ -85,7 +83,7 @@ const AllProductsSection = () => {
       >
         Our Best All Products
       </Typography>
-      <Typography className='outline-text' sx={{fontSize:'24px'}}>
+      <Typography className='outline-text' sx={{fontSize:'30px'}}>
         Collections
       </Typography>
     </Box>

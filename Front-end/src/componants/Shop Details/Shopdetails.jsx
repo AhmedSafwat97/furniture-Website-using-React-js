@@ -26,7 +26,7 @@ const Shopdetails = () => {
       >
         <Typography variant="h4">Shop Details</Typography>
         <Typography>
-          Home{" "}
+          Home
           <EastIcon sx={{ transform: "translateY(2px)", fontSize: "10px" }} />
           <span style={{ color: "#ac8c5b" }}> Details </span>
         </Typography>
