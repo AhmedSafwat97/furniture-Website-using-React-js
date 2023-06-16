@@ -68,6 +68,8 @@ const AllProductsSection = () => {
   return (
     <Box
     sx={{
+        width: "75%" ,
+        mx:"auto",
       bgcolor: "#FFF",
       display: "flex",
       flexDirection: "column",
@@ -104,7 +106,7 @@ const AllProductsSection = () => {
         <Grid 
             container
             spacing={6}
-            style={{ width: "100%", height: "100%", padding: "20px 0 40px 0" }}
+            style={{ padding: "20px 0 40px 0" }}
         >
             <Grid xs={12} sm={6} md={3} >
             <Box

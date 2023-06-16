@@ -111,14 +111,14 @@ const Section1 = () => {
                       },
                     }}
                     onClick={() => {
-                      Navigate("/Shop");
+                      Navigate("/prodetails");
                     }}
                   >
                     Shop Now
                   </Button>
                 ) : (
                   <Link
-                    to="/Shop"
+                    to="/prodetails"
                     style={{
                       textDecoration: "underline",
                       color: "lightgray",
