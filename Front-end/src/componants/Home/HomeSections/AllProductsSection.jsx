@@ -68,6 +68,8 @@ const AllProductsSection = () => {
   return (
     <Box
     sx={{
+        width: "75%" ,
+        mx:"auto",
       bgcolor: "#FFF",
       display: "flex",
       flexDirection: "column",

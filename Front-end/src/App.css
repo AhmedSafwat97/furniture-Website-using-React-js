@@ -95,3 +95,10 @@
 .css-1aquho2-MuiTabs-indicator {
   background-color: #ac8c5b !important;
 }
+
+
+.DetailCover{
+  background-image: url(../public/Imgs/detailsCover.jpeg);
+  background-position: center;
+  background-size: cover;
+}
