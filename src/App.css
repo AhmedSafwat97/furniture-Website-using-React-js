@@ -116,3 +116,9 @@
   background-position: center;
   background-size: cover;
 }
+
+
+
+.MuiBox-root {
+  padding: 0px !important;
+}

@@ -22,7 +22,7 @@ const Navigate = useNavigate()
         <Box sx={{display : "flex" , justifyContent : "center" , alignItems : "center" , height : "700px" }}>
 
 
-            <Box sx={{width : "75%" , height : "80%" , borderRadius : "20px" ,bgcolor : "#AC8C5B" , display : "flex" , alignItems : "center" , justifyContent : "center" , flexDirection : "column" }}>
+            <Box sx={{width : {xs : "80%" , md : "75%"} , height : "80%" , borderRadius : "20px" ,bgcolor : "#AC8C5B" , display : "flex" , alignItems : "center" , justifyContent : "center" , flexDirection : "column" }}>
 
 <Box p="20px 0" sx={{width :"100%" , display : "flex" , flexDirection : {xs : "column" , md : "row" , alignItems : "center" , justifyContent : "center"}}}>
 <Typography variant='h5' sx={{ fontSize : {xs : "22px" , md : "35px"} ,color : "#FFF"}}>Deal Of The Week Let's</Typography>
@@ -106,7 +106,7 @@ const Navigate = useNavigate()
 
 
 {date.map((date) => (
-<Box sx={{borderRadius : "50%" , width : {xs : "20px" , md : "40px"} , height : {xs : "20px" , md :"30px"} , p : "10px"  ,bgcolor : "#E9E7DB" , display : "flex" , justifyContent : "center" , alignItems : "center" , flexDirection : "column"}}>
+<Box key={date.name} sx={{borderRadius : "50%" , width : {xs : "20px" , md : "40px"} , height : {xs : "20px" , md :"30px"} , p : "10px"  ,bgcolor : "#E9E7DB" , display : "flex" , justifyContent : "center" , alignItems : "center" , flexDirection : "column"}}>
 <Typography fontSize="12px" variant='h6' >{date.num}</Typography>
     <Typography  variant='h6' sx={{fontSize : "10px"}} >{date.name}</Typography>
 </Box>

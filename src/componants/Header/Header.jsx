@@ -12,6 +12,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const pages = [
   { name: "Home", Link: "/" },
@@ -22,10 +23,10 @@ const pages = [
 ];
 
 function ResponsiveAppBar() {
-  const [viewlist, setviewlist] = React.useState(false);
-  const [Up, setUp] = React.useState(false);
-  const [Down, setDown] = React.useState(true);
-  const [ShowSearch, setShowSearch] = React.useState(false);
+  const [viewlist, setviewlist] = useState(false);
+  const [ShowSearch, setShowSearch] = useState(false);
+  const [arrowview, setarrowview] = useState(true);
+
 
   const navigate = useNavigate();
 
@@ -154,33 +155,17 @@ function ResponsiveAppBar() {
               {/* _______________________________________________________________ */}
               {/* For shown and hide up and down buttons */}
 
-              {Down && (
-                <IconButton
-                  size="large"
-                  color="black"
-                  onClick={() => {
-                    viewlist ? setviewlist(false) : setviewlist(true);
-                    setDown(false);
-                    setUp(true);
-                  }}
-                >
-                  <ExpandMoreIcon sx={{ fontSize: "30px" }} />
-                </IconButton>
-              )}
-
-              {Up && (
-                <IconButton
-                  size="large"
-                  color="black"
-                  onClick={() => {
-                    viewlist ? setviewlist(false) : setviewlist(true);
-                    setDown(true);
-                    setUp(false);
-                  }}
-                >
-                  <ExpandLessIcon sx={{ fontSize: "30px" }} />
-                </IconButton>
-              )}
+              <IconButton 
+   onClick={
+    () => {
+      setarrowview(arrowview ? false : true )
+      setviewlist(viewlist ? false : true)
+    }
+  
+   }
+   >
+    {arrowview ? <ExpandMoreIcon/> : <ExpandLessIcon/> }
+   </IconButton>
               {/* ____________________________________________________________________________ */}
             </Box>
           </Box>

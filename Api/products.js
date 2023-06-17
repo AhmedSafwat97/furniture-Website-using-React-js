@@ -2,6 +2,7 @@ const products = [
  {
    id: 1,
    Name: "Sofa",
+   category : "Sofa" ,
    description:
      "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
    price: 100,
@@ -12,7 +13,8 @@ const products = [
  },
  {
    id: 2,
-   Name: "Chair",
+   Name: "Chair" ,
+   category : "Chairs",
    description:
      "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
    price: 200,
@@ -23,7 +25,8 @@ const products = [
  },
  {
    id: 3,
-   Name: "Komod",
+   Name: "Commode",
+   category : "Commodes",
    description:
      "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
    price: 300,
@@ -34,7 +37,8 @@ const products = [
  },
  {
    id: 4,
-   Name: "Dresser",
+   Name: "Dresser" ,
+   category : "Dressers",
    description:
      "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
    price: 400,
@@ -45,7 +49,8 @@ const products = [
  },
  {
   id: 5,
-  Name: "Table",
+  Name: "Table" ,
+  category : "Tables",
   description:
     "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
   price: 400,
@@ -57,7 +62,30 @@ const products = [
 {
   id: 6,
   Name: "Bed",
-  description:
+category : "Beds"  ,
+description:
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+  price: 400,
+  discount : false ,
+  rate : 4.5 ,
+  imageLink: "../../Imgs/Products/Bed room.png",
+},
+{
+  id: 7,
+  Name: "Bed",
+category : "Sofa"  ,
+description:
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+  price: 400,
+  discount : false ,
+  rate : 4.5 ,
+  imageLink: "../../Imgs/Products/Bed room.png",
+},
+{
+  id: 8,
+  Name: "Bed",
+category : "Tables"  ,
+description:
     "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
   price: 400,
   discount : false ,
@@ -67,3 +95,5 @@ const products = [
 ];
 
 module.exports = products;
+
+

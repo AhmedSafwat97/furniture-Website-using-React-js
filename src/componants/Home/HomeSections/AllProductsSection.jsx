@@ -96,13 +96,14 @@ const AllProductsSection = () => {
       </Box>
 
      
-      <TabPanel style={{width : "75%"}}  value={value} index={0}>
+      <TabPanel style={{width : isSmallScreen ? "100%" : "70%" }}  value={value} index={0}>
       <Box
         sx={{
             width:"100%" ,
             display : "flex" , 
             justifyContent : "center" , 
             flexWrap :"wrap" ,
+            p : "15px" , 
         }}>
 
 
@@ -110,7 +111,7 @@ const AllProductsSection = () => {
             <Box
               className="Card"
               sx={{
-                width : "180px" ,
+                width : {xs : "150px" , md : "180px"} ,
                 height: "290px",
                 backgroundColor: "#F3F2EE",
                 borderRadius: "15px",
@@ -118,7 +119,7 @@ const AllProductsSection = () => {
                 position: "relative",
                 overflow: "hidden",
                 cursor: "pointer",
-                m : "15px"
+                m : "10px"
               }}
             >
               <Chip
@@ -204,7 +205,7 @@ const AllProductsSection = () => {
             <Box
               className="Card"
               sx={{
-                width : "180px" ,
+                width : "150px" ,
                 height: "290px",
                 backgroundColor: "#F3F2EE",
                 borderRadius: "15px",
@@ -212,7 +213,7 @@ const AllProductsSection = () => {
                 position: "relative",
                 overflow: "hidden",
                 cursor: "pointer",
-                m : "15px"
+                m : "10px"
 
               }}
             >

@@ -27,7 +27,7 @@ const Productsection = () => {
   const [outlinefav, setoutlinefav] = useState(true);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
-  const num = isSmallScreen ? 1 : 4;
+  const num = isSmallScreen ? 2 : 4;
 
 
 
@@ -37,8 +37,6 @@ const Productsection = () => {
    <>
    {   console.log(data)
 }
-
-
 
 
    <Box
@@ -67,7 +65,7 @@ const Productsection = () => {
      sx={{
        display: "flex",
        flexDirection: "column",
-       width: "75%",
+       width: {xs : "100%" , md : "75%"},
        height: "410px",
        paddingX: "10px",
      }}

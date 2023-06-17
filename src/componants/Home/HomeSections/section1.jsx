@@ -44,9 +44,9 @@ const Section1 = () => {
 
   return (
     <Box sx={{ bgcolor: "#F3F2EE" }}>
-      <Box sx={{ padding: "16px", paddingBottom: "0px" }}>
+      <Box sx={{ padding: "16px",paddingBottom: "0px" }}>
         <ImageList
-          sx={{ width: "75%", height: "auto", mx: "auto" }}
+          sx={{ width: "75%", height: "auto", mx: "auto" , pt : "16px" }}
           gap={20}
           variant="quilted"
           cols={5}
