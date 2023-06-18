@@ -1,4 +1,4 @@
-import { Box, Button, Chip, CircularProgress, IconButton, Rating, Typography } from "@mui/material";
+import { Box, Button, Chip, CircularProgress, IconButton, Rating, Typography, useMediaQuery, useTheme } from "@mui/material";
 import EastIcon from "@mui/icons-material/East";
 import React from "react";
 import { Stack } from "@mui/system";
@@ -7,6 +7,8 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import PinterestIcon from "@mui/icons-material/Pinterest";
 import { useGetOneProductQuery } from "../../services/productApi";
 import { useParams } from "react-router-dom";
+import SwiperSection from "../Home/HomeSections/SwiperSection";
+import ScrollToTop from "../../ExternalMethods/ScrollToTop";
 
 const Shopdetails = () => {
 
@@ -16,13 +18,12 @@ const {id} = useParams()
   let catdata = useGetOneProductQuery(id).data?.category
   console.log(catdata)
 
-
-console.log(data)
-console.log(id)
-
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <>
+    <ScrollToTop/>
       <Box
         sx={{
           width: "100%",
@@ -204,11 +205,34 @@ console.log(id)
       </Box>
     </Box>
   </Box>
-    
-    
-    
-    
+
     }
+
+
+<Box
+        sx={{
+          bgcolor: "#F3F2EE",
+          paddingX: "20px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "470px",
+        }}
+      >
+        <Box sx={{ transform: "translateY(40px)", width: "75%" }}>
+          <Typography
+            sx={{ fontWeight: "900", width: "100%" }}
+            variant={isSmallScreen ? "h5" : "h4"}
+          >
+            Featured Products
+          </Typography>
+        </Box>
+
+        <SwiperSection catdata = {catdata}/>
+      </Box>
+
+        
     </>
   );
 };
