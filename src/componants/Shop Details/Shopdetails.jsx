@@ -37,12 +37,10 @@ const Shopdetails = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          border: "2px red solid",
         }}
       >
         <Box
           sx={{
-            border: "2px green solid",
             width: "75%",
             display: "flex",
             mx: "auto",
