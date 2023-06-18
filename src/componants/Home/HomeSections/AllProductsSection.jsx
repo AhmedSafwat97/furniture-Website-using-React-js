@@ -112,14 +112,14 @@ const AllProductsSection = () => {
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
         {TabsArray.map((tab , index) => (
 
-      <Tab label={tab.label} {...a11yProps({index})} />
+      <Tab key={index} label={tab.label} {...a11yProps({index})} />
         )) }
         </Tabs>
       </Box>
 
 
       {TabsArray.map((tab , index) => (
-      <TabPanel style={{width : isSmallScreen ? "100%" : "70%" }} value={value} index={index}>
+      <TabPanel key={index} style={{width : isSmallScreen ? "100%" : "70%" }} value={value} index={index}>
       {error && 
    <Box  sx={{display : "flex" , justifyContent : "center" , alignItems : "center" ,width : "100%" , height : "100%"}}>
     <Typography variant="h6">Data Not Found</Typography>
