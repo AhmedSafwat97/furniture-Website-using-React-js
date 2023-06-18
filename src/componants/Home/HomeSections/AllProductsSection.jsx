@@ -149,7 +149,7 @@ const AllProductsSection = () => {
               key={product.id}
               className="Card"
               sx={{
-                width : {xs:"150px" , md: "180px"} ,
+                width : {xs:"150px" , md: "210px"} ,
                 height: "290px",
                 backgroundColor: "#F3F2EE",
                 borderRadius: "15px",
