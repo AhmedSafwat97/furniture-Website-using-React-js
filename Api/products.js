@@ -10,7 +10,12 @@ const products = [
    sale : 50 ,
   rate : 4.5 ,
    imageLink: "../../Imgs/Products/sofa.png",
- },
+   count : 12 ,
+   sold : 2 ,
+   tags : "Chair , Sofa , Single Sofa" ,
+   reviews : 25,
+ }
+,
  {
    id: 2,
    Name: "Chair" ,
@@ -22,6 +27,10 @@ const products = [
     sale : 150 , 
   rate : 3 ,
    imageLink: "../../Imgs/Products/chair.png",
+ count : 22 ,
+ sold : 16 ,
+ tags : "Chair , Sofa , ArmChair"  ,
+ reviews : 13
  },
  {
    id: 3,
@@ -34,7 +43,12 @@ const products = [
     sale : 200 , 
   rate : 5 ,
    imageLink: "../../Imgs/Products/komod.png",
- },
+ count : 11  ,
+ sold : 8 ,
+ tags : "Commode , wooden Commode , single Comode"  ,
+ reviews : 12 ,  
+ 
+},
  {
    id: 4,
    Name: "Dresser" ,
@@ -46,7 +60,11 @@ const products = [
     sale : 100 , 
   rate : 3.5 ,
   imageLink: "../../Imgs/Products/dresser.png",
- },
+  count : 12 ,
+  sold : 25 ,
+  tags : "Dresser , Wooden Dresser , Double Dresser " ,
+  reviews : 22 ,
+},
  {
   id: 5,
   Name: "Table" ,
@@ -58,6 +76,10 @@ const products = [
    sale : 200 , 
   rate : 4 ,
   imageLink: "../../Imgs/Products/table.png",
+  count : 16 ,
+  sold : 14 ,
+  tags : "Table , Wooden Table , Disk" ,
+  reviews : 44,
 },
 {
   id: 6,
@@ -68,18 +90,27 @@ description:
   price: 400,
   discount : false ,
   rate : 4.5 ,
-  imageLink: "../../Imgs/Products/Bed room.png",
+  imageLink: "../../Imgs/Products/Bed room.png" ,
+  count : 20 ,
+  sold : 11 ,
+  tags : "Bed , wooden Bed , steel Bed" ,
+  reviews : 23 ,
 },
 {
   id: 7,
-  Name: "Bed",
+  Name: "Sofa",
 category : "Sofa"  ,
 description:
     "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
   price: 400,
   discount : false ,
   rate : 4.5 ,
-  imageLink: "../../Imgs/Products/Bed room.png",
+  imageLink: "../../Imgs/Products/Bed room.png" ,
+  count : 12 ,
+  sold : 33  ,
+  tags : "Chair , Sofa , Single  Sofa" ,
+  reviews : 32,
+  
 },
 {
   id: 8,
@@ -90,7 +121,11 @@ description:
   price: 400,
   discount : false ,
   rate : 4.5 ,
-  imageLink: "../../Imgs/Products/Bed room.png",
+  imageLink: "../../Imgs/Products/Bed room.png" ,
+  count : 11 ,
+  sold : 10 ,
+  tags : "Bed , wooden Bed , steel  Bed" ,
+  reviews : 14 ,
 },
 ];
 

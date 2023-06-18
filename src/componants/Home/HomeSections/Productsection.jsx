@@ -20,6 +20,7 @@ import "swiper/css/scrollbar";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { useGetproductByNameQuery } from "../../../services/productApi";
 import CircularProgress from '@mui/material/CircularProgress';
+import { useNavigate } from "react-router-dom";
 
 
 const Productsection = () => {
@@ -29,16 +30,12 @@ const Productsection = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
   const num = isSmallScreen ? 2 : 4;
 
-
+const Navigate = useNavigate()
 
  const { data, error, isLoading } = useGetproductByNameQuery();
 
   return (
    <>
-   {   console.log(data)
-}
-
-
    <Box
    sx={{
      bgcolor: "#F3F2EE",
@@ -109,6 +106,10 @@ const Productsection = () => {
     position: "relative",
     overflow: "hidden",
     cursor: "pointer",
+  }}
+
+  onClick={() => {
+    Navigate(`/prodetails/${Product.id}`)
   }}
 >
 {Product.discount && 
@@ -186,8 +187,17 @@ const Productsection = () => {
 
     <Button
       className="btn-tocart"
-      sx={{ bgcolor: "#AC8C5B", display: "none" }}
+      sx={{ bgcolor: "#AC8C5B", display: "none" ,
+      ":hover": {
+        color: "#ac8c5b",
+        outline: "1px solid #ac8c5b",
+        bgcolor : "transparent"
+      },
+    
+    
+    }}
       variant="contained"
+
     >
       add to cart
     </Button>
