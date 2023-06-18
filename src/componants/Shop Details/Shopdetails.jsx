@@ -5,7 +5,7 @@ import { Stack } from "@mui/system";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import PinterestIcon from "@mui/icons-material/Pinterest";
-import { useGetOneProductQuery, useGetproductByNameQuery } from "../../services/productApi";
+import { useGetOneProductQuery } from "../../services/productApi";
 import { useParams } from "react-router-dom";
 
 const Shopdetails = () => {
@@ -13,6 +13,8 @@ const Shopdetails = () => {
 const {id} = useParams()
 
   const { data , error, isLoading } = useGetOneProductQuery(id);
+  let catdata = useGetOneProductQuery(id).data?.category
+  console.log(catdata)
 
 
 console.log(data)
