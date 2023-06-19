@@ -1,5 +1,4 @@
 import { Box, Button, Chip, CircularProgress, IconButton, Rating, Typography, useMediaQuery, useTheme } from "@mui/material";
-import EastIcon from "@mui/icons-material/East";
 import React from "react";
 import { Stack } from "@mui/system";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
@@ -9,6 +8,7 @@ import { useGetOneProductQuery } from "../../services/productApi";
 import { useParams } from "react-router-dom";
 import SwiperSection from "../Home/HomeSections/SwiperSection";
 import ScrollToTop from "../../ExternalMethods/ScrollToTop";
+import BannerSection from "../Home/HomeSections/bannerSection";
 
 const Shopdetails = () => {
 
@@ -24,27 +24,7 @@ const {id} = useParams()
   return (
     <>
     <ScrollToTop/>
-      <Box
-        sx={{
-          width: "100%",
-          height: "200px",
-          color: "#fff",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-        className="DetailCover"
-      >
-        <Typography variant="h4">Shop Details</Typography>
-        <Typography>
-          Home
-          <EastIcon sx={{ transform: "translateY(2px)", fontSize: "10px" }} />
-          <span style={{ color: "#ac8c5b" }}> Details </span>
-        </Typography>
-      </Box>
-
-
+    <BannerSection  PageName="Shop Details" />
 
       {error && 
    <Box  sx={{display : "flex" , justifyContent : "center" , alignItems : "center" ,width : "100%" , height : "100%"}}>

@@ -11,7 +11,7 @@ import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const pages = [
@@ -94,7 +94,9 @@ function ResponsiveAppBar() {
                 <Badge badgeContent={4} color="error"></Badge>
               </IconButton>
 
-              <IconButton size="large" aria-label="Shop" color="inherit">
+              <IconButton onClick={() => {
+                navigate("/cart")
+              }} size="large" aria-label="Shop" color="inherit">
                 <ShoppingBagOutlinedIcon
                   sx={{ fontSize: "30px", color: "black" }}
                 />
@@ -194,6 +196,10 @@ function ResponsiveAppBar() {
                   aria-label="Cart"
                   color="inherit"
                   sx={{ m: "0 30px" }}
+
+                  onClick={() => {
+                    navigate("/cart")
+                  }}
                 >
                   <ShoppingBagOutlinedIcon
                     sx={{ fontSize: "30px", color: "black" }}
