@@ -150,7 +150,7 @@ key={Category.id}
             >
               <Typography variant="h6">{Category.category}</Typography>
               <Box sx={{ mt: "5px",}}>
-                <Typography>{}15 products</Typography>
+                <Typography>{data.filter((product) => product.category === Category.category ).length} products</Typography>
               </Box>
             </Box>
           </Box>

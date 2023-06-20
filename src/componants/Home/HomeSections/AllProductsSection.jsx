@@ -140,7 +140,6 @@ const AllProductsSection = () => {
             display : "flex" , 
             justifyContent : "center" , 
             flexWrap :"wrap" ,
-            p : "15px" , 
         }}>
           {valueFilter(tab).map((product)=>
       
@@ -149,7 +148,7 @@ const AllProductsSection = () => {
               key={product.id}
               className="Card"
               sx={{
-                width : {xs:"150px" , md: "210px"} ,
+                width : {xs:"150px" , md: "180px"} ,
                 height: "290px",
                 backgroundColor: "#F3F2EE",
                 borderRadius: "15px",
@@ -233,7 +232,15 @@ const AllProductsSection = () => {
 
                 <Button
                   className="btn-tocart"
-                  sx={{ bgcolor: "#AC8C5B", display: "none" }}
+                  sx={{ bgcolor: "#AC8C5B", display: "none"
+                ,   ":hover": {
+                  color: "#ac8c5b",
+                  outline: "1px solid #ac8c5b",
+                  bgcolor : "transparent"
+                },
+                
+                
+                }}
                   variant="contained"
                 >
                   add to cart
