@@ -1,14 +1,17 @@
 import React from 'react';
 import ScrollToTop from "../../ExternalMethods/ScrollToTop";
 import BannerSection from "../Home/HomeSections/bannerSection";
-import { Box, Button, IconButton, Input, Rating, Stack, Typography } from '@mui/material';
+import { Box, Button, IconButton, Chip, Rating, Stack, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import WestOutlinedIcon from '@mui/icons-material/WestOutlined';
+import { useNavigate } from 'react-router-dom';
 
 
 const Cart = () => {
+    const Navigate = useNavigate()
+
     return (
         <>
     <ScrollToTop/>
@@ -231,6 +234,7 @@ const Cart = () => {
                         borderRadius: "20px",
                         ":hover": { color: "#AC8C5B", outline: "1px solid #AC8C5B" },
                         }}
+                        onClick={()=> Navigate("/Checkout")}
                     >
                         CheckOut
                     </Button>
