@@ -1,6 +1,7 @@
 :root {
   --color-main: #ac8c5b;
   --color-second: #fcc012;
+    --swiper-theme-color: #fcc012 !important;
 }
 
 /* This is for footer */
@@ -121,4 +122,8 @@
 
 .css-19kzrtu {
   padding: 0px !important;
+}
+
+.css-1srw6kn-MuiInputBase-root-MuiInput-root::before {
+  border-bottom: 0 !important;
 }
