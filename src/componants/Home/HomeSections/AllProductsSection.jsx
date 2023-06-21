@@ -19,7 +19,10 @@ import {
 import PropTypes from 'prop-types';
 import { useGetproductByNameQuery } from "../../../services/productApi";
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { AddToCart, decrement, increment } from "../../../services/CartSlice";
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 
 
@@ -48,7 +51,9 @@ const AllProductsSection = () => {
     const [fav, setfav] = useState(false);
   const [outlinefav, setoutlinefav] = useState(true);
   const { data, error, isLoading } = useGetproductByNameQuery();
+  const { SelectedProductsId , SelectedProducts } = useSelector((state) => state.Cart);
 
+  const dispatch = useDispatch();
   const Navigate = useNavigate();
 
     const [value, setValue] = React.useState(0);
@@ -56,6 +61,13 @@ const AllProductsSection = () => {
     const handleChange = (event, newValue) => {
       setValue(newValue);
     };
+
+    function ProductQuantity(item) {
+      const useritem = SelectedProducts.find((userselect) => {
+        return userselect.id === item.id;
+      });
+      return useritem.quantity;
+    }
 
     const TabsArray = [
       {label : "All"  } , 
@@ -143,11 +155,11 @@ const AllProductsSection = () => {
             justifyContent : "center" , 
             flexWrap :"wrap" ,
         }}>
-          {valueFilter(tab).map((product)=>
+          {valueFilter(tab).map((Product)=>
       
       (
         <Box
-        key={product.id}
+        key={Product.id}
         className="Card"
         sx={{
           width : {xs:"150px" , md: "180px"} ,
@@ -161,101 +173,158 @@ const AllProductsSection = () => {
           m : "10px"
       }}
 
-      onClick={() => {
-        Navigate(`/prodetails/${product.id}`)
-      }}
-      >
-      {product.discount && 
-      <Chip
-      label={Math.floor( 100 -  (product.sale / product.price) * 100) +"%"}
-      sx={{
-        height: "20px",
-        borderRadius: "5px",
-        backgroundColor: "#AC8C5B",
-        color: "#FFF",
-        position: "absolute",
-      }}
-      />
-
-      }
-
-      {outlinefav && (
-        <IconButton
-          onClick={() => {
-            setfav(true);
-            setoutlinefav(false);
-          }}
-          sx={{ color: "gray", position: "absolute", right: "5px" }}
         >
-          <FavoriteBorderIcon />
-        </IconButton>
-      )}
-
-      {fav && (
-        <IconButton
-          onClick={() => {
-            setfav(false);
-            setoutlinefav(true);
-          }}
-          sx={{ color: "gray", position: "absolute", right: "5px" }}
-        >
-          <FavoriteIcon />
-        </IconButton>
-      )}
-
-      <Box sx={{ width: "75%", height: "65%", mx: "auto" }}>
-        <img
-          style={{ width: "100%", height: "100%" }}
-          src={product.imageLink}
-          alt=""
-        />
-      </Box>
-      <Box
-        className="cardcontent"
+        {Product.discount &&
+        <Chip
+        label={Math.floor( 100 -  (Product.sale / Product.price) * 100) +"%"}
         sx={{
-          p: "5px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          bgcolor: "#F3F2EE",
-          mx: "auto",
-          width: "95%",
-          height: "32%",
-          borderRadius: "15px",
+          height: "20px",
+          borderRadius: "5px",
+          backgroundColor: "#AC8C5B",
+          color: "#FFF",
+          position: "absolute",
         }}
-      >
-        <Typography variant="h6">{product.Name}</Typography>
-        <Stack spacing={1}>
-          <Rating
-            name="half-rating-read"
-            defaultValue={product.rate}
-            precision={0.5}
-            readOnly
+        />
+
+        }
+
+        {outlinefav && (
+          <IconButton
+            onClick={() => {
+              setfav(true);
+              setoutlinefav(false);
+            }}
+            sx={{ color: "gray", position: "absolute", right: "5px" }}
+          >
+            <FavoriteBorderIcon />
+          </IconButton>
+        )}
+
+        {fav && (
+          <IconButton
+            onClick={() => {
+              setfav(false);
+              setoutlinefav(true);
+            }}
+            sx={{ color: "gray", position: "absolute", right: "5px" }}
+          >
+            <FavoriteIcon />
+          </IconButton>
+        )}
+
+        <Box sx={{ width: "75%", height: "65%", mx: "auto" }}  
+          onClick={() => {
+            Navigate(`/prodetails/${Product.id}`)
+          }}
+
+        >
+          <img
+            style={{ width: "100%", height: "100%" }}
+            src={Product.imageLink}
+            alt=""
           />
-        </Stack>
-        <Box sx={{ mt: "5px", display: "flex" }}>
-          <del style={{ marginRight: "7px" }}> ${product.price}</del>
-          <Typography>${product.sale}</Typography>
+        </Box>
+        <Box
+          className="cardcontent"
+          sx={{
+            p: "5px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            bgcolor: "#F3F2EE",
+            mx: "auto",
+            width: "95%",
+            height: "32%",
+            borderRadius: "15px",
+          }}
+        >
+          <Typography variant="h6">{Product.Name}</Typography>
+          <Stack spacing={1}>
+            <Rating
+              name="half-rating-read"
+              defaultValue={Product.rate}
+              precision={0.5}
+              readOnly
+            />
+          </Stack>
+          <Box sx={{ mt: "5px", display: "flex" }}>
+            <del style={{ marginRight: "7px" }}> ${Product.price}</del>
+            <Typography>${Product.sale}</Typography>
+          </Box>
+
+
+
+          {SelectedProductsId.includes(Product.id) ?
+
+        (<Box className="btn-tocart" display="none">
+        <Box  sx={{ height : "27%", display : "flex"  , alignItems : "center" , justifyContent : "center"}}>
+        <Box sx={{display : "flex" , alignItems : "center" , width : "75%" , justifyContent : "center"}}>
+            <IconButton 
+            
+            onClick={() => {
+              dispatch(decrement(Product))
+            }}
+            sx={{bgcolor : "#FFF", 
+          ":hover" : {
+              bgcolor : "#ac8c5b"
+                }
+          
+          }} size="small" >
+                <RemoveIcon sx={{color : "#ac8c5b" , ":hover" : {
+              color : "#FFF"
+                }}} />
+            </IconButton>
+            <Typography sx={{mx:"5px" , fontWeight : "bold"}}>{ProductQuantity(Product)}</Typography>
+            <IconButton
+            onClick={() => {
+              dispatch(increment(Product))
+            }}
+            
+            sx={{bgcolor : "#FFF" , ":hover" : {
+              bgcolor : "#ac8c5b"
+                }}} size="small">
+                <AddIcon sx={{color : "#ac8c5b" , ":hover" : {
+              color : "#FFF"
+                }}} />
+            </IconButton>
         </Box>
 
+        </Box>
+        </Box>
+
+        ) : 
+
+
+        (
         <Button
-          className="btn-tocart"
-          sx={{ bgcolor: "#AC8C5B", display: "none" ,
-          ":hover": {
-            color: "#ac8c5b",
-            outline: "1px solid #ac8c5b",
-            bgcolor : "transparent"
-          },
-        
-        
+        className="btn-tocart"
+        sx={{ bgcolor: "#AC8C5B", display: "none" ,
+        ":hover": {
+        color: "#ac8c5b",
+        outline: "1px solid #ac8c5b",
+        bgcolor : "transparent"
+        },
         }}
-          variant="contained"
+        variant="contained"
+
+        onClick={() => {
+        dispatch(AddToCart(Product))
+
+        }}
 
         >
-          add to cart
+        add to cart
         </Button>
-      </Box>
-              </Box>
+        )
+          
+          }
+
+
+
+
+
+        </Box>
+        </Box>
             ))}
 
             

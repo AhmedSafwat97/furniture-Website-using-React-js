@@ -9,6 +9,10 @@ import { useParams } from "react-router-dom";
 import SwiperSection from "../Home/HomeSections/SwiperSection";
 import ScrollToTop from "../../ExternalMethods/ScrollToTop";
 import BannerSection from "../Home/HomeSections/bannerSection";
+import { useDispatch, useSelector } from "react-redux";
+import { AddToCart, decrement, increment } from "../../services/CartSlice";
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 const Shopdetails = () => {
 
@@ -16,8 +20,18 @@ const {id} = useParams()
 
   const { data , error, isLoading } = useGetOneProductQuery(id);
   let catdata = useGetOneProductQuery(id).data?.category
-  console.log(catdata)
+  
+  
+  const { SelectedProductsId , SelectedProducts } = useSelector((state) => state.Cart);
+  
+  const dispatch = useDispatch();
 
+  function ProductQuantity(item) {
+    const useritem = SelectedProducts.find((userselect) => {
+      return userselect.id === item.id;
+    });
+    return useritem.quantity;
+  }
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -144,27 +158,70 @@ const {id} = useParams()
           </Box>
           <Box sx={{ width: "70%", color: "gray", fontSize: "10px" }}>
             <Box display="flex" alignItems="center">
-              <Typography>Quantity
-              
-                 </Typography>
-                 <Button
-      sx={{ bgcolor: "#AC8C5B", 
-      borderRadius : "10px" , 
-      fontSize : "12px" ,
-      p : "5px 12px" ,
-      ml : "10px" ,
-      ":hover": {
-        color: "#ac8c5b",
-        outline: "1px solid #ac8c5b",
-        bgcolor : "transparent"
-      },
-    
-    }}
-      variant="contained"
+                 {SelectedProductsId.includes(data.id) ?
 
-    >
-      add to cart
-    </Button>
+                (<Box className="btn-tocart">
+                <Box  sx={{ height : "27%", display : "flex"  , alignItems : "center" , justifyContent : "center"}}>
+                <Box sx={{display : "flex" , alignItems : "center" , width : "75%" , justifyContent : "center"}}>
+                    <IconButton 
+                    
+                    onClick={() => {
+                      dispatch(decrement(data))
+                    }}
+                    sx={{bgcolor : "#FFF", 
+                  ":hover" : {
+                      bgcolor : "#ac8c5b"
+                        }
+                  
+                  }} size="small" >
+                        <RemoveIcon sx={{color : "#ac8c5b" , ":hover" : {
+                      color : "#FFF"
+                        }}} />
+                    </IconButton>
+                    <Typography sx={{mx:"5px" , fontWeight : "bold"}}>{ProductQuantity(data)}</Typography>
+                    <IconButton
+                    onClick={() => {
+                      dispatch(increment(data))
+                    }}
+                    
+                    sx={{bgcolor : "#FFF" , ":hover" : {
+                      bgcolor : "#ac8c5b"
+                        }}} size="small">
+                        <AddIcon sx={{color : "#ac8c5b" , ":hover" : {
+                      color : "#FFF"
+                        }}} />
+                    </IconButton>
+                </Box>
+
+                </Box>
+                </Box>
+
+                ) : 
+
+
+                (
+                <Button
+                className="btn-tocart"
+                sx={{ bgcolor: "#AC8C5B", 
+                ":hover": {
+                color: "#ac8c5b",
+                outline: "1px solid #ac8c5b",
+                bgcolor : "transparent"
+                },
+                }}
+                variant="contained"
+
+                onClick={() => {
+                dispatch(AddToCart(data))
+
+                }}
+
+                >
+                add to cart
+                </Button>
+                )
+                  
+                  }
             </Box>
             <Typography>{data.tags} </Typography>
           <Box>

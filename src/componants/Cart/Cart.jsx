@@ -299,6 +299,7 @@ const Cart = () => {
                         <Typography sx={{color:"gray",m:"10px"}}>$3,560</Typography>
                     </Box>
                     <Button
+                        onClick={()=> Navigate("/Checkout")}
                         sx={{
                         fontSize: "12px",
                         mx: "10px",
@@ -319,38 +320,6 @@ const Cart = () => {
 
         </Box>
     </Box>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </Box>
 

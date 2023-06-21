@@ -5,6 +5,8 @@ import { Box, Button, Typography } from '@mui/material';
 import PaddingOutlinedIcon from '@mui/icons-material/PaddingOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { Link, useNavigate } from 'react-router-dom';
+import WestOutlinedIcon from '@mui/icons-material/WestOutlined';
+
 const Check = () => {
     const Navigate = useNavigate()
 
@@ -15,11 +17,11 @@ const Check = () => {
         <BannerSection PageName="CheckOut"/>
         <Box sx={{width : "100%" , minHeight :"100vh" , display : "flex" ,flexDirection:"column",alignItems:"center"}}>
             <Box sx={{ my : "50px" ,width : {xs : "60%" , md : "75%"} , height : "fit-content"}}>
-                <Box sx={{width:"100%",display:"flex",alignItems:"center",bgcolor:"#E9E7DB",borderRadius:"25px",my:"15px",padding:"15px 0"}}>
+                <Box sx={{width:"100%",display:"flex",alignItems:"center",bgcolor:"#E9E7DB",borderRadius:"25px",my:"15px",padding:"12px 0"}}>
                     <PaddingOutlinedIcon sx={{color:"#ac8c5b" , fontSize:"18px", m:"0 8px 0 15px"}}/>
                     <Typography sx={{ fontSize:"14px",mx:"5px"}}>Have a Coupon?</Typography>
                     <input className='colorPlaceholder' type="text" placeholder='click here to enter your code' 
-                    style={{color:"#ac8c5b",fontSize:"14px",color:"#ac8c5b",backgroundColor:"transparent",border: "none"}}/>
+                    style={{color:"#ac8c5b",fontSize:"14px",color:"#ac8c5b",backgroundColor:"transparent",border: "none",padding:"5px 0"}}/>
                 </Box>
                 <Box sx={{width:"100%",display:"flex",alignItems:"center",bgcolor:"#E9E7DB",borderRadius:"25px",my:"15px",padding:"15px 0"}}>
                     <InfoOutlinedIcon sx={{color:"#ac8c5b" , fontSize:"18px", m:"0 8px 0 15px"}}/>
@@ -32,27 +34,67 @@ const Check = () => {
 
     <Box sx={{width : "100%" , display : "flex" , justifyContent : "center"}}>
         <Box sx={{width :"75%", display:"flex",justifyContent:"space-between",flexWrap : "wrap" }}>   
-            <Box sx={{width:{xs:"90%" ,md:"50%"},height:"330px",my:"30px" , border:"1px solid gray", borderRadius:"15px"}}>
-                <Box sx={{display: "flex",flexDirection:"column", alignItems:"start" , justifyContent: "center", m:"20px"}}>
-                    <Typography sx={{fontWeight:"bold",m:"10px"}}>Billing Details</Typography>
-                    
-                    <Typography sx={{fontSize:"12px",color:"gray",m:"20px"}}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique iste ,Lorem ipsum dolor sit amet consectetur adipisicing elit. In, magni! Quaerat, ad. Nesciunt, quidem earum. Voluptatibus illo enim, eveniet, repellat ad ducimus quod quae ratione.</Typography>
-                    <input placeholder="coupon Code" style={{width:"90%",backgroundColor:"#E9E7DB",margin:"10px 20px",border: "none",borderRadius:"15px",padding:"10px"}} ></input>
-                    <Button
-                        sx={{
-                        fontSize: "12px",
-                        mx: "20px",
-                        backgroundColor: "#AC8C5B",
-                        fontWeight: "200",
-                        cursor: "pointer",
-                        color: "#FFF",
-                        padding: "5px 20px",
-                        borderRadius: "20px",
-                        ":hover": { color: "#AC8C5B", outline: "1px solid #AC8C5B" },
-                        }}
-                    >
-                        Apply Coupon
-                    </Button>
+            <Box sx={{width:{xs:"90%" ,md:"50%"},my:"30px" , border:"1px solid #E9E7DB", borderRadius:"15px"}}>
+                <Box sx={{display: "flex",flexDirection:"column", alignItems:"start" , justifyContent: "center", m:"10px"}}>
+                    <Typography variant='h6' sx={{fontWeight:"bold",m:"10px "}}>Billing Details</Typography>
+                    <form style={{width: "100%"}}>
+                        <Box sx={{width: "100%",display: "flex", justifyContent: "space-between"}}>
+                            <input  type="text" placeholder='First Name*' 
+                                style={{width :"45%",fontSize:"10px",backgroundColor:"#E9E7DB",margin:"10px",border: "none",borderRadius:"30px",padding:"15px"}}/>
+                             <input  type="text" placeholder='Last Name*' 
+                                style={{width :"45%",fontSize:"10px",backgroundColor:"#E9E7DB",margin:"10px",border: "none",borderRadius:"30px",padding:"15px"}}/>
+                        </Box>
+                        <Box sx={{width: "100%",display: "flex", justifyContent: "space-between"}}>
+                            <input  type="email" placeholder='Email Address*' 
+                                style={{width :"45%",fontSize:"10px",backgroundColor:"#E9E7DB",margin:"10px",border: "none",borderRadius:"30px",padding:"15px"}}/>
+                             <input  type="text" placeholder='Phone Number*' 
+                                style={{width :"45%",fontSize:"10px",backgroundColor:"#E9E7DB",margin:"10px",border: "none",borderRadius:"30px",padding:"15px"}}/>
+                        </Box>
+                        <select name="Country" placeholder='Country*'
+                        style={{width :"96%",fontSize:"10px",backgroundColor:"#E9E7DB",margin:"10px",border: "none",borderRadius:"30px",padding:"15px"}}>
+                            <option value="Eygpt">Eygpt</option>
+                            <option value="Canda">Canda</option>
+                            <option value="United States">United States</option>
+                            <option value="Brazil">Brazil</option>
+                        </select>
+                        <input  type="text" placeholder='Address*' 
+                                style={{width :"90%",fontSize:"10px",backgroundColor:"#E9E7DB",margin:"10px",border: "none",borderRadius:"30px",padding:"15px"}}/>
+                        <Box sx={{width: "99%",display: "flex", justifyContent: "space-between"}}>
+                             <select name="Country" placeholder='Country*'
+                                style={{width :"50%",fontSize:"10px",backgroundColor:"#E9E7DB",margin:"10px",border: "none",borderRadius:"30px",padding:"15px"}}>
+                                    <option value="Eygpt">Cairo</option>
+                                    <option value="Canda">Ottawa</option>
+                                    <option value="United States">Washington</option>
+                                    <option value="Brazil">Brasilia</option>
+                            </select>
+                            <input  type="email" placeholder='postCode/Zip*' 
+                                style={{width :"45%",fontSize:"10px",backgroundColor:"#E9E7DB",margin:"10px",border: "none",borderRadius:"30px",padding:"15px"}}/>
+                        </Box>
+                        <Box sx={{width: "100%",margin:"10px 0", height:"1px",bgcolor:"#E9E7DB"}} />
+                        <Box sx={{width: "100%",display: "flex", justifyContent: "space-between"}}>
+
+                        <Button sx={{color : "#ac8c5b"}} onClick={()=>Navigate("/card")} >
+                            <WestOutlinedIcon sx={{ fontSize: "20px" , mx:"5px" }} />
+                            Return to Card
+                        </Button>
+
+                        <Button
+                            sx={{
+                            fontSize: "12px",
+                            mx: "20px",
+                            backgroundColor: "#AC8C5B",
+                            fontWeight: "200",
+                            cursor: "pointer",
+                            color: "#FFF",
+                            padding: "10px 40px",
+                            borderRadius: "20px",
+                            ":hover": { color: "#AC8C5B", outline: "1px solid #AC8C5B" },
+                            }}
+                        >
+                            Apply Coupon
+                        </Button>
+                        </Box>
+                    </form>
                 
                 </Box>
             </Box>
@@ -117,7 +159,6 @@ const Check = () => {
                         borderRadius: "20px",
                         ":hover": { color: "#AC8C5B", outline: "1px solid #AC8C5B" },
                         }}
-                        onClick={()=> Navigate("/Checkout")}
                     >
                         Place Order Now
                     </Button>
