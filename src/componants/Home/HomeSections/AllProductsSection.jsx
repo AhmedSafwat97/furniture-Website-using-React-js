@@ -18,6 +18,7 @@ import {
   import FavoriteIcon from "@mui/icons-material/Favorite";
 import PropTypes from 'prop-types';
 import { useGetproductByNameQuery } from "../../../services/productApi";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -48,6 +49,7 @@ const AllProductsSection = () => {
   const [outlinefav, setoutlinefav] = useState(true);
   const { data, error, isLoading } = useGetproductByNameQuery();
 
+  const Navigate = useNavigate();
 
     const [value, setValue] = React.useState(0);
 
@@ -144,125 +146,131 @@ const AllProductsSection = () => {
           {valueFilter(tab).map((product)=>
       
       (
-            <Box
-              key={product.id}
-              className="Card"
-              sx={{
-                width : {xs:"150px" , md: "180px"} ,
-                height: "290px",
-                backgroundColor: "#F3F2EE",
-                borderRadius: "15px",
-                padding: "10px",
-                position: "relative",
-                overflow: "hidden",
-                cursor: "pointer",
-                m : "10px"
+        <Box
+        key={product.id}
+        className="Card"
+        sx={{
+          width : {xs:"150px" , md: "180px"} ,
+          height: "290px",
+          backgroundColor: "#F3F2EE",
+          borderRadius: "15px",
+          padding: "10px",
+          position: "relative",
+          overflow: "hidden",
+          cursor: "pointer",
+          m : "10px"
+      }}
 
-              }}
-            >
-              <Chip
-                label={Math.floor( 100 -  (product.sale / product.price) * 100) +"%"}
-                sx={{
-                  height: "20px",
-                  borderRadius: "5px",
-                  backgroundColor: "#AC8C5B",
-                  color: "#FFF",
-                  position: "absolute",
-                }}
-              />
+      onClick={() => {
+        Navigate(`/prodetails/${product.id}`)
+      }}
+      >
+      {product.discount && 
+      <Chip
+      label={Math.floor( 100 -  (product.sale / product.price) * 100) +"%"}
+      sx={{
+        height: "20px",
+        borderRadius: "5px",
+        backgroundColor: "#AC8C5B",
+        color: "#FFF",
+        position: "absolute",
+      }}
+      />
 
-              {outlinefav && (
-                <IconButton
-                  onClick={() => {
-                    setfav(true);
-                    setoutlinefav(false);
-                  }}
-                  sx={{ color: "gray", position: "absolute", right: "5px" }}
-                >
-                  <FavoriteBorderIcon />
-                </IconButton>
-              )}
-
-              {fav && (
-                <IconButton
-                  onClick={() => {
-                    setfav(false);
-                    setoutlinefav(true);
-                  }}
-                  sx={{ color: "gray", position: "absolute", right: "5px" }}
-                >
-                  <FavoriteIcon />
-                </IconButton>
-              )}
-
-              <Box sx={{ width: "90%", height: "65%", mx: "auto" }}>
-                <img
-                  style={{ width: "100%", height: "100%" }}
-                  src={product.imageLink}
-                  alt="product"
-                />
-              </Box>
-              <Box
-                className="cardcontent"
-                sx={{
-                  p: "5px",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  bgcolor: "#FFF",
-                  mx: "auto",
-                  width: "95%",
-                  height: "32%",
-                  borderRadius: "15px",
-                }}
-              >
-                <Typography variant="h6">{product.Name}</Typography>
-                <Stack spacing={1}>
-                  <Rating
-                    name="half-rating-read"
-                    defaultValue={product.rate}
-                    precision={0.5}
-                    readOnly
-                  />
-                </Stack>
-                <Box sx={{ mt: "5px", display: "flex" }}>
-                  <del style={{ marginRight: "7px" }}> ${product.price}</del>
-                  <Typography>${product.sale}</Typography>
-                </Box>
-
-                <Button
-                  className="btn-tocart"
-                  sx={{ bgcolor: "#AC8C5B", display: "none"
-                ,   ":hover": {
-                  color: "#ac8c5b",
-                  outline: "1px solid #ac8c5b",
-                  bgcolor : "transparent"
-                },
-                
-                
-                }}
-                  variant="contained"
-                >
-                  add to cart
-                </Button>
-              </Box>
-            </Box>
-
-      ))}
-
-      
-      
-      
-      </Box>
       }
 
-      </TabPanel>
+      {outlinefav && (
+        <IconButton
+          onClick={() => {
+            setfav(true);
+            setoutlinefav(false);
+          }}
+          sx={{ color: "gray", position: "absolute", right: "5px" }}
+        >
+          <FavoriteBorderIcon />
+        </IconButton>
+      )}
 
-      ))}
-     
-     
-     
-     
+      {fav && (
+        <IconButton
+          onClick={() => {
+            setfav(false);
+            setoutlinefav(true);
+          }}
+          sx={{ color: "gray", position: "absolute", right: "5px" }}
+        >
+          <FavoriteIcon />
+        </IconButton>
+      )}
+
+      <Box sx={{ width: "75%", height: "65%", mx: "auto" }}>
+        <img
+          style={{ width: "100%", height: "100%" }}
+          src={product.imageLink}
+          alt=""
+        />
+      </Box>
+      <Box
+        className="cardcontent"
+        sx={{
+          p: "5px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          bgcolor: "#F3F2EE",
+          mx: "auto",
+          width: "95%",
+          height: "32%",
+          borderRadius: "15px",
+        }}
+      >
+        <Typography variant="h6">{product.Name}</Typography>
+        <Stack spacing={1}>
+          <Rating
+            name="half-rating-read"
+            defaultValue={product.rate}
+            precision={0.5}
+            readOnly
+          />
+        </Stack>
+        <Box sx={{ mt: "5px", display: "flex" }}>
+          <del style={{ marginRight: "7px" }}> ${product.price}</del>
+          <Typography>${product.sale}</Typography>
+        </Box>
+
+        <Button
+          className="btn-tocart"
+          sx={{ bgcolor: "#AC8C5B", display: "none" ,
+          ":hover": {
+            color: "#ac8c5b",
+            outline: "1px solid #ac8c5b",
+            bgcolor : "transparent"
+          },
+        
+        
+        }}
+          variant="contained"
+
+        >
+          add to cart
+        </Button>
+      </Box>
+              </Box>
+            ))}
+
+            
+            
+            
+            </Box>
+            }
+
+            </TabPanel>
+
+            ))}
+          
+          
+          
+          
 
     </Box>
 

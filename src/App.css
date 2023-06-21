@@ -127,3 +127,8 @@
 .css-1srw6kn-MuiInputBase-root-MuiInput-root::before {
   border-bottom: 0 !important;
 }
+
+
+.colorPlaceholder::placeholder{
+  color:#ac8c5b
+}
