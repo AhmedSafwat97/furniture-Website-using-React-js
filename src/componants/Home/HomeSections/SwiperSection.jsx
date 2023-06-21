@@ -22,14 +22,23 @@ import { useGetproductByNameQuery } from "../../../services/productApi";
 import CircularProgress from '@mui/material/CircularProgress';
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { AddToCart, decrement, increment } from "../../../services/CartSlice";
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 
 const SwiperSection = ({catdata}) => {
 
+  const { SelectedProductsId , SelectedProducts } = useSelector((state) => state.Cart);
 
-  const { selectedProducts } = useSelector((state) => state.Cart);
   const dispatch = useDispatch();
 
+  function ProductQuantity(item) {
+    const useritem = SelectedProducts.find((userselect) => {
+      return userselect.id === item.id;
+    });
+    return useritem.quantity;
+  }
 
 
 
@@ -45,7 +54,6 @@ const Navigate = useNavigate();
  const valueFilter = (catdata) =>{
   return catdata? data.filter((product)=> product.category === catdata) :  data  ;
 }
-console.log(x);
   return (
    <>
    
@@ -101,11 +109,8 @@ console.log(x);
     cursor: "pointer",
   }}
 
-  onClick={() => {
-    Navigate(`/prodetails/${Product.id}`)
-  }}
 >
-{Product.discount && 
+{Product.discount &&
   <Chip
   label={Math.floor( 100 -  (Product.sale / Product.price) * 100) +"%"}
   sx={{
@@ -143,7 +148,12 @@ console.log(x);
     </IconButton>
   )}
 
-  <Box sx={{ width: "75%", height: "65%", mx: "auto" }}>
+  <Box sx={{ width: "75%", height: "65%", mx: "auto" }}  
+    onClick={() => {
+      Navigate(`/prodetails/${Product.id}`)
+    }}
+  
+  >
     <img
       style={{ width: "100%", height: "100%" }}
       src={Product.imageLink}
@@ -178,22 +188,77 @@ console.log(x);
       <Typography>${Product.sale}</Typography>
     </Box>
 
-    <Button
-      className="btn-tocart"
-      sx={{ bgcolor: "#AC8C5B", display: "none" ,
-      ":hover": {
-        color: "#ac8c5b",
-        outline: "1px solid #ac8c5b",
-        bgcolor : "transparent"
-      },
-    }}
-      variant="contained"
+
+
+    {SelectedProductsId.includes(Product.id) ?
+
+(<Box className="btn-tocart" display="none">
+  <Box  sx={{ height : "27%", display : "flex"  , alignItems : "center" , justifyContent : "center"}}>
+ <Box sx={{display : "flex" , alignItems : "center" , width : "75%" , justifyContent : "center"}}>
+       <IconButton 
+       
+       onClick={() => {
+        dispatch(decrement(Product))
+       }}
+       sx={{bgcolor : "#FFF", 
+    ":hover" : {
+        bgcolor : "#ac8c5b"
+           }
+    
+    }} size="small" >
+           <RemoveIcon sx={{color : "#ac8c5b" , ":hover" : {
+        color : "#FFF"
+           }}} />
+       </IconButton>
+       <Typography sx={{mx:"5px" , fontWeight : "bold"}}>{ProductQuantity(Product)}</Typography>
+       <IconButton
+       onClick={() => {
+        dispatch(increment(Product))
+       }}
+       
+       sx={{bgcolor : "#FFF" , ":hover" : {
+        bgcolor : "#ac8c5b"
+           }}} size="small">
+           <AddIcon sx={{color : "#ac8c5b" , ":hover" : {
+        color : "#FFF"
+           }}} />
+       </IconButton>
+  </Box>
+  
+  </Box>
+</Box>
+
+) : 
+
+
+(
+  <Button
+className="btn-tocart"
+sx={{ bgcolor: "#AC8C5B", display: "none" ,
+":hover": {
+  color: "#ac8c5b",
+  outline: "1px solid #ac8c5b",
+  bgcolor : "transparent"
+},
+}}
+variant="contained"
+
+onClick={() => {
+  dispatch(AddToCart(Product))
+
+}}
+
+>
+add to cart
+</Button>
+)
+    
+    }
 
 
 
-    >
-      add to cart
-    </Button>
+
+
   </Box>
 </Box>
 </SwiperSlide>

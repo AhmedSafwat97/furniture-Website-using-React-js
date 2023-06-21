@@ -7,10 +7,18 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import WestOutlinedIcon from '@mui/icons-material/WestOutlined';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { decrement, deleteFromCart, increment } from '../../services/CartSlice';
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 
 
 const Cart = () => {
     const Navigate = useNavigate()
+
+    const dispatch = useDispatch()
+
+    const { SelectedProducts} = useSelector((state) => state.Cart);
+    console.log(SelectedProducts);
 
     return (
         <>
@@ -33,262 +41,187 @@ const Cart = () => {
 </Box>
         </Box>
 
+        {SelectedProducts.length === 0 &&
+        <Box sx={{width : "100%" , height : "100px" ,display : "flex" , alignItems : "center" , justifyContent :"center"}}>
 
-{/* Product Container */}
-        <Box sx={{width : "100%" , mt : {xs : "10px" , md : "0px"} ,display : "flex" ,height : {xs : "200px" , md : "120px"} }}>
-         <Box sx={{border : {xs : "none" , md :"0.5px solid #E9E7DB"}, borderRight : {xs : "0.5px solid #E9E7DB" , md : "none"}   , width : {xs : "45%" , md : "15%"} , height : {xs : "200px" , md : "120px"} , display : "flex", flexDirection : {xs : "column" , md : "row"} , alignItems : "center" , justifyContent : "center"}}>
-        <Box sx={{width : {xs : "70%" , md : "60px"} , height : {xs : "60%" , md : "auto"} , bgcolor : "#F3F2EE" , p : "10px" , borderRadius : "5px"}}>
-            <img style={{width : "100%" , height : "100%"}} src="../../../Imgs/Products/dresser.png" alt=""/>
+<RemoveShoppingCartIcon sx={{mr : "10px" , fontSize : "30px"}} />
+<Typography variant='h5'>The Cart Is Empty</Typography>
+
         </Box>
+        
+        
+        
+        }
 
 
+{SelectedProducts.map((product) => (
 
-
-{/* for mobile only */}
-
-        <Box sx={{ mt : "26px" ,border : {xs : "none" , md :"0.5px solid #E9E7DB"} ,width :  {xs : "100%" , md : "15%"} , height : "27%", display : {xs : "flex" , md : "none"} , alignItems : "center" , justifyContent : "center"}}>
-    <Box sx={{display : "flex" , alignItems : "center" , width : "75%" , justifyContent : "center"}}>
-          <IconButton sx={{bgcolor : "#FFF", 
-       ":hover" : {
-           bgcolor : "#ac8c5b"
-              }
-       
-       }} size="small" >
-              <RemoveIcon sx={{color : "#ac8c5b" , ":hover" : {
-           color : "#FFF"
-              }}} />
-          </IconButton>
-          <Typography sx={{mx:"5px" , fontWeight : "bold"}}>1</Typography>
-          <IconButton sx={{bgcolor : "#FFF" , ":hover" : {
-           bgcolor : "#ac8c5b"
-              }}} size="small">
-              <AddIcon sx={{color : "#ac8c5b" , ":hover" : {
-           color : "#FFF"
-              }}} />
-          </IconButton>
-    </Box>
-{/* _______________ */}
+<Box key={product.id}>
     
+    {/* Product Container */}
+            <Box sx={{width : "100%" , mt : {xs : "10px" , md : "0px"} ,display : "flex" ,height : {xs : "200px" , md : "120px"} }}>
+             <Box sx={{border : {xs : "none" , md :"0.5px solid #E9E7DB"}, borderRight : {xs : "0.5px solid #E9E7DB" , md : "none"}   , width : {xs : "45%" , md : "15%"} , height : {xs : "200px" , md : "120px"} , display : "flex", flexDirection : {xs : "column" , md : "row"} , alignItems : "center" , justifyContent : "center"}}>
+            <Box sx={{width : {xs : "70%" , md : "60px"} , height : {xs : "60%" , md : "auto"} , bgcolor : "#F3F2EE" , p : "10px" , borderRadius : "5px"}}>
+                <img style={{width : "100%" , height : "100%"}} src={product.imageLink} alt=""/>
+            </Box>
+    
+    
+    
+    
+    {/* for mobile only */}
+    
+            <Box sx={{ mt : "26px" ,border : {xs : "none" , md :"0.5px solid #E9E7DB"} ,width :  {xs : "100%" , md : "15%"} , height : "27%", display : {xs : "flex" , md : "none"} , alignItems : "center" , justifyContent : "center"}}>
+        <Box sx={{display : "flex" , alignItems : "center" , width : "75%" , justifyContent : "center"}}>
+              <IconButton
+              
+              onClick={() => {
+
+                dispatch(decrement(product))
+              }}
+              
+              sx={{bgcolor : "#FFF", 
+           ":hover" : {
+               bgcolor : "#ac8c5b"
+                  }
+           
+           }} size="small" >
+                  <RemoveIcon sx={{color : "#ac8c5b" , ":hover" : {
+               color : "#FFF"
+                  }}} />
+              </IconButton>
+              <Typography sx={{mx:"5px" , fontWeight : "bold"}}>{product.quantity}</Typography>
+              <IconButton
+                  onClick={() => {
+                    dispatch(increment(product))
+                  }}
+              
+              sx={{bgcolor : "#FFF" , ":hover" : {
+               bgcolor : "#ac8c5b"
+                  }}} size="small">
+                  <AddIcon sx={{color : "#ac8c5b" , ":hover" : {
+               color : "#FFF"
+                  }}} />
+              </IconButton>
+        </Box>
+    {/* _______________ */}
+        
+        </Box>
+            
+             </Box>
+    <Box sx={{display : "flex" , flexDirection : {xs : "column" , md : "row" } , justifyContent : {xs : "space-around"} ,width : {xs : "51%" , md : "85%"} , p : {xs :"0px 4%" , md : "0px"} , height : "100%"}}>
+                 <Box sx={{border : {xs : "none" , md :"0.5px solid #E9E7DB"} , display : "flex", width : {xs : "100%" , md : "54%"} ,padding : "1%"}}>
+    <Box>
+            <Typography>{product.Name}</Typography>
+               <Stack spacing={1}>
+                        <Rating
+                          name="half-rating-read"
+                          defaultValue={product.rate}
+                          precision={0.5}
+                          readOnly
+                          size="small"
+                        />
+                                  </Stack>
+    
+                                  <Typography sx={{mt :"5px"}} >${product.price}</Typography>
     </Box>
         
-         </Box>
-<Box sx={{display : "flex" , flexDirection : {xs : "column" , md : "row" } , justifyContent : {xs : "space-around"} ,width : {xs : "51%" , md : "85%"} , p : {xs :"0px 4%" , md : "0px"} , height : "100%"}}>
-             <Box sx={{border : {xs : "none" , md :"0.5px solid #E9E7DB"} , display : "flex", width : {xs : "100%" , md : "54%"} ,padding : "1%"}}>
-<Box>
-        <Typography>Dresser</Typography>
-           <Stack spacing={1}>
-                    <Rating
-                      name="half-rating-read"
-                      defaultValue={4.5}
-                      precision={0.5}
-                      readOnly
-                      size="small"
-                    />
-                              </Stack>
-
-                              <Typography sx={{mt :"5px"}} >$200</Typography>
-</Box>
-    
-              <Box>
-              <Chip
-  label="30%"
-  sx={{
-    height: "20px",
-    borderRadius: "5px",
-    backgroundColor: "#AC8C5B",
-    color: "#FFF",
-  }}
-/>
-              </Box>
-    
-             </Box>
-{/* for bigscreen only */}
-             <Box sx={{border : {xs : "none" , md : "0.5px solid #E9E7DB"} ,width :  {xs : "100%" , md : "15%"} , display : {xs : "none" , md : "flex"} , alignItems : "center" , justifyContent : "center"}}>
-    
-             <Box sx={{display : "flex" , alignItems : "center" , width : "75%" , justifyContent : "center"}}>
-                   <IconButton sx={{bgcolor : "#FFF", 
-                ":hover" : {
-                    bgcolor : "#ac8c5b"
-                       }
-                
-                }} size="small" >
-                       <RemoveIcon sx={{color : "#ac8c5b" , ":hover" : {
-                    color : "#FFF"
-                       }}} />
-                   </IconButton>
-                   <Typography sx={{mx:"5px" , fontWeight : "bold"}}>1</Typography>
-                   <IconButton sx={{bgcolor : "#FFF" , ":hover" : {
-                    bgcolor : "#ac8c5b"
-                       }}} size="small">
-                       <AddIcon sx={{color : "#ac8c5b" , ":hover" : {
-                    color : "#FFF"
-                       }}} />
-                   </IconButton>
-             </Box>
-    
-             </Box>
-{/* ___________________ */}
-
-
-<Box sx={{display : {xs : "block" , md : "none"}}}>
-    <hr style={{color : "#E9E7DB"}} />
-</Box>
-             
-             <Box sx={{border : {xs : "none" , md : "0.5px solid #E9E7DB"} , width :  {xs : "100%" , md : "15%"} ,display : "flex" , alignItems : "center" , justifyContent : {md : "center"}}}>
-             {/* for mobile only */}
-             <Typography sx={{display : {xs : "block" , md : "none"} , fontWeight : "bold" , mr : "5px"}}>Total : </Typography>
-             {/* ___________________ */}
-
-                <Typography>200$</Typography>
-             </Box>
-             
-<Box sx={{display : {xs : "block" , md : "none"}}}>
-    <hr style={{color : "#E9E7DB"}} />
-</Box>
-
-             <Box sx={{border : {xs : "none" , md : "0.5px solid #E9E7DB"} , width :  {xs : "100%" , md : "15%"} , display : "flex" , alignItems : "center" , justifyContent : {md :"center"}}}>
-    <IconButton sx={{
-        ":hover" : {
-            color : "red"
-               }
-    }} >
-    <DeleteOutlineOutlinedIcon/>
-    </IconButton>
-    
-             </Box>
-            </Box>
-</Box>
-{/* _________________*/}
-
-<Box sx={{display : {xs : "block" , md : "none"} , mb : "10px"}}>
-    <hr style={{color : "#E9E7DB"}} />
-</Box>
-
-{/* Product Container */}
-<Box sx={{width : "100%" , mt : {xs : "10px" , md : "0px"} ,display : "flex" ,height : {xs : "200px" , md : "120px"} }}>
-         <Box sx={{border : {xs : "none" , md :"0.5px solid #E9E7DB"}, borderRight : {xs : "0.5px solid #E9E7DB" , md : "none"}   , width : {xs : "45%" , md : "15%"} , height : {xs : "200px" , md : "120px"} , display : "flex", flexDirection : {xs : "column" , md : "row"} , alignItems : "center" , justifyContent : "center"}}>
-        <Box sx={{width : {xs : "70%" , md : "60px"} , height : {xs : "60%" , md : "auto"} , bgcolor : "#F3F2EE" , p : "10px" , borderRadius : "5px"}}>
-            <img style={{width : "100%" , height : "100%"}} src="../../../Imgs/Products/dresser.png" alt=""/>
-        </Box>
-
-
-
-
-{/* for mobile only */}
-
-        <Box sx={{ mt : "26px" ,border : {xs : "none" , md :"0.5px solid #E9E7DB"} ,width :  {xs : "100%" , md : "15%"} , height : "27%", display : {xs : "flex" , md : "none"} , alignItems : "center" , justifyContent : "center"}}>
-    <Box sx={{display : "flex" , alignItems : "center" , width : "75%" , justifyContent : "center"}}>
-          <IconButton sx={{bgcolor : "#FFF", 
-       ":hover" : {
-           bgcolor : "#ac8c5b"
-              }
-       
-       }} size="small" >
-              <RemoveIcon sx={{color : "#ac8c5b" , ":hover" : {
-           color : "#FFF"
-              }}} />
-          </IconButton>
-          <Typography sx={{mx:"5px" , fontWeight : "bold"}}>1</Typography>
-          <IconButton sx={{bgcolor : "#FFF" , ":hover" : {
-           bgcolor : "#ac8c5b"
-              }}} size="small">
-              <AddIcon sx={{color : "#ac8c5b" , ":hover" : {
-           color : "#FFF"
-              }}} />
-          </IconButton>
-    </Box>
-{/* _______________ */}
-    
-    </Box>
+                  <Box>
+ {product.discount && 
+                  <Chip
+                  label={Math.floor( 100 -  (product.sale / product.price) * 100) +"%"}
+                  sx={{
+                    height: "20px",
+                    borderRadius: "5px",
+                    backgroundColor: "#AC8C5B",
+                    color: "#FFF",
+                  }}
+                />
+ 
+ }
+                  </Box>
         
-         </Box>
-<Box sx={{display : "flex" , flexDirection : {xs : "column" , md : "row" } , justifyContent : {xs : "space-around"} ,width : {xs : "51%" , md : "85%"} , p : {xs :"0px 4%" , md : "0px"} , height : "100%"}}>
-             <Box sx={{border : {xs : "none" , md :"0.5px solid #E9E7DB"} , display : "flex", width : {xs : "100%" , md : "54%"} ,padding : "1%"}}>
-<Box>
-        <Typography>Dresser</Typography>
-           <Stack spacing={1}>
-                    <Rating
-                      name="half-rating-read"
-                      defaultValue={4.5}
-                      precision={0.5}
-                      readOnly
-                      size="small"
-                    />
-                              </Stack>
-
-                              <Typography sx={{mt :"5px"}} >$200</Typography>
+                 </Box>
+    {/* for bigscreen only */}
+                 <Box sx={{border : {xs : "none" , md : "0.5px solid #E9E7DB"} ,width :  {xs : "100%" , md : "15%"} , display : {xs : "none" , md : "flex"} , alignItems : "center" , justifyContent : "center"}}>
+        
+                 <Box sx={{display : "flex" , alignItems : "center" , width : "75%" , justifyContent : "center"}}>
+                       <IconButton
+                          onClick={() => {
+                            dispatch(decrement(product))
+                          }}
+                       sx={{bgcolor : "#FFF", 
+                    ":hover" : {
+                        bgcolor : "#ac8c5b"
+                           }
+                    
+                    }} size="small" >
+                           <RemoveIcon sx={{color : "#ac8c5b" , ":hover" : {
+                        color : "#FFF"
+                           }}} />
+                       </IconButton>
+                       <Typography sx={{mx:"5px" , fontWeight : "bold"}}>{product.quantity}</Typography>
+                       <IconButton 
+                          onClick={() => {
+                            dispatch(increment(product))
+                          }}
+                       
+                       sx={{bgcolor : "#FFF" , ":hover" : {
+                        bgcolor : "#ac8c5b"
+                           }}} size="small">
+                           <AddIcon sx={{color : "#ac8c5b" , ":hover" : {
+                        color : "#FFF"
+                           }}} />
+                       </IconButton>
+                 </Box>
+        
+                 </Box>
+    {/* ___________________ */}
+    
+    
+    <Box sx={{display : {xs : "block" , md : "none"}}}>
+        <hr style={{color : "#E9E7DB"}} />
+    </Box>
+                 
+                 <Box sx={{border : {xs : "none" , md : "0.5px solid #E9E7DB"} , width :  {xs : "100%" , md : "15%"} ,display : "flex" , alignItems : "center" , justifyContent : {md : "center"}}}>
+                 {/* for mobile only */}
+                 <Typography sx={{display : {xs : "block" , md : "none"} , fontWeight : "bold" , mr : "5px"}}>Total : </Typography>
+                 {/* ___________________ */}
+    
+                    <Typography>200$</Typography>
+                 </Box>
+                 
+    <Box sx={{display : {xs : "block" , md : "none"}}}>
+        <hr style={{color : "#E9E7DB"}} />
+    </Box>
+    
+                 <Box sx={{border : {xs : "none" , md : "0.5px solid #E9E7DB"} , width :  {xs : "100%" , md : "15%"} , display : "flex" , alignItems : "center" , justifyContent : {md :"center"}}}>
+        <IconButton
+           onClick={() => {
+            dispatch(deleteFromCart(product))
+          }}
+        
+         sx={{
+            ":hover" : {
+                color : "red"
+                   }
+        }} >
+        <DeleteOutlineOutlinedIcon/>
+        </IconButton>
+        
+                 </Box>
+                </Box>
+    </Box>
+    {/* _________________*/}
+    
+    <Box sx={{display : {xs : "block" , md : "none"} , mb : "10px"}}>
+        <hr style={{color : "#E9E7DB"}} />
+    </Box>
+    
 </Box>
-    
-              <Box>
-              <Chip
-  label="30%"
-  sx={{
-    height: "20px",
-    borderRadius: "5px",
-    backgroundColor: "#AC8C5B",
-    color: "#FFF",
-  }}
-/>
-              </Box>
-    
-             </Box>
-{/* for bigscreen only */}
-             <Box sx={{border : {xs : "none" , md : "0.5px solid #E9E7DB"} ,width :  {xs : "100%" , md : "15%"} , display : {xs : "none" , md : "flex"} , alignItems : "center" , justifyContent : "center"}}>
-    
-             <Box sx={{display : "flex" , alignItems : "center" , width : "75%" , justifyContent : "center"}}>
-                   <IconButton sx={{bgcolor : "#FFF", 
-                ":hover" : {
-                    bgcolor : "#ac8c5b"
-                       }
-                
-                }} size="small" >
-                       <RemoveIcon sx={{color : "#ac8c5b" , ":hover" : {
-                    color : "#FFF"
-                       }}} />
-                   </IconButton>
-                   <Typography sx={{mx:"5px" , fontWeight : "bold"}}>1</Typography>
-                   <IconButton sx={{bgcolor : "#FFF" , ":hover" : {
-                    bgcolor : "#ac8c5b"
-                       }}} size="small">
-                       <AddIcon sx={{color : "#ac8c5b" , ":hover" : {
-                    color : "#FFF"
-                       }}} />
-                   </IconButton>
-             </Box>
-    
-             </Box>
-{/* ___________________ */}
 
 
-<Box sx={{display : {xs : "block" , md : "none"}}}>
-    <hr style={{color : "#E9E7DB"}} />
-</Box>
-             
-             <Box sx={{border : {xs : "none" , md : "0.5px solid #E9E7DB"} , width :  {xs : "100%" , md : "15%"} ,display : "flex" , alignItems : "center" , justifyContent : {md : "center"}}}>
-             {/* for mobile only */}
-             <Typography sx={{display : {xs : "block" , md : "none"} , fontWeight : "bold" , mr : "5px"}}>Total : </Typography>
-             {/* ___________________ */}
 
-                <Typography>200$</Typography>
-             </Box>
-             
-<Box sx={{display : {xs : "block" , md : "none"}}}>
-    <hr style={{color : "#E9E7DB"}} />
-</Box>
-
-             <Box sx={{border : {xs : "none" , md : "0.5px solid #E9E7DB"} , width :  {xs : "100%" , md : "15%"} , display : "flex" , alignItems : "center" , justifyContent : {md :"center"}}}>
-    <IconButton sx={{
-        ":hover" : {
-            color : "red"
-               }
-    }} >
-    <DeleteOutlineOutlinedIcon/>
-    </IconButton>
-    
-             </Box>
-            </Box>
-</Box>
-{/* _________________*/}
+))}
 
 
 
@@ -302,7 +235,7 @@ const Cart = () => {
 
 
 
-<<<<<<< HEAD
+
 
 
 
@@ -335,33 +268,6 @@ const Cart = () => {
                            Apply Coupon
                        </Button>
                  </Box>
-=======
-    </Box>
-
-    <Box sx={{width : "100%" , display : "flex" , justifyContent : "center"}}>
-        <Box sx={{width :"75%", display:"flex",justifyContent:"space-between",flexWrap : "wrap" }}>   
-            <Box sx={{width:{xs:"90%" ,md:"47%"},height:"330px",my:"30px" , border:"1px solid gray", borderRadius:"15px"}}>
-                <Box sx={{display: "flex",flexDirection:"column", alignItems:"start" , justifyContent: "center", m:"20px"}}>
-                    <Typography sx={{fontWeight:"bold",m:"10px", mx:"auto"}}>Coupon Code</Typography>
-                    <Box sx={{width: "100%", height:"1px",bgcolor:"#E9E7DB"}} />
-                    <Typography sx={{fontSize:"12px",color:"gray",m:"20px"}}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique iste ,Lorem ipsum dolor sit amet consectetur adipisicing elit. In, magni! Quaerat, ad. Nesciunt, quidem earum. Voluptatibus illo enim, eveniet, repellat ad ducimus quod quae ratione.</Typography>
-                    <input placeholder="coupon Code" style={{width:"90%",backgroundColor:"#E9E7DB",margin:"10px 20px",border: "none",borderRadius:"15px",padding:"10px"}} ></input>
-                    <Button
-                        sx={{
-                        fontSize: "12px",
-                        mx: "20px",
-                        backgroundColor: "#AC8C5B",
-                        fontWeight: "200",
-                        cursor: "pointer",
-                        color: "#FFF",
-                        padding: "5px 20px",
-                        borderRadius: "20px",
-                        ":hover": { color: "#AC8C5B", outline: "1px solid #AC8C5B" },
-                        }}
-                    >
-                        Apply Coupon
-                    </Button>
->>>>>>> e8c57fb71cb4722c6f0ad735716947cfbba3157f
                 
                 </Box>
             </Box>
@@ -404,10 +310,6 @@ const Cart = () => {
                         borderRadius: "20px",
                         ":hover": { color: "#AC8C5B", outline: "1px solid #AC8C5B" },
                         }}
-<<<<<<< HEAD
-=======
-                        onClick={()=> Navigate("/Checkout")}
->>>>>>> e8c57fb71cb4722c6f0ad735716947cfbba3157f
                     >
                         CheckOut
                     </Button>
@@ -416,14 +318,40 @@ const Cart = () => {
             </Box>
 
         </Box>
-<<<<<<< HEAD
     </Box>
 
 
 
 
-=======
->>>>>>> e8c57fb71cb4722c6f0ad735716947cfbba3157f
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </Box>
 
 
