@@ -21,9 +21,18 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { useGetproductByNameQuery } from "../../../services/productApi";
 import CircularProgress from '@mui/material/CircularProgress';
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 
 const SwiperSection = ({catdata}) => {
+
+
+  const { selectedProducts } = useSelector((state) => state.Cart);
+  const dispatch = useDispatch();
+
+
+
+
   const [fav, setfav] = useState(false);
   const [outlinefav, setoutlinefav] = useState(true);
   const theme = useTheme();
@@ -177,10 +186,10 @@ console.log(x);
         outline: "1px solid #ac8c5b",
         bgcolor : "transparent"
       },
-    
-    
     }}
       variant="contained"
+
+
 
     >
       add to cart
