@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ScrollToTop from "../../ExternalMethods/ScrollToTop";
 import BannerSection from "../Home/HomeSections/bannerSection";
 import { Box, Button, IconButton, Chip, Rating, Stack, Typography } from '@mui/material';
@@ -8,17 +8,40 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 import WestOutlinedIcon from '@mui/icons-material/WestOutlined';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { decrement, deleteFromCart, increment } from '../../services/CartSlice';
+import { CoponCoode, decrement, deleteFromCart, increment } from '../../services/CartSlice';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 
 
 const Cart = () => {
+
+
+
     const Navigate = useNavigate()
-
+    
     const dispatch = useDispatch()
+    
 
-    const { SelectedProducts} = useSelector((state) => state.Cart);
+
+  const [CoponCode, setCoponCode] = useState("");
+
+
+
+    const { SelectedProducts , disable  } = useSelector((state) => state.Cart);
+    
+
+    SelectedProducts.length === 0 ?  dispatch(CoponCoode(false)) : dispatch(CoponCoode(disable))
+
     console.log(SelectedProducts);
+
+    let total = 0;
+
+    function TotalPrice(product) {
+       let subtotal = 0;
+       subtotal = Math.floor(product.quantity * (product.discount? product.sale:product.price))
+        total += subtotal
+        return subtotal
+   }
+
 
     return (
         <>
@@ -55,8 +78,8 @@ const Cart = () => {
 
 
 {SelectedProducts.map((product) => (
-
-<Box key={product.id}>
+    
+    <Box key={product.id}>
     
     {/* Product Container */}
             <Box sx={{width : "100%" , mt : {xs : "10px" , md : "0px"} ,display : "flex" ,height : {xs : "200px" , md : "120px"} }}>
@@ -90,7 +113,7 @@ const Cart = () => {
                   }}} />
               </IconButton>
               <Typography sx={{mx:"5px" , fontWeight : "bold"}}>{product.quantity}</Typography>
-              <IconButton
+              <IconButton 
                   onClick={() => {
                     dispatch(increment(product))
                   }}
@@ -122,7 +145,7 @@ const Cart = () => {
                         />
                                   </Stack>
     
-                                  <Typography sx={{mt :"5px"}} >${product.price}</Typography>
+                                  <Typography sx={{mt :"5px"}} >${product.discount ? product.sale : product.price}</Typography>
     </Box>
         
                   <Box>
@@ -161,6 +184,7 @@ const Cart = () => {
                        </IconButton>
                        <Typography sx={{mx:"5px" , fontWeight : "bold"}}>{product.quantity}</Typography>
                        <IconButton 
+
                           onClick={() => {
                             dispatch(increment(product))
                           }}
@@ -184,10 +208,10 @@ const Cart = () => {
                  
                  <Box sx={{border : {xs : "none" , md : "0.5px solid #E9E7DB"} , width :  {xs : "100%" , md : "15%"} ,display : "flex" , alignItems : "center" , justifyContent : {md : "center"}}}>
                  {/* for mobile only */}
-                 <Typography sx={{display : {xs : "block" , md : "none"} , fontWeight : "bold" , mr : "5px"}}>Total : </Typography>
+                 <Typography sx={{display : {xs : "block" , md : "none"} , fontWeight : "bold" , mr : "5px"}}>Total Price : </Typography>
                  {/* ___________________ */}
     
-                    <Typography>200$</Typography>
+                    <Typography>{TotalPrice(product)}$</Typography>
                  </Box>
                  
     <Box sx={{display : {xs : "block" , md : "none"}}}>
@@ -239,67 +263,27 @@ const Cart = () => {
 
 
 
-       <Box sx={{width : "100%" , display : "flex" , justifyContent : "center"}}>
-        <Box sx={{width : {xs : "70%" , md : "75%"}, display:"flex",justifyContent:{md : "space-between"} , flexDirection : {xs : "column" , md : "row" , alignItems : "center"} }}>   
-            <Box sx={{width:{xs:"90%" ,md:"47%"},height:"330px",my:"30px" , border:"1px solid gray", borderRadius:"15px"}}>
-                <Box sx={{display: "flex",flexDirection:"column", alignItems:"center" , justifyContent: "center", m:"20px"}}>
-                    <Typography sx={{fontWeight:"bold",m:"10px", mx:"auto"}}>Coupon Code</Typography>
-                    <Box sx={{width: "100%", height:"1px",bgcolor:"#E9E7DB"}} />
-                    <Box  sx={{height : "130px" , overflow : "hidden" ,  display : "flex" , alignItems : "center"}}>
-                        <Typography sx={{fontSize:"12px",color:"gray",m:"20px" }}>
-                        Unlock savings on furniture! Use our coupon code for exclusive discounts and elevate your home with style and affordability.
-                         </Typography>
-                    </Box>
-                    <input placeholder="coupon Code" style={{width:"90%",backgroundColor:"#E9E7DB",margin:"10px 0px",border: "none",borderRadius:"15px",padding:"10px"}} ></input>
-                 <Box sx={{width : "100%"}}>
-                       <Button
-                           sx={{
-                           fontSize: "12px",
-                           mx: "10px",
-                           backgroundColor: "#AC8C5B",
-                           fontWeight: "200",
-                           cursor: "pointer",
-                           color: "#FFF",
-                           padding: "5px 20px",
-                           borderRadius: "20px",
-                           ":hover": { color: "#AC8C5B", outline: "1px solid #AC8C5B" },
-                           }}
-                       >
-                           Apply Coupon
-                       </Button>
+     {SelectedProducts.length > 0 && 
+     
+     <Box sx={{width : "100%" , display : "flex" , justifyContent : "center"}}>
+     <Box sx={{width : {xs : "70%" , md : "75%"}, display:"flex",justifyContent:{md : "space-between"} , flexDirection : {xs : "column" , md : "row" , alignItems : "center"} }}>   
+         <Box sx={{width:{xs:"90%" ,md:"47%"},height:"330px",my:"30px" , border:"1px solid gray", borderRadius:"15px"}}>
+             <Box sx={{display: "flex",flexDirection:"column", alignItems:"center" , justifyContent: "center", m:"20px"}}>
+                 <Typography sx={{fontWeight:"bold",m:"10px", mx:"auto"}}>Coupon Code</Typography>
+                 <Box sx={{width: "100%", height:"1px",bgcolor:"#E9E7DB"}} />
+                 <Box  sx={{height : "130px" , overflow : "hidden" ,  display : "flex" , alignItems : "center"}}>
+                     <Typography sx={{fontSize:"12px",color:"gray",m:"20px" }}>
+                     Unlock savings on furniture! Use our coupon code for exclusive discounts and elevate your home with style and affordability.
+                      </Typography>
                  </Box>
-                
-                </Box>
-            </Box>
-            <Box sx={{width:{xs:"90%" ,md:"47%"},height:"330px",my:"30px" , border:"1px solid gray", borderRadius:"15px"}}>
-
-                <Box sx={{width:"90%" ,display: "flex",flexDirection:"column", alignItems:"start" , justifyContent: "center", m:"20px"}}>
-                    <Typography sx={{fontWeight:"bold",m:"10px", mx:"auto"}}>Cart Totals</Typography>
-                    <Box sx={{width: "100%", height:"1px",bgcolor:"#E9E7DB"}} />
-                    <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
-                        <Typography sx={{m:"10px"}}>SubTotal</Typography>
-                        <Typography sx={{color:"gray",m:"10px"}}>$3,540</Typography>
-                    </Box>
-                    <Box sx={{width: "100%", height:"1px",bgcolor:"#E9E7DB"}} />
-                    <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
-                        <Typography sx={{m:"3px 10px"}}>Shipping</Typography>
-                        <Typography sx={{color:"gray",m:"3px 10px"}}>Free Shipping</Typography>
-                    </Box>
-                    <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
-                        <Typography sx={{m:"3px 10px"}}>Tax</Typography>
-                        <Typography sx={{color:"gray",m:"3px 10px"}}>$00</Typography>
-                    </Box>
-                    <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
-                        <Typography sx={{m:"3px 10px"}}>Local Delivery</Typography>
-                        <Typography sx={{color:"gray",m:"3px 10px"}}>$20</Typography>
-                    </Box>
-                    <Box sx={{width: "100%", height:"1px",bgcolor:"#E9E7DB"}} />
-                    <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
-                        <Typography sx={{m:"10px"}}>Total</Typography>
-                        <Typography sx={{color:"gray",m:"10px"}}>$3,560</Typography>
-                    </Box>
+                 <input
+                 onChange={(eo) => (
+                    setCoponCode(eo.target.value)
+                    )}
+                 placeholder="coupon Code" style={{width:"90%",backgroundColor:"#E9E7DB",margin:"10px 0px",border: "none",borderRadius:"15px",padding:"10px"}} ></input>
+              <Box sx={{width : "100%"}}>
                     <Button
-                        onClick={()=> Navigate("/Checkout")}
+                    disabled={disable}
                         sx={{
                         fontSize: "12px",
                         mx: "10px",
@@ -311,15 +295,81 @@ const Cart = () => {
                         borderRadius: "20px",
                         ":hover": { color: "#AC8C5B", outline: "1px solid #AC8C5B" },
                         }}
+                        onClick={() => {
+                           if (CoponCode === "furnipro20" ) {
+                           dispatch(CoponCoode(true))
+                           }
+                        }}
                     >
-                        CheckOut
+                        Apply Coupon
                     </Button>
-                
-                </Box>
-            </Box>
+              </Box>
+             
+             </Box>
+         </Box>
+         <Box sx={{width:{xs:"90%" ,md:"47%"},height:"330px",my:"30px" , border:"1px solid gray", borderRadius:"15px"}}>
 
-        </Box>
-    </Box>
+             <Box sx={{width:"90%" ,display: "flex",flexDirection:"column", alignItems:"start" , justifyContent: "center", m:"20px"}}>
+                 <Typography sx={{fontWeight:"bold",m:"10px", mx:"auto"}}>Cart Totals</Typography>
+                 <Box sx={{width: "100%", height:"1px",bgcolor:"#E9E7DB"}} />
+                 <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
+                     <Typography sx={{m:"10px"}}>SubTotal</Typography>
+                     <Typography sx={{color:"gray",m:"10px"}}>${total}</Typography>
+                 </Box>
+                 <Box sx={{width: "100%", height:"1px",bgcolor:"#E9E7DB"}} />
+                 <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
+                     <Typography sx={{m:"3px 10px"}}>Shipping</Typography>
+                     <Typography sx={{color:"gray",m:"3px 10px"}}>Free Shipping</Typography>
+                 </Box>
+                 <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
+                     <Typography sx={{m:"3px 10px"}}>Tax</Typography>
+                     <Typography sx={{color:"gray",m:"3px 10px"}}>$00</Typography>
+                 </Box>
+                 <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
+                     <Typography sx={{m:"3px 10px"}}>Local Delivery</Typography>
+                     <Typography sx={{color:"gray",m:"3px 10px"}}>$20</Typography>
+                 </Box>
+
+                {disable  && 
+             <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
+                     <Typography sx={{m:"3px 10px"}}>Copon Code</Typography>
+                     <Typography sx={{color:"gray",m:"3px 10px"}}>-20%</Typography>
+                 </Box>    
+            
+            }
+
+                 <Box sx={{width: "100%", height:"1px",bgcolor:"#E9E7DB"}} />
+                 <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
+                     <Typography sx={{m:"10px"}}>Total</Typography>
+                     <Typography sx={{color:"gray",m:"10px"}}>${disable ? 
+                        Math.floor(total * 0.8 +20 ) : total +20}</Typography>
+                 </Box>
+                 <Button
+                     onClick={()=> Navigate("/Checkout")}
+                     sx={{
+                     fontSize: "12px",
+                     mx: "10px",
+                     backgroundColor: "#AC8C5B",
+                     fontWeight: "200",
+                     cursor: "pointer",
+                     color: "#FFF",
+                     padding: "5px 20px",
+                     borderRadius: "20px",
+                     ":hover": { color: "#AC8C5B", outline: "1px solid #AC8C5B" },
+                     }}
+                 >
+                     CheckOut
+                 </Button>
+             
+             </Box>
+         </Box>
+
+     </Box>
+ </Box>
+     
+     
+     
+     }
 
     </Box>
 
@@ -328,5 +378,4 @@ const Cart = () => {
         </>
     );
 }
-
 export default Cart;

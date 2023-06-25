@@ -25,35 +25,39 @@ import { useDispatch, useSelector } from "react-redux";
 import { AddToCart, decrement, increment } from "../../../services/CartSlice";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import { AddToFav, deleteFromFav } from "../../../services/FavSlice";
 
 
 const SwiperSection = ({catdata}) => {
 
-  const { SelectedProductsId , SelectedProducts } = useSelector((state) => state.Cart);
+
+  const { SelectedProductsId , SelectedProducts  } = useSelector((state) => state.Cart);
+  const { favProductsId , favProducts  } = useSelector((state) => state.Fav);
+
+
+
 
   const dispatch = useDispatch();
 
   function ProductQuantity(item) {
-    const useritem = SelectedProducts.find((userselect) => {
+    const useritem = SelectedProducts?.find((userselect) => {
       return userselect.id === item.id;
     });
     return useritem.quantity;
   }
 
-
-
-  const [fav, setfav] = useState(false);
-  const [outlinefav, setoutlinefav] = useState(true);
+  const [outlinefav, setoutlinefav] = useState(false);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
   const num = isSmallScreen ? 2 : 4;
-const x = catdata;
 const Navigate = useNavigate();
 
  const { data, error, isLoading } = useGetproductByNameQuery();
+
  const valueFilter = (catdata) =>{
   return catdata? data.filter((product)=> product.category === catdata) :  data  ;
 }
+
   return (
    <>
    
@@ -124,29 +128,42 @@ const Navigate = useNavigate();
 
 }
 
-  {outlinefav && (
-    <IconButton
-      onClick={() => {
-        setfav(true);
-        setoutlinefav(false);
-      }}
-      sx={{ color: "gray", position: "absolute", right: "5px" }}
-    >
-      <FavoriteBorderIcon />
-    </IconButton>
-  )}
 
-  {fav && (
+
+    {favProductsId.includes(Product.id) ?
+    
+  (
+
     <IconButton
-      onClick={() => {
-        setfav(false);
-        setoutlinefav(true);
-      }}
-      sx={{ color: "gray", position: "absolute", right: "5px" }}
-    >
-      <FavoriteIcon />
-    </IconButton>
-  )}
+    onClick={() => {
+      dispatch(deleteFromFav(Product))
+    }}
+    sx={{ color: "gray", position: "absolute", right: "5px" }}
+  >
+    <FavoriteIcon />
+  </IconButton>   
+
+
+
+
+  ) : (
+            <IconButton
+              onClick={() => {
+           dispatch(AddToFav(Product))
+              }}
+              sx={{ color: "gray", position: "absolute", right: "5px" }}
+            >
+              <FavoriteBorderIcon />
+            </IconButton>   
+  )
+  
+  
+  
+  }
+
+
+
+
 
   <Box sx={{ width: "75%", height: "65%", mx: "auto" }}  
     onClick={() => {
@@ -191,12 +208,10 @@ const Navigate = useNavigate();
 
 
     {SelectedProductsId.includes(Product.id) ?
-
 (<Box className="btn-tocart" display="none">
   <Box  sx={{ height : "27%", display : "flex"  , alignItems : "center" , justifyContent : "center"}}>
  <Box sx={{display : "flex" , alignItems : "center" , width : "75%" , justifyContent : "center"}}>
        <IconButton 
-       
        onClick={() => {
         dispatch(decrement(Product))
        }}
@@ -212,6 +227,8 @@ const Navigate = useNavigate();
        </IconButton>
        <Typography sx={{mx:"5px" , fontWeight : "bold"}}>{ProductQuantity(Product)}</Typography>
        <IconButton
+
+
        onClick={() => {
         dispatch(increment(Product))
        }}
@@ -245,9 +262,7 @@ variant="contained"
 
 onClick={() => {
   dispatch(AddToCart(Product))
-
 }}
-
 >
 add to cart
 </Button>

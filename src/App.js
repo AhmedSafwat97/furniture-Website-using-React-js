@@ -10,7 +10,7 @@ import Footer from "../src/componants/Footer/Footer"
 import Check from '../src/componants/Checkout/Check';
 import Cart from "../src/componants/Cart//Cart"
 import Blog from './componants/Blog/Blog';
-
+import CoponCode from './componants/Header/CoponCode';
 
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
   return (
    <>
    <Router>
+    <CoponCode/>
     <Header/>
     <Routes>
       < Route path="/" element={<Home/>} />

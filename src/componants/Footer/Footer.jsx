@@ -97,19 +97,19 @@ const Footer = () => {
                   Follow Us
                 </Typography>
                 <IconButton  sx={{ color: "orange"}}>
-                  <FacebookOutlinedIcon sx={{fontSize : {xs : "16px" , md : "20px"}}} />
+                  <FacebookOutlinedIcon sx={{fontSize : {xs : "13px" , md : "20px"}}} />
                 </IconButton>
                 <IconButton  sx={{ color: "orange"}}>
-                  <TwitterIcon sx={{fontSize : {xs : "16px" , md : "20px"}}} />
+                  <TwitterIcon sx={{fontSize : {xs : "13px" , md : "20px"}}} />
                 </IconButton>{" "}
                 <IconButton  sx={{ color: "orange" }}>
-                  <PinterestIcon sx={{fontSize : {xs : "16px" , md : "20px"}}} />
+                  <PinterestIcon sx={{fontSize : {xs : "13px" , md : "20px"}}} />
                 </IconButton>{" "}
                 <IconButton  sx={{ color: "orange"}}>
-                  <LinkedInIcon sx={{fontSize : {xs : "16px" , md : "20px"}}} />
+                  <LinkedInIcon sx={{fontSize : {xs : "13px" , md : "20px"}}} />
                 </IconButton>{" "}
                 <IconButton  sx={{ color: "orange" }}>
-                  <WhatsAppIcon sx={{fontSize : {xs : "16px" , md : "20px"}}} />
+                  <WhatsAppIcon sx={{fontSize : {xs : "13px" , md : "20px"}}} />
                 </IconButton>
               </Box>
 

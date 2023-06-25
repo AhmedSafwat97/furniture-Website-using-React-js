@@ -6,10 +6,21 @@ import PaddingOutlinedIcon from '@mui/icons-material/PaddingOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { Link, useNavigate } from 'react-router-dom';
 import WestOutlinedIcon from '@mui/icons-material/WestOutlined';
+import { useSelector } from 'react-redux';
 
 const Check = () => {
     const Navigate = useNavigate()
 
+    const { SelectedProducts , disable } = useSelector((state) => state.Cart);
+
+    let total = 0;
+    function TotalPrice(product) {
+       let subtotal = 0;
+       subtotal = Math.floor(product.quantity * (product.discount? product.sale:product.price))
+        total += subtotal
+        return subtotal
+   }
+   
     return (
         <>
         <ScrollToTop/>
@@ -47,7 +58,7 @@ const Check = () => {
                         <Box sx={{width: "100%",display: "flex", justifyContent: "space-between"}}>
                             <input  type="email" placeholder='Email Address*' 
                                 style={{width :"45%",fontSize:"10px",backgroundColor:"#E9E7DB",margin:"10px",border: "none",borderRadius:"30px",padding:"15px"}}/>
-                             <input  type="text" placeholder='Phone Number*' 
+                             <input  type="number" placeholder='Phone Number*' 
                                 style={{width :"45%",fontSize:"10px",backgroundColor:"#E9E7DB",margin:"10px",border: "none",borderRadius:"30px",padding:"15px"}}/>
                         </Box>
                         <select name="Country" placeholder='Country*'
@@ -73,12 +84,13 @@ const Check = () => {
                         <Box sx={{width: "100%",margin:"10px 0", height:"1px",bgcolor:"#E9E7DB"}} />
                         <Box sx={{width: "100%",display: "flex", justifyContent: "space-between"}}>
 
-                        <Button sx={{color : "#ac8c5b"}} onClick={()=>Navigate("/card")} >
+                        <Button sx={{color : "#ac8c5b"}} onClick={()=>Navigate("/cart")} >
                             <WestOutlinedIcon sx={{ fontSize: "20px" , mx:"5px" }} />
                             Return to Card
                         </Button>
 
                         <Button
+                        onClick={()=>Navigate("/shop")}
                             sx={{
                             fontSize: "12px",
                             mx: "20px",
@@ -91,7 +103,7 @@ const Check = () => {
                             ":hover": { color: "#AC8C5B", outline: "1px solid #AC8C5B" },
                             }}
                         >
-                            Apply Coupon
+                            Continue Shopping
                         </Button>
                         </Box>
                     </form>
@@ -108,16 +120,20 @@ const Check = () => {
                     </Box>
                     <Box sx={{width: "100%", height:"1px",bgcolor:"#E9E7DB"}} />
 
-                    {<>
-                    <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
-                        <Box sx={{minWidth:"40%",display:"flex",justifyContent:"space-between"}}>
-                            <Typography sx={{m:"0 10px"}}>SubTotal</Typography>
-                            <Typography sx={{m:"0 10px"}}>2</Typography>
-                        </Box>
-                        <Typography sx={{color:"gray",m:"3px 10px"}}>$6666</Typography>
-                    </Box>
+                    {SelectedProducts.map((Product) => (
+
+    <Box key={Product.id} sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
+    <Box sx={{minWidth:"40%",display:"flex",justifyContent:"space-between"}}>
+        <Typography sx={{m:"0 10px"}}>{Product.Name}</Typography>
+        <Typography sx={{m:"0 10px"}}>{Product.quantity}</Typography>
+    </Box>
+    <Typography sx={{color:"gray",m:"3px 10px"}}>${TotalPrice(Product)}</Typography>
+    </Box>
+
+                    ))
+              
                     
-                 </>   }
+                   }
 
 
 
@@ -126,7 +142,7 @@ const Check = () => {
                     <Box sx={{width: "100%", height:"1px",bgcolor:"#E9E7DB"}} />
                     <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
                         <Typography sx={{m:"3px 10px"}}>SubTotal</Typography>
-                        <Typography sx={{color:"gray",m:"3px 10px"}}>$6666</Typography>
+                        <Typography sx={{color:"gray",m:"3px 10px"}}>${total}</Typography>
                     </Box>
                     <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
                         <Typography sx={{m:"3px 10px"}}>Shipping</Typography>
@@ -140,10 +156,21 @@ const Check = () => {
                         <Typography sx={{m:"3px 10px"}}>Local Delivery</Typography>
                         <Typography sx={{color:"gray",m:"3px 10px"}}>$20</Typography>
                     </Box>
+
+                    {disable  && 
+             <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
+                     <Typography sx={{m:"3px 10px"}}>Copon Code</Typography>
+                     <Typography sx={{color:"gray",m:"3px 10px"}}>-20%</Typography>
+                 </Box>    
+            
+            }
+
                     <Box sx={{width: "100%", height:"1px",bgcolor:"#E9E7DB"}} />
                     <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
                         <Typography sx={{m:"10px"}}>Total</Typography>
-                        <Typography sx={{color:"gray",m:"10px"}}>$3,560</Typography>
+                        <Typography sx={{color:"gray",m:"10px"}}>${disable ? 
+                        Math.floor(total * 0.8 +20 ) : total +20
+                    }</Typography>
                     </Box>
 
 
@@ -159,6 +186,9 @@ const Check = () => {
                         borderRadius: "20px",
                         ":hover": { color: "#AC8C5B", outline: "1px solid #AC8C5B" },
                         }}
+
+                  
+
                     >
                         Place Order Now
                     </Button>

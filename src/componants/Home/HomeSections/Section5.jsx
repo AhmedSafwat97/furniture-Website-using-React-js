@@ -2,14 +2,11 @@ import { Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCountdown } from '../../../Hooks/useCountDown';
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { useGetproductByNameQuery } from "../../../services/productApi";
 import CircularProgress from '@mui/material/CircularProgress';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
 const Section5 = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
@@ -38,11 +35,11 @@ const Navigate = useNavigate()
         <Box sx={{display : "flex" , justifyContent : "center" , alignItems : "center" , height : "700px" }}>
 
 
-            <Box sx={{width : {xs : "80%" , md : "75%"} , height : "80%" , borderRadius : "20px" ,bgcolor : "#AC8C5B" , display : "flex" , alignItems : "center" , justifyContent : "center" , flexDirection : "column" }}>
+            <Box sx={{width : {xs : "90%" , md : "75%"} , height : "80%" , borderRadius : "20px" ,bgcolor : "#AC8C5B" , display : "flex" , alignItems : "center" , justifyContent : "center" , flexDirection : "column" }}>
 
 
 
-          <Box p="20px 0" sx={{width :"100%" , display : "flex" , flexDirection : {xs : "column" , md : "row" , alignItems : "center" , justifyContent : "center"}}}>
+          <Box sx={{ paddingBottom : "20px" ,width :"100%" , display : "flex" , flexDirection : {xs : "column" , md : "row" , alignItems : "center" , justifyContent : "center"}}}>
           <Typography variant='h5' sx={{ fontSize : {xs : "22px" , md : "35px"} ,color : "#FFF"}}>Deal Of The Week Let's</Typography>
           <Box display="flex">
               <Typography className="outline-Text" variant='h5' sx={{mx : "5px" , fontSize : {xs : "22px" , md : "35px"}}} >Shopping</Typography>
@@ -66,20 +63,12 @@ const Navigate = useNavigate()
      
      }
 
-{data&&
-     <Swiper
-       modules={[Navigation, Pagination, Scrollbar, A11y]}
-       spaceBetween={0}
-       slidesPerView={1}
-       pagination={{ clickable: true }}
-       style={{ width: "100%", height: "100%", padding: "30px 0" }}
-     >
-
-
+{data &&
+     <Box style={{ width : "95%" , height : {xs : "80%%" , md : "80%"} }}>
+      <Carousel autoPlay={true} interval={3000} infiniteLoop={true} showThumbs={false}>
       {data.filter((product)=> product.discount === true).map((Product) => (
-      <SwiperSlide key={Product.id} style={{ display: "flex", alignItems: "end" , justifyContent : "center" }}>
 
-      <Box sx={{width : "85%" , height : "100%", borderRadius : "20px" ,bgcolor : "#FFF" , display : "flex" , flexDirection : {xs :"column" , md  : "row"}}} >
+      <Box key={Product.id} sx={{ mx : "auto" ,width : {xs : "100%" , md : "90%"} , height : "380px", borderRadius : "20px" ,bgcolor : "#FFF" , display : "flex" , flexDirection : {xs : "column" , md : " row"} , alignItems : "center" ,justifyContent : "center"}} >
 
       <Box sx={{width : {xs : "100%" , md : "50%"} , height : {xs : "50%" , md : "100%"} , display : "flex" , alignItems : "center" , justifyContent : "center"}} >
       <Box sx={{width : {xs : "150px" , md : "250px"}}}>
@@ -87,12 +76,7 @@ const Navigate = useNavigate()
       </Box>                
       </Box>
 
-
-
-
-
-
-      <Box sx={{p : "0 20px" ,width : {xs : "90%" , md : "50%"} , height : {xs : "50%" , md : "100%"} , display : "flex" , flexDirection : "column" ,justifyContent : "center" }} >
+      <Box sx={{ p : "0 20px" ,width : {xs : "100%" , md : "50%"} , height : {xs : "50%" , md : "100%"} , display : "flex" , flexDirection : "column" ,justifyContent : "center" }} >
 
                   <Box>
                   <Typography variant='h5' sx={{fontSize : {xs : "15px" , md : "30px"}}}>{Product.Name}</Typography>
@@ -121,15 +105,30 @@ const Navigate = useNavigate()
 
               }}
               onClick={() => {
-                Navigate("/Shop");
+                Navigate(`/prodetails/${Product.id}`);
               }}
             >
               Shop Now
             </Button>
                   </Box>
+
+
+<Box sx={{width : "100&" , height : "50px" , display : "flex" , flexDirection : "column", alignItems : "center" , justifyContent : "center"}}>
+
+<Box sx={{width : "100%" , display : "flex" , justifyContent : "space-between"}}>
+<Typography>Available : {Product.count}</Typography>
+<Typography>Already Sold : {Product.sold}</Typography>
+</Box>
+
+<Box sx={{width : "90%" , height : "15px" , bgcolor : "#E9E7DB" , borderRadius : "20px"}}>
+<Box sx={{width : `${Math.floor( 100 -  (Product.count / (Product.count + Product.sold)) * 100)}%` , height:"100%" , bgcolor : "#FCC012" , borderRadius : "20px"  }}></Box>
+</Box>
+
+
+</Box>
+
+
               </Box>
-
-
 
               <Box>
 
@@ -147,7 +146,7 @@ const Navigate = useNavigate()
 
 
           {date.map((date) => (
-          <Box key={date.name} sx={{borderRadius : "50%" , width : {xs : "20px" , md : "40px"} , height : {xs : "20px" , md :"30px"} , p : "10px"  ,bgcolor : "#E9E7DB" , display : "flex" , justifyContent : "center" , alignItems : "center" , flexDirection : "column"}}>
+          <Box key={date.name} sx={{borderRadius : "50%" , width : {xs : "45px" , md : "55px"} , height : {xs : "45px" , md :"55px"} , p : "10px"  ,bgcolor : "#E9E7DB" , display : "flex" , justifyContent : "center" , alignItems : "center" , flexDirection : "column"}}>
           <Typography fontSize="12px" variant='h6' >{date.num}</Typography>
               <Typography  variant='h6' sx={{fontSize : "10px"}} >{date.name}</Typography>
           </Box>
@@ -169,10 +168,10 @@ const Navigate = useNavigate()
 
       </Box>
 
-      </SwiperSlide>
       ))}
+      </Carousel>
 
-      </Swiper>
+      </Box>
 }
     </Box>
 

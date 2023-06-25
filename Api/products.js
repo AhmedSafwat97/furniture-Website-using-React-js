@@ -30,7 +30,8 @@ const products = [
  count : 22 ,
  sold : 16 ,
  tags : "Chair , Sofa , ArmChair"  ,
- reviews : 13
+ reviews : 13 ,
+
  },
  {
    id: 3,
@@ -47,7 +48,7 @@ const products = [
  sold : 8 ,
  tags : "Commode , wooden Commode , single Comode"  ,
  reviews : 12 ,  
- 
+
 },
  {
    id: 4,
@@ -64,6 +65,7 @@ const products = [
   sold : 25 ,
   tags : "Dresser , Wooden Dresser , Double Dresser " ,
   reviews : 22 ,
+
 },
  {
   id: 5,
@@ -80,6 +82,7 @@ const products = [
   sold : 14 ,
   tags : "Table , Wooden Table , Disk" ,
   reviews : 44,
+
 },
 {
   id: 6,
@@ -95,6 +98,7 @@ description:
   sold : 11 ,
   tags : "Bed , wooden Bed , steel Bed" ,
   reviews : 23 ,
+
 },
 {
   id: 7,
@@ -110,6 +114,7 @@ description:
   sold : 33  ,
   tags : "Chair , Sofa , Single  Sofa" ,
   reviews : 32,
+
   
 },
 {
@@ -126,6 +131,7 @@ description:
   sold : 10 ,
   tags : "Bed , wooden Bed , steel  Bed" ,
   reviews : 14 ,
+
 },
 ];
 

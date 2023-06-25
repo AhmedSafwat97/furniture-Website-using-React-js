@@ -51,7 +51,7 @@ const AllProductsSection = () => {
     const [fav, setfav] = useState(false);
   const [outlinefav, setoutlinefav] = useState(true);
   const { data, error, isLoading } = useGetproductByNameQuery();
-  const { SelectedProductsId , SelectedProducts } = useSelector((state) => state.Cart);
+  const { SelectedProductsId , SelectedProducts  } = useSelector((state) => state.Cart);
 
   const dispatch = useDispatch();
   const Navigate = useNavigate();
@@ -122,16 +122,15 @@ const AllProductsSection = () => {
     </Box>
 
 
+<Box sx={{ borderBottom: 1, borderColor: 'divider'}}>
+<Tabs sx={{justifyContent:"center"}} value={value} onChange={handleChange} aria-label="basic tabs example">
+{TabsArray.map((tab , index) => (
+<Tab sx={{padding: {xs:"6px 7px",md:"12px 16px"},minWidth:{xs:"25px",md:"90px"}, fontSize:{xs:"10px",md:"16px"}}} key={index} label={tab.label} {...a11yProps({index})} />
+)) }
 
+</Tabs>
 
-    <Box sx={{ borderBottom: 1, borderColor: 'divider'  }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-        {TabsArray.map((tab , index) => (
-
-      <Tab key={index} label={tab.label} {...a11yProps({index})} />
-        )) }
-        </Tabs>
-      </Box>
+</Box>
 
 
       {TabsArray.map((tab , index) => (

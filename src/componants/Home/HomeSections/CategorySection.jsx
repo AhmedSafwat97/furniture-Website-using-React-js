@@ -69,7 +69,7 @@ console.log(uniqueProducts)
    onClick={
     () => {
       setarrowview(arrowview ? false : true )
-      setcategoriynum(arrowview  ? uniqueProducts.length : 5 )
+      setcategoriynum(arrowview  ? uniqueProducts.length : 4 )
 
     }
   
@@ -115,8 +115,8 @@ console.log(uniqueProducts)
 
 key={Category.id}
           sx={{
-            width: "150px",
-            height: "250px",
+            width: {xs :"120px" , md : "150px"},
+            height: {xs : "220px" , md : "250px"},
               backgroundColor: "#F3F2EE",
               borderRadius: "15px",
               padding: "10px",

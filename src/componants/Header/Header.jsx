@@ -13,6 +13,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const pages = [
   { name: "Home", Link: "/" },
@@ -27,13 +28,16 @@ function ResponsiveAppBar() {
   const [ShowSearch, setShowSearch] = useState(false);
   const [arrowview, setarrowview] = useState(true);
 
+  const { SelectedProductsId   } = useSelector((state) => state.Cart);
+
+  const { favProductsId  } = useSelector((state) => state.Fav);
 
   const navigate = useNavigate();
 
   return (
     <>
       <AppBar
-        position="static"
+        position="sticky"
         sx={{
           height: { xs: "fit-content", md: "65px" },
           mb: "5px",
@@ -89,9 +93,11 @@ function ResponsiveAppBar() {
               </Box>
             </Box>
             <Box sx={{ display: "flex" }}>
-              <IconButton size="large" aria-label="Favorite" color="inherit">
+              <IconButton onClick={() => {
+                navigate("/fav")
+              }} size="large" aria-label="Favorite" color="inherit">
                 <FavoriteBorderIcon sx={{ fontSize: "30px", color: "black" }} />
-                <Badge badgeContent={4} color="error"></Badge>
+                <Badge badgeContent={favProductsId.length} color="error"></Badge>
               </IconButton>
 
               <IconButton onClick={() => {
@@ -100,7 +106,7 @@ function ResponsiveAppBar() {
                 <ShoppingBagOutlinedIcon
                   sx={{ fontSize: "30px", color: "black" }}
                 />
-                <Badge badgeContent={4} color="error"></Badge>
+                <Badge badgeContent={SelectedProductsId.length} color="error"></Badge>
               </IconButton>
 
               <IconButton size="large" aria-label="profile" color="inherit">
@@ -163,7 +169,6 @@ function ResponsiveAppBar() {
       setarrowview(arrowview ? false : true )
       setviewlist(viewlist ? false : true)
     }
-  
    }
    >
     {arrowview ? <ExpandMoreIcon/> : <ExpandLessIcon/> }
@@ -184,11 +189,15 @@ function ResponsiveAppBar() {
                   height: "60px",
                 }}
               >
-                <IconButton size="large" aria-label="favorit" color="inherit">
+                <IconButton
+                onClick={() => {
+                  navigate("/fav")
+                }}
+                size="large" aria-label="favorit" color="inherit">
                   <FavoriteBorderIcon
                     sx={{ fontSize: "30px", color: "black" }}
                   />
-                  <Badge badgeContent={4} color="error"></Badge>
+                  <Badge badgeContent={favProductsId.length} color="error"></Badge>
                 </IconButton>
 
                 <IconButton
@@ -204,7 +213,7 @@ function ResponsiveAppBar() {
                   <ShoppingBagOutlinedIcon
                     sx={{ fontSize: "30px", color: "black" }}
                   />
-                  <Badge badgeContent={4} color="error"></Badge>
+                  <Badge badgeContent={SelectedProductsId.length} color="error"></Badge>
                 </IconButton>
 
                 <IconButton size="large" aria-label="Profile" color="inherit">

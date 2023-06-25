@@ -3,10 +3,12 @@ import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { oneproductsApi, productApi } from './services/productApi'
 import CartSlice from './services/CartSlice'
+import favSlice  from './services/FavSlice'
 
 export const store = configureStore({
   reducer: {
     Cart : CartSlice,
+    Fav : favSlice,
     // Add the generated reducer as a specific top-level slice
     [productApi.reducerPath]: productApi.reducer,
     [oneproductsApi.reducerPath]: oneproductsApi.reducer,
