@@ -12,6 +12,7 @@ import Cart from "../src/componants/Cart//Cart";
 import Blog from "./componants/Blog/Blog";
 import CoponCode from "./componants/Header/CoponCode";
 import Fav from "../src/componants/Fav/Fav";
+import Notification from '../src/componants/Global Section/Notifiction';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/Checkout" element={<Check />} />
           <Route path="/fav" element={<Fav />} />
         </Routes>
+        <Notification/>
         <Footer />
       </Router>
     </>

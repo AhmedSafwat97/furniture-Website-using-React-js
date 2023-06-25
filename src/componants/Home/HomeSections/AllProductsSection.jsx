@@ -23,6 +23,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AddToCart, decrement, increment } from "../../../services/CartSlice";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import { AddToFav, deleteFromFav } from "../../../services/FavSlice";
 
 
 
@@ -48,10 +49,9 @@ function TabPanel(props) {
   }
 
 const AllProductsSection = () => {
-    const [fav, setfav] = useState(false);
-  const [outlinefav, setoutlinefav] = useState(true);
   const { data, error, isLoading } = useGetproductByNameQuery();
   const { SelectedProductsId , SelectedProducts  } = useSelector((state) => state.Cart);
+  const { favProductsId   } = useSelector((state) => state.Fav);
 
   const dispatch = useDispatch();
   const Navigate = useNavigate();
@@ -134,7 +134,7 @@ const AllProductsSection = () => {
 
 
       {TabsArray.map((tab , index) => (
-      <TabPanel key={index} style={{width : isSmallScreen ? "100%" : "70%" }} value={value} index={index}>
+      <TabPanel key={index} style={{width : isSmallScreen ? "100%" : "75%" }} value={value} index={index}>
       {error && 
    <Box  sx={{display : "flex" , justifyContent : "center" , alignItems : "center" ,width : "100%" , height : "100%"}}>
     <Typography variant="h6">Data Not Found</Typography>
@@ -188,31 +188,31 @@ const AllProductsSection = () => {
         />
 
         }
-
-        {outlinefav && (
-          <IconButton
-            onClick={() => {
-              setfav(true);
-              setoutlinefav(false);
-            }}
-            sx={{ color: "gray", position: "absolute", right: "5px" }}
-          >
-            <FavoriteBorderIcon />
-          </IconButton>
-        )}
-
-        {fav && (
-          <IconButton
-            onClick={() => {
-              setfav(false);
-              setoutlinefav(true);
-            }}
-            sx={{ color: "gray", position: "absolute", right: "5px" }}
-          >
-            <FavoriteIcon />
-          </IconButton>
-        )}
-
+  {favProductsId.includes(Product.id) ?
+    (
+  <IconButton
+      onClick={() => {
+        dispatch(deleteFromFav(Product))
+      }}
+      sx={{ color: "gray", position: "absolute", right: "5px" }}
+    >
+      <FavoriteIcon />
+    </IconButton>   
+    ) : (
+    <IconButton
+          onClick={() => {
+        dispatch(AddToFav(Product))
+                }}
+                sx={{ color: "gray", position: "absolute", right: "5px" }}
+              >
+                <FavoriteBorderIcon />
+              </IconButton>   
+    )
+    
+    
+    
+    }
+  
         <Box sx={{ width: "75%", height: "65%", mx: "auto" }}  
           onClick={() => {
             Navigate(`/prodetails/${Product.id}`)
@@ -232,7 +232,7 @@ const AllProductsSection = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            bgcolor: "#F3F2EE",
+            bgcolor: "#FFF",
             mx: "auto",
             width: "95%",
             height: "32%",

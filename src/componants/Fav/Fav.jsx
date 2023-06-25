@@ -44,7 +44,7 @@ const Fav = () => {
         <Box>
                 <ScrollToTop/>
 
-        <BannerSection  PageName="Favorite" />
+        <BannerSection  PageName="Favourite" />
             
         
 {favProducts.length === 0 && (
@@ -73,7 +73,7 @@ const Fav = () => {
   style={{
     width : "200px" ,
     height: "290px",
-    backgroundColor: "#FFF",
+    backgroundColor: "#F3F2EE",
     borderRadius: "15px",
     padding: "10px",
     position: "relative",
@@ -152,7 +152,7 @@ const Fav = () => {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      bgcolor: "#F3F2EE",
+      bgcolor: "#FFF",
       mx: "auto",
       width: "95%",
       height: "32%",
