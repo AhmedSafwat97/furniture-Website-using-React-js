@@ -47,7 +47,11 @@ const Fav = () => {
         <BannerSection  PageName="Favorite" />
             
         
-
+{favProducts.length === 0 && (
+  <Box>
+    <Typography>there is no favouite product</Typography>
+  </Box>
+)}
 
 <Box   
   className="Cards-Container"
