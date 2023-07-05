@@ -4,6 +4,8 @@ const cors = require("cors");
 const app = express();
 
 const products = require("./products");
+const blogs = require("./blogs");
+
 
 app.use(express.json());
 app.use(cors());
@@ -24,6 +26,22 @@ app.get("/products/:id", (req, res) => {
   });
   res.send(oneProduct);
 });
+
+
+app.get("/blogs", (req, res) => {
+  res.send(blogs);
+});
+
+app.get("/blogs/:id", (req, res) => {
+  const oneblogs = blogs.find((item) => {
+    return item.id == req.params.id;
+  });
+  res.send(oneblogs);
+});
+
+
+
+
 
 
 

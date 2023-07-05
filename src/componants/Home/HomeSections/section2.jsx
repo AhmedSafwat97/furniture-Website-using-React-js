@@ -6,6 +6,7 @@ import KeyboardReturnOutlinedIcon from '@mui/icons-material/KeyboardReturnOutlin
 import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
 import { Link } from 'react-router-dom';
 import  matchDownMd from '../../../ExternalMethods/matchDownMd';
+import Shape from './Shape';
 
 const section2 = () => {
     const itemData = [
@@ -85,12 +86,18 @@ const section2 = () => {
                 </Box>
               </Box>
           ))}
-
         </Box>
         <hr></hr>
-        <Typography sx={{fontWeight: '900',width :{sx:'80%',md :'55%'}, m : '50px 0px 30PX 0'}} variant='h4'>One Stop Custom and Factory Furniture Shopping</Typography>
+         <Box sx={{ width : "100%" }}>
+         <Typography sx={{fontWeight: '900',m : '50px 0px 0 0' , fontSize : {xs : "20px" , md : "35px"}}} variant='h4'>One Stop Custom and Factory </Typography>
+<Box sx={{display : "flex"}}>
+<Typography sx={{fontWeight: '900',m : '0 40px 30px 0', fontSize : {xs : "22px" , md : "35px"}}} variant='h4'>Furniture Shopping</Typography>
+<Shape/>
+</Box>
 
-      <Box>
+</Box >
+
+<Box>
         <ImageList
           sx={{ width: "100%", height: "auto", mx: "auto" }}
           gap={20}

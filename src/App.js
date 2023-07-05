@@ -12,7 +12,8 @@ import Cart from "../src/componants/Cart//Cart";
 import Blog from "./componants/Blog/Blog";
 import CoponCode from "./componants/Header/CoponCode";
 import Fav from "../src/componants/Fav/Fav";
-import Notification from '../src/componants/Global Section/Notifiction';
+import Notifiction from "./componants/Global Section/Notifiction.jsx"
+import BlogDetails from "./componants/BlogDetails/BlogDetails";
 
 function App() {
   return (
@@ -25,13 +26,14 @@ function App() {
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Shop" element={<Shop />} />
-          <Route path="/Blog" element={<Blog />} />
           <Route path="/prodetails/:id" element={<Shopdetails />} />
+          <Route path="/Blog" element={<Blog />} />
+          <Route path="/Blogdetails/:id" element={<BlogDetails />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/Checkout" element={<Check />} />
           <Route path="/fav" element={<Fav />} />
         </Routes>
-        <Notification/>
+        <Notifiction/>
         <Footer />
       </Router>
     </>

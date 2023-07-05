@@ -22,8 +22,30 @@ export const oneproductsApi = createApi({
   }),
 });
 
+export const blogsApi = createApi({
+  reducerPath: "blogsApi",
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/" }),
+  endpoints: (builder) => ({
+    getblogsByName: builder.query({
+      query: (name) => `blogs`,
+    }),
+  }),
+});
+
+export const OneblogApi = createApi({
+  reducerPath: "OneblogApi",
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/" }),
+  endpoints: (builder) => ({
+    getOneblog: builder.query({
+      query: (id) => `blogs/${id}`,
+    }),
+  }),
+});
+
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
 export const { useGetproductByNameQuery } = productApi
 export const { useGetOneProductQuery } = oneproductsApi;
+export const { useGetblogsByNameQuery } = blogsApi;
+export const { useGetOneblogQuery } = OneblogApi;

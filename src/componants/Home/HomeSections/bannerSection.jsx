@@ -12,7 +12,7 @@ const navigat = useNavigate()
            <Box
         sx={{
           width: "100%",
-          height: "200px",
+          height: "180px",
           color: "#fff",
           display: "flex",
           flexDirection: "column",

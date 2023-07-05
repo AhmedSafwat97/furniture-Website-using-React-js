@@ -80,9 +80,10 @@ const {id} = useParams()
         
         sx={{
           width :{xs : "85%" , md : "45%"},
-          border: "1px solid gray",
-          bgcolor: "#fefefe",
+          bgcolor: "#E9E7DB",
           borderRadius: "15px",
+          display : "flex" , 
+          alignItems : "center"
         }}
       >
         <img
@@ -262,7 +263,7 @@ const {id} = useParams()
             sx={{ fontWeight: "900", width: "100%" }}
             variant={isSmallScreen ? "h5" : "h4"}
           >
-            Featured Products
+            Related Products
           </Typography>
         </Box>
 

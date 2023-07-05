@@ -22,7 +22,7 @@ export const favSlice = createSlice({
       state.favProducts.push(action.payload)
       state.favProductsId.push(action.payload.id)
 
-      toast.success(`You add  ${action.payload.Name} to the fav`);
+      toast.success(`You add  ${action.payload.Name} to the favourites`);
 
 
 
@@ -42,7 +42,7 @@ export const favSlice = createSlice({
         state.favProducts = NewfavProducts;
         state.favProductsId = NewfavProductsId;
 
-        toast.success(`You deleted ${action.payload.Name} from fav`);
+        toast.success(`You deleted ${action.payload.Name} from favourites`);
 
 
         localStorage.setItem("favPro" , JSON.stringify(state.favProducts)) 

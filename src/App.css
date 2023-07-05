@@ -50,7 +50,7 @@
 
 
 .Card:hover {
-  transform: scale(1.1);
+  border : 1px solid black ;
   transition: transform 1s;
 }
 
@@ -131,4 +131,57 @@
 
 .colorPlaceholder::placeholder{
   color:#ac8c5b
+}
+
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+@keyframes opacity {
+0%  {opacity: 0;};
+25%  {opacity: 0.2;};
+50$  {opacity: 0.5;};
+75%  {opacity: 0.7;};
+100% {opacity: 1;};
+}
+
+.copon{
+  animation: opacity 2s infinite;
+}
+
+
+
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+padding: 12px !important;
+border-radius:  20px !important;
+
+} 
+
+
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select{
+
+  padding: 12px !important;
+
+
+}
+
+/* to add border radius to material ui input */
+.MuiOutlinedInput-notchedOutline {
+  border-radius: 30px !important;
+}
+
+.carousel .carousel-status{
+  display:  none;
+}
+
+.carousel.carousel-slider .control-arrow {
+  top: 45% !important;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }

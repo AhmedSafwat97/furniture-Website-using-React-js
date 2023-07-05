@@ -24,6 +24,7 @@ import { AddToCart, decrement, increment } from "../../../services/CartSlice";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { AddToFav, deleteFromFav } from "../../../services/FavSlice";
+import Shape from './Shape';
 
 
 
@@ -106,6 +107,7 @@ const AllProductsSection = () => {
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
+      mb : "35px"
 
     }}
   >
@@ -116,9 +118,13 @@ const AllProductsSection = () => {
       >
         Our Best All Products
       </Typography>
-      <Typography className='outline-text' sx={{fontSize:'30px'}}>
-        Collections
-      </Typography>
+ <Box sx={{display : "flex"}}>
+       <Typography className='outline-text' sx={{fontSize:'30px' , mr : "10px"}}>
+         Collections
+       </Typography>
+       <Shape/>
+
+ </Box>
     </Box>
 
 
@@ -154,7 +160,7 @@ const AllProductsSection = () => {
             width:"100%" ,
             display : "flex" , 
             justifyContent : "center" , 
-            flexWrap :"wrap" ,
+            flexWrap :"wrap" 
         }}>
           {valueFilter(tab).map((Product)=>
       
@@ -163,7 +169,7 @@ const AllProductsSection = () => {
         key={Product.id}
         className="Card"
         sx={{
-          width : {xs:"150px" , md: "180px"} ,
+          width : {xs:"150px" , md: "200px"} ,
           height: "290px",
           backgroundColor: "#F3F2EE",
           borderRadius: "15px",
@@ -213,7 +219,7 @@ const AllProductsSection = () => {
     
     }
   
-        <Box sx={{ width: "75%", height: "65%", mx: "auto" }}  
+        <Box sx={{ width: "75%", height: "63%", mx: "auto" }}  
           onClick={() => {
             Navigate(`/prodetails/${Product.id}`)
           }}

@@ -18,6 +18,7 @@ const Section1 = () => {
       cols: 3,
       discount: "30% Discount",
       title: `New Stylish Decor Furniture`,
+      discription : "Unique Furniture Stylr Design for Your Family" ,
       deletedPrice: 400,
       price: 250,
     },
@@ -25,7 +26,7 @@ const Section1 = () => {
       img: "../../../../Imgs/design3.jpg",
       cols: 2,
       discount: "Mega Offer 36% Off",
-      title: "The Latest Collection of Furniture",
+      title: "Latest Collection Of Furniture",
       deletedPrice: 350,
       price: 280,
     },
@@ -71,7 +72,7 @@ const Section1 = () => {
                   color: "#fff",
                   my: "25px",
                   lineHeight: 2,
-                  ml: "30px",
+                  ml: {xs : "15px" , md : "30px"},
                   width: "70%",
                   marginY: item.cols === 3 ? "36px" : null,
                 }}
@@ -86,11 +87,12 @@ const Section1 = () => {
                   }}
                 />
                 <Typography
-                  variant={item.cols === 3 ? "h3" : "h5"}
-                  sx={{ fontSize: matchDownMd() ? "20px" : null }}
+                  variant={item.cols === 3 ? "h4" : "h6"}
+                  sx={{fontSize: matchDownMd() ? "20px" : null }}
                 >
                   {item.title}
                 </Typography>
+                <Typography variant="p" fontSize="12px" sx={{display : {xs : "none" , md : "block"}}}>{item.discription}</Typography>
                 <Typography sx={{ fontSize: matchDownMd() ? "12px" : "18px" }}>
                   <del style={{ color: "lightgray" }}>${item.deletedPrice}</del>{" "}
                   ${item.price}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ScrollToTop from "../../ExternalMethods/ScrollToTop";
 import BannerSection from "../Home/HomeSections/bannerSection";
-import { Box, Button, IconButton, Chip, Rating, Stack, Typography } from '@mui/material';
+import { Box, Button, IconButton, Chip, Rating, Stack, Typography, Container } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
@@ -52,7 +52,9 @@ const Cart = () => {
     <Box sx={{width : "100%" , minHeight : "70vh" , display : "flex" , flexDirection : "column" , alignItems : "center"}}>
         <Box className="container" sx={{ my : "50px" ,width : {xs : "70%" , md : "75%"} , overflow : "hidden" , height : "fit-content" , border : "0.5px solid #E9E7DB"}}>
 
-
+<Box display="flex" alignItems="center">
+    <Typography>{SelectedProducts.length} Items</Typography>
+</Box>
 
        <Box sx={{width : "100%" , display : {xs : "none" , md : "flex"} , height : "40px", bgcolor : "#E9E7DB"}}>
          <Box sx={{width : "15%" , display : "flex" , alignItems : "center" , justifyContent : "center" , fontWeight : "bold"}}>Image</Box>

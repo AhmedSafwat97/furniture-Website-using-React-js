@@ -6,6 +6,7 @@ import { useGetproductByNameQuery } from "../../../services/productApi";
 import CircularProgress from '@mui/material/CircularProgress';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import Shape from './Shape';
 
 const Section5 = () => {
   const theme = useTheme();
@@ -33,17 +34,21 @@ const Navigate = useNavigate()
 
     return (
         <Box sx={{display : "flex" , justifyContent : "center" , alignItems : "center" , height : "700px" }}>
+            <Box sx={{ overflow : "hidden" ,position : "relative"  ,width : {xs : "90%" , md : "75%"} , height : "80%" , borderRadius : "20px" ,bgcolor : "#AC8C5B" , display : "flex" , alignItems : "center" , justifyContent : "center" , flexDirection : "column" }}>
 
+<Box sx={{position : "absolute" , bottom : {xs :"20px" , md : "30px"} , left : { xs : "25px" , md : "38px"}}}>
+              <Shape/>
+  
+</Box>
+<Box sx={{position : "absolute" , top : "-100px", right : "-100px" ,borderRadius :"50%" ,bgcolor : "#B99D75" , width : "350px" , height : "350px" , display : "flex" , justifyContent : "center" , alignItems : "center"}}>
+  <Box sx={{borderRadius :"50%" ,bgcolor : "#AC8C5B" , width : "200px" , height : "200px" }} ></Box>
+</Box>
 
-            <Box sx={{width : {xs : "90%" , md : "75%"} , height : "80%" , borderRadius : "20px" ,bgcolor : "#AC8C5B" , display : "flex" , alignItems : "center" , justifyContent : "center" , flexDirection : "column" }}>
-
-
-
-          <Box sx={{ paddingBottom : "20px" ,width :"100%" , display : "flex" , flexDirection : {xs : "column" , md : "row" , alignItems : "center" , justifyContent : "center"}}}>
-          <Typography variant='h5' sx={{ fontSize : {xs : "22px" , md : "35px"} ,color : "#FFF"}}>Deal Of The Week Let's</Typography>
+          <Box sx={{zIndex : "1" ,paddingBottom : "20px" ,width :"100%" , display : "flex" , flexDirection : {xs : "column" , md : "row" , alignItems : "center" , justifyContent : "center"}}}>
+          <Typography variant='h5' sx={{  fontWeight : "500" ,fontSize : {xs : "22px" , md : "35px"} ,color : "#FFF"}}>Deal of the Week Let's</Typography>
           <Box display="flex">
               <Typography className="outline-Text" variant='h5' sx={{mx : "5px" , fontSize : {xs : "22px" , md : "35px"}}} >Shopping</Typography>
-              <Typography variant='h5' sx={{fontSize : {xs : "22px" , md : "35px", color : "#FFF"}}} >Today</Typography>
+              <Typography variant='h5' sx={{ fontWeight : "500" ,fontSize : {xs : "22px" , md : "35px", color : "#FFF"}}} >Today</Typography>
           </Box>
 
 
@@ -68,7 +73,7 @@ const Navigate = useNavigate()
       <Carousel autoPlay={true} interval={3000} infiniteLoop={true} showThumbs={false}>
       {data.filter((product)=> product.discount === true).map((Product) => (
 
-      <Box key={Product.id} sx={{ mx : "auto" ,width : {xs : "100%" , md : "90%"} , height : "380px", borderRadius : "20px" ,bgcolor : "#FFF" , display : "flex" , flexDirection : {xs : "column" , md : " row"} , alignItems : "center" ,justifyContent : "center"}} >
+      <Box key={Product.id} sx={{ mx : "auto" ,width : {xs : "80%" , md : "90%"} , height : "380px", borderRadius : "20px" ,bgcolor : "#FFF" , display : "flex" , flexDirection : {xs : "column" , md : " row"} , alignItems : "center" ,justifyContent : "center"}} >
 
       <Box sx={{width : {xs : "100%" , md : "50%"} , height : {xs : "50%" , md : "100%"} , display : "flex" , alignItems : "center" , justifyContent : "center"}} >
       <Box sx={{width : {xs : "150px" , md : "250px"}}}>
@@ -79,8 +84,10 @@ const Navigate = useNavigate()
       <Box sx={{ p : "0 20px" ,width : {xs : "100%" , md : "50%"} , height : {xs : "50%" , md : "100%"} , display : "flex" , flexDirection : "column" ,justifyContent : "center" }} >
 
                   <Box>
-                  <Typography variant='h5' sx={{fontSize : {xs : "15px" , md : "30px"}}}>{Product.Name}</Typography>
-
+<Box sx={{display : "flex" }}>
+                    <Typography variant='h5' sx={{fontSize : {xs : "15px" , md : "30px"}}}>{Product.Name}</Typography>
+  
+</Box>
                   <Box sx={{display : " flex" , flexDirection : {xs : "row" , md : "column"} , alignItems : "baseline" ,width : "auto" }}>
                       <Box sx={{ m: "10px 0px", display: "flex" }}>
                       <del style={{ color:"gray", marginRight: "7px" , fontWeight : "700" }}> ${Product.price}</del>

@@ -125,9 +125,10 @@ key={Category.id}
               margin: "15px",
               ":hover":
                {outline: '1px solid #ac8c5b' ,outlineOffset: '-1px'},
+               p : "5px"
           }}>
 
-            <Box sx={{ width: "90%", height: "65%", mx: "auto" }}>
+            <Box sx={{ width: "90%", height: "65%", mx: "auto" , mb : {xs : "10px" ,md : "15px"} }}>
               <img
                 style={{ width: "100%", height: "100%" }}
                 src={Category.imageLink}
@@ -144,7 +145,7 @@ key={Category.id}
                 bgcolor: "#FFF",
                 mx: "auto",
                 width: "95%",
-                height: "32%",
+                height: "25%",
                 borderRadius: "15px",
               }}
             >

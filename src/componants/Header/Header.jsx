@@ -4,29 +4,33 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
-import { Badge, Container, Input, TextField } from "@mui/material";
+import { Badge, Container, Divider, Input, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
 const pages = [
   { name: "Home", Link: "/" },
-  { name: "About", Link: "About" },
-  { name: "Shop", Link: "Shop" },
-  { name: "Blog", Link: "Blog" },
-  { name: "Contact", Link: "Contact" },
+  { name: "About", Link: "/About" },
+  { name: "Shop", Link: "/Shop" },
+  { name: "Blog", Link: "/Blog" },
+  { name: "Contact", Link: "/Contact" },
 ];
 
 function ResponsiveAppBar() {
   const [viewlist, setviewlist] = useState(false);
   const [ShowSearch, setShowSearch] = useState(false);
   const [arrowview, setarrowview] = useState(true);
+
+  const Location = useLocation()
+
+  console.log(Location)
 
   const { SelectedProductsId   } = useSelector((state) => state.Cart);
 
@@ -72,15 +76,16 @@ function ResponsiveAppBar() {
             }}
           >
             {pages.map((page) => (
-              <Button
-                key={page.name}
-                sx={{ my: 2, display: "block", color: "black" }}
-                onClick={() => {
-                  navigate(`${page.Link}`);
-                }}
-              >
-                {page.name}
-              </Button>
+               <Button
+                 key={page.name}
+                 sx={{ my: 2, display: "block", color: "black" }}
+                 onClick={() => {
+                   navigate(`${page.Link}`);
+                 }}
+               >
+                 {page.name}
+                 <hr style={{display : Location.pathname === page.Link ? "block" : "none"}} />
+               </Button>
             ))}
           </Box>
           <Box sx={{ display: "flex" }}>
@@ -132,6 +137,8 @@ function ResponsiveAppBar() {
                 sx={{ width: "80px", cursor: "pointer" }}
                 onClick={() => {
                   navigate("/");
+                  setviewlist(false)
+                  setarrowview(true)
                 }}
               >
                 <img
@@ -192,6 +199,8 @@ function ResponsiveAppBar() {
                 <IconButton
                 onClick={() => {
                   navigate("/fav")
+                  setviewlist(false)
+                  setarrowview(true)
                 }}
                 size="large" aria-label="favorit" color="inherit">
                   <FavoriteBorderIcon
@@ -208,6 +217,8 @@ function ResponsiveAppBar() {
 
                   onClick={() => {
                     navigate("/cart")
+                    setviewlist(false)
+                    setarrowview(true)
                   }}
                 >
                   <ShoppingBagOutlinedIcon
@@ -248,9 +259,12 @@ function ResponsiveAppBar() {
                       }}
                       onClick={() => {
                         navigate(`${page.Link}`);
+                        setviewlist(false)
+                        setarrowview(true)
                       }}
                     >
                       {page.name}
+                      <hr style={{display : Location.pathname === page.Link ? "block" : "none"}} />
                     </Button>
                   ))}
                 </Box>

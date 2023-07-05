@@ -46,7 +46,6 @@ const SwiperSection = ({catdata}) => {
     return useritem.quantity;
   }
 
-  const [outlinefav, setoutlinefav] = useState(false);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
   const num = isSmallScreen ? 2 : 4;
@@ -54,6 +53,7 @@ const Navigate = useNavigate();
 
  const { data, error, isLoading } = useGetproductByNameQuery();
 
+//  to filter the data with catigorey that coms from productdetails
  const valueFilter = (catdata) =>{
   return catdata? data.filter((product)=> product.category === catdata) :  data  ;
 }
@@ -90,7 +90,7 @@ const Navigate = useNavigate();
 {data && 
      <Swiper
        modules={[Navigation, Pagination, Scrollbar, A11y]}
-       spaceBetween={5}
+       spaceBetween={15}
        slidesPerView={num}
        pagination={{ clickable: true }}
        navigation
@@ -103,7 +103,7 @@ const Navigate = useNavigate();
 <Box
   className="Card"
   style={{
-    width : "200px" ,
+    width : "220px" ,
     height: "290px",
     backgroundColor: "#FFF",
     borderRadius: "15px",
@@ -165,7 +165,7 @@ const Navigate = useNavigate();
 
 
 
-  <Box sx={{ width: "75%", height: "65%", mx: "auto" }}  
+  <Box sx={{ width: "75%", height: "63%", mx: "auto" }}  
     onClick={() => {
       Navigate(`/prodetails/${Product.id}`)
     }}
