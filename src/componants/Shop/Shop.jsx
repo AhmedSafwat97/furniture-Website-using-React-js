@@ -50,7 +50,7 @@ const Shop = () => {
   const { data, error, isLoading } = useGetproductByNameQuery();
   const { SelectedProductsId , SelectedProducts  } = useSelector((state) => state.Cart);
   const { favProductsId   } = useSelector((state) => state.Fav);
-  const [ checked , SetChecked ] =  useState(["All"]);
+  let checked = ["All"];
   const dispatch = useDispatch();
   const Navigate = useNavigate();
  
@@ -126,7 +126,7 @@ const Shop = () => {
 <>
     <Box sx={{display : "flex" , flexWrap : "wrap" ,justifyContent : "center" , width : {xs : "100%" , md : "58%" }}}>
     
-    {valueFilter(checked).map((Product)=>
+    {valueFilter("All").map((Product)=>
             
             (
             <Box
@@ -336,7 +336,10 @@ const Shop = () => {
 
                 <Box sx={{display:"flex",alignItems:"center", 
                     justifyContent:"space-between", mx:"25px", color:"gray"}}>
-                        <FormControlLabel control={<Checkbox size="small" />} label="All" onClick={(e)=>SetChecked("All")} />
+                        <FormControlLabel control={<Checkbox size="small" />} label="All" onClick={()=> {
+                                                                                            (!checked.includes("All"))?
+                                                                                            checked.push("All"): checked = checked.filter((x) => x !== "All");
+                                                                                            console.log(checked);}} />
                         <Typography onClick={()=>console.log(checked)}>({data.length})</Typography>
                     </Box>
 
@@ -347,9 +350,11 @@ const Shop = () => {
                     {categories.map((cate)=> <Box key={cate} sx={{display:"flex",alignItems:"center", 
                                                                         justifyContent:"space-between", mx:"25px",
                                                                         color:"gray"}}>
-                        <FormControlLabel control={<Checkbox size="small" />} label={cate} onClick={(e)=>{(!checked.includes(cate))?
-                                                                                            SetChecked((x) => [...x , cate]): checked.filter((x) => x !== cate)}} />
-                        <Typography onClick={()=>console.log(checked)}>({data.filter((pro) => pro.category === cate ).length})</Typography>
+                        <FormControlLabel control={<Checkbox size="small" />} label={cate} onClick={()=>{
+                                                                                            (!checked.includes(cate))?
+                                                                                            checked.push(cate): checked = checked.filter((x) => x !== cate);
+                                                                                            console.log(checked);}} />
+                        <Typography >({data.filter((pro) => pro.category === cate ).length})</Typography>
                     </Box>
                      )}
                 </FormGroup>
