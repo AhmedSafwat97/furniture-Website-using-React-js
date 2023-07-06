@@ -205,7 +205,7 @@ const Shop = () => {
                 readOnly
             />
             </Stack>
-            <Box sx={{ mt: "5px", display: "flex" }}>
+            <Box sx={{ display: "flex" }}>
             <del style={{ marginRight: "7px" }}> ${Product.price}</del>
             <Typography>${Product.sale}</Typography>
             </Box>
