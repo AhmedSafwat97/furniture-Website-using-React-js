@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import BannerSection from '../Home/HomeSections/bannerSection';
 import ScrollToTop from '../../ExternalMethods/ScrollToTop';
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box, Button, Typography ,TextField} from '@mui/material';
 import PaddingOutlinedIcon from '@mui/icons-material/PaddingOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { Link, useNavigate } from 'react-router-dom';
@@ -60,7 +60,9 @@ const Check = () => {
             </Box>
 
 {/* ----------------------------------- */}
-
+{/* <TextField  error id="filled-error" label="First Name*" variant="standard"
+       style={{width :"45%",fontSize:"10px",backgroundColor:"#E9E7DB",margin:"10px",border: "none",borderRadius:"30px",padding:"15px"}}/>                                  
+    */}
     <Box sx={{width : "100%" , display : "flex" , justifyContent : "center"}}>
         <Box sx={{width : {xs : "90%" , md : "75%"}, display:"flex",justifyContent: { xs : "center" , md : "space-between"},flexWrap : "wrap" }}>   
             <Box sx={{width:{xs:"100%" ,md:"50%"},my:"30px" , border:"1px solid #E9E7DB", borderRadius:"15px"}}>
@@ -205,16 +207,16 @@ const Check = () => {
             <Box sx={{width:{xs:"100%" ,md:"40%"},my:"30px" , border:"1px solid gray", borderRadius:"15px"}}>
 
                 <Box sx={{width:"90%" ,display: "flex",flexDirection:"column", alignItems:"start" , justifyContent: "center", m:"20px"}}>
-                    <Typography sx={{fontWeight:"bold",m:"10px"}}>Order Summary</Typography>
+                    <Typography variant='h6' sx={{fontWeight:"bold",m:"10px "}}>Order Summary</Typography>
                     <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
                         <Typography sx={{m:"10px"}}>Product</Typography>
-                        <Typography sx={{color:"gray",m:"10px"}}>Total</Typography>
+                        <Typography sx={{m:"10px"}}>Total</Typography>
                     </Box>
                     <Box sx={{width: "100%", height:"1px",bgcolor:"#E9E7DB"}} />
 
                     {SelectedProducts.map((Product) => (
 
-    <Box key={Product.id} sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
+    <Box key={Product.id} sx={{width:"100%",display:"flex", justifyContent:"space-between",color:"gray"}}>
     <Box sx={{minWidth:"40%",display:"flex",justifyContent:"space-between"}}>
         <Typography sx={{m:"0 10px"}}>{Product.Name}</Typography>
         <Typography sx={{m:"0 10px"}}>{Product.quantity}</Typography>
@@ -260,7 +262,7 @@ const Check = () => {
                     <Box sx={{width: "100%", height:"1px",bgcolor:"#E9E7DB"}} />
                     <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
                         <Typography sx={{m:"10px"}}>Total</Typography>
-                        <Typography sx={{color:"gray",m:"10px"}}>${disable ? 
+                        <Typography sx={{color:"#ac8c5b",fontWeight:"bold",m:"10px"}}>${disable ? 
                         Math.floor(total * 0.8 +20 ) : total +20
                     }</Typography>
                     </Box>
