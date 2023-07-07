@@ -30,31 +30,24 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { AddToFav, deleteFromFav } from "../../services/FavSlice";
 import ScrollToTop from "../../ExternalMethods/ScrollToTop";
 import BannerSection from "../Home/HomeSections/bannerSection";
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import { PriceCheck } from '@mui/icons-material';
 
 const Shop = () => {
-
-  const Tags = [
-    {Tag : "Chairs"} , 
-    {Tag : "BedRoom"} , 
-    {Tag : "Bed"} , 
-    {Tag : "Cabinet"} , 
-    {Tag : "Sofa"} , 
-    {Tag : "Decor"} , 
-    {Tag : "Office"} , 
-    {Tag : "Lamp"} , 
-    {Tag : "Accent Furniture"} , 
-    {Tag : "Special Offer"} , 
-  ]
-
 
   const { data, error, isLoading } = useGetproductByNameQuery();
   const { SelectedProductsId , SelectedProducts  } = useSelector((state) => state.Cart);
   const { favProductsId   } = useSelector((state) => state.Fav);
-  let checked = ["All"];
+  const [checked, setchecked] = useState(["All"]);
+  const [MaxPrice, setMaxPrice] = useState(0);
+  const [MinPrice, setMinPrice] = useState(0);
   const dispatch = useDispatch();
   const Navigate = useNavigate();
  
-
+console.log(checked);
 
 
 //   ________________________________________________________________
@@ -77,11 +70,31 @@ const Shop = () => {
   }
 //_________________________________________________________________
 
+// to push and remove categories when we checked
+const handleCheckboxChange = (event) => {
+    const category = event.target.value;
+    if (event.target.checked) {
+      setchecked([...checked, category]);
+    } else {
+      setchecked(checked.filter((c) => c !== category));
+    }
+  };
 
 
-  const valueFilter = (checked)=>{
-      return checked.includes("All")? data : data.filter((product)=> product.category === checked);
-  }
+
+const valueFilter = ()=>{
+    console.log("hello")
+      if (checked.includes("All") || checked.length === 0 ) {
+      return  MaxPrice !== 0 ? data.filter((product)=> product.price <= MaxPrice && product.price >= MinPrice ) : data
+    } else {            
+      return MaxPrice === 0 ?  data.filter((product)=> checked.includes(product.category)) 
+      : data.filter((product)=> checked.includes(product.category)).filter((product) => product.price <= MaxPrice && product.price >= MinPrice ) 
+    
+    } 
+
+      }
+
+
 
   function ProductQuantity(item) {
       const useritem = SelectedProducts.find((userselect) => {
@@ -126,7 +139,7 @@ const Shop = () => {
 <>
     <Box sx={{display : "flex" , flexWrap : "wrap" ,justifyContent : "center" , width : {xs : "100%" , md : "58%" }}}>
     
-    {valueFilter("All").map((Product)=>
+    {valueFilter().map((Product)=>
             
             (
             <Box
@@ -299,7 +312,19 @@ const Shop = () => {
                 ))}
     
     
+
+    {valueFilter().length === 0 && 
+    
+    <Box>There are no Products</Box>
+    
+    }
+
+
+
     </Box>
+
+
+
     
     
     <Box sx={{width : "17%" , display : {xs : "none" , md : "block"}}} >
@@ -336,10 +361,11 @@ const Shop = () => {
 
                 <Box sx={{display:"flex",alignItems:"center", 
                     justifyContent:"space-between", mx:"25px", color:"gray"}}>
-                        <FormControlLabel control={<Checkbox size="small" />} label="All" onClick={()=> {
-                                                                                            (!checked.includes("All"))?
-                                                                                            checked.push("All"): checked = checked.filter((x) => x !== "All");
-                                                                                            console.log(checked);}} />
+                        <FormControlLabel control={<Checkbox 
+                               value={"All"}
+                               checked={checked.includes("All")}
+                               onChange={handleCheckboxChange}
+                         size="small" />} label="All"/>
                         <Typography onClick={()=>console.log(checked)}>({data.length})</Typography>
                     </Box>
 
@@ -348,12 +374,19 @@ const Shop = () => {
 
 
                     {categories.map((cate)=> <Box key={cate} sx={{display:"flex",alignItems:"center", 
-                                                                        justifyContent:"space-between", mx:"25px",
-                                                                        color:"gray"}}>
-                        <FormControlLabel control={<Checkbox size="small" />} label={cate} onClick={()=>{
-                                                                                            (!checked.includes(cate))?
-                                                                                            checked.push(cate): checked = checked.filter((x) => x !== cate);
-                                                                                            console.log(checked);}} />
+                            justifyContent:"space-between", mx:"25px",
+                            color:"gray"}}>
+                        <FormControlLabel control={<Checkbox 
+                        value={cate}
+                        checked={checked.includes(cate)}
+                        onChange={handleCheckboxChange}
+                        size="small" />} label={cate} 
+                        onClick={() => {
+                           setchecked( checked.filter((x) => x !== "All"))
+                        //    setPrice("")
+                        }}
+                        
+                        />
                         <Typography >({data.filter((pro) => pro.category === cate ).length})</Typography>
                     </Box>
                      )}
@@ -361,13 +394,43 @@ const Shop = () => {
             </Box>       
         
     <Box sx={{width : "100%" , mt :"15px" ,border : "1px solid black" , borderRadius : "15px" , p:"10px"}}>
-    <Typography mb="10px" variant='h6'>Tags Cloud</Typography>
-    <hr/>
-    
-    {/* {Tags.map((tag) => (
-        <Button  sx={{bgcolor : "#F3F2EE" , color : "black" , m : "5px" , borderRadius : "10px" , fontSize : "12px"}} >{tag.Tag}</Button>
-    ))}
-     */}
+<Box sx={{my:"10px", mx:"25px"}}>
+        <Typography mb="10px" variant='h6'>Price Filter</Typography>
+        <hr/>
+        
+        <FormControl>
+          <RadioGroup
+            aria-labelledby="price filter"
+            defaultValue=""
+            name="price"
+          >
+
+
+        <FormControlLabel value="0" onClick={() => {setMaxPrice(0)  
+                        setMinPrice(0)
+                }} control={<Radio
+                    checked={MaxPrice === 0}
+                 />} label="All Price" />
+            <FormControlLabel value="100" onClick={() => {setMaxPrice(100)  
+                setMinPrice(0)
+                 setchecked( checked.filter((x) => x !== "All"))
+                 }} control={<Radio 
+                 checked={MaxPrice === 100}
+                 />} label="0 - $100" />
+            <FormControlLabel value="300" onClick={() => {setMaxPrice(300) 
+                            setMinPrice(100)
+
+           }} control={<Radio
+                    checked={MaxPrice === 300}
+                  />} label="$100 - $300" />
+            <FormControlLabel value="500" onClick={() => {setMaxPrice(500)  
+                            setMinPrice(300)
+             }} control={<Radio
+                    checked={MaxPrice === 500}
+                 />} label="$300 - $500" />
+          </RadioGroup>
+        </FormControl>
+</Box>
     
     
     </Box>

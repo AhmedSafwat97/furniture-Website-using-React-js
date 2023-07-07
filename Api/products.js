@@ -92,6 +92,7 @@ description:
     "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
   price: 400,
   discount : false ,
+  sale : 200 , 
   rate : 4.5 ,
   imageLink: "../../Imgs/Products/Bed room.png" ,
   count : 20 ,
@@ -106,8 +107,9 @@ description:
 category : "Sofa"  ,
 description:
     "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
-  price: 400,
+  price: 200,
   discount : false ,
+  sale : 200 , 
   rate : 4.5 ,
   imageLink: "../../Imgs/Products/Bed room.png" ,
   count : 12 ,
@@ -123,7 +125,8 @@ description:
 category : "Tables"  ,
 description:
     "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
-  price: 400,
+  price: 300,
+  sale : 200 , 
   discount : false ,
   rate : 4.5 ,
   imageLink: "../../Imgs/Products/Bed room.png" ,

@@ -8,7 +8,8 @@ const blogs = [
         postBy : "Ahmed Safwat" ,
         views : "3000" ,
         date : "24 FEB 2023" ,
-        tags : "#e-commerce  , #furniture , #Data , #Sofa , # Chair"
+        tags : "#e-commerce  , #furniture , #Data , #Sofa , # Chair" ,
+        comments : []
     }
    ,
     {
@@ -20,7 +21,8 @@ const blogs = [
         postBy : "Aya Ragab" ,
         views : "2300" ,
         date : "14 MAR 2023" ,
-        tags : "#e-commerce  , #furniture , #Data , #Sofa , # Chair"
+        tags : "#e-commerce  , #furniture , #Data , #Sofa , # Chair" ,
+        comments : []
    
     },
     {
@@ -33,8 +35,8 @@ const blogs = [
         postBy : "Ahmed Safwat" ,
         views : "3700" ,
         date : "03 JAN 2023" ,
-        tags : "#e-commerce  , #furniture , #Data , #Sofa , # Chair"
-   
+        tags : "#e-commerce  , #furniture , #Data , #Sofa , # Chair" ,
+        comments : []
    },
     {
       id: 4,
@@ -46,7 +48,9 @@ const blogs = [
         postBy : "Aya Ragab" ,
         views : "1900" ,
         date : "29 DEC 2022" ,
-        tags : "#e-commerce  , #furniture , #Data , #Sofa , # Chair"
+        tags : "#e-commerce  , #furniture , #Data , #Sofa , # Chair" ,
+        comments : []
+
    }
    ];
    
