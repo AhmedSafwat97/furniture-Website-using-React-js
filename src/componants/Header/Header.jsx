@@ -71,11 +71,11 @@ const Searchdata = ()=> {
 
 {data && Search !== ""?
   
-  <Box sx={{width : "300px" , bgcolor : "#F3F2EE" , height : "300px" , overflowY : "scroll" , position : "absolute" , right : {xs :"10%" , md : "17%"} , top : "60px" }}>
+  <Box sx={{width : "300px" , bgcolor : "#F3F2EE" , MaxHeight : "300px" , overflowY : "scroll" , position : "absolute" , right : {xs :"10%" , md : "17%"} , top : "60px" }}>
             
             {Searchdata().map((product) => (
              <Box  key={product.id} onClick={() => {navigate(`/prodetails/${product.id}`) 
-                setSearch("")}}>
+             setSearch("")}}>
                <Box sx={{cursor : "pointer" ,display : "flex" , justifyContent : "space-between" ,m : "5px"}}>
                  <Box sx={{width : "25%" , height : "80px" , bgcolor:"#FFF"}}>
                    <img style={{width : "100%" , height : "100%"}} src={product.imageLink} alt="" />
@@ -93,6 +93,9 @@ const Searchdata = ()=> {
              </Box>
 
             ))}
+            {Searchdata().length === 0 &&
+            <Box sx={{textAlign:"center",color:"black"}}>No Products Found!</Box>
+            }
 
 
 </Box>:null
@@ -146,7 +149,9 @@ const Searchdata = ()=> {
           <Box sx={{ display: "flex" }}>
             <Box sx={{ position: "relative" }}>
               <Box sx={{ display: "flex", alignItems: "flex-end" }}>
-                <TextField  onChange={(e) => {setSearch(e.target.value)}} label="Search" variant="standard" />
+                <TextField  onChange={(e) => {setSearch(e.target.value);  
+                if(Search === "" ) {e.target.value = ""}
+                      }} label="Search" variant="standard" />
                 <SearchIcon
                   sx={{ color: "black", position: "absolute", right: "5px" }}
                 />
@@ -212,7 +217,9 @@ const Searchdata = ()=> {
                   position: "relative",
                 }}
               >
-                {ShowSearch && <Input onChange={(e) => {setSearch(e.target.value)}} placeholder="Search" label="Search" sx={{ border : "none" , borderBottom :"1px solid black"  , bgcolor : "#FFF"}} />}
+                {ShowSearch && <Input onChange={(e) => {setSearch(e.target.value)
+                                                if(Search === "" ) {e.target.value = ""}
+                  }} placeholder="Search" label="Search" sx={{ border : "none" , borderBottom :"1px solid black"  , bgcolor : "#FFF"}} />}
 
                 <SearchIcon
                   sx={{cursor :"pointer"  ,color: "black", position: "absolute", right: "5px" }}
