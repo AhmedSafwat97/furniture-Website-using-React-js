@@ -1,7 +1,7 @@
 const products = [
  {
    id: 1,
-   Name: "Sofa",
+   Name: "Soofa",
    category : "Sofa" ,
    description:
      "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",

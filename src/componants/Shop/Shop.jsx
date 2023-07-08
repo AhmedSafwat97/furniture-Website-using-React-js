@@ -13,14 +13,15 @@ import {
     useTheme,
     Checkbox,
     FormControlLabel,
-    FormGroup
+    FormGroup,
+    Pagination
   } from
     "@mui/material";
   import { useState } from "react";
   import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
   import FavoriteIcon from "@mui/icons-material/Favorite";
   import SearchIcon from "@mui/icons-material/Search";
-  import { useGetproductByNameQuery } from "../../services/productApi";
+  import { useGetpaginateProductQuery, useGetproductByNameQuery } from "../../services/productApi";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AddToCart, decrement, increment } from "../../services/CartSlice";
@@ -44,8 +45,21 @@ const Shop = () => {
   const [checked, setchecked] = useState(["All"]);
   const [MaxPrice, setMaxPrice] = useState(0);
   const [MinPrice, setMinPrice] = useState(0);
+  const [Search, setSearch] = useState("");
   const dispatch = useDispatch();
   const Navigate = useNavigate();
+
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 6;
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+
+  const handlePageChange = (event, page) => {
+    setCurrentPage(page);
+
+  };
  
 console.log(checked);
 
@@ -84,13 +98,23 @@ const handleCheckboxChange = (event) => {
 
 const valueFilter = ()=>{
     console.log("hello")
-      if (checked.includes("All") || checked.length === 0 ) {
-      return  MaxPrice !== 0 ? data.filter((product)=> product.price <= MaxPrice && product.price >= MinPrice ) : data
-    } else {            
-      return MaxPrice === 0 ?  data.filter((product)=> checked.includes(product.category)) 
-      : data.filter((product)=> checked.includes(product.category)).filter((product) => product.price <= MaxPrice && product.price >= MinPrice ) 
-    
-    } 
+
+
+    if (Search === "") {
+        if (checked.includes("All") || checked.length === 0 ) {
+            return  MaxPrice !== 0 ? data.filter((product)=> product.price <= MaxPrice && product.price >= MinPrice ) : data
+          } else {            
+            return MaxPrice === 0 ?  data.filter((product)=> checked.includes(product.category)) 
+            : data.filter((product)=> checked.includes(product.category)).filter((product) => product.price <= MaxPrice && product.price >= MinPrice ) 
+          
+          } 
+    } else {
+
+
+        return data.filter((product) => product.Name.toUpperCase().startsWith(Search.toUpperCase()))
+
+
+    }
 
       }
 
@@ -103,11 +127,6 @@ const valueFilter = ()=>{
       return useritem.quantity;
     }
 
-    const [value, setValue] = React.useState(0);
-
-    const handleChange = (event, newValue) => {
-      setValue(newValue);
-    };
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
     
@@ -137,9 +156,9 @@ const valueFilter = ()=>{
 {data && 
 
 <>
-    <Box sx={{display : "flex" , flexWrap : "wrap" ,justifyContent : "center" , width : {xs : "100%" , md : "58%" }}}>
+    <Box sx={{ display : "flex" , flexWrap : "wrap" ,justifyContent : "center", height : "fit-content" ,width : {xs : "100%" , md : "58%" }}}>
     
-    {valueFilter().map((Product)=>
+    {valueFilter().slice(indexOfFirstProduct, indexOfLastProduct).map((Product)=>
             
             (
             <Box
@@ -310,41 +329,43 @@ const valueFilter = ()=>{
             </Box>
             </Box>
                 ))}
-    
-    
-
     {valueFilter().length === 0 && 
-    
     <Box>There are no Products</Box>
-    
     }
 
+{valueFilter().length > 6  && 
 
-
-    </Box>
-
-
-
+<Box sx={{ width : "100%" , m : "20px 16px"}}>
+<Pagination 
+count={Math.ceil(valueFilter().length / productsPerPage)}
+page={currentPage}
+onChange={handlePageChange}
+color="secondary" />
+</Box>
     
-    
+} 
+</Box> 
+
+
+
+
+
+
+
+
+
+
+
     <Box sx={{width : "17%" , display : {xs : "none" , md : "block"}}} >
     
-    <Box sx={{border:"1px solid black",width : "100%" , p:"0 10px" ,
-            height: "50px",
-            borderRadius: "15px",
-            my : "10px",
-
-            }}>
-            <Box sx={{ position: "relative" }}>
-                <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <input placeholder="Search" style={{padding: "10px",
-            margin : "10px" , border:"none"}} />
+    <Box sx={{ width : "calc(100% + 20px)" ,display: "flex", alignItems: "center" , position : "relative" , my : "10px" }}>
+                    <input 
+                    onChange={(e) => {setSearch(e.target.value)}}
+                    placeholder="Search" style={{ width : "calc(100% + 20px)",padding: "15px 20px", border : "1px solid black" , borderRadius : "15px"}} />
                     <SearchIcon
                     sx={{ color: "black", position: "absolute", right: "5px" }}
                     />
                 </Box>
-                </Box>
-            </Box>
 
 
             <Box sx={{border:"1px solid black",width : "100%" , p:"0 10px" ,
@@ -368,10 +389,6 @@ const valueFilter = ()=>{
                          size="small" />} label="All"/>
                         <Typography onClick={()=>console.log(checked)}>({data.length})</Typography>
                     </Box>
-
-
-
-
 
                     {categories.map((cate)=> <Box key={cate} sx={{display:"flex",alignItems:"center", 
                             justifyContent:"space-between", mx:"25px",

@@ -186,3 +186,6 @@ border-radius:  20px !important;
   border-radius: 50%;
 }
 
+.css-19micn4-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background-color: #AC8C5B !important;
+}

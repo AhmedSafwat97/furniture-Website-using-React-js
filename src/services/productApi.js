@@ -49,3 +49,4 @@ export const { useGetproductByNameQuery } = productApi
 export const { useGetOneProductQuery } = oneproductsApi;
 export const { useGetblogsByNameQuery } = blogsApi;
 export const { useGetOneblogQuery } = OneblogApi;
+

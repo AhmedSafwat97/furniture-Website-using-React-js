@@ -14,6 +14,7 @@ import CoponCode from "./componants/Header/CoponCode";
 import Fav from "../src/componants/Fav/Fav";
 import Notifiction from "./componants/Global Section/Notifiction.jsx"
 import BlogDetails from "./componants/BlogDetails/BlogDetails";
+import SignUp from "./componants/Sign/SignUp";
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/Checkout" element={<Check />} />
           <Route path="/fav" element={<Fav />} />
+          <Route path="/Signup" element={<SignUp />} />
+
         </Routes>
         <Notifiction/>
         <Footer />
