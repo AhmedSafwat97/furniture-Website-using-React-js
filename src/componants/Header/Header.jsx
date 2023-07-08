@@ -29,7 +29,7 @@ function ResponsiveAppBar() {
   const [ShowSearch, setShowSearch] = useState(false);
   const [arrowview, setarrowview] = useState(true);
   const [Search, setSearch] = useState("");
-  const [viewSearchList, setviewSearchList] = useState(true);
+  // const [viewSearchList, setviewSearchList] = useState(false);
 
 
   const Location = useLocation()
@@ -42,11 +42,16 @@ function ResponsiveAppBar() {
 
   const { data, error, isLoading } = useGetproductByNameQuery();
 
-function Searchdata() {
-    return data.filter((product) => product.Name.toUpperCase().startsWith(Search.toUpperCase()))
-    
+const Searchdata = ()=> {
+  if(Search !== ""){
+    return data?.filter((product) => product.Name.toUpperCase().startsWith(Search.toUpperCase()))
+  
+  }else{  
+    console.log("error");
+    return null
+  }
   } 
-console.log(data)
+  console.log(Search)
 
 
   const navigate = useNavigate();
@@ -64,12 +69,13 @@ console.log(data)
       >
 {/*start view Search List  */}
 
-<Box sx={{width : "300px" , bgcolor : "#F3F2EE" , height : "300px" , overflowY : "scroll" , position : "absolute" , right : {xs :"10%" , md : "17%"} , top : "60px" }}>
+{data && Search !== ""?
+  
+  <Box sx={{width : "300px" , bgcolor : "#F3F2EE" , height : "300px" , overflowY : "scroll" , position : "absolute" , right : {xs :"10%" , md : "17%"} , top : "60px" }}>
             
             {Searchdata().map((product) => (
              <Box  key={product.id} onClick={() => {navigate(`/prodetails/${product.id}`) 
-             setviewSearchList(false)
-             }}>
+                setSearch("")}}>
                <Box sx={{cursor : "pointer" ,display : "flex" , justifyContent : "space-between" ,m : "5px"}}>
                  <Box sx={{width : "25%" , height : "80px" , bgcolor:"#FFF"}}>
                    <img style={{width : "100%" , height : "100%"}} src={product.imageLink} alt="" />
@@ -89,7 +95,9 @@ console.log(data)
             ))}
 
 
-</Box>
+</Box>:null
+
+}
 
 
 

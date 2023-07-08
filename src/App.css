@@ -144,7 +144,7 @@ input::-webkit-inner-spin-button {
 @keyframes opacity {
 0%  {opacity: 0;};
 25%  {opacity: 0.2;};
-50$  {opacity: 0.5;};
+50%  {opacity: 0.5;};
 75%  {opacity: 0.7;};
 100% {opacity: 1;};
 }
@@ -164,10 +164,16 @@ border-radius:  20px !important;
 
 
 .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select{
-
   padding: 12px !important;
+}
 
-
+.css-jcn4dz-MuiBadge-badge {
+  top: 25px !important;
+    right: 5px !important;
+    background-color: #fcc012 !important;
+    color:#000 !important ;
+    height: 23px !important;
+    border-radius: 15px !important;
 }
 
 /* to add border radius to material ui input */
