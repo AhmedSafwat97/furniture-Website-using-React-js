@@ -338,7 +338,7 @@ const valueFilter = ()=>{
             <Box sx={{ position: "relative" }}>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                     <input placeholder="Search" style={{padding: "10px",
-            margin : "10px" , border:"none"}} />
+            margin : "10px" , border:"none", "&:focusVisible": {outline: "none"}}} />
                     <SearchIcon
                     sx={{ color: "black", position: "absolute", right: "5px" }}
                     />

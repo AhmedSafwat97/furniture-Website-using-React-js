@@ -1,18 +1,18 @@
 import React from 'react';
 import {Box ,ImageList,ImageListItem,Typography} from '@mui/material';
-import BannerSection from '../../Home/HomeSections/bannerSection';
-import ScrollToTop from '../../../ExternalMethods/ScrollToTop';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import GppGoodOutlinedIcon from '@mui/icons-material/GppGoodOutlined';
+import DeckIcon from '@mui/icons-material/Deck';
+import ProductionQuantityLimitsOutlinedIcon from '@mui/icons-material/ProductionQuantityLimitsOutlined';
+import ChairOutlinedIcon from '@mui/icons-material/ChairOutlined';
 import KeyboardReturnOutlinedIcon from '@mui/icons-material/KeyboardReturnOutlined';
-import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
 
 export default function Section1() {
     const AboutDetails = [
         {
           id : 1,  
           title : 'Original Products',
-          icon :<SupportAgentOutlinedIcon sx={{color: "#AC8C5B" , fontSize: '40px'}}/> ,
+          icon :<ProductionQuantityLimitsOutlinedIcon sx={{color: "#AC8C5B" , fontSize: '40px'}}/> ,
         },
         {
           id : 2,  
@@ -22,7 +22,7 @@ export default function Section1() {
         {
           id : 3,  
           title : 'New Arrival Everyday',
-          icon : <KeyboardReturnOutlinedIcon sx={{color: "#AC8C5B" , fontSize: '40px'}} />,
+          icon : <DeckIcon sx={{color: "#AC8C5B" , fontSize: '40px'}} />,
         },
         {
           id : 4,  
@@ -35,17 +35,16 @@ export default function Section1() {
         {
           id : 1,  
           title : 'Products return Policy',
-          icon : <LocalShippingOutlinedIcon sx={{color: "#AC8C5B" , fontSize: '30px'}} />,
+          icon : <KeyboardReturnOutlinedIcon sx={{color: "#AC8C5B" , fontSize: '30px'}} />,
         },
         {
           id : 2,  
           title : '100% Qualityful Furniture',
-          icon : <GppGoodOutlinedIcon sx={{color: "#AC8C5B" , fontSize: '30px'}} />,
+          icon : <ChairOutlinedIcon sx={{color: "#AC8C5B" , fontSize: '30px'}} />,
         },
       ];
     return (<>
-        <ScrollToTop/>
-        <BannerSection PageName="About Us"/>
+       
         <Box
         sx={{
             minWidth: "75%"  ,
