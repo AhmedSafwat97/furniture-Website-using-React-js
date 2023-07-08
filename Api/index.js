@@ -1,13 +1,12 @@
-const express = require("express");
-const cors = require("cors");
-
-const app = express();
-
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const products = require("./products");
 const blogs = require("./blogs");
+const User = require('./db'); // Import the User model from db.js
 
-
-app.use(express.json());
+const app = express();
+app.use(bodyParser.json());
 app.use(cors());
 
 
@@ -40,8 +39,58 @@ app.get("/blogs/:id", (req, res) => {
 });
 
 
+// For Signin and SignUp
 
+// Sign-up route
+app.post('/signup', async (req, res) => {
+  const { username, password } = req.body;
 
+  try {
+    // Check if the username is already taken
+    const existingUser = await User.findOne({ where: { username } });
+    if (existingUser) {
+      return res.status(409).json({ message: 'Username already taken' });
+    }
+
+    // Create a new user
+    const newUser = await User.create({ username, password });
+
+    return res.status(201).json({ message: 'User created successfully' });
+  } catch (error) {
+    console.error('Sign-up error:', error);
+    return res.status(500).json({ message: 'An error occurred during sign-up' });
+  }
+});
+
+// Sign-in route
+app.post('/signin', async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    // Find the user in the database
+    const user = await User.findOne({ where: { username } });
+
+    // Check if the user exists and the password matches
+    if (!user || user.password !== password) {
+      return res.status(401).json({ message: 'Invalid username or password' });
+    }
+
+    return res.status(200).json({ message: 'Sign in successful' });
+  } catch (error) {
+    console.error('Sign-in error:', error);
+    return res.status(500).json({ message: 'An error occurred during sign-in' });
+  }
+});
+
+app.get('/users', async (req, res) => {
+  try {
+    const users = await User.findAll();
+    res.json(users);
+  } catch (error) {
+    console.error('Error retrieving users:', error);
+    res.status(500).json({ message: 'An error occurred while retrieving users' });
+  }
+});
 
 
 
