@@ -27,6 +27,11 @@ const Check = () => {
     const [LastName, setLastName] = useState("");
     const [Email, setEmail] = useState("");
     const [Phone, setPhone] = useState("");
+    const [address, setaddress] = useState("");
+    const [Code, setCode] = useState("");
+
+
+console.log(firstName)
 
 
     const { SelectedProducts , disable } = useSelector((state) => state.Cart);
@@ -60,9 +65,7 @@ const Check = () => {
             </Box>
 
 {/* ----------------------------------- */}
-{/* <TextField  error id="filled-error" label="First Name*" variant="standard"
-       style={{width :"45%",fontSize:"10px",backgroundColor:"#E9E7DB",margin:"10px",border: "none",borderRadius:"30px",padding:"15px"}}/>                                  
-    */}
+
     <Box sx={{width : "100%" , display : "flex" , justifyContent : "center"}}>
         <Box sx={{width : {xs : "90%" , md : "75%"}, display:"flex",justifyContent: { xs : "center" , md : "space-between"},flexWrap : "wrap" }}>   
             <Box sx={{width:{xs:"100%" ,md:"50%"},my:"30px" , border:"1px solid #E9E7DB", borderRadius:"15px"}}>
@@ -72,21 +75,29 @@ const Check = () => {
                        
                         <Box sx={{width: "100%",display: "flex", justifyContent: "space-between"}}>
                         <TextField required
+                        onChange={(e) => {setfirstName(e.target.value)}}
                 sx={{width :"49%",fontSize:"10px", borderRadius : "30px" , backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
                 id="first" label="First Name" type="text" />
 
 
 
-<TextField required
+<TextField
+    onChange={(e) => {setLastName(e.target.value)}}
+
+required
                 sx={{width :"49%",fontSize:"10px", borderRadius : "30px" ,backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
                 id="last" label="Last Name" type="text" />
                         </Box>
                         <Box sx={{width: "100%",display: "flex", justifyContent: "space-between"}}>
                         <TextField
+                     onChange={(e) => {setEmail(e.target.value)}}
+
                 sx={{outline : "none" ,width :"49%",fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
                 id="Email" label="Email" type="text" />
 
 <TextField required
+                        onChange={(e) => {setPhone(e.target.value)}}
+
                 sx={{width :"49%",fontSize:"10px" , borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
                 id="Phone" label="Phone Number" type="number" />
                         </Box>
@@ -117,6 +128,8 @@ const Check = () => {
                    </Box>
                 <Box sx={{ width : `calc(100% - 20px)` , p : "10px"}} >
                 <TextField required
+                                        onChange={(e) => {setaddress(e.target.value)}}
+
                 sx={{width :"100%",fontSize:"10px", borderRadius : "30px" ,backgroundColor:"#E9E7DB",border: "none"}}
                 id="address" label="address" type="text" />
                 </Box>
@@ -153,6 +166,8 @@ const Check = () => {
                     
                     <Box sx={{width : "48%"}}>
                         <TextField required
+                    onChange={(e) => {setCode(e.target.value)}}
+
                 sx={{width :"100%",fontSize:"10px" , borderRadius : "30px" ,backgroundColor:"#E9E7DB",border: "none"}}
                 id="postCode/Zip*" label="postCode/Zip" type="text" />
 
@@ -291,7 +306,7 @@ const Check = () => {
       </RadioGroup>
     </FormControl>
 
-                        <FormDialog  {...{paymentvalue}} />
+                        <FormDialog {...{paymentvalue , Code , address ,Phone ,Email , LastName , firstName , Town , Country }} />
                 
                 
                 </Box>
