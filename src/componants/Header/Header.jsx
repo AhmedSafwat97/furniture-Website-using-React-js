@@ -15,6 +15,10 @@ import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useGetproductByNameQuery } from "../../services/productApi";
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+
+
+
 
 const pages = [
   { name: "Home", Link: "/" },
@@ -29,7 +33,6 @@ function ResponsiveAppBar() {
   const [ShowSearch, setShowSearch] = useState(false);
   const [arrowview, setarrowview] = useState(true);
   const [Search, setSearch] = useState("");
-  // const [viewSearchList, setviewSearchList] = useState(false);
 
 
   const Location = useLocation()
@@ -71,7 +74,9 @@ const Searchdata = ()=> {
 
 {data && Search !== ""?
   
-  <Box sx={{width : "300px" , bgcolor : "#F3F2EE" , MaxHeight : "300px" , overflowY : "scroll" , position : "absolute" , right : {xs :"10%" , md : "17%"} , top : "60px" }}>
+  <Box 
+  
+  sx={{width : "300px" , bgcolor : "#F3F2EE" , MaxHeight : "300px" , overflowY : "scroll" , position : "absolute" , right : {xs :"10%" , md : "17%"} , top : "60px" }}>
             
             {Searchdata().map((product) => (
              <Box  key={product.id} onClick={() => {navigate(`/prodetails/${product.id}`) 
@@ -94,7 +99,11 @@ const Searchdata = ()=> {
 
             ))}
             {Searchdata().length === 0 &&
-            <Box sx={{textAlign:"center",color:"black"}}>No Products Found!</Box>
+            <Box sx={{textAlign:"center",color:"black"}}> 
+            <SentimentVeryDissatisfiedIcon sx={{fontSize : "35px" , color : "gray" ,  mt :"10px"}} />
+            <Typography variant="h6" >No Products Found!</Typography>  
+            <Typography mb="10px" >Please search in another way to get results</Typography>  
+            </Box>
             }
 
 

@@ -8,22 +8,21 @@ import EastIcon from "@mui/icons-material/East";
 
 export default function Section2() {
   return (
-    <Box class="coverImg" sx={{width: "100%"}}>
+    <Box className="ImageBack" sx={{width: "100%" , height : {xs : "fit-content" , md : "500px"} , display : "flex" , justifyContent : "center" , alignItems : "center"}}>
          <Box
         sx={{
             Width: "75%"  ,
             mx:"auto",
-        bgcolor: "#FFF",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         my:"50px"}}>
             <Box>
             <Typography sx={{fontWeight: '900',m : '30px auto',textAlign:"center" ,width:"75%", fontSize : {xs : "20px" , md : "40px"}}} variant='h4'>We can Easily buy our Products within your Budget </Typography>
-            <Box sx={{width : '100%', m: "30px 0",display : "flex", justifyContent:"space-evenly"}}>
-                    <Box  sx={{width:"20%", textAlign:"center", m: "20px 0" }}>
+            <Box sx={{width : '100%', m: "30px 0",display : "flex", justifyContent : "center" , flexWrap : "wrap" }}>
+                    <Box  sx={{width:"250px", textAlign:"center", m: "20px 0"}}>
                     <Badge badgeContent="01" color="secondary">
-                      <Box sx={{width: "80px", height : "80px",borderRadius: "50%",bgcolor : "#F3F2EE", display:"flex",
+                      <Box sx={{width: "80px", height : "80px",borderRadius: "50%",bgcolor : "#FFF", display:"flex",
                            alignItems: "center",justifyContent: "center",margin:'15px auto'}}>
                             <BedroomChildOutlinedIcon sx={{color: "#AC8C5B" , fontSize: '35px'}}/>
                        </Box>
@@ -34,10 +33,18 @@ export default function Section2() {
                              slightly believable. if you are going to use a passages </Typography>
                        </Box>
                     </Box>
-                    <Box sx={{position : "relative"}}><EastIcon sx={{position:"absolute", fontSize:"90px", fontWeight:"100"}}/></Box>
-                    <Box  sx={{width:"20%", textAlign:"center", m: "20px 0" }}>
+                    <Box sx={{ width : "120px" , display : {xs : "none" , md : "flex"}}}>
+                         
+                        <Box sx={{mt : "65px" , height : "fit-content" ,display : "flex" , width : "100%" , alignItems : "center" }} >
+                          <Box sx={{width : "80%" , borderTop : "2px solid black"}} />
+                          <Box sx={{width : "0" , height : "0" , borderTop : "10px solid transparent" , borderBottom : "10px solid transparent" , borderLeft : "20px solid black"}} />
+                         
+                        </Box>
+
+                         </Box>
+                    <Box  sx={{width:"250px", textAlign:"center", m: "20px 0"  }}>
                     <Badge badgeContent="01" color="secondary">
-                      <Box sx={{width: "80px", height : "80px",borderRadius: "50%",bgcolor : "#F3F2EE", display:"flex",
+                      <Box sx={{width: "80px", height : "80px",borderRadius: "50%",bgcolor : "#FFF", display:"flex",
                            alignItems: "center",justifyContent: "center",margin:'15px auto'}}>
                             <RoomOutlinedIcon sx={{color: "#AC8C5B" , fontSize: '35px'}}/>
                        </Box>
@@ -48,9 +55,18 @@ export default function Section2() {
                              slightly believable. if you are going to use a passages </Typography>
                        </Box>
                     </Box>
-                    <Box  sx={{width:"20%", textAlign:"center", m: "20px 0" }}>
+                    <Box sx={{ width : "120px" ,  display : {xs : "none" , md : "flex"}}}>
+                         
+                         <Box sx={{mt : "65px" , height : "fit-content" ,display : "flex" , width : "100%" , alignItems : "center" }} >
+                           <Box sx={{width : "80%" , borderTop : "2px solid black"}} />
+                           <Box sx={{width : "0" , height : "0" , borderTop : "10px solid transparent" , borderBottom : "10px solid transparent" , borderLeft : "20px solid black"}} />
+                          
+                         </Box>
+ 
+                          </Box>
+                    <Box  sx={{width:"250px", textAlign:"center", m: "20px 0"  }}>
                     <Badge badgeContent="01" color="secondary">
-                      <Box sx={{width: "80px", height : "80px",borderRadius: "50%",bgcolor : "#F3F2EE", display:"flex",
+                      <Box sx={{width: "80px", height : "80px",borderRadius: "50%",bgcolor : "#FFF", display:"flex",
                            alignItems: "center",justifyContent: "center",margin:'15px auto'}}>
                             <EmojiPeopleOutlinedIcon sx={{color: "#AC8C5B" , fontSize: '35px'}}/>
                        </Box>
