@@ -50,8 +50,7 @@ export default function Section1() {
        
         <Box
         sx={{
-            minWidth: "75%"  ,
-            maxWidth:"75%",
+            width: "75%"  ,
             mx:"auto",
         bgcolor: "#FFF",
         display: "flex",
@@ -67,23 +66,23 @@ export default function Section1() {
                         {detail.icon}
                     </Box>
                     <Typography sx={{margin:'10px 0'}} fontSize={"22px"} fontWeight={'600'} >{detail.title}</Typography>
-                    <Typography fontSize={"12px"} color="gray">There are many variations of passages of our </Typography>
+                    <Typography sx={{margin:'0 20px 0 0'}} fontSize={"12px"} color="gray">There are many variations of passages of our </Typography>
                 </Box>
 
                 ))}
 
             </Box>
 
-            <Box sx={{width : '100%',display : "flex" , justifyContent : {xs:"center",md:"space-between"},flexWrap:{xs:"wrap",md:"nowrap"}, m: "30px 0"}}>
-                <Box sx={{width: {sx: "100%", md:"47%"}}}>
+            <Box sx={{width : '100%',display : "flex" , justifyContent : {md:"space-between"},flexWrap:{xs:"wrap",md:"wrap"}, m: "30px 0"}}>
+                <Box sx={{width: {xs: "100%", md:"47%"}}}>
                 <ImageList
-                  sx={{ width: "100%", height: "auto", mx: "auto" }}
-                  gap={isSmallScreen?10:40}
+                  sx={{ width: "100%"}}
+                  gap={40}
                   variant="quilted"
-                  cols={isSmallScreen?1: 2}
+                  cols={2}
                   rowHeight={50}
                                    >
-                <ImageListItem cols={1}  rows={isSmallScreen?3:4}
+                <ImageListItem cols={{sx:"2",md:"1"}}  rows={isSmallScreen?3:4}
                   sx={{borderRadius: "15px",
                     backgroundImage: 'url("../../../Imgs/photo4.jpg")',
                     backgroundPosition: "center center",
@@ -93,12 +92,12 @@ export default function Section1() {
                     position : 'relative',
                     textAlign: 'center',}}
                 ></ImageListItem> 
-                <ImageListItem cols={1}  rows={isSmallScreen?0:1}
+                <ImageListItem cols={{sx:"2",md:"1"}}  rows={isSmallScreen?0:1}
                 sx={{borderRadius: "15px",
                   position : 'relative',
                   textAlign: 'center',}}
                 ></ImageListItem>
-                 <ImageListItem cols={1}  rows={isSmallScreen?3:5}
+                 <ImageListItem cols={{sx:"2",md:"1"}}  rows={isSmallScreen?3:5}
                   sx={{borderRadius: "15px",
                     backgroundImage: 'url("../../../Imgs/photo4.jpg")',
                     backgroundPosition: "center center",
@@ -108,7 +107,7 @@ export default function Section1() {
                     position : 'relative',
                     textAlign: 'center',}}
                 ></ImageListItem>
-                 <ImageListItem cols={1}  rows={isSmallScreen?3:3}
+                 <ImageListItem cols={{sx:"2",md:"1"}}  rows={isSmallScreen?3:3}
                   sx={{borderRadius: "15px",
                     backgroundImage: 'url("../../../Imgs/photo4.jpg")',
                     backgroundPosition: "center center",
@@ -118,7 +117,7 @@ export default function Section1() {
                     position : 'relative',
                     textAlign: 'center',}}
                 ></ImageListItem>
-                 <ImageListItem cols={1}  rows={isSmallScreen?3:1}
+                 <ImageListItem cols={{sx:"2",md:"1"}}  rows={isSmallScreen?3:1}
                   sx={{borderRadius: "15px",
                     backgroundImage: 'url("../../../Imgs/photo4.jpg")',
                     backgroundPosition: "center center",

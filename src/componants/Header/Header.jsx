@@ -16,6 +16,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useGetproductByNameQuery } from "../../services/productApi";
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import { useEffect } from "react";
 
 
 
@@ -54,7 +55,6 @@ const Searchdata = ()=> {
     return null
   }
   } 
-  console.log(Search)
 
 
   const navigate = useNavigate();
@@ -80,7 +80,7 @@ const Searchdata = ()=> {
             
             {Searchdata().map((product) => (
              <Box  key={product.id} onClick={() => {navigate(`/prodetails/${product.id}`) 
-             setSearch("")}}>
+                                                    setSearch("")}}>
                <Box sx={{cursor : "pointer" ,display : "flex" , justifyContent : "space-between" ,m : "5px"}}>
                  <Box sx={{width : "25%" , height : "80px" , bgcolor:"#FFF"}}>
                    <img style={{width : "100%" , height : "100%"}} src={product.imageLink} alt="" />
@@ -158,8 +158,8 @@ const Searchdata = ()=> {
           <Box sx={{ display: "flex" }}>
             <Box sx={{ position: "relative" }}>
               <Box sx={{ display: "flex", alignItems: "flex-end" }}>
-                <TextField  onChange={(e) => {setSearch(e.target.value);  
-                if(Search === "" ) {e.target.value = ""}
+                <TextField value={Search}  onChange={(e) => {
+                  setSearch(e.target.value);  
                       }} label="Search" variant="standard" />
                 <SearchIcon
                   sx={{ color: "black", position: "absolute", right: "5px" }}
@@ -226,8 +226,7 @@ const Searchdata = ()=> {
                   position: "relative",
                 }}
               >
-                {ShowSearch && <Input onChange={(e) => {setSearch(e.target.value)
-                                                if(Search === "" ) {e.target.value = ""}
+                {ShowSearch && <Input value={Search} onChange={(e) => {setSearch(e.target.value)
                   }} placeholder="Search" label="Search" sx={{ border : "none" , borderBottom :"1px solid black"  , bgcolor : "#FFF"}} />}
 
                 <SearchIcon
