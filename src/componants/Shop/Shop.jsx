@@ -88,7 +88,7 @@ console.log(checked);
   }
 //_________________________________________________________________
 
-// to push and remove categories when we checked
+// to push and remove categories when we checked 
 const handleCheckboxChange = (event) => {
     const category = event.target.value;
     if (event.target.checked) {
@@ -98,11 +98,8 @@ const handleCheckboxChange = (event) => {
     }
   };
 
-
-
 const valueFilter = ()=>{
     console.log("hello")
-
 
     if (Search === "") {
         if (checked.includes("All") || checked.length === 0 ) {
@@ -113,16 +110,10 @@ const valueFilter = ()=>{
           
           } 
     } else {
-
-
         return data.filter((product) => product.Name.toUpperCase().startsWith(Search.toUpperCase()))
-
-
     }
 
       }
-
-
 
   function ProductQuantity(item) {
       const useritem = SelectedProducts.find((userselect) => {

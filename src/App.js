@@ -15,15 +15,19 @@ import Fav from "../src/componants/Fav/Fav";
 import Notifiction from "./componants/Global Section/Notifiction.jsx"
 import BlogDetails from "./componants/BlogDetails/BlogDetails";
 import SignUp from "./componants/Sign/SignUp";
+import { useState } from "react";
 
 function App() {
+  const [Search, setSearch] = useState("");
+
+console.log(Search)
   return (
     <>
       <Router>
         <CoponCode />
-        <Header />
+        <Header {...{Search, setSearch}} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home onClick={() => {setSearch("")}} />} />
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Shop" element={<Shop />} />

@@ -13,8 +13,10 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { toast } from 'react-toastify'
 
-export default function FormDialog({paymentvalue}) {
+
+export default function FormDialog({paymentvalue ,  Code , address ,Phone ,Email , LastName , firstName , Town , Country}) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState('');
 const [maxLength, setmaxLength] = useState(16);
@@ -72,7 +74,20 @@ const Month =[
 
 
   const handleClickOpen = () => {
-    setOpen(true);
+
+if (
+  Code !== "" && address !== "" && Phone !== "" && Email !== "" && LastName !== "" 
+  && firstName !== "" && Town !== "" && Country !== ""
+) {
+  setOpen(true);
+
+  console.log(firstName);
+} else {
+
+  toast.error(`Please fill the Billing Details form` , {theme: "colored" , position: "top-center",});
+
+}
+  
   };
 
   const handleClose = () => {

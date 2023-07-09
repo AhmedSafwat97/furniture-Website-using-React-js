@@ -48,7 +48,7 @@ function ResponsiveAppBar() {
 
 const Searchdata = ()=> {
   if(Search !== ""){
-    return data?.filter((product) => product.Name.toUpperCase().startsWith(Search.toUpperCase()))
+    return data?.filter((product) => product.Name.toUpperCase().startsWith(Search.toUpperCase()) || product.category.toUpperCase().startsWith(Search.toUpperCase()))
   
   }else{  
     console.log("error");
@@ -56,6 +56,25 @@ const Searchdata = ()=> {
   }
   } 
 
+
+  // to close the lis when we click on any place in the page 
+  const searchRef = React.useRef(null);
+
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setSearch(""); // Close the results list when clicking outside
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+  // __________________________________________________________________
 
   const navigate = useNavigate();
 
@@ -75,7 +94,7 @@ const Searchdata = ()=> {
 {data && Search !== ""?
   
   <Box 
-  
+  ref={searchRef}
   sx={{width : "300px" , bgcolor : "#F3F2EE" , MaxHeight : "300px" , overflowY : "scroll" , position : "absolute" , right : {xs :"10%" , md : "17%"} , top : "60px" }}>
             
             {Searchdata().map((product) => (

@@ -18,7 +18,7 @@ const Home = () =>{
     <Productsection/>
     <Section5/>
     <CategorySection/>
-    <AllProductsSection/>
+    <AllProductsSection />
     <BlogsSection/>
  </>
 

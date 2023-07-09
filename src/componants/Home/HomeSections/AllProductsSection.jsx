@@ -103,7 +103,7 @@ const AllProductsSection = () => {
     sx={{
         mx:"auto",
       bgcolor: "#FFF",
-      display: "flex",
+      display : {xs : "none" , md : "flex"} ,
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
@@ -162,7 +162,7 @@ const AllProductsSection = () => {
             justifyContent : "center" , 
             flexWrap :"wrap" 
         }}>
-          {valueFilter(tab).map((Product)=>
+          {valueFilter(tab).slice(0 , 8).map((Product)=>
       
       (
         <Box
