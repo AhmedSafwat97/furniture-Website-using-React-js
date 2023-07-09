@@ -251,19 +251,13 @@ const Cart = () => {
 
 
 
-<Button sx={{color : "#ac8c5b"}} >
+<Button onClick={() => {Navigate("/shop")}} sx={{color : "#ac8c5b"}} >
 <WestOutlinedIcon sx={{ fontSize: "20px" , mx:"5px" }} />
     Continue Shopping
 </Button>
 
 
        </Box>
-
-
-
-
-
-
 
      {SelectedProducts.length > 0 && 
      

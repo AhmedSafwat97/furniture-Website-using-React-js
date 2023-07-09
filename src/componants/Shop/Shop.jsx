@@ -146,7 +146,7 @@ const valueFilter = ()=>{
      
      }
 
-<Box sx={{ p : "50px 0" , width : "100%" , display : "flex" , justifyContent : "center" , border : "2px solid black"}}>
+<Box sx={{ p : "50px 0" , width : "100%" , display : "flex" , justifyContent : "center" }}>
 
 {data && 
 
