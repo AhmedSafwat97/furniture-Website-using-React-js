@@ -42,6 +42,16 @@ export const OneblogApi = createApi({
   }),
 });
 
+export const ReviewApi = createApi({
+  reducerPath: "ReviewApi",
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/" }),
+  endpoints: (builder) => ({
+    getReview: builder.query({
+      query: (name) => `Review`,
+    }),
+  }),
+});
+
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
@@ -49,4 +59,6 @@ export const { useGetproductByNameQuery } = productApi
 export const { useGetOneProductQuery } = oneproductsApi;
 export const { useGetblogsByNameQuery } = blogsApi;
 export const { useGetOneblogQuery } = OneblogApi;
+export const { useGetReviewQuery } = ReviewApi;
+
 

@@ -3,7 +3,7 @@ import Section1 from './AboutSections/Section1';
 import Section2 from './AboutSections/Section2';
 import BannerSection from '../Home/HomeSections/bannerSection';
 import ScrollToTop from '../../ExternalMethods/ScrollToTop';
-import Brands from './AboutSections/brands';
+import Section4 from './AboutSections/section4';
 
 const About = () => {
    return (
@@ -13,6 +13,7 @@ const About = () => {
     <Section1/>
     <Section2/>
     <Brands/>
+    <Section4/>
     </>
    );
 }

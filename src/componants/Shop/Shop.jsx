@@ -36,6 +36,10 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { PriceCheck } from '@mui/icons-material';
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+
+
+
 
 const Shop = () => {
 
@@ -330,7 +334,15 @@ const valueFilter = ()=>{
             </Box>
                 ))}
     {valueFilter().length === 0 && 
-    <Box>There are no Products</Box>
+    <Box sx={{width : "100%" , height : "500px" , display : "flex" , justifyContent : "center" , alignItems : "center"}}>
+
+  <Box sx={{textAlign : "center"}}>
+          <SentimentVeryDissatisfiedIcon sx={{fontSize : "50px" , color : "gray" ,  mt :"10px"}} />
+              <Typography variant="h6" >No Products Found!</Typography>  
+              <Typography mb="10px" >Please search or filter in another way to get results</Typography>  
+          
+  </Box>
+    </Box>
     }
 
 {valueFilter().length > 6  && 

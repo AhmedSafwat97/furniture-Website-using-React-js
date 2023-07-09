@@ -195,3 +195,11 @@ border-radius:  20px !important;
 .css-19micn4-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
   background-color: #AC8C5B !important;
 }
+
+
+.ImageBack{
+  background-image: url(../public/Imgs/About/About\ background.jpg);
+  background-position: center;
+  background-size: cover;
+
+}
