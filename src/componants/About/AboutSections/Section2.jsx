@@ -3,11 +3,9 @@ import React from 'react';
 import BedroomChildOutlinedIcon from '@mui/icons-material/BedroomChildOutlined';
 import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
 import EmojiPeopleOutlinedIcon from '@mui/icons-material/EmojiPeopleOutlined';
-import EastIcon from "@mui/icons-material/East";
 
 
 export default function Section2() {
-     const Arrow = "../../../../Imgs/arrowthin.png"
   return (
     <Box className="ImageBack" sx={{width: "100%" , height : {xs : "fit-content" , md : "500px"} , display : "flex" , justifyContent : "center" , alignItems : "center"}}>
          <Box
@@ -34,7 +32,7 @@ export default function Section2() {
                              slightly believable. if you are going to use a passages </Typography>
                        </Box>
                     </Box>
-                    <Box sx={{ width : "120px" , display : {xs : "none" , md : "flex"}}}>
+                    <Box sx={{ width : "120px" , display : {xs : "none" , sm : "none" , md : "flex"}}}>
                          
                         <Box sx={{mt : "65px" , height : "fit-content" ,display : "flex" , width : "100%" , alignItems : "center" }} >
                           <Box sx={{width : "80%" , borderTop : "2px solid black"}} />
@@ -56,7 +54,7 @@ export default function Section2() {
                              slightly believable. if you are going to use a passages </Typography>
                        </Box>
                     </Box>
-                    <Box sx={{ width : "120px" ,  display : {xs : "none" , md : "flex"}}}>
+                    <Box sx={{ width : "120px" ,  display : {xs : "none" , sm : "none" ,md : "flex"}}}>
                          
                          <Box sx={{mt : "65px" , height : "fit-content" ,display : "flex" , width : "100%" , alignItems : "center" }} >
                            <Box sx={{width : "80%" , borderTop : "2px solid black"}} />

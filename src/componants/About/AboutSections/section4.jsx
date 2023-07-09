@@ -17,7 +17,6 @@ const Section4 = () => {
 
 console.log(data)
 
-const Navigate = useNavigate();
 
 const theme = useTheme();
 const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
@@ -25,7 +24,7 @@ const num = isSmallScreen ? 1 : 3;
 
 
   return (
-    <Box sx={{height : "650px" , display : "flex" , 
+    <Box sx={{height : "500px" , display : "flex" , 
     justifyContent : "center" , alignItems : "center" , flexDirection : "column"}}>
 
 

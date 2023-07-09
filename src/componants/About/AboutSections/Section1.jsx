@@ -73,25 +73,18 @@ export default function Section1() {
 
             </Box>
 
-<<<<<<< HEAD
-            <Box sx={{width : '100%',display : "flex" , justifyContent : {xs:"center",md:"space-between"},flexWrap:{xs:"wrap",md:"nowrap"}, m: "30px 0"}}>
-                <Box sx={{width: {sx: "100%", md:"47%" , border : "2px solid red"}}}>
-                <ImageList
-                  sx={{ width: "100%", height: "auto", mx: "auto"  , border : "2psx solid yellow"}}
-=======
             <Box sx={{width : '100%',display : "flex" , justifyContent : {md:"space-between"},flexWrap:{xs:"wrap",md:"wrap"}, m: "30px 0"}}>
                 <Box sx={{width: {xs: "100%", md:"47%"}}}>
                 <ImageList
                   sx={{ width: "100%"}}
->>>>>>> 5052bc97b7ad950f822eb3768630855a25f35613
                   gap={40}
                   variant="quilted"
                   cols={2}
                   rowHeight={50}
                                    >
-                <ImageListItem cols={{sx:"2",md:"1"}}  rows={isSmallScreen?3:4}
+                <ImageListItem cols={1}  rows={isSmallScreen?3:4}
                   sx={{borderRadius: "15px",
-                    backgroundImage: 'url("../../../Imgs/photo4.jpg")',
+                    backgroundImage: 'url("../../../../Imgs/About/1.jpg")',
                     backgroundPosition: "center center",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
@@ -99,14 +92,14 @@ export default function Section1() {
                     position : 'relative',
                     textAlign: 'center',}}
                 ></ImageListItem> 
-                <ImageListItem cols={{sx:"2",md:"1"}}  rows={isSmallScreen?0:1}
+                <ImageListItem cols={1}  rows={isSmallScreen?0:1}
                 sx={{borderRadius: "15px",
                   position : 'relative',
                   textAlign: 'center',}}
                 ></ImageListItem>
-                 <ImageListItem cols={{sx:"2",md:"1"}}  rows={isSmallScreen?3:5}
+                 <ImageListItem cols={1}  rows={isSmallScreen?3:5}
                   sx={{borderRadius: "15px",
-                    backgroundImage: 'url("../../../Imgs/photo4.jpg")',
+                    backgroundImage: 'url("../../../../Imgs/About/2.jpg")',
                     backgroundPosition: "center center",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
@@ -114,9 +107,9 @@ export default function Section1() {
                     position : 'relative',
                     textAlign: 'center',}}
                 ></ImageListItem>
-                 <ImageListItem cols={{sx:"2",md:"1"}}  rows={isSmallScreen?3:3}
+                 <ImageListItem cols={1}  rows={isSmallScreen?3:3}
                   sx={{borderRadius: "15px",
-                    backgroundImage: 'url("../../../Imgs/photo4.jpg")',
+                    backgroundImage: 'url("../../../../Imgs/About/3.jpg")',
                     backgroundPosition: "center center",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
@@ -124,9 +117,9 @@ export default function Section1() {
                     position : 'relative',
                     textAlign: 'center',}}
                 ></ImageListItem>
-                 <ImageListItem cols={{sx:"2",md:"1"}}  rows={isSmallScreen?3:1}
+                 <ImageListItem cols={1}  rows={isSmallScreen?3:1}
                   sx={{borderRadius: "15px",
-                    backgroundImage: 'url("../../../Imgs/photo4.jpg")',
+                    backgroundImage: 'url("../../../../Imgs/About/4.jpg")',
                     backgroundPosition: "center center",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
