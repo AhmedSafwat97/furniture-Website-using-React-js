@@ -201,5 +201,6 @@ border-radius:  20px !important;
   background-image: url(../public/Imgs/About/About\ background.jpg);
   background-position: center;
   background-size: cover;
+  background-attachment: fixed ;
 
 }

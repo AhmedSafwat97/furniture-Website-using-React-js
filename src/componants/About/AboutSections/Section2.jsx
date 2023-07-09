@@ -7,6 +7,7 @@ import EastIcon from "@mui/icons-material/East";
 
 
 export default function Section2() {
+     const Arrow = "../../../../Imgs/arrowthin.png"
   return (
     <Box className="ImageBack" sx={{width: "100%" , height : {xs : "fit-content" , md : "500px"} , display : "flex" , justifyContent : "center" , alignItems : "center"}}>
          <Box
