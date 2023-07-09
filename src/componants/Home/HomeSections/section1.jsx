@@ -9,22 +9,14 @@ import {
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import  matchDownMd from '../../../ExternalMethods/matchDownMd';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
 
 const Section1 = () => {
   const itemData = [
     {
-      img: "../../../../Imgs/Design1.jpg",
-      rows: 2,
-      cols: 3,
-      discount: "30% Discount",
-      title: `New Stylish Decor Furniture`,
-      discription : "Unique Furniture Stylr Design for Your Family" ,
-      deletedPrice: 400,
-      price: 250,
-    },
-    {
       img: "../../../../Imgs/design3.jpg",
-      cols: 2,
       discount: "Mega Offer 36% Off",
       title: "Latest Collection Of Furniture",
       deletedPrice: 350,
@@ -32,7 +24,6 @@ const Section1 = () => {
     },
     {
       img: "../../../../Imgs/design2.jpg",
-      cols: 2,
       discount: "Exclusive Offer 50% Off",
       title: "Farmaat Wooden Chaire",
       deletedPrice: 500,
@@ -40,54 +31,152 @@ const Section1 = () => {
     },
   ];
 
+  const ItemData1 = [
+    {
+      img: "../../../../Imgs/Design1.jpg",
+      discount: "30% Discount",
+      title: `New Stylish Decor Furniture`,
+      discription : "Unique Furniture Stylr Design for Your Family" ,
+      deletedPrice: 400,
+      price: 250,
+    },    
+     {
+      img: "../../../../Imgs/Design3.jpg",
+      discount: "30% Discount",
+      title: `New Stylish Decor Furniture`,
+      discription : "Unique Furniture Stylr Design for Your Family" ,
+      deletedPrice: 400,
+      price: 250,
+    },
+
+  ]
+
 
   const Navigate = useNavigate();
 
   return (
     <Box sx={{ bgcolor: "#F3F2EE" }}>
-      <Box sx={{ padding: "16px",paddingBottom: "0px" }}>
-        <ImageList
-          sx={{ width: "75%", height: "auto", mx: "auto" , pt : "16px" }}
-          gap={20}
-          variant="quilted"
-          cols={5}
-          rowHeight={200}
-        >
+      <Box sx={{ padding: "16px",paddingBottom: "0px" , display : "flex" , justifyContent : "center" , alignItems : "center" , flexDirection : {xs : "column" , md : "row"} }}>
+       
+       
+<Box sx={{ width: {xs :"75%" , md :"50%"} , mb : "20px" , height : "auto" , mr : {md:"20px"} }}
+>
+          <Carousel autoPlay={true} interval={3000} infiniteLoop={true} showThumbs={false}>
+  {ItemData1.map((item) => (
+              <Box
+                key={item.title}
+                sx={{
+                  width : "100%" , 
+                  height : {xs:"200px" , md : "420px"} ,
+                  borderRadius: "15px",
+                  backgroundImage: `url(${item.img})`,
+                  backgroundPosition: "center center",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  backgroundOrigin: "content-box",
+                  display : "flex" ,
+                  alignItems : "center"
+                }}
+              >
+                <Box
+                  sx={{
+                    color: "#fff",
+                    lineHeight: 2,
+                    ml: {xs : "15px" , md : "30px"},
+                    pl : "20px" ,
+                    width: {xs : "80%" , md : "50%"},
+                    height : {xs :"fit-content" , md : "80%"} ,
+                    display :"flex" ,
+                    flexDirection : "column" , 
+                    alignItems : "start" ,
+                    
+                  }}
+                >
+                  <Chip
+                    label={item.discount}
+                    sx={{
+                      borderRadius: "10px",
+                      backgroundColor: "#FCC012",
+                      color: "#000",
+                      p : "0 10px"
+                    }}
+                  />
+                  <Typography
+                    variant="h6"
+                    sx={{fontSize: matchDownMd() ? "20px" : "38px"  , textAlign : "start"}}
+                  >
+                    {item.title}
+                  </Typography>
+                  <Typography variant="p" fontSize="12px" sx={{display : {xs : "none" , md : "block"}}}>{item.discription}</Typography>
+                  <Typography sx={{ fontSize: matchDownMd() ? "12px" : "18px" }}>
+                    <del style={{ color: "lightgray" }}>${item.deletedPrice}</del>{" "}
+                    ${item.price}
+                  </Typography>
+                    <Button
+                      sx={{
+                        fontSize: matchDownMd() ? "10px" : "16px",
+                        mt: matchDownMd() ? "10px" : "30px",
+                        backgroundColor: "#FCC012",
+                        cursor: "pointer",
+                        color: "black",
+                        padding: "5px 16px",
+                        borderRadius: "20px",
+                        ":hover": {
+                          color: "#FCC012",
+                          outline: "1px solid #FCC012",
+                        },
+                      }}
+                      onClick={() => {
+                        Navigate("/prodetails");
+                      }}
+                    >
+                      Shop Now
+                    </Button>
+                </Box>
+              </Box>
+            ))}
+  </Carousel>
+  </Box>
+
+
+<Box sx={{ width: {xs :"75%" , md :"25%"} ,height: "auto"  }}>
           {itemData.map((item) => (
-            <ImageListItem
+            <Box
               key={item.title}
-              cols={matchDownMd() ? 5 : item.cols}
-              rows={matchDownMd() ? 1 : item.rows}
               sx={{
+                height : "200px" , 
                 borderRadius: "15px",
                 backgroundImage: `url(${item.img})`,
                 backgroundPosition: "center center",
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
                 backgroundOrigin: "content-box",
+                display : "flex" , 
+                alignItems : "center" , 
+                mb : "20px"
               }}
             >
               <Box
                 sx={{
                   color: "#fff",
-                  my: "25px",
                   lineHeight: 2,
                   ml: {xs : "15px" , md : "30px"},
-                  width: "70%",
-                  marginY: item.cols === 3 ? "36px" : null,
+                  width: "60%",
+                  height : "fit-content" ,
+                  pl : {xs : "20px" , md : "0" } ,
+
                 }}
               >
                 <Chip
                   label={item.discount}
                   sx={{
-                    mb: item.cols === 3 ? "8px" : "4px",
-                    borderRadius: "5px",
+                    borderRadius: "10px",
                     backgroundColor: "#FCC012",
                     color: "#000",
                   }}
                 />
                 <Typography
-                  variant={item.cols === 3 ? "h4" : "h6"}
+                  variant={"h6"}
                   sx={{fontSize: matchDownMd() ? "20px" : null }}
                 >
                   {item.title}
@@ -97,28 +186,6 @@ const Section1 = () => {
                   <del style={{ color: "lightgray" }}>${item.deletedPrice}</del>{" "}
                   ${item.price}
                 </Typography>
-                {item.cols === 3 ? (
-                  <Button
-                    sx={{
-                      fontSize: matchDownMd() ? "10px" : "16px",
-                      mt: matchDownMd() ? "10px" : "50px",
-                      backgroundColor: "#FCC012",
-                      cursor: "pointer",
-                      color: "black",
-                      padding: "5px 16px",
-                      borderRadius: "20px",
-                      ":hover": {
-                        color: "#FCC012",
-                        outline: "1px solid #FCC012",
-                      },
-                    }}
-                    onClick={() => {
-                      Navigate("/prodetails");
-                    }}
-                  >
-                    Shop Now
-                  </Button>
-                ) : (
                   <Link
                     to="/prodetails"
                     style={{
@@ -129,15 +196,11 @@ const Section1 = () => {
                   >
                     Shop Now
                   </Link>
-                )}
               </Box>
-            </ImageListItem>
+            </Box>
           ))}
-        </ImageList>
+        </Box>
       </Box>
-
-
-
 
 
       <Box
