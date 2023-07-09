@@ -72,9 +72,9 @@ export default function Section1() {
             </Box>
 
             <Box sx={{width : '100%',display : "flex" , justifyContent : {xs:"center",md:"space-between"},flexWrap:{xs:"wrap",md:"nowrap"}, m: "30px 0"}}>
-                <Box sx={{width: {sx: "100%", md:"47%"}}}>
+                <Box sx={{width: {sx: "100%", md:"47%" , border : "2px solid red"}}}>
                 <ImageList
-                  sx={{ width: "100%", height: "auto", mx: "auto" }}
+                  sx={{ width: "100%", height: "auto", mx: "auto"  , border : "2psx solid yellow"}}
                   gap={40}
                   variant="quilted"
                   cols={2}
