@@ -7,8 +7,9 @@ import EastIcon from "@mui/icons-material/East";
 
 
 export default function Section2() {
+     const Arrow = "../../../../Imgs/arrowthin.png"
   return (
-    <Box class="coverImg" sx={{width: "100%"}}>
+    <Box className="coverImg" sx={{width: "100%"}}>
          <Box
         sx={{
             Width: "75%"  ,
@@ -19,7 +20,8 @@ export default function Section2() {
         justifyContent: "center",
         my:"50px"}}>
             <Box>
-            <Typography sx={{fontWeight: '900',m : '30px auto',textAlign:"center" ,width:"75%", fontSize : {xs : "20px" , md : "40px"}}} variant='h4'>We can Easily buy our Products within your Budget </Typography>
+            <Typography sx={{fontWeight: '900',m : '30px auto',textAlign:"center" ,width:"50%", fontSize : {xs : "20px" , md : "40px"}}} 
+            variant='h4'>We can Easily buy our Products within your Budget </Typography>
             <Box sx={{width : '100%', m: "30px 0",display : "flex", justifyContent:"space-evenly"}}>
                     <Box  sx={{width:"20%", textAlign:"center", m: "20px 0" }}>
                     <Badge badgeContent="01" color="secondary">
@@ -34,9 +36,9 @@ export default function Section2() {
                              slightly believable. if you are going to use a passages </Typography>
                        </Box>
                     </Box>
-                    <Box sx={{position : "relative"}}><EastIcon sx={{position:"absolute", fontSize:"90px", fontWeight:"100"}}/></Box>
+                    <Box sx={{width:"15%",position : "absolute",left:"30%",transform:"translateY(60px)"}}><img src={Arrow} style={{width:'80%'}}></img></Box>
                     <Box  sx={{width:"20%", textAlign:"center", m: "20px 0" }}>
-                    <Badge badgeContent="01" color="secondary">
+                    <Badge badgeContent="02" color="secondary">
                       <Box sx={{width: "80px", height : "80px",borderRadius: "50%",bgcolor : "#F3F2EE", display:"flex",
                            alignItems: "center",justifyContent: "center",margin:'15px auto'}}>
                             <RoomOutlinedIcon sx={{color: "#AC8C5B" , fontSize: '35px'}}/>
@@ -48,8 +50,9 @@ export default function Section2() {
                              slightly believable. if you are going to use a passages </Typography>
                        </Box>
                     </Box>
+                    <Box sx={{width:"15%",position : "absolute",left:"60%",transform:"translateY(60px)"}}><img src={Arrow} style={{width:'80%'}}></img></Box>
                     <Box  sx={{width:"20%", textAlign:"center", m: "20px 0" }}>
-                    <Badge badgeContent="01" color="secondary">
+                    <Badge badgeContent="03" color="secondary">
                       <Box sx={{width: "80px", height : "80px",borderRadius: "50%",bgcolor : "#F3F2EE", display:"flex",
                            alignItems: "center",justifyContent: "center",margin:'15px auto'}}>
                             <EmojiPeopleOutlinedIcon sx={{color: "#AC8C5B" , fontSize: '35px'}}/>

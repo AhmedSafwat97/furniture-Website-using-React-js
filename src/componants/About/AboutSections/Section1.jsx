@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box ,ImageList,ImageListItem,Typography} from '@mui/material';
+import {Box ,ImageList,ImageListItem,Typography, useMediaQuery, useTheme} from '@mui/material';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import GppGoodOutlinedIcon from '@mui/icons-material/GppGoodOutlined';
 import DeckIcon from '@mui/icons-material/Deck';
@@ -43,6 +43,9 @@ export default function Section1() {
           icon : <ChairOutlinedIcon sx={{color: "#AC8C5B" , fontSize: '30px'}} />,
         },
       ];
+      const theme = useTheme();
+      const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
+    
     return (<>
        
         <Box
@@ -75,12 +78,12 @@ export default function Section1() {
                 <Box sx={{width: {sx: "100%", md:"47%"}}}>
                 <ImageList
                   sx={{ width: "100%", height: "auto", mx: "auto" }}
-                  gap={40}
+                  gap={isSmallScreen?10:40}
                   variant="quilted"
-                  cols={2}
+                  cols={isSmallScreen?1: 2}
                   rowHeight={50}
                                    >
-                <ImageListItem cols={1}  rows={4}
+                <ImageListItem cols={1}  rows={isSmallScreen?3:4}
                   sx={{borderRadius: "15px",
                     backgroundImage: 'url("../../../Imgs/photo4.jpg")',
                     backgroundPosition: "center center",
@@ -90,12 +93,12 @@ export default function Section1() {
                     position : 'relative',
                     textAlign: 'center',}}
                 ></ImageListItem> 
-                <ImageListItem cols={1}  rows={1}
+                <ImageListItem cols={1}  rows={isSmallScreen?0:1}
                 sx={{borderRadius: "15px",
                   position : 'relative',
                   textAlign: 'center',}}
-              ></ImageListItem>
-                 <ImageListItem cols={1}  rows={5}
+                ></ImageListItem>
+                 <ImageListItem cols={1}  rows={isSmallScreen?3:5}
                   sx={{borderRadius: "15px",
                     backgroundImage: 'url("../../../Imgs/photo4.jpg")',
                     backgroundPosition: "center center",
@@ -105,7 +108,7 @@ export default function Section1() {
                     position : 'relative',
                     textAlign: 'center',}}
                 ></ImageListItem>
-                 <ImageListItem cols={1}  rows={3}
+                 <ImageListItem cols={1}  rows={isSmallScreen?3:3}
                   sx={{borderRadius: "15px",
                     backgroundImage: 'url("../../../Imgs/photo4.jpg")',
                     backgroundPosition: "center center",
@@ -115,7 +118,7 @@ export default function Section1() {
                     position : 'relative',
                     textAlign: 'center',}}
                 ></ImageListItem>
-                 <ImageListItem cols={1}  rows={1}
+                 <ImageListItem cols={1}  rows={isSmallScreen?3:1}
                   sx={{borderRadius: "15px",
                     backgroundImage: 'url("../../../Imgs/photo4.jpg")',
                     backgroundPosition: "center center",
