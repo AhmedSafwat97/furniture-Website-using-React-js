@@ -162,11 +162,7 @@ const valueFilter = ()=>{
             className="Card"
             sx={{
                 width : {xs:"180px" , md: "210px"} ,
-<<<<<<< HEAD
                 height: "320px",
-=======
-                height: "340px",
->>>>>>> 619c6544a6c4e019ecbb93f27cd77697624d950f
                 backgroundColor: "#F3F2EE",
                 borderRadius: "15px",
                 padding: "10px",
@@ -244,7 +240,6 @@ const valueFilter = ()=>{
                     />
                     </Stack>
             </Box>
-<<<<<<< HEAD
 
 
 
@@ -289,7 +284,6 @@ const valueFilter = ()=>{
 
 ) : 
 
-
 (
 <Box display="flex">
   <Box sx={{flexGrow : 1 }}/>
@@ -316,75 +310,6 @@ const valueFilter = ()=>{
     }
             </Box>
               
-=======
-            {SelectedProductsId.includes(Product.id) ?
-
-            (<Box className="btn-tocart" display="none">
-            <Box  sx={{ height : "27%", display : "flex"  , alignItems : "center" , justifyContent : "center"}}>
-            <Box sx={{display : "flex" , alignItems : "center" , width : "75%" , justifyContent : "center"}}>
-                <IconButton 
-                
-                onClick={() => {
-                dispatch(decrement(Product))
-                }}
-                sx={{bgcolor : "#FFF", 
-            ":hover" : {
-                bgcolor : "#ac8c5b"
-                    }
-            
-            }} size="small" >
-                    <RemoveIcon sx={{color : "#ac8c5b" , ":hover" : {
-                color : "#FFF"
-                    }}} />
-                </IconButton>
-                <Typography sx={{mx:"5px" , fontWeight : "bold"}}>{ProductQuantity(Product)}</Typography>
-                <IconButton
-                onClick={() => {
-                dispatch(increment(Product))
-                }}
-                
-                sx={{bgcolor : "#FFF" , ":hover" : {
-                bgcolor : "#ac8c5b"
-                    }}} size="small">
-                    <AddIcon sx={{color : "#ac8c5b" , ":hover" : {
-                color : "#FFF"
-                    }}} />
-                </IconButton>
-            </Box>
-
-            </Box>
-            </Box>
-
-            ) : 
-
-
-            (
-            <Button
-            className="btn-tocart"
-            sx={{ bgcolor: "#AC8C5B", display: "none" ,
-            ":hover": {
-            color: "#ac8c5b",
-            outline: "1px solid #ac8c5b",
-            bgcolor : "transparent"
-            },
-            }}
-            variant="contained"
-
-            onClick={() => {
-            dispatch(AddToCart(Product))
-
-            }}
-
-            >
-            add to cart
-            </Button>
-            )
-            
-            }
-
-
-
->>>>>>> 619c6544a6c4e019ecbb93f27cd77697624d950f
             </Box>
                 ))}
 
