@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useSignInMutation, useSignupMutation } from '../../services/SignApi';
+import { useEffect } from 'react';
 
 const SignUp = () => {
     const [username, setUsername] = useState('');
@@ -9,6 +10,11 @@ const SignUp = () => {
 
     const [Signup , { isLoading, isError }] = useSignupMutation();
     const [SignIn ] = useSignInMutation();
+
+
+    const userData = SignIn.data ? SignIn.data.user : null;
+
+
 
     const handleSignUp = async () => {
 
@@ -38,6 +44,25 @@ const SignUp = () => {
 
     return (
 <div style={{display : "flex" , justifyContent : "center"  , alignItems : "center" , height : "500px"}}>
+
+
+<div>
+    {userData && (
+      <div>
+        <p>Username: {userData.username}</p>
+        <p>Email: {userData.email}</p>
+      </div>
+    )}
+  </div>
+
+
+
+
+
+
+
+
+
             <div style={{width : "40%" , border : "2px solid yellow"}}>
             <h1>Sign Up</h1>
             <input
@@ -67,7 +92,8 @@ const SignUp = () => {
               value={password}
               onChange={e => setPassword(e.target.value)}
             />
-            <button onClick={handleSignIn}>Sign In</button>
+            <button onClick={  () => {handleSignIn()
+            console.log(userData)}  }>Sign In</button>
       
             {message && <p>{message}</p>}
           </div>

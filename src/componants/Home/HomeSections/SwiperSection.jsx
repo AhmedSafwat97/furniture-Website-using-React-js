@@ -98,7 +98,7 @@ const Navigate = useNavigate();
      >
 
       
-     {valueFilter(catdata).map((Product) => (
+     {valueFilter(catdata).slice(0 , 8).map((Product) => (
 <SwiperSlide key={Product.id} style={{ display: "flex", alignItems: "end" , justifyContent : "center" }}>
 <Box
   className="Card"

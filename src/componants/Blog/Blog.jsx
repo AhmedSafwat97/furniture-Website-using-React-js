@@ -49,12 +49,12 @@ const Blog = () => {
      
      }
 
-<Box sx={{ p : "50px 0" , width : "100%" , display : "flex" , justifyContent : "center" , border : "2px solid black"}}>
+<Box sx={{ p : "50px 0" , width : "100%" , display : "flex" , justifyContent : "center" , alignItems : {xs : "center" , md : "flex-start"} , flexDirection : {xs : "column" , md : "row"}}}>
 
 {data && 
 
 
-<Box sx={{display : "flex" , flexWrap : "wrap" , justifyContent : "center" , width : {xs : "100%" , md : "50%" }}}>
+<Box sx={{display : "flex" ,flexWrap : "wrap" , justifyContent : "center" , width : {xs : "100%" , md : "50%" }}}>
 
 {data.map((blog) => (
 
@@ -141,18 +141,18 @@ key={blog.id}
 
 {data && 
 
-<Box sx={{width : "25%" , display : {xs : "none" , md : "block"}}} >
+<Box sx={{width : {xs :"90%" , md : "25%"}  , mt : {xs : "30px" , md : "0"}}} >
 
 
 
-<Box sx={{width : "100%" , border : "1px solid black" , borderRadius : "15px" , p:"10px"}}>
-<Typography mb="10px" variant='h6'>Latest Post</Typography>
-<hr/>
+<Box sx={{width : "100%" , border : "1px solid black" ,borderRadius : "15px" , p:"10px 0"}}>
+<Typography mb="10px" ml="10px" variant='h6'>Latest Post</Typography>
+<hr style={{width : "90%" , margin : "0 auto"}}/>
 
 
 <Box mt="5px">
 {data.slice(-3).map((blog) => (
-  <Box key={blog.id} sx={{p : "10px 0" , display : "flex"}}>
+  <Box key={blog.id} sx={{p : "10px 0" , m : "0 10px" ,display : "flex"}}>
 <Box sx={{width : "25%" , height : "80px" , mr : "5px"}}>
      <img style={{width : "100%" , height : "100%"}} src={blog.imageLink} alt="" />
 </Box>
@@ -177,9 +177,9 @@ key={blog.id}
 </Box>
 
 
-<Box sx={{width : "100%" , mt :"15px" ,border : "1px solid black" , borderRadius : "15px" , p:"10px"}}>
-<Typography mb="10px" variant='h6'>Tags Cloud</Typography>
-<hr/>
+<Box sx={{width : "100%" , mt :"15px" ,border : "1px solid black" , borderRadius : "15px" }}>
+<Typography mb="10px" variant='h6' ml="10px" >Tags Cloud</Typography>
+<hr style={{width : "90%" , margin : "0 auto"}}/>
 
 {Tags.map((tag) => (
     <Button sx={{bgcolor : "#F3F2EE" , color : "black" , m : "5px" , borderRadius : "10px" , fontSize : "12px"}} >{tag.Tag}</Button>

@@ -1,4 +1,4 @@
-import { Box, IconButton, TextField, Typography } from '@mui/material';
+import { Box, Button, IconButton, TextField, Typography } from '@mui/material';
 import React from 'react';
 import ScrollToTop from '../../ExternalMethods/ScrollToTop';
 import BannerSection from '../Home/HomeSections/bannerSection';
@@ -6,23 +6,29 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import { useNavigate } from "react-router-dom";
+
+
 
 
 const Contact = () => {
+
+    const Navigate = useNavigate();
+
+
     return (
       <>
           <ScrollToTop/>
     <BannerSection  PageName="Contact" />
 
 
-
           <Box sx={{ p : "20px 0"  ,display : "flex" , justifyContent : "center" , alignItems : "center" , flexDirection : {xs : "column" , md : "row"}}} >
-            <Box sx={{border : "1px solid black" , overflow : "hidden" ,borderRadius : "15px" , my:{xs : "20px"} ,width : {xs :"90%" , md : "30%"} , height : "570px" , mx: "10px"}}>
+            <Box sx={{border : "1px solid black" , overflow : "hidden" ,borderRadius : "15px" , my:{xs : "20px"} ,width : {xs :"90%" , md : "30%"} , height : "620px" , mx: "10px"}}>
 
             <Box style={{width: "100%" , height : "100%"}}>
                 <iframe width="100%" 
                 title='map'
-                height="570"
+                height="620px"
                  frameborder="0"
                   scrolling="no"
                    marginheight="0" 
@@ -33,8 +39,7 @@ const Contact = () => {
                     </Box>
             </Box>
             
-            
-            <Box sx={{border : "1px solid black" , borderRadius : "15px" , width : {xs : "90%" , md : "40%"} , height : "570px" , mx : "10px" }}>
+            <Box sx={{border : "1px solid black" , borderRadius : "15px" , width : {xs : "90%" , md : "40%"} , height : "620px" , mx : "10px" }}>
             <Box sx={{ width : "100%" , p : "16px 0px 16px 15px"}}>
             <Box sx={{display : "flex" , justifyContent : "space-around"}}>
 <Box sx={{ width : "40%" , my : "10px" , color : "gray"}}>
@@ -110,7 +115,26 @@ const Contact = () => {
             
             
             </Box>
-
+            <Button
+                      sx={{
+                        fontSize: {xs : "10px" , md : "16px"},
+                        backgroundColor: "#AC8C5B",
+                        ml : "20px" ,
+                        cursor: "pointer",
+                        color: "#FFF",
+                        borderRadius: "20px",
+                        p : "3px 20px" ,
+                        ":hover": {
+                          color: "#FCC012",
+                          outline: "1px solid #FCC012",
+                        },
+                      }}
+                      onClick={() => {
+                        Navigate("/prodetails");
+                      }}
+                    >
+                      Shop Now
+                    </Button>
             </Box>
           
           </Box>

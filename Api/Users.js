@@ -1,10 +1,3 @@
-const Users = [
-    {
-        "username": "aasas",
-        "password": "1234567sdsd89"
-        },
-
-
-]
+const Users = []
 
 module.exports = Users;

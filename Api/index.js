@@ -4,7 +4,7 @@ const cors = require('cors');
 const products = require("./products");
 const blogs = require("./blogs");
 const ClientReview = require("./ClientReview");
-// const User = require('./db'); // Import the User model from db.js
+const users = require('./users');
 
 const app = express();
 app.use(bodyParser.json());
@@ -46,6 +46,39 @@ app.get("/Review", (req, res) => {
 
 
 // // For Signin and SignUp
+
+app.post('/signup', (req, res) => {
+  const { username, password } = req.body;
+
+  // Check if the username is already taken
+  const existingUser = users.find(user => user.username === username);
+  if (existingUser) {
+    return res.status(409).json({ message: 'Username already taken' });
+  }
+
+  // Create a new user object
+  const newUser = { username, password };
+  users.push(newUser);
+
+  return res.status(201).json({ message: 'User created successfully' });
+});
+
+// Sign-in route
+app.post('/signin', (req, res) => {
+  const { username, password } = req.body;
+
+  // Find the user in the users array
+  const user = users.find(user => user.username === username && user.password === password);
+  if (!user) {
+    return res.status(401).json({ message: 'Invalid username or password' });
+  }
+
+  return res.status(200).json({ message: 'Sign in successful' });
+});
+
+app.get('/users', (req, res) => {
+  res.status(200).json(users);
+});
 
 // // Sign-up route
 // app.post('/signup', async (req, res) => {

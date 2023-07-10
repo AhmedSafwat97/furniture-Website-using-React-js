@@ -15,34 +15,85 @@ import Fav from "../src/componants/Fav/Fav";
 import Notifiction from "./componants/Global Section/Notifiction.jsx"
 import BlogDetails from "./componants/BlogDetails/BlogDetails";
 import SignUp from "./componants/Sign/SignUp";
+import { useSelector } from "react-redux";
+import { useGetproductByNameQuery } from "./services/productApi";
+import { Box, Typography } from "@mui/material";
+import CircularProgress from '@mui/material/CircularProgress';
+import { useEffect } from "react";
 import { useState } from "react";
 
-function App() {
-  const [Search, setSearch] = useState("");
 
-console.log(Search)
+
+
+function App() {
+
+  const { data, error, isLoading } = useGetproductByNameQuery();
+
+
   return (
     <>
-      <Router>
-        <CoponCode />
-        <Header {...{Search, setSearch}} />
-        <Routes>
-          <Route path="/" element={<Home onClick={() => {setSearch("")}} />} />
-          <Route path="/About" element={<About />} />
-          <Route path="/Contact" element={<Contact />} />
-          <Route path="/Shop/:cat?" element={<Shop />} />
-          <Route path="/prodetails/:id" element={<Shopdetails />} />
-          <Route path="/Blog" element={<Blog />} />
-          <Route path="/Blogdetails/:id" element={<BlogDetails />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/Checkout" element={<Check />} />
-          <Route path="/fav" element={<Fav />} />
-          <Route path="/Signup" element={<SignUp />} />
 
-        </Routes>
-        <Notifiction/>
-        <Footer />
-      </Router>
+
+{error && 
+<>
+<Box sx={{height : "100vh" , display : "flex" , flexDirection : "column" , justifyContent : "center" , alignItems : "center"}}>
+
+<Box  sx={{display : "flex" , justifyContent : "center" , alignItems : "center" ,width : "100%" , height : "100%"}}>
+    <Typography variant="h6">Data Not Found</Typography>
+    </Box>
+</Box>
+</>
+
+}
+
+
+
+{isLoading && 
+<>
+<Box sx={{height : "100vh" , display : "flex" , flexDirection : "column" , justifyContent : "center" , alignItems : "center"}}>
+
+<CircularProgress sx={{color : "#CA7937" , mb : "10px"}} />
+
+<Box
+                sx={{ width: "150px", cursor: "pointer" }}>
+                <img
+                  style={{ width: "100%", Height: "100%" }}
+                  src="../../../Imgs/Logo.png"
+                  alt="Furni Pro"
+                />
+              </Box>
+
+</Box>
+
+</>
+
+}
+
+{data && 
+<Router>
+<CoponCode />
+<Header/>
+<Routes>
+  <Route path="/" element={<Home/>} />
+  <Route path="/About" element={<About />} />
+  <Route path="/Contact" element={<Contact />} />
+  <Route path="/Shop/:cat?" element={<Shop />} />
+  <Route path="/prodetails/:id" element={<Shopdetails />} />
+  <Route path="/Blog" element={<Blog />} />
+  <Route path="/Blogdetails/:id" element={<BlogDetails />} />
+  <Route path="/cart" element={<Cart />} />
+  <Route path="/Checkout" element={<Check />} />
+  <Route path="/fav" element={<Fav />} />
+  <Route path="/Signup" element={<SignUp />} />
+
+</Routes>
+<Notifiction/>
+<Footer />
+</Router>
+
+
+
+}
     </>
   );
 }

@@ -3,7 +3,7 @@ import EastIcon from "@mui/icons-material/East";
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const BannerSection = ({PageName}) => {
+const BannerSection = ({PageName , cat}) => {
 
 const navigat = useNavigate()
 
@@ -28,6 +28,16 @@ const navigat = useNavigate()
             }} >Home</Typography>
           <EastIcon sx={{ fontSize: "20px" , mx:"5px" }} />
           <span style={{ color: "#ac8c5b" , cursor : "pointer" }}> {PageName} </span>
+       
+             {cat && 
+             <>
+                 <EastIcon sx={{ fontSize: "20px" , mx:"5px" }} />
+                 <span style={{ color: "#ac8c5b" , cursor : "pointer" }}> {cat} </span>
+              
+             </>
+             }
+
+
         </Box>
       </Box>
        </>

@@ -13,10 +13,10 @@ const SignApi = createApi({
       }),
     }),    
     SignIn: builder.mutation({
-      query: (userData) => ({
-        url: '/signin',
+      query: (user) => ({
+        url: '/users',
         method: 'POST',
-        body: userData,
+        body: user,
       }),
     }),
   }),

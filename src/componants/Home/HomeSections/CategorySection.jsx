@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
   
   const CategorySection = () => {
 
-    const [categoriynum, setcategoriynum] = useState(5);
+    const [categoriynum, setcategoriynum] = useState(4);
     const [arrowview, setarrowview] = useState(true);
 
     const { data, error, isLoading } = useGetproductByNameQuery();
@@ -84,7 +84,7 @@ console.log(uniqueProducts)
     <Box
       sx={{
         flexGrow: 1,
-        width: {xs : "100%" , md : "75%"},
+        width: {xs : "100%" , md : "60%"},
         paddingY: "10px",
       }}
     >

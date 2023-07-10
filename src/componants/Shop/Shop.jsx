@@ -35,9 +35,10 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { PriceCheck } from '@mui/icons-material';
+import { PriceCheck, TroubleshootOutlined } from '@mui/icons-material';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
 
 
@@ -55,7 +56,9 @@ console.log(cat)
   const [Search, setSearch] = useState("");
   const dispatch = useDispatch();
   const Navigate = useNavigate();
-
+  const [categoryHeight, setcategoryHeight] = useState(false);
+  const [PriceHeight, setPriceHeight] = useState(false);
+  const [Showfilter, setShowfilter] = useState(true);
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6;
@@ -131,7 +134,7 @@ const valueFilter = ()=>{
     return (
         <>
     <ScrollToTop/>
-    <BannerSection  PageName="Shop" />
+    <BannerSection  PageName="Shop" {...{cat}}  />
 
     {error && 
    <Box  sx={{display : "flex" , justifyContent : "center" , alignItems : "center" ,width : "100%" , height : "100%"}}>
@@ -142,12 +145,13 @@ const valueFilter = ()=>{
 
      {isLoading && 
       <Box sx={{display : "flex" , justifyContent : "center" , alignItems : "center" ,width : "100%" , height : "100%"}}>
+        
       <CircularProgress />
   </Box>
      
      }
 
-<Box sx={{ p : "50px 0" , width : "100%" , display : "flex" , justifyContent : "center" }}>
+<Box sx={{ p : "50px 0" , width : "100%" , display : "flex" , justifyContent : "center"  , flexDirection : {xs : "column-reverse" , md : "row"} , alignItems : {xs :"center" , md : "flex-start"}}}>
 
 {data && 
 
@@ -349,17 +353,6 @@ const valueFilter = ()=>{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     {valueFilter().length === 0 && 
     <Box sx={{width : "100%" , height : "500px" , display : "flex" , justifyContent : "center" , alignItems : "center"}}>
 
@@ -395,28 +388,39 @@ color="secondary" />
 
 
 
-    <Box sx={{width : "17%" , display : {xs : "none" , md : "block"}}} >
+    <Box sx={{width : {xs :"90%" , md : "20%"} }} >
     
-    <Box sx={{ width : "calc(100% + 20px)" ,display: "flex", alignItems: "center" , position : "relative" , my : "10px" }}>
+    <Box sx={{ width : "100%" ,display: "flex", alignItems: "center" , position : "relative" , my : "10px" }}>
                     <input 
                     onChange={(e) => {setSearch(e.target.value)}}
-                    placeholder="Search" style={{ width : "calc(100% + 20px)",padding: "15px 20px", border : "1px solid black" , borderRadius : "15px"}} />
+                    placeholder="Search" style={{ width : "calc(100% + 20px)",padding: "15px 30px", border : "1px solid black" , borderRadius : "15px"}} />
                     <SearchIcon
                     sx={{ color: "black", position: "absolute", right: "5px" }}
                     />
                 </Box>
+<Box 
+onClick={() => {setShowfilter(Showfilter ? false : true)}}
+sx={{display : {xs : "flex" , md : "none"} , cursor : "pointer" , ml : "10px"}}>
+<Typography>Filter</Typography>
+{Showfilter ? <ExpandLessIcon /> : <ExpandMoreIcon/>}
+</Box>
 
-
-            <Box sx={{border:"1px solid black",width : "100%" , p:"0 10px" ,
+ {Showfilter && 
+  <>
+  
+  <Box sx={{border:"1px solid black",width : "100%" ,
             borderRadius: "15px",
-            paddingY:"10px",
+            overflow : "hidden"
             }}>
                 <Box sx={{display:"flex", justifyContent:"space-between",my:"10px", mx:"25px"}}>
                     <Typography variant="h6">Category</Typography>
-                    <ExpandMoreIcon/>
+                <IconButton onClick={() => {setcategoryHeight(categoryHeight ? false : true)}} >
+                       {categoryHeight ? <ExpandLessIcon /> : <ExpandMoreIcon/>}
+                </IconButton>
                 </Box>
                 <Box sx={{width: "80%",margin:"10px auto", height:"1px",bgcolor:"black"}} />
-                <FormGroup sx={{my:"10px"}}>
+              { categoryHeight  && 
+                <FormGroup sx={{my:"10px" }}>
 
 
                 <Box sx={{display:"flex",alignItems:"center", 
@@ -447,14 +451,21 @@ color="secondary" />
                     </Box>
                      )}
                 </FormGroup>
+              
+              }
             </Box>       
         
-    <Box sx={{width : "100%" , mt :"15px" ,border : "1px solid black" , borderRadius : "15px" , p:"10px"}}>
-<Box sx={{my:"10px", mx:"25px"}}>
-        <Typography mb="10px" variant='h6'>Price Filter</Typography>
-        <hr/>
-        
-        <FormControl>
+    <Box sx={{width : "100%" , mt :"15px" ,border : "1px solid black" , borderRadius : "15px"}}>
+  <Box sx={{display:"flex", justifyContent:"space-between",my:"10px", mx:"25px"}}>
+          <Typography mb="10px" variant='h6'>Price Filter</Typography>
+          <IconButton onClick={() => {setPriceHeight(PriceHeight ? false : true)}} >
+                         {PriceHeight ? <ExpandLessIcon /> : <ExpandMoreIcon/>}
+                  </IconButton>
+          </Box>
+          <Box sx={{width: "80%",margin:"10px auto", height:"1px",bgcolor:"black"}} />
+
+         { PriceHeight && 
+          <FormControl  sx={{mx : "25px"}}>
           <RadioGroup
             aria-labelledby="price filter"
             defaultValue=""
@@ -486,10 +497,15 @@ color="secondary" />
                  />} label="$300 - $500" />
           </RadioGroup>
         </FormControl>
-</Box>
-    
+         
+         }
     
     </Box>
+  
+  
+  </>
+ 
+ }
     
     
     
