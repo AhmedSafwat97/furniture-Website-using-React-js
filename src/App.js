@@ -30,7 +30,7 @@ console.log(Search)
           <Route path="/" element={<Home onClick={() => {setSearch("")}} />} />
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
-          <Route path="/Shop" element={<Shop />} />
+          <Route path="/Shop/:cat?" element={<Shop />} />
           <Route path="/prodetails/:id" element={<Shopdetails />} />
           <Route path="/Blog" element={<Blog />} />
           <Route path="/Blogdetails/:id" element={<BlogDetails />} />

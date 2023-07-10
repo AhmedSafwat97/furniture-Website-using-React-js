@@ -12,6 +12,7 @@ import { useGetproductByNameQuery } from "../../../services/productApi";
 import { useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import { useNavigate } from "react-router-dom";
   
   
   const CategorySection = () => {
@@ -26,6 +27,7 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
 
 
+    const Navigate = useNavigate();
 
 
 if (data) {
@@ -112,7 +114,8 @@ console.log(uniqueProducts)
   {uniqueProducts.sort((a,b) => b.id - a.id).slice(0 , categoriynum).map((Category) => (
 
 <Box
-
+onClick={()=> {      Navigate(`/shop/${Category.category}`)
+}}
 key={Category.id}
           sx={{
             width: {xs :"120px" , md : "150px"},

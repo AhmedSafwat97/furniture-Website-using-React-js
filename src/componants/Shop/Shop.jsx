@@ -22,7 +22,7 @@ import {
   import FavoriteIcon from "@mui/icons-material/Favorite";
   import SearchIcon from "@mui/icons-material/Search";
   import { useGetpaginateProductQuery, useGetproductByNameQuery } from "../../services/productApi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AddToCart, decrement, increment } from "../../services/CartSlice";
 import AddIcon from '@mui/icons-material/Add';
@@ -43,11 +43,13 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 
 const Shop = () => {
+    const {cat} = useParams();
 
+console.log(cat)
   const { data, error, isLoading } = useGetproductByNameQuery();
   const { SelectedProductsId , SelectedProducts  } = useSelector((state) => state.Cart);
   const { favProductsId   } = useSelector((state) => state.Fav);
-  const [checked, setchecked] = useState(["All"]);
+  const [checked, setchecked] = useState([cat !== undefined? cat:"All"]);
   const [MaxPrice, setMaxPrice] = useState(0);
   const [MinPrice, setMinPrice] = useState(0);
   const [Search, setSearch] = useState("");
@@ -100,8 +102,6 @@ const handleCheckboxChange = (event) => {
   };
 
 const valueFilter = ()=>{
-    console.log("hello")
-
     if (Search === "") {
         if (checked.includes("All") || checked.length === 0 ) {
             return  MaxPrice !== 0 ? data.filter((product)=> product.price <= MaxPrice && product.price >= MinPrice ) : data

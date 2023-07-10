@@ -17,7 +17,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 const Shopdetails = () => {
 
 const {id} = useParams()
-
+console.log(id);
   const { data , error, isLoading } = useGetOneProductQuery(id);
   let catdata = useGetOneProductQuery(id).data?.category
   
