@@ -81,23 +81,19 @@ console.log(firstName)
 
 
 
-<TextField
-    onChange={(e) => {setLastName(e.target.value)}}
-
-required
+                <TextField onChange={(e) => {setLastName(e.target.value)}} required
                 sx={{width :"49%",fontSize:"10px", borderRadius : "30px" ,backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
                 id="last" label="Last Name" type="text" />
-                        </Box>
-                        <Box sx={{width: "100%",display: "flex", justifyContent: "space-between"}}>
-                        <TextField
-                     onChange={(e) => {setEmail(e.target.value)}}
+                </Box>
+            <Box sx={{width: "100%",display: "flex", justifyContent: "space-between"}}>
+                <TextField
+                onChange={(e) => {setEmail(e.target.value)}}
 
                 sx={{outline : "none" ,width :"49%",fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
                 id="Email" label="Email" type="text" />
 
-<TextField required
+                <TextField required
                         onChange={(e) => {setPhone(e.target.value)}}
-
                 sx={{width :"49%",fontSize:"10px" , borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
                 id="Phone" label="Phone Number" type="number" />
                         </Box>
@@ -127,9 +123,7 @@ required
 
                    </Box>
                 <Box sx={{ width : `calc(100% - 20px)` , p : "10px"}} >
-                <TextField required
-                                        onChange={(e) => {setaddress(e.target.value)}}
-
+                <TextField required onChange={(e) => {setaddress(e.target.value)}}
                 sx={{width :"100%",fontSize:"10px", borderRadius : "30px" ,backgroundColor:"#E9E7DB",border: "none"}}
                 id="address" label="address" type="text" />
                 </Box>
