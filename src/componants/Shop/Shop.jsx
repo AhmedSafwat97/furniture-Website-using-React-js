@@ -37,6 +37,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { PriceCheck } from '@mui/icons-material';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 
 
@@ -161,7 +162,7 @@ const valueFilter = ()=>{
             className="Card"
             sx={{
                 width : {xs:"180px" , md: "210px"} ,
-                height: "290px",
+                height: "320px",
                 backgroundColor: "#F3F2EE",
                 borderRadius: "15px",
                 padding: "10px",
@@ -191,7 +192,7 @@ const valueFilter = ()=>{
                     sx={{ color: "gray", position: "absolute", right: "5px" }}
                     >
                     <FavoriteBorderIcon />
-                    </IconButton>   
+        </IconButton>   
         )
         }
          <Box sx={{ml:"15px", mt: "5px", display: "flex" }}>
@@ -199,13 +200,13 @@ const valueFilter = ()=>{
                 <Typography>${Product.sale}</Typography>
                 </Box>
         
-            <Box sx={{ width: "90%", height: "70%", mx: "auto",}}  
+            <Box sx={{ width: "90%", height: "55%" ,mx: "auto",}}  
                 onClick={() => {
                 Navigate(`/prodetails/${Product.id}`)
                 }}
     
             >
-                <Box sx={{width: "90%", height: "100%" ,backgroundColor:"#fff", borderRadius:"15px", padding:"10px",my:"10px",position:"relative" }}>
+                <Box sx={{ width: "90%", height: "100%" ,backgroundColor:"#fff", borderRadius:"15px", padding:"10px",mt:"10px",position:"relative" }}>
                 {Product.discount &&
             <Chip
             label={Math.floor( 100 -  (Product.sale / Product.price) * 100) +"%"}
@@ -227,7 +228,7 @@ const valueFilter = ()=>{
 
                 </Box>
             </Box>
-            <Box sx={{display:"flex",mt:"20px" , alignItems:"center", justifyContent:"space-evenly"}}>
+            <Box sx={{ mt : "25px"  ,display:"flex", flexDirection : "column" , alignItems:"center", justifyContent:"space-evenly"}}>
                 <Typography variant="h6" sx={{fontSize:"16px"}}>{Product.Name}</Typography>
                     <Stack spacing={1}>
                     <Rating
@@ -239,9 +240,127 @@ const valueFilter = ()=>{
                     />
                     </Stack>
             </Box>
+
+
+
+            <Box>
+            {SelectedProductsId.includes(Product.id) ?
+(<Box>
+  <Box  sx={{ height : "27%", display : "flex"  , alignItems : "center" , justifyContent : "center"}}>
+ <Box sx={{display : "flex" , alignItems : "center" , width : "75%" , justifyContent : "center"}}>
+       <IconButton 
+       onClick={() => {
+        dispatch(decrement(Product))
+       }}
+       sx={{bgcolor : "#FFF", 
+    ":hover" : {
+        bgcolor : "#ac8c5b"
+           }
+    
+    }} size="small" >
+           <RemoveIcon sx={{color : "#ac8c5b" , ":hover" : {
+        color : "#FFF"
+           }}} />
+       </IconButton>
+       <Typography sx={{mx:"5px" , fontWeight : "bold"}}>{ProductQuantity(Product)}</Typography>
+       <IconButton
+
+
+       onClick={() => {
+        dispatch(increment(Product))
+       }}
+       
+       sx={{bgcolor : "#FFF" , ":hover" : {
+        bgcolor : "#ac8c5b"
+           }}} size="small">
+           <AddIcon sx={{color : "#ac8c5b" , ":hover" : {
+        color : "#FFF"
+           }}} />
+       </IconButton>
+  </Box>
+  
+  </Box>
+</Box>
+
+) : 
+
+
+(
+<Box display="flex">
+  <Box sx={{flexGrow : 1 }}/>
+    <IconButton
+    size="small"
+  sx={{ bgcolor: "#FFF" ,
+  ":hover": {
+    color: "#ac8c5b",
+    outline: "1px solid #ac8c5b",
+    bgcolor : "transparent" , 
+  },
+  }}
+  variant="contained"
+  
+  onClick={() => {
+    dispatch(AddToCart(Product))
+  }}
+  >
+    <AddShoppingCartIcon/>
+  </IconButton>
+</Box>
+)
+    
+    }
+            </Box>
               
             </Box>
                 ))}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     {valueFilter().length === 0 && 
     <Box sx={{width : "100%" , height : "500px" , display : "flex" , justifyContent : "center" , alignItems : "center"}}>
 
