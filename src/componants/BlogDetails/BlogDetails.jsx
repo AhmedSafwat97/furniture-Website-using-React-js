@@ -1,7 +1,7 @@
 import React from 'react';
 import ScrollToTop from '../../ExternalMethods/ScrollToTop';
 import BannerSection from '../Home/HomeSections/bannerSection';
-import { Box, Button, CircularProgress, IconButton, Typography } from '@mui/material';
+import { Avatar, Box, Button, CircularProgress, IconButton, TextField, Typography } from '@mui/material';
 import { useGetOneblogQuery, useGetblogsByNameQuery } from '../../services/productApi';
 import { useNavigate, useParams } from 'react-router-dom';
 import DateRangeOutlinedIcon from '@mui/icons-material/DateRangeOutlined';
@@ -133,6 +133,62 @@ const BlogDetails = () => {
 </Box>
 
     </Box>
+    <Box sx={{ border : "1px solid black", mx: "auto" ,p : "15px" ,borderRadius : "15px"  , width : "90%", mb:"20px" }}>
+    
+        <Typography variant='h6' sx={{mx : "auto" , width : "95%" , fontSize: "18px" ,fontWeight : "700"}}>Comments {data.comments.length}</Typography>
+        {/* {map} */}
+        <Box sx={{width:"95%",mx:"auto",bgcolor:"#F3F2EE",borderRadius : "15px",display:"flex" }}>
+            <Avatar sx={{m: "20px",  width: 56, height: 56 }} alt="Remy Sharp" src="/broken-image.jpg" />
+            <Box >
+                <Typography sx={{mt: "20px", fontWeight:"800"}}>Aya Ragab</Typography>
+                <Typography sx={{color: "gray", fontSize:"10px"}}>Aya Ragab</Typography>
+                <Typography sx={{color: "gray", fontSize:"10px" ,mt:'10px'}}>Simply dummy text of the printing and Type Settings industry.</Typography>
+
+            </Box>
+        </Box>
+
+    </Box>
+
+    <Box sx={{ border : "1px solid black", mx: "auto" ,p : "15px" ,borderRadius : "15px"  , width : "90%"}}>
+    
+    <Typography variant='h5' sx={{mx : "auto" , width : "95%" , fontSize: "18px" ,fontWeight : "700"}}>Write your Comment</Typography>
+    <Box sx={{width:"95%",mx:"auto",borderRadius : "15px",display:"flex" }}>
+       <form style={{width:"100%"}}>
+        <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
+            <TextField required
+                    sx={{width :"30%",fontSize:"10px" , borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
+                    size="small"
+                    label="Name" />
+            <TextField required
+                    sx={{width :"30%",fontSize:"10px" , borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
+                    size="small"
+                    label="Email" />
+            <TextField required
+                    sx={{width :"30%",fontSize:"10px" , borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
+                    size="small"
+                    label="phone Number" />
+        </Box>
+        <TextField required
+                sx={{width :"97%",fontSize:"10px" , borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
+                size="small"
+                label="your comment" />
+        <Button       
+                type="submit" 
+                    sx={{
+                      bgcolor:'#AF8E60',
+                      color: "#fff",
+                      fontSize:"14px",
+                      borderRadius : "30px",
+                      m : "10px",
+                      px:"10px",
+                    }}
+                  >
+                    Submit Comment 
+                  </Button>
+       </form>
+    </Box>
+
+</Box>
 </>
 }
 
