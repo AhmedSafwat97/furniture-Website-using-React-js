@@ -14,6 +14,22 @@
   height: 100%;
 }
 
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.profileIcon:hover{
+  animation-name: rotate;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
 .Sub {
   background-image: url(../public/Imgs/Sub.jpg);
   background-size: cover;
@@ -154,6 +170,11 @@ input::-webkit-inner-spin-button {
 }
 
 
+
+.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input{
+  padding: 12px !important;
+
+}
 
 
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {

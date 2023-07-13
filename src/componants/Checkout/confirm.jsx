@@ -74,19 +74,20 @@ const Month =[
 
 
   const handleClickOpen = () => {
+    setOpen(true);
 
-if (
-  Code !== "" && address !== "" && Phone !== "" && Email !== "" && LastName !== "" 
-  && firstName !== "" && Town !== "" && Country !== ""
-) {
-  setOpen(true);
+// if (
+//   Code !== "" && address !== "" && Phone !== "" && Email !== "" && LastName !== "" 
+//   && firstName !== "" && Town !== "" && Country !== ""
+// ) {
+//   setOpen(true);
 
-  console.log(firstName);
-} else {
+//   console.log(firstName);
+// } else {
 
-  toast.error(`Please fill the Billing Details form` , {theme: "colored" , position: "top-center",});
+//   toast.error(`Please fill the Billing Details form` , {theme: "colored" , position: "top-center",});
 
-}
+// }
   
   };
 
@@ -293,19 +294,6 @@ if (
        </>
 
              }
-
-
-
-
-
-
-
-
-  
-    <DialogContentText>
-           
-          </DialogContentText>
-
 
 </>
 }

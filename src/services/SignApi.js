@@ -9,21 +9,39 @@ const SignApi = createApi({
       query: (userData) => ({
         url: '/signup',
         method: 'POST',
-        body: userData,
+        body: userData
       }),
     }),    
     SignIn: builder.mutation({
       query: (user) => ({
-        url: '/users',
+        url: '/signin',
         method: 'POST',
         body: user,
       }),
+    }), 
+    
+    
+  }),
+});
+
+
+export const userApi = createApi({
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'http://localhost:5000',}),
+  endpoints: (builder) => ({
+    getUser: builder.query({
+      query: () => 'user',
     }),
   }),
 });
 
+
+
+
 export const { useSignupMutation , useSignInMutation  } = SignApi;
+export const {  useGetUserQuery   } = userApi;
 export default SignApi;
+
 
 
 

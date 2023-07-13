@@ -17,6 +17,10 @@ import { useSelector } from "react-redux";
 import { useGetproductByNameQuery } from "../../services/productApi";
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import { useEffect } from "react";
+import Sign from "../Sign/Sign";
+import FormDialog from "../Sign/Sign";
+import jwtDecode from "jwt-decode";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 
 
@@ -30,10 +34,14 @@ const pages = [
 ];
 
 function ResponsiveAppBar() {
-  const [viewlist, setviewlist] = useState(false);
   const [ShowSearch, setShowSearch] = useState(false);
-  const [arrowview, setarrowview] = useState(true);
   const [Search, setSearch] = useState("");
+
+  const [arrowview, setarrowview] = useState(true);
+  const [viewlist, setviewlist] = useState(false);
+
+
+  const navigate = useNavigate();
 
 
   const Location = useLocation()
@@ -46,6 +54,20 @@ function ResponsiveAppBar() {
 
   const { data, error, isLoading } = useGetproductByNameQuery();
 
+
+  let decodedToken;
+  const token = localStorage.getItem('token')
+
+  if (token) {
+    decodedToken = jwtDecode(token);
+  }
+
+  const handleSignOut = () => {
+    // Clear the token from session storage
+    localStorage.removeItem('token')
+    navigate("/")
+  };
+
 const Searchdata = ()=> {
   if(Search !== ""){
     return data?.filter((product) => product.Name.toUpperCase().startsWith(Search.toUpperCase()) || product.category.toUpperCase().startsWith(Search.toUpperCase()))
@@ -57,36 +79,64 @@ const Searchdata = ()=> {
   } 
 
 
-  // to close the lis when we click on any place in the page 
-  const searchRef = React.useRef(null);
+  // to close the list when we click on any place in the page 
+  const searchRef = React.useRef(null)
+  const searchbarRef = React.useRef(null)
+  const searchIconRef = React.useRef(null)
 
+
+//________________________________
+// hidden element when clicking 
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
-        setSearch(""); // Close the results list when clicking outside
+        setShowSearch(false)
+        setSearch("") // Close the results list when clicking outside
       }
     };
-
     document.addEventListener('click', handleClickOutside);
 
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
+
+
+  useEffect(() => {
+    const ClickOutsideSearch = (event) => {
+      if (
+        searchbarRef.current &&
+        !searchbarRef.current.contains(event.target) &&
+        searchIconRef.current &&
+        !searchIconRef.current.contains(event.target)
+      ) {
+        setShowSearch(false)
+        setSearch("")
+      }
+    };
+    document.addEventListener('click', ClickOutsideSearch);
+
+    return () => {
+      document.removeEventListener('click', ClickOutsideSearch);
+    };
+  }, []);
+
+// _________________________________
+
   // __________________________________________________________________
 
-  const navigate = useNavigate();
 
   return (
     <>
       <AppBar
         position="sticky"
         sx={{
+          minHeight : "65px" ,
           height: { xs: "fit-content", md: "65px" },
           mb: "5px",
           bgcolor: "#FFFFFF",
-          padding: { xs: "0 5px", md: "0 100px" },
+          padding: { xs: "0 5px", md: "0 70px" },
         }}
       >
 {/*start view Search List  */}
@@ -95,7 +145,7 @@ const Searchdata = ()=> {
   
   <Box 
   ref={searchRef}
-  sx={{width : "300px" , bgcolor : "#F3F2EE" , MaxHeight : "300px" , overflowY : "scroll" , position : "absolute" , right : {xs :"10%" , md : "17%"} , top : "60px" }}>
+  sx={{zIndex : "10" ,width : {xs : "70%" , md : "300px"} , bgcolor : "#F3F2EE" , MaxHeight : "300px" , overflowY : "scroll" , position : "absolute" , right : {xs :"16%" , md : "20%"} , top : {xs : "90px" , md : "120px"} }}>
             
             {Searchdata().map((product) => (
              <Box  key={product.id} onClick={() => {navigate(`/prodetails/${product.id}`) 
@@ -138,7 +188,7 @@ const Searchdata = ()=> {
         <Container
           sx={{
             display: { xs: "none", md: "flex" },
-            justifyContent: "space-between",
+            justifyContent: "space-between", 
           }}
         >
           <Toolbar disableGutters>
@@ -174,18 +224,15 @@ const Searchdata = ()=> {
                </Button>
             ))}
           </Box>
+          {/* _____|||||||||| */}
           <Box sx={{ display: "flex" }}>
-            <Box sx={{ position: "relative" }}>
-              <Box sx={{ display: "flex", alignItems: "flex-end" }}>
-                <TextField value={Search}  onChange={(e) => {
-                  setSearch(e.target.value);  
-                      }} label="Search" variant="standard" />
-                <SearchIcon
-                  sx={{ color: "black", position: "absolute", right: "5px" }}
-                />
-              </Box>
-            </Box>
-            <Box sx={{ display: "flex" }}>
+          <Box sx={{ display: "flex" ,alignItems : "center" , justifyContent : "space-between" }}>
+<IconButton 
+  ref={searchIconRef}
+onClick={() => {setShowSearch(true)}}
+size="large" aria-label="Favorite" color="inherit" >
+<SearchIcon sx={{ color: "black"}}/>
+</IconButton>
               <IconButton onClick={() => {
                 navigate("/fav")
               }} size="large" aria-label="Favorite" color="inherit">
@@ -201,15 +248,54 @@ const Searchdata = ()=> {
                 />
                 <Badge badgeContent={SelectedProductsId.length} color="error"></Badge>
               </IconButton>
+        {decodedToken ? (
+             <Box sx={{mx : "5px"}}>
+                 <Button size="large" aria-label="profile" color="inherit"  border="2px solid black" >
+                 <AccountCircleOutlinedIcon className="profileIcon" sx={{ fontSize: "30px", color: "black" }}/>
+                 <Typography color="black">Hi {decodedToken.firstName}</Typography>
+                 </Button>
+             </Box>
+        ) : (
+         <Box sx={{mx : "5px"}}>
+           <Button  size="large" aria-label="profile" color="inherit"  border="2px solid black" >
+           <FormDialog/>
+           </Button>
+         </Box>
 
-              <IconButton size="large" aria-label="profile" color="inherit">
-                <AccountCircleOutlinedIcon
-                  sx={{ fontSize: "30px", color: "black" }}
-                />
-              </IconButton>
+        )}
+
+
+      {decodedToken &&  <Button  onClick={handleSignOut} >
+          <LogoutIcon sx={{color : "#92764E"}} />
+          <Typography sx={{fontSize : "12px" ,color : "#92764E"}}>Logout</Typography>
+          </Button> }
+
+
+
             </Box>
           </Box>
+
+          
         </Container>
+
+
+  {ShowSearch && 
+        <Box 
+        ref={searchbarRef}
+      sx={{ width : "300px" ,position: "absolute" , top : "70px" ,right :"20%" , display : {xs : "none" ,md : "block"} }}>
+            <Box sx={{ display: "flex", alignItems: "flex-end" , width : "100%" }}>
+              <TextField sx={{bgcolor : "#FFF" , width : "100%" , borderRadius : "20px" }} value={Search}  onChange={(e) => {
+                setSearch(e.target.value);  
+                    }} label="Search" variant="outlined" />
+             
+            </Box>
+          </Box>
+  
+  
+  }
+
+
+
         {/* ___________________________________________________________________________ */}
         {/* For Mopile  */}
 
@@ -219,7 +305,7 @@ const Searchdata = ()=> {
             display: { xs: "block", md: "none" },
           }}
         >
-          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between" , alignItems : "center" }}>
             <Toolbar disableGutters>
               <Box
                 sx={{ width: "80px", cursor: "pointer" }}
@@ -237,45 +323,68 @@ const Searchdata = ()=> {
               </Box>
             </Toolbar>
 
-            <Box sx={{ display: { xs: "flex", md: "none" } }}>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  position: "relative",
-                }}
-              >
-                {ShowSearch && <Input value={Search} onChange={(e) => {setSearch(e.target.value)
-                  }} placeholder="Search" label="Search" sx={{ border : "none" , borderBottom :"1px solid black"  , bgcolor : "#FFF"}} />}
 
-                <SearchIcon
-                  sx={{cursor :"pointer"  ,color: "black", position: "absolute", right: "5px" }}
-                  onClick={() => {
-                    ShowSearch ? setShowSearch(false) : setShowSearch(true)
-                  }}
-                />
-              </Box>
+            <Box sx={{ display: { xs: "flex", md: "none" } }}>
+              {decodedToken ? (
+             <Box sx={{mx : "5px"}}>
+                 <Button  size="large" aria-label="profile" color="inherit"  border="2px solid black" >
+                 <AccountCircleOutlinedIcon className="profileIcon"  sx={{ fontSize: "30px", color: "black" }}/>
+                 <Typography color="black">Hi {decodedToken.firstName}</Typography>
+                 </Button>
+             </Box>
+        ) : (
+         <Box sx={{mx : "5px"}}>
+           <Button size="large" aria-label="profile" color="inherit"  border="2px solid black" >
+           <FormDialog/>
+           </Button>
+         </Box>
+
+        )} 
 
               {/* _______________________________________________________________ */}
               {/* For shown and hide up and down buttons */}
 
-              <IconButton 
+  <IconButton 
    onClick={
     () => {
-      setarrowview(arrowview ? false : true )
+      setarrowview(arrowview ? false : true)
       setviewlist(viewlist ? false : true)
     }
    }
    >
-    {arrowview ? <ExpandMoreIcon/> : <ExpandLessIcon/> }
+    {arrowview ? <ExpandMoreIcon /> : <ExpandLessIcon/> }
    </IconButton>
               {/* ____________________________________________________________________________ */}
             </Box>
           </Box>
+
+
+<Box sx={{display : "flex" , justifyContent : "center" , mb : "10px"}} >
+            <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    position: "relative",
+                    width : "70%"
+                  }}
+                >
+                  <Input value={Search} onChange={(e) => {setSearch(e.target.value)}} placeholder="Search" label="Search" sx={{ width : "100%" ,border : "none" , borderBottom :"1px solid black"  , bgcolor : "#FFF"}} />
+                  <SearchIcon
+                    sx={{cursor :"pointer"  ,color: "black", position: "absolute", right: "5px" }}
+                  />
+               
+
+
+                </Box>
+</Box>
+
+
+
           {/* _________________________________________________________________ */}
           {/* To view The List and the icon */}
           {viewlist && (
-            <Box>
+            <Box  
+            >
               <Box
                 className="MopIconBar"
                 sx={{
@@ -316,11 +425,12 @@ const Searchdata = ()=> {
                   <Badge badgeContent={SelectedProductsId.length} color="error"></Badge>
                 </IconButton>
 
-                <IconButton size="large" aria-label="Profile" color="inherit">
-                  <AccountCircleOutlinedIcon
-                    sx={{ fontSize: "30px", color: "black" }}
-                  />
-                </IconButton>
+
+                {decodedToken &&  <Button  onClick={handleSignOut} >
+          <LogoutIcon sx={{color : "#92764E"}} />
+          <Typography sx={{fontSize : "12px" ,color : "#92764E"}}>Logout</Typography>
+          </Button> }
+                
               </Box>
               <Box
                 sx={{

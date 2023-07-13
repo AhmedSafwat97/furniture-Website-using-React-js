@@ -12,6 +12,13 @@ const initialState = {
 
  , disable : localStorage.getItem("copon") ? JSON.parse(localStorage.getItem("copon")) : false
 
+
+
+
+
+
+
+ 
 }
 
 
@@ -130,6 +137,14 @@ export const CartSlice = createSlice({
 
 
     }
+
+
+
+
+
+
+
+
   },
 })
 

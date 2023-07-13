@@ -39,6 +39,13 @@ export const OneblogApi = createApi({
     getOneblog: builder.query({
       query: (id) => `blogs/${id}`,
     }),
+    Comment: builder.mutation({
+      query: (comment) => ({
+        url: '/blogs/comments',
+        method: 'POST',
+        body: comment,
+      }),
+    }), 
   }),
 });
 
@@ -58,7 +65,7 @@ export const ReviewApi = createApi({
 export const { useGetproductByNameQuery } = productApi
 export const { useGetOneProductQuery } = oneproductsApi;
 export const { useGetblogsByNameQuery } = blogsApi;
-export const { useGetOneblogQuery } = OneblogApi;
+export const { useGetOneblogQuery , useCommentMutation } = OneblogApi;
 export const { useGetReviewQuery } = ReviewApi;
 
 

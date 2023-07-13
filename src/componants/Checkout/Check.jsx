@@ -88,7 +88,7 @@ console.log(firstName)
             <Box sx={{width: "100%",display: "flex", justifyContent: "space-between"}}>
                 <TextField
                 onChange={(e) => {setEmail(e.target.value)}}
-
+required
                 sx={{outline : "none" ,width :"49%",fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
                 id="Email" label="Email" type="text" />
 
@@ -133,28 +133,12 @@ console.log(firstName)
 
                         <Box sx={{width : `calc(100% - 20px)` , p : "10px",display: "flex", justifyContent: "space-between"}}>
                      <Box sx={{width : "48%"}}>
-                            <FormControl required fullWidth sx={{backgroundColor:"#E9E7DB" , borderRadius : "30px" }}>
-        <InputLabel id="demo-simple-select-label">Country</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={Town}
-          label="Town"
-          onChange={(eo) => {        setTown(eo.target.value);
-          }}
-        >
-          <MenuItem value="Egypt">Cairo</MenuItem>
-          <MenuItem value="Canada">Alexanderia</MenuItem>
-          <MenuItem value="Brazil">Ottawa</MenuItem>
-          <MenuItem value="United State">Washington</MenuItem>
-          <MenuItem value="United State">Brasilia</MenuItem>
 
-        </Select>
-      </FormControl>
+                     <TextField required
+                    onChange={(e) => {setCode(e.target.value)}}
 
-
-
-
+                sx={{width :"100%",fontSize:"10px" , borderRadius : "30px" ,backgroundColor:"#E9E7DB",border: "none"}}
+                id="Town" label="Town" type="text" />
 
                      </Box>
                     

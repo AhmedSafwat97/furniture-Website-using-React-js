@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 // Or from '@reduxjs/toolkit/query/react'
 import { setupListeners } from '@reduxjs/toolkit/query'
-import { OneblogApi, ReviewApi, blogsApi, oneproductsApi, paginateApi, productApi } from './services/productApi'
+import { OneblogApi, ReviewApi, blogsApi, oneproductsApi, productApi } from './services/productApi'
 import CartSlice from './services/CartSlice'
 import favSlice  from './services/FavSlice'
-import SignApi from './services/SignApi'
+import SignApi, { userApi } from './services/SignApi'
 
 export const store = configureStore({
   reducer: {
@@ -17,6 +17,8 @@ export const store = configureStore({
     [OneblogApi.reducerPath] : OneblogApi.reducer,
     [SignApi.reducerPath] : SignApi.reducer,
     [ReviewApi.reducerPath] : ReviewApi.reducer ,
+    [userApi.reducerPath] : userApi.reducer ,
+
 
   },
   // Adding the api middleware enables caching, invalidation, polling,
@@ -24,7 +26,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(productApi.middleware)
     .concat(oneproductsApi.middleware).concat(blogsApi.middleware)
-    .concat(OneblogApi.middleware).concat(SignApi.middleware).concat(ReviewApi.middleware),
+    .concat(OneblogApi.middleware).concat(SignApi.middleware).concat(ReviewApi.middleware).concat(userApi.middleware),
 })
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors

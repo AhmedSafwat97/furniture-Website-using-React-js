@@ -29,10 +29,7 @@ const Contact = () => {
                 <iframe width="100%" 
                 title='map'
                 height="620px"
-                 frameborder="0"
                   scrolling="no"
-                   marginheight="0" 
-                   marginwidth="0"
                     src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=%D9%85%D8%AF%D9%8A%D9%86%D9%87%20%D9%86%D8%B5%D8%B1+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
                     <a href="https://www.maps.ie/distance-area-calculator.html">measure acres/hectares on map</a>
                     </iframe>
