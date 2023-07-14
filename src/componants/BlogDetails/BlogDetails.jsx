@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ScrollToTop from '../../ExternalMethods/ScrollToTop';
 import BannerSection from '../Home/HomeSections/bannerSection';
 import { Avatar, Box, Button, CircularProgress, IconButton, TextField, Typography } from '@mui/material';
@@ -133,6 +133,7 @@ const BlogDetails = () => {
     </Box>
 
 <Blogcommentsec {...{data}} />
+
 
 </>
 }

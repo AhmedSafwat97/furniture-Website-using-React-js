@@ -51,6 +51,16 @@ app.get("/blogs/:id", (req, res) => {
 });
 
 
+app.get("/blogs/comments/:id", (req, res) => {
+  const oneblogs = blogs.find((item) => {
+    return item.id == req.params.id;
+  });
+  res.send(oneblogs.comments);
+});
+
+
+
+
 app.get("/Review", (req, res) => {
   res.send(ClientReview);
 });
@@ -163,14 +173,14 @@ app.get('/users', (req, res) => {
 
 
 
-app.post('/blogs/comments', (req, res) => {
+app.post('/blogs/comment', (req, res) => {
   const { blogId, commentDetails } = req.body;
 
   // Find the blog in the array
   const blog = blogs.find(p => p.id === blogId);
 
   if (!blog) {
-    return res.status(404).send('Blog not found');
+    return res.status(404).json({ error: 'Blog not found' });
   }
 
   // Add the comment to the blog's comments array
@@ -180,15 +190,13 @@ app.post('/blogs/comments', (req, res) => {
   fs.writeFile('./blogs.js', `module.exports = ${JSON.stringify(blogs)}`, (err) => {
     if (err) {
       console.error('Error writing to file:', err);
-      return res.status(500).send('Internal server error');
+      return res.status(500).json({ error: 'Internal server error' });
     }
 
     // Return the updated blog object
     res.json(blog);
   });
 });
-
-
 
 
 

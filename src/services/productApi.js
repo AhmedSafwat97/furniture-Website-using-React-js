@@ -41,7 +41,7 @@ export const OneblogApi = createApi({
     }),
     Comment: builder.mutation({
       query: (comment) => ({
-        url: '/blogs/comments',
+        url: '/blogs/comment',
         method: 'POST',
         body: comment,
       }),

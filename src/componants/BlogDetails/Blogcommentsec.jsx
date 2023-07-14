@@ -1,11 +1,45 @@
 import { Avatar, Box, Button, CircularProgress, TextField, Typography } from '@mui/material';
-import React from 'react';
-import { useCommentMutation } from '../../services/productApi';
+import React, { useEffect, useRef } from 'react';
+import { useCommentMutation, useGetOneblogQuery } from '../../services/productApi';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
+
 
 const Blogcommentsec = ({data}) => {
     const [comment, setcomment] = React.useState("");
     const [Name, setName] = React.useState("");
     const [Email, setEmail] = React.useState("");
+    const [url, seturl] = useState(`http://localhost:5000/blogs/comments/${data.id}`);
+    const [TheComment, setTheComment] = useState(sessionStorage.getItem("comment") === null ? [] : JSON.parse(sessionStorage.getItem("comment")));
+
+    const [datacomment, setData] = useState([]);
+    
+    console.log(data);
+    
+    
+    
+    useEffect(() => {
+      axios
+        .get(url)
+        .then((res) => {
+          console.log(res);
+          setData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        }); 
+    }, [url]);
+
+
+
+
+
+console.log(data.id);
+
+console.log(data);
+
+
 
 
     const commentDetails  = {
@@ -15,40 +49,46 @@ const Blogcommentsec = ({data}) => {
         Comment : comment , 
     }
 
-console.log(commentDetails.Comment);
 
 
 
+  const [Comment, { isLoading: CommentLoading }] = useCommentMutation(); 
 
-console.log(data.comments);
+  console.log(commentDetails.Comment);
 
-
-    const [Comment , { isLoading : CommentLoading} ] = useCommentMutation();
- 
-    const blogId = data.id
-
+const blogId = data.id
   console.log(blogId);
-
+  
     const handlecomments = async () => {
         const result = await Comment({ blogId , commentDetails });
-        if (result.error) {
-          console.log('comment failed:', result.error);
-        } else {
-          console.log('Sign up successful:', result.data);
-        }};
-
-
+          console.log('Sign up successful:', result); 
+        };
 
 
     return (
         <>
             
+
+
+
     <Box sx={{ border : "1px solid black", mx: "auto" ,p : "15px" ,borderRadius : "15px"  , width : "90%", mb:"20px" }}>
     
-        <Typography variant='h6' sx={{mx : "auto" , width : "95%" , fontSize: "18px" ,fontWeight : "700"}}>Comments {data.comments.length}</Typography>
+        <Typography variant='h6' sx={{mx : "auto" , width : "95%" , fontSize: "18px" ,fontWeight : "700"}}>Comments</Typography>
         {/* {map} */}
-        {data.comments.map((comment , index) => (
-            <Box key={index} sx={{width:"95%", my : "10px",mx:"auto",bgcolor:"#F3F2EE",borderRadius : "15px",display:"flex" }}>
+        {datacomment.map((comment , index) => (
+            <Box key={index} sx={{ width:"95%", my : "10px",mx:"auto",bgcolor:"#F3F2EE",borderRadius : "15px",display:"flex" }}>
+            <Avatar sx={{m: "20px",  width: 56, height: 56 }} alt={comment.Name} src="/broken-image.jpg" />
+            <Box >
+                <Typography sx={{mt: "20px", fontWeight:"800"}}>{comment.Name}</Typography>
+                <Typography sx={{color: "gray", fontSize:"10px"}}>{comment.date}</Typography>
+                <Typography sx={{color: "gray", fontSize:"10px" ,mt:'10px'}}>{comment.Comment}</Typography>
+
+            </Box>
+        </Box>
+        ))}
+
+          {TheComment.map((comment , index) => (
+            <Box key={index} sx={{ width:"95%", my : "10px",mx:"auto",bgcolor:"#F3F2EE",borderRadius : "15px",display:"flex" }}>
             <Avatar sx={{m: "20px",  width: 56, height: 56 }} alt={comment.Name} src="/broken-image.jpg" />
             <Box >
                 <Typography sx={{mt: "20px", fontWeight:"800"}}>{comment.Name}</Typography>
@@ -60,6 +100,9 @@ console.log(data.comments);
         ))}
 
     </Box>
+
+
+
 
     <Box sx={{ border : "1px solid black", mx: "auto" ,p : "15px" ,borderRadius : "15px"  , width : "90%"}}>
     
@@ -89,7 +132,23 @@ console.log(data.comments);
 
         <Button       
 
-        onClick={handlecomments}
+        onClick={
+
+          () => {
+
+            setTheComment([commentDetails])
+
+if (TheComment !== []) {
+  sessionStorage.setItem("comment" , JSON.stringify(TheComment) )
+
+}
+console.log(commentDetails);
+
+console.log(TheComment);
+
+          }
+
+        }
 
                 sx={{
                   bgcolor:'#AF8E60',

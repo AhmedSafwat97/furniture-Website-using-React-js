@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useGetUserQuery, useSignInMutation, useSignupMutation } from '../../services/SignApi';
 import { useEffect } from 'react';
 import jwtDecode from 'jwt-decode';
+import axios from 'axios';
 
 
 const SignUp = () => {
@@ -79,8 +80,20 @@ const SignUp = () => {
 
 
 
+    const [data, setData] = useState([]);
 
 
+    useEffect(() => {
+      axios
+        .get(`http://localhost:5000/blogs`)
+        .then((res) => {
+          console.log(res);
+          setData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, []);
 
 
 
