@@ -57,7 +57,7 @@ export default function Section1() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        my:"50px"}}>
+        my:"50px",}}>
             <Box sx={{width : '100%',display : "flex" , justifyContent : {xs:"center",md:"space-between"},flexWrap:{xs:"wrap",md:"nowrap"}, m: "30px 0"}}>
                 {AboutDetails.map((detail)=>(
                 <Box key={detail.id} >
@@ -82,7 +82,7 @@ export default function Section1() {
                   cols={2}
                   rowHeight={50}
                                    >
-                <ImageListItem cols={1}  rows={isSmallScreen?3:4}
+                <ImageListItem cols={1}  rows={4}
                   sx={{borderRadius: "15px",
                     backgroundImage: 'url("../../../../Imgs/About/1.jpg")',
                     backgroundPosition: "center center",
@@ -92,12 +92,12 @@ export default function Section1() {
                     position : 'relative',
                     textAlign: 'center',}}
                 ></ImageListItem> 
-                <ImageListItem cols={1}  rows={isSmallScreen?0:1}
+                <ImageListItem cols={1}  rows={1}
                 sx={{borderRadius: "15px",
                   position : 'relative',
                   textAlign: 'center',}}
                 ></ImageListItem>
-                 <ImageListItem cols={1}  rows={isSmallScreen?3:5}
+                 <ImageListItem cols={1}  rows={5}
                   sx={{borderRadius: "15px",
                     backgroundImage: 'url("../../../../Imgs/About/2.jpg")',
                     backgroundPosition: "center center",
@@ -107,7 +107,7 @@ export default function Section1() {
                     position : 'relative',
                     textAlign: 'center',}}
                 ></ImageListItem>
-                 <ImageListItem cols={1}  rows={isSmallScreen?3:3}
+                 <ImageListItem cols={1}  rows={3}
                   sx={{borderRadius: "15px",
                     backgroundImage: 'url("../../../../Imgs/About/3.jpg")',
                     backgroundPosition: "center center",
@@ -117,7 +117,7 @@ export default function Section1() {
                     position : 'relative',
                     textAlign: 'center',}}
                 ></ImageListItem>
-                 <ImageListItem cols={1}  rows={isSmallScreen?3:1}
+                 <ImageListItem cols={1}  rows={1}
                   sx={{borderRadius: "15px",
                     backgroundImage: 'url("../../../../Imgs/About/4.jpg")',
                     backgroundPosition: "center center",
@@ -130,7 +130,7 @@ export default function Section1() {
                 </ImageList>
 
                 </Box>
-                <Box sx={{width: {sx: "100%", md:"47%"}, py:"10px"}}>
+                <Box sx={{width: {xs: "100%", md:"47%"}, py:"10px",mt:{xs:"40px",md: "0px"}}}>
                   <Typography sx={{color: "gray"}}>our About us</Typography>
                   <Typography sx={{fontWeight: '900',m : '30px 50px 30px 0' , fontSize : {xs : "20px" , md : "35px"}}} variant='h4'>We Believe in pure and organic quality </Typography>
                   <Typography sx={{color: "gray" ,fontSize:"12px"}}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. molestias, officia vel vero asperiores optio pariatur porro? Eligendi, beatae a. Distinctio rem architecto, error mollitia quis vero non beatae harum. Possimus corrupti, reiciendis fuga doloribus obcaecati magnam ipsa modi nemo quis, et cum sed ipsam dolorum! </Typography>
