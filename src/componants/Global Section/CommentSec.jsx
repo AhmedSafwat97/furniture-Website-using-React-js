@@ -14,6 +14,7 @@ const Commentsec = ({data , CommentSecWidth , CommentSecName}) => {
     const [itemId, setitemId] = useState([]);
     const [TheComment, setTheComment] = useState(sessionStorage.getItem(CommentSecName) ? JSON.parse(sessionStorage.getItem(CommentSecName)) : [] );
 const [removeIcon, setremoveIcon] = useState(false);
+const [error, setError] = useState(false)
   
 
     const commentDetails  = {
@@ -95,23 +96,27 @@ const [removeIcon, setremoveIcon] = useState(false);
     <Box sx={{ border : "1px solid black", mx: "auto" ,p : "15px" ,borderRadius : "15px"  , width : {xs : "90%" , md : `${CommentSecWidth}%`} }}>
     
     <Typography variant='h5' sx={{mx : "auto" , width : "95%" , fontSize: "18px" ,fontWeight : "700"}}>Write your Comment</Typography>
+          {error && <Typography sx={{color:"red",fontSize:"12px",textAlign:"center"}}>Please ,Fill all the Form inputs</Typography>}
     <Box sx={{width:"95%",mx:"auto",borderRadius : "15px",display:"flex" }}>
        <form style={{width:"100%"}}>
         <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
             <TextField required
+                    value={Name}
                     onChange={(e) => {setName(e.target.value)}}
                     sx={{width :"49%",fontSize:"10px" , borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
                     size="small"
                     label="Name" />
             <TextField required
+                    value={Email}
                     onChange={(e) => {setEmail(e.target.value)}}
                     sx={{width :"49%",fontSize:"10px" , borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
                     size="small"
                     label="Email" />
         </Box>
         <TextField required
+        value={comment}
         onChange={(e) => {setcomment(e.target.value)}}
-                sx={{width :"97%",fontSize:"10px" , borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
+               sx={{width :"97%",fontSize:"10px" , borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
                 size="small"
                 multiline
                 rows={4}
@@ -126,11 +131,11 @@ const [removeIcon, setremoveIcon] = useState(false);
             if (TheComment !== []) {
             sessionStorage.setItem(CommentSecName , JSON.stringify([...TheComment , commentDetails]) )}
             console.log(commentDetails);
+            setEmail("")
+            setName("")
+            setcomment("")
            }
-          setEmail("")
-          setName("")
-          setcomment("")
-          
+           setError(true);
           }}
             sx={{
               my : "10px" ,
