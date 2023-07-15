@@ -25,7 +25,7 @@ export default function brands() {
             variant='h4'>Brands</Typography>
         <Box sx={{width : '100%',height : {xs : "fit-content" , md : "250px"},m: "40px 0",display : "flex", justifyContent:"space-evenly", alignItems:"center", flexWrap:{xs:"wrap"}}}>
         {brands.map((brand)=>
-            <Box key={brand.id} sx={{width:"100px"}}> <img src={brand.path} alt="" style={{width:"80%"}}/> </Box>
+            <Box key={brand.id} sx={{width:"100px"}}> <img src={brand.path} loading="lazy" alt="" style={{width:"80%"}}/> </Box>
         )}
         </Box>
     </Box>

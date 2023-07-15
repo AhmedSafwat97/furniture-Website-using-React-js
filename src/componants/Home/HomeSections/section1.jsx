@@ -2,8 +2,6 @@ import {
   Box,
   Button,
   Chip,
-  ImageList,
-  ImageListItem,
   Typography,
 } from "@mui/material";
 import React from "react";
@@ -251,7 +249,8 @@ const Section1 = () => {
                     widht: "100%",
                     height: "100%",
                   }}
-                  alt=""
+                  alt="product"
+                  loading='lazy'
                 />
               </Box>
             </Box>

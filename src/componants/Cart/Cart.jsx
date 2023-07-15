@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ScrollToTop from "../../ExternalMethods/ScrollToTop";
 import BannerSection from "../Home/HomeSections/bannerSection";
-import { Box, Button, IconButton, Chip, Rating, Stack, Typography, Container } from '@mui/material';
+import { Box, Button, IconButton, Chip, Rating, Stack, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
@@ -31,7 +31,6 @@ const Cart = () => {
 
     SelectedProducts.length === 0 ?  dispatch(CoponCoode(false)) : dispatch(CoponCoode(disable))
 
-    console.log(SelectedProducts);
 
     let total = 0;
 
@@ -87,7 +86,7 @@ const Cart = () => {
             <Box sx={{width : "100%" , mt : {xs : "10px" , md : "0px"} ,display : "flex" ,height : {xs : "200px" , md : "120px"} }}>
              <Box sx={{border : {xs : "none" , md :"0.5px solid #E9E7DB"}, borderRight : {xs : "0.5px solid #E9E7DB" , md : "none"}   , width : {xs : "45%" , md : "15%"} , height : {xs : "200px" , md : "120px"} , display : "flex", flexDirection : {xs : "column" , md : "row"} , alignItems : "center" , justifyContent : "center"}}>
             <Box sx={{width : {xs : "70%" , md : "60px"} , height : {xs : "60%" , md : "auto"} , bgcolor : "#F3F2EE" , p : "10px" , borderRadius : "5px"}}>
-                <img style={{width : "100%" , height : "100%"}} src={product.imageLink} alt=""/>
+                <img style={{width : "100%" , height : "100%"}} src={product.imageLink} loading='lazy' alt="product photo"/>
             </Box>
     
     

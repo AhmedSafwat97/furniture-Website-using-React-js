@@ -1,7 +1,5 @@
-import { Avatar, Box, Button, CircularProgress, IconButton, TextField, Typography } from '@mui/material';
-import React, { useEffect, useRef } from 'react';
-import { useCommentMutation, useGetOneblogQuery } from '../../services/productApi';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Avatar, Box, Button, IconButton, TextField, Typography } from '@mui/material';
+import React from 'react';
 import { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';

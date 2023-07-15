@@ -2,12 +2,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import { Box, FilledInput, FormControl, IconButton, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select, Typography } from '@mui/material';
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import { Box,FormControl, IconButton, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select, Typography } from '@mui/material';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import { useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
@@ -304,7 +299,6 @@ const Navigate = useNavigate()
             <IconButton 
 
             onClick={() => {
-                console.log(UserName , Password , ConfirmPassword);
                 if (UserName !== "" && Password !== "" && Password === ConfirmPassword ) {
                     setstepnum(2)
                     setMessage("")

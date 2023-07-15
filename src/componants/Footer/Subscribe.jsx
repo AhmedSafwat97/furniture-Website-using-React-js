@@ -26,10 +26,10 @@ const Subscribe = () => {
 
         <Box sx={{display : "flex" , flexDirection : "column"}}>
         <IconButton>
-            <img style={{width : "120px" , borderRadius : "10px"}} src="../../../Imgs/Google Play.jpg"  alt=""/>
+            <img style={{width : "120px" , borderRadius : "10px"}} src="../../../Imgs/Google Play.jpg" loading='lazy' alt="Google play"/>
         </IconButton>     
         <IconButton>
-            <img style={{width : "120px"  , borderRadius : "10px"}} src="../../../Imgs/App Store.jpg"  alt=""/>
+            <img style={{width : "120px"  , borderRadius : "10px"}} src="../../../Imgs/App Store.jpg" loading='lazy' alt="App store"/>
         </IconButton>
         </Box>
 

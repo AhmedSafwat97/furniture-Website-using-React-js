@@ -31,9 +31,6 @@ const Check = () => {
     const [Code, setCode] = useState("");
 
 
-console.log(firstName)
-
-
     const { SelectedProducts , disable } = useSelector((state) => state.Cart);
 
     let total = 0;
@@ -262,9 +259,7 @@ required
 
 
                     <FormControl>
-      <FormLabel onClick={() => {
-        console.log(paymentvalue);
-      }} id="demo-radio-buttons-group-label">Payment</FormLabel>
+      <FormLabel id="demo-radio-buttons-group-label">Payment</FormLabel>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
         defaultValue={paymentvalue}

@@ -1,13 +1,11 @@
 import React from 'react';
 import {
     Box,
-    Button,
     Chip,
     CircularProgress,
     IconButton,
     Rating,
     Stack,
-    TextField,
     Typography,
     useMediaQuery,
     useTheme,
@@ -21,7 +19,7 @@ import {
   import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
   import FavoriteIcon from "@mui/icons-material/Favorite";
   import SearchIcon from "@mui/icons-material/Search";
-  import { useGetpaginateProductQuery, useGetproductByNameQuery } from "../../services/productApi";
+  import {  useGetproductByNameQuery } from "../../services/productApi";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AddToCart, decrement, increment } from "../../services/CartSlice";
@@ -34,8 +32,6 @@ import BannerSection from "../Home/HomeSections/bannerSection";
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import { PriceCheck, TroubleshootOutlined } from '@mui/icons-material';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
@@ -46,7 +42,6 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 const Shop = () => {
     const {cat} = useParams();
 
-console.log(cat)
   const { data, error, isLoading } = useGetproductByNameQuery();
   const { SelectedProductsId , SelectedProducts  } = useSelector((state) => state.Cart);
   const { favProductsId   } = useSelector((state) => state.Fav);
@@ -71,7 +66,6 @@ console.log(cat)
 
   };
  
-console.log(checked);
 
 
 //   ________________________________________________________________
@@ -227,7 +221,8 @@ const valueFilter = ()=>{
                     <img
                     style={{ width: "100%", height: "100%" }}
                     src={Product.imageLink}
-                    alt=""
+                    alt="product photo"
+                    loading='lazy'
                     />
 
                 </Box>
@@ -319,40 +314,6 @@ const valueFilter = ()=>{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     {valueFilter().length === 0 && 
     <Box sx={{width : "100%" , height : "500px" , display : "flex" , justifyContent : "center" , alignItems : "center"}}>
 
@@ -430,7 +391,7 @@ sx={{display : {xs : "flex" , md : "none"} , cursor : "pointer" , ml : "10px"}}>
                                checked={checked.includes("All")}
                                onChange={handleCheckboxChange}
                          size="small" />} label="All"/>
-                        <Typography onClick={()=>console.log(checked)}>({data.length})</Typography>
+                        <Typography>({data.length})</Typography>
                     </Box>
 
                     {categories.map((cate)=> <Box key={cate} sx={{display:"flex",alignItems:"center", 

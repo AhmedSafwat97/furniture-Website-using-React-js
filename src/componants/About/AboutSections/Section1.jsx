@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box ,ImageList,ImageListItem,Typography, useMediaQuery, useTheme} from '@mui/material';
+import {Box ,ImageList,ImageListItem,Typography} from '@mui/material';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import GppGoodOutlinedIcon from '@mui/icons-material/GppGoodOutlined';
 import DeckIcon from '@mui/icons-material/Deck';
@@ -43,8 +43,7 @@ export default function Section1() {
           icon : <ChairOutlinedIcon sx={{color: "#AC8C5B" , fontSize: '30px'}} />,
         },
       ];
-      const theme = useTheme();
-      const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
+    
     
     return (<>
        

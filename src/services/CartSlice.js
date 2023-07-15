@@ -129,13 +129,6 @@ export const CartSlice = createSlice({
 
     }
 
-
-
-
-
-
-
-
   },
 })
 

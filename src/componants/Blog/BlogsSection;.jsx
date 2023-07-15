@@ -17,8 +17,6 @@ const BlogsSection = () => {
 
   const { data , error, isLoading } = useGetblogsByNameQuery();
 
-console.log(data)
-
 const Navigate = useNavigate();
 
 const theme = useTheme();
@@ -101,7 +99,8 @@ const num = isSmallScreen ? 1 : 3;
     <img
       style={{ width: "100%", height: "100%" , borderRadius: "15px" }}
       src={blog.imageLink}
-      alt=""
+      alt="blog Details"
+      loading='lazy'
     />
     <Box sx={{position : "absolute" , bottom : "0" , right : "0",bgcolor : "#F3F2EE" , textAlign : "center" , width : "60px" , p : "5px 0" , borderTopLeftRadius : "15px"}}>
       <Typography variant='h6' fontSize="12px">{blog.date}</Typography>

@@ -77,7 +77,7 @@ const Navigate = useNavigate()
 
       <Box sx={{width : {xs : "100%" , md : "50%"} , height : {xs : "50%" , md : "100%"} , display : "flex" , alignItems : "center" , justifyContent : "center"}} >
       <Box sx={{width : {xs : "150px" , md : "250px"}}}>
-              <img style={{width : "100%" , height : "100%"}} src={Product.imageLink} alt="" />
+              <img style={{width : "100%" , height : "100%"}} src={Product.imageLink} loading='lazy' alt="product photo" />
       </Box>                
       </Box>
 

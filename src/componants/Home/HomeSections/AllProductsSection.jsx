@@ -228,7 +228,8 @@ const AllProductsSection = () => {
           <img
             style={{ width: "100%", height: "100%" }}
             src={Product.imageLink}
-            alt=""
+            alt="product"
+            loading='lazy'
           />
         </Box>
         <Box
