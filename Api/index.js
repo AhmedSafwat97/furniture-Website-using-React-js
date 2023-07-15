@@ -173,30 +173,30 @@ app.get('/users', (req, res) => {
 
 
 
-app.post('/blogs/comment', (req, res) => {
-  const { blogId, commentDetails } = req.body;
+// app.post('/blogs/comment', (req, res) => {
+//   const { blogId, commentDetails } = req.body;
 
-  // Find the blog in the array
-  const blog = blogs.find(p => p.id === blogId);
+//   // Find the blog in the array
+//   const blog = blogs.find(p => p.id === blogId);
 
-  if (!blog) {
-    return res.status(404).json({ error: 'Blog not found' });
-  }
+//   if (!blog) {
+//     return res.status(404).json({ error: 'Blog not found' });
+//   }
 
-  // Add the comment to the blog's comments array
-  blog.comments.push(commentDetails);
+//   // Add the comment to the blog's comments array
+//   blog.comments.push(commentDetails);
 
-  // Save the updated array back to the file
-  fs.writeFile('./blogs.js', `module.exports = ${JSON.stringify(blogs)}`, (err) => {
-    if (err) {
-      console.error('Error writing to file:', err);
-      return res.status(500).json({ error: 'Internal server error' });
-    }
+//   // Save the updated array back to the file
+//   fs.writeFile('./blogs.js', `module.exports = ${JSON.stringify(blogs)}`, (err) => {
+//     if (err) {
+//       console.error('Error writing to file:', err);
+//       return res.status(500).json({ error: 'Internal server error' });
+//     }
 
-    // Return the updated blog object
-    res.json(blog);
-  });
-});
+//     // Return the updated blog object
+//     res.json(blog);
+//   });
+// });
 
 
 

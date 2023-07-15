@@ -14,6 +14,15 @@ const products = [
    sold : 2 ,
    tags : "Chair , Sofa , Single Sofa" ,
    reviews : 25,
+   comments: [
+    {      
+      Name: "dfdfdf",
+    Email: "dfdfddff",
+    date: "7/13/2023",
+    Comment: "dfdffddfdf", }
+
+   ],
+
  }
 ,
  {
@@ -31,6 +40,15 @@ const products = [
  sold : 16 ,
  tags : "Chair , Sofa , ArmChair"  ,
  reviews : 13 ,
+ comments: [
+  {      
+    Name: "dfdfdf",
+  Email: "dfdfddff",
+  date: "7/13/2023",
+  Comment: "dfdffddfdf", }
+
+
+ ],
 
  },
  {
@@ -47,7 +65,17 @@ const products = [
  count : 11  ,
  sold : 8 ,
  tags : "Commode , wooden Commode , single Comode"  ,
- reviews : 12 ,  
+ reviews : 12 , 
+ comments: [
+
+  {      
+    Name: "dfdfdf",
+  Email: "dfdfddff",
+  date: "7/13/2023",
+  Comment: "dfdffddfdf", }
+
+ ],
+ 
 
 },
  {
@@ -65,6 +93,15 @@ const products = [
   sold : 25 ,
   tags : "Dresser , Wooden Dresser , Double Dresser " ,
   reviews : 22 ,
+  comments: [
+    {      
+      Name: "dfdfdf",
+    Email: "dfdfddff",
+    date: "7/13/2023",
+    Comment: "dfdffddfdf", }
+
+  ],
+
 
 },
  {
@@ -82,6 +119,15 @@ const products = [
   sold : 14 ,
   tags : "Table , Wooden Table , Disk" ,
   reviews : 44,
+  comments: [
+    {      
+      Name: "dfdfdf",
+    Email: "dfdfddff",
+    date: "7/13/2023",
+    Comment: "dfdffddfdf", }
+
+  ],
+
 
 },
 {
@@ -99,6 +145,15 @@ description:
   sold : 11 ,
   tags : "Bed , wooden Bed , steel Bed" ,
   reviews : 23 ,
+  comments: [
+    {      
+      Name: "dfdfdf",
+    Email: "dfdfddff",
+    date: "7/13/2023",
+    Comment: "dfdffddfdf", }
+
+  ],
+
 
 },
 {
@@ -116,6 +171,14 @@ description:
   sold : 33  ,
   tags : "Chair , Sofa , Single  Sofa" ,
   reviews : 32,
+  comments: [
+    {      
+      Name: "dfdfdf",
+    Email: "dfdfddff",
+    date: "7/13/2023",
+    Comment: "dfdffddfdf", }
+
+  ],
 
   
 },
@@ -134,6 +197,14 @@ description:
   sold : 10 ,
   tags : "Bed , wooden Bed , steel  Bed" ,
   reviews : 14 ,
+  comments: [
+    {      
+      Name: "dfdfdf",
+    Email: "dfdfddff",
+    date: "7/13/2023",
+    Comment: "dfdffddfdf", }
+
+  ],
 
 },
 ];

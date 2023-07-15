@@ -25,8 +25,10 @@ export default function FormDialog() {
 
 
 const [Signup , { isLoading : signupLoading }] = useSignupMutation();
-const [SignIn , { isLoading : signinLoading} ] = useSignInMutation();
+const [SignIn , { isLoading : signinLoading , isError : SignINError} ] = useSignInMutation();
 
+
+SignINError ? console.log(SignINError) : console.log("")
 
 
   const [open, setOpen] = React.useState(false);
@@ -45,9 +47,8 @@ const [SignIn , { isLoading : signinLoading} ] = useSignInMutation();
     const [UserName, setUserName] = useState("");
     const [ConfirmPassword, setConfirmPassword] = useState("");
     const [Password, setPassword] = useState("");
-
-const [Message, setMessage] = useState("");
-
+    const [errorfocus, seterrorfocus] = useState(false);
+    const [Message, setMessage] = useState("")
 
 const Navigate = useNavigate()
 
@@ -146,7 +147,7 @@ const Navigate = useNavigate()
     
     <Typography sx={{width : "calc(100% - 20px)" , fontWeight : "700" , mt : "15px" ,color : "#92764E" ,textAlign : "center"}} variant='h4'>Sign In</Typography>
     
-    
+    {SignINError && <Typography>Invalid Email Or Password</Typography>}
     <Box sx={{width :{xs : "calc(100% - 20px)"
      ,md : "calc(100% - 20px)" } , display : "flex" , flexDirection : "column" , alignItems : "center"}}>
             
@@ -244,9 +245,13 @@ const Navigate = useNavigate()
           
           
           <TextField
-          onChange={(e) => {setUserName(e.target.value)}}
+          onChange={(e) => {setUserName(e.target.value)
+          }}
           sx={{outline : "none"  ,width : { xs : "95%" , md : "80%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
           id="username" label="User name" type="text" />
+         {Error ===  1  &&  <Box sx={{width : { xs : "95%" , md : "80%"} , transform : "translate(20px , -8px)"}}>
+            <Typography sx={{fontSize : "10px"}}>userName Error</Typography>
+          </Box>}
   
   
   
@@ -304,9 +309,12 @@ const Navigate = useNavigate()
 
 onClick={() => {
     console.log(UserName , Password , ConfirmPassword);
-    if (UserName !== "" && Password !== "" && Password === ConfirmPassword ) {
+    if (UserName !== "" && Password !== "" ) {
+      if (Password === ConfirmPassword ) {
         setstepnum(2)
         setMessage("")
+      }
+      
     } else {
         setMessage("Invalid Error")
     }

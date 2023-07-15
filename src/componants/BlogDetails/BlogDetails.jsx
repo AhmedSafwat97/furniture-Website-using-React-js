@@ -12,7 +12,7 @@ import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import Blogcommentsec from './Blogcommentsec';
+import Commentsec from '../Global Section/CommentSec';
 
 
 
@@ -35,6 +35,10 @@ const BlogDetails = () => {
 
     const { data , error, isLoading } = useGetOneblogQuery(id);
     let LatestBlogs = useGetblogsByNameQuery().data
+
+
+    const [CommentSecWidth, setCommentSecWidth] = useState(90);
+  const [CommentSecName, setCommentSecName] = useState("blogComment");
 
     console.log(LatestBlogs);
 
@@ -132,8 +136,7 @@ const BlogDetails = () => {
 
     </Box>
 
-<Blogcommentsec {...{data}} />
-
+<Commentsec {...{data , CommentSecWidth , CommentSecName}} />
 
 </>
 }

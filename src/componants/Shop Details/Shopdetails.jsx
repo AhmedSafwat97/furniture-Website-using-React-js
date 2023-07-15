@@ -13,6 +13,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { AddToCart, decrement, increment } from "../../services/CartSlice";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import Commentsec from "../Global Section/CommentSec";
+import { useState } from "react";
 
 const Shopdetails = () => {
 
@@ -21,7 +23,9 @@ console.log(id);
   const { data , error, isLoading } = useGetOneProductQuery(id);
   let catdata = useGetOneProductQuery(id).data?.category
   
-  
+  const [CommentSecWidth, setCommentSecWidth] = useState(75);
+  const [CommentSecName, setCommentSecName] = useState("ShopComment");
+
   const { SelectedProductsId , SelectedProducts } = useSelector((state) => state.Cart);
   
   const dispatch = useDispatch();
@@ -245,7 +249,10 @@ console.log(id);
   </Box>
 
     }
+{data &&
 
+<Commentsec {...{data , CommentSecWidth , CommentSecName}} />
+}
 
 <Box
         sx={{
@@ -255,7 +262,7 @@ console.log(id);
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          height: "470px",
+          minheight: "470px",
         }}
       >
         <Box sx={{ transform: "translateY(40px)", width: "75%" }}>
@@ -266,7 +273,6 @@ console.log(id);
             Related Products
           </Typography>
         </Box>
-
         <SwiperSection catdata = {catdata}/>
       </Box>
 
