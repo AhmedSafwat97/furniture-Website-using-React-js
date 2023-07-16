@@ -14,17 +14,15 @@ import { AddToCart, decrement, increment } from "../../services/CartSlice";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Commentsec from "../Global Section/CommentSec";
-import { useState } from "react";
 
 const Shopdetails = () => {
 
 const {id} = useParams()
-console.log(id);
   const { data , error, isLoading } = useGetOneProductQuery(id);
   let catdata = useGetOneProductQuery(id).data?.category
   
-  const [CommentSecWidth, setCommentSecWidth] = useState(75);
-  const [CommentSecName, setCommentSecName] = useState("ShopComment");
+  const CommentSecWidth = 75;
+  const CommentSecName = "ShopComment";
 
   const { SelectedProductsId , SelectedProducts } = useSelector((state) => state.Cart);
   
@@ -93,7 +91,8 @@ console.log(id);
         <img
           style={{ width: "100%" }}
           src={data.imageLink}
-          alt=""
+          alt="product Photo"
+          loading="lazy"
         />
       </Box>
       <Box

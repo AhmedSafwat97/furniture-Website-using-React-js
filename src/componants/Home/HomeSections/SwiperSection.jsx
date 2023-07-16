@@ -174,7 +174,8 @@ const Navigate = useNavigate();
     <img
       style={{ width: "100%", height: "100%" }}
       src={Product.imageLink}
-      alt=""
+      alt="product photo"
+      loading='lazy'
     />
   </Box>
   <Box

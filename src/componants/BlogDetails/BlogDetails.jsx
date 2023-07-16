@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ScrollToTop from '../../ExternalMethods/ScrollToTop';
 import BannerSection from '../Home/HomeSections/bannerSection';
-import { Avatar, Box, Button, CircularProgress, IconButton, TextField, Typography } from '@mui/material';
-import { useCommentMutation, useGetOneblogQuery, useGetblogsByNameQuery } from '../../services/productApi';
+import {Box, Button, CircularProgress, IconButton, Typography } from '@mui/material';
+import { useGetOneblogQuery, useGetblogsByNameQuery } from '../../services/productApi';
 import { useNavigate, useParams } from 'react-router-dom';
 import DateRangeOutlinedIcon from '@mui/icons-material/DateRangeOutlined';
 import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
@@ -37,10 +37,9 @@ const BlogDetails = () => {
     let LatestBlogs = useGetblogsByNameQuery().data
 
 
-    const [CommentSecWidth, setCommentSecWidth] = useState(90);
-  const [CommentSecName, setCommentSecName] = useState("blogComment");
+    const CommentSecWidth = 90;
+  const CommentSecName = "blogComment";
 
-    console.log(LatestBlogs);
 
     const Navigate = useNavigate();
 
@@ -100,7 +99,7 @@ const BlogDetails = () => {
         </Box>
         
         <Box sx={{width : "95%" , height : "350px" ,mx : "auto" }}>
-        <img style={{width : "100%" , height: "100%" , borderRadius : "15px"}} src={data.imageLink} alt=""  />
+        <img style={{width : "100%" , height: "100%" , borderRadius : "15px"}} loading='lazy' src={data.imageLink} alt="blog Details"  />
         
         </Box>
         
@@ -161,7 +160,7 @@ const BlogDetails = () => {
   onClick={() => {Navigate(`/BlogDetails/${blog.id}`)}}
   >
 <Box sx={{width : "25%" , height : "80px" , mr : "5px"}}>
-     <img style={{width : "100%" , height : "100%"}} src={blog.imageLink} alt="" />
+     <img style={{width : "100%" , height : "100%"}} loading='lazy' src={blog.imageLink} alt="blog Details" />
 </Box>
 
 <Box sx={{width : "75%"}} >

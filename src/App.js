@@ -14,13 +14,9 @@ import CoponCode from "./componants/Header/CoponCode";
 import Fav from "../src/componants/Fav/Fav";
 import Notifiction from "./componants/Global Section/Notifiction.jsx"
 import BlogDetails from "./componants/BlogDetails/BlogDetails";
-import SignUp from "./componants/Sign/SignUp";
-import { useSelector } from "react-redux";
 import { useGetproductByNameQuery } from "./services/productApi";
 import { Box, Typography } from "@mui/material";
 import CircularProgress from '@mui/material/CircularProgress';
-import { useEffect } from "react";
-import { useState } from "react";
 
 
 
@@ -60,6 +56,7 @@ function App() {
                   style={{ width: "100%", Height: "100%" }}
                   src="../../../Imgs/Logo.png"
                   alt="Furni Pro"
+                  loading="lazy"
                 />
               </Box>
 
@@ -84,7 +81,6 @@ function App() {
   <Route path="/cart" element={<Cart />} />
   <Route path="/Checkout" element={<Check />} />
   <Route path="/fav" element={<Fav />} />
-  <Route path="/Signup" element={<SignUp />} />
 
 </Routes>
 <Notifiction/>

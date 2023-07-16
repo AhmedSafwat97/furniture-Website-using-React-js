@@ -4,16 +4,13 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import { Box, Typography } from '@mui/material';
+import { Box, DialogTitle, Typography } from '@mui/material';
 import { useState } from 'react';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { toast } from 'react-toastify'
 
 
 export default function FormDialog({paymentvalue ,  Code , address ,Phone ,Email , LastName , firstName , Town , Country}) {
@@ -75,20 +72,6 @@ const Month =[
 
   const handleClickOpen = () => {
     setOpen(true);
-
-// if (
-//   Code !== "" && address !== "" && Phone !== "" && Email !== "" && LastName !== "" 
-//   && firstName !== "" && Town !== "" && Country !== ""
-// ) {
-//   setOpen(true);
-
-//   console.log(firstName);
-// } else {
-
-//   toast.error(`Please fill the Billing Details form` , {theme: "colored" , position: "top-center",});
-
-// }
-  
   };
 
   const handleClose = () => {
@@ -165,7 +148,7 @@ const Month =[
              <> 
             <Box display="flex" alignItems="center">
                <Typography>Please Enter Your Credit Card Details</Typography>
-                <img style={{width : "40px" , margin : "0 10px"}} src="../../../Imgs/master card.png"  alt=""/>
+                <img style={{width : "40px" , margin : "0 10px"}} loading='lazy' src="../../../Imgs/master card.png"  alt="card"/>
               
               
             </Box>
@@ -220,7 +203,7 @@ const Month =[
        <> 
        <Box display="flex" alignItems="center">
           <Typography>Please Enter Your Visa Card Details</Typography>
-           <img style={{width : "40px" , margin : "0 10px"}} src="../../../Imgs/visa.png"  alt=""/>
+           <img style={{width : "40px" , margin : "0 10px"}} loading='lazy' src="../../../Imgs/visa.png"  alt="visa"/>
          
          
        </Box>
@@ -277,7 +260,7 @@ const Month =[
        <> 
               <Box display="flex" alignItems="center">
           <Typography>Please Enter Your Paypal account</Typography>
-           <img style={{width : "40px" , margin : "0 10px"}} src="../../../Imgs/paypal.png"  alt=""/>
+           <img style={{width : "40px" , margin : "0 10px"}} src="../../../Imgs/paypal.png" loading='lazy' alt="paypal"/>
          
          
        </Box>

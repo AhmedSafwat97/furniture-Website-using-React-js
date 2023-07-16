@@ -87,6 +87,7 @@ const Footer = () => {
                   style={{ width: "100%", Height: "100%" }}
                   src="../../../Imgs/Logo.png"
                   alt="Furni Pro"
+                  loading='lazy'
                 />
               </Box>
               <Box>
@@ -179,12 +180,12 @@ const Footer = () => {
               </Box>
               <Box>
             <IconButton>
-                <img style={{width : "40px"}} src="../../../Imgs/paypal.png"  alt=""/>
+                <img style={{width : "40px"}} src="../../../Imgs/paypal.png" loading='lazy' alt="paypal"/>
             </IconButton>
             <IconButton>
-                <img style={{width : "40px"}} src="../../../Imgs/visa.png"  alt=""/>
+                <img style={{width : "40px"}} src="../../../Imgs/visa.png" loading='lazy' alt="visa"/>
             </IconButton>     <IconButton>
-                <img style={{width : "40px"}} src="../../../Imgs/master card.png"  alt=""/>
+                <img style={{width : "40px"}} src="../../../Imgs/master card.png" loading='lazy' alt="card"/>
             </IconButton>
               </Box>
           </Box>

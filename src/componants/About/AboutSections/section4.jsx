@@ -1,12 +1,11 @@
 import React from 'react';
-import { Box, Button, CircularProgress, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, CircularProgress, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
-import { useNavigate } from 'react-router-dom';
 import { useGetReviewQuery } from '../../../services/productApi';
 import Avatar from '@mui/material/Avatar';
 
@@ -15,7 +14,6 @@ const Section4 = () => {
 
   const { data , error, isLoading } = useGetReviewQuery();
 
-console.log(data)
 
 
 const theme = useTheme();
@@ -97,7 +95,7 @@ const num = isSmallScreen ? 1 : 3;
 >
 
     <Box sx={{width : "85%"}}>
-        <img style={{width : "70px"}} src="../../../../Imgs/About/review.png" alt="" />
+        <img style={{width : "70px"}} loading='lazy' src="../../../../Imgs/About/review.png" alt="" />
     </Box>
 
 

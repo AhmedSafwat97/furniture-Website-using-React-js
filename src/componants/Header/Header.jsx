@@ -4,20 +4,19 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
-import { Badge, Container, Divider, Input, TextField, Typography } from "@mui/material";
+import { Badge, Container, Input, TextField, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useGetproductByNameQuery } from "../../services/productApi";
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import { useEffect } from "react";
-import Sign from "../Sign/Sign";
 import FormDialog from "../Sign/Sign";
 import jwtDecode from "jwt-decode";
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -44,15 +43,14 @@ function ResponsiveAppBar() {
   const navigate = useNavigate();
 
 
-  const Location = useLocation()
+  const Location = useLocation();
 
-  // console.log(Location)
 
   const { SelectedProductsId   } = useSelector((state) => state.Cart);
 
   const { favProductsId  } = useSelector((state) => state.Fav);
 
-  const { data, error, isLoading } = useGetproductByNameQuery();
+  const { data} = useGetproductByNameQuery();
 
 
   let decodedToken;
@@ -73,7 +71,6 @@ const Searchdata = ()=> {
     return data?.filter((product) => product.Name.toUpperCase().startsWith(Search.toUpperCase()) || product.category.toUpperCase().startsWith(Search.toUpperCase()))
   
   }else{  
-    console.log("error");
     return null
   }
   } 
@@ -152,7 +149,7 @@ const Searchdata = ()=> {
                                                     setSearch("")}}>
                <Box sx={{cursor : "pointer" ,display : "flex" , justifyContent : "space-between" ,m : "5px"}}>
                  <Box sx={{width : "25%" , height : "80px" , bgcolor:"#FFF"}}>
-                   <img style={{width : "100%" , height : "100%"}} src={product.imageLink} alt="" />
+                   <img style={{width : "100%" , height : "100%"}} src={product.imageLink} loading='lazy' alt="product Photo" />
                  </Box>
               
                <Box sx={{width : "50%"}}>
@@ -202,6 +199,7 @@ const Searchdata = ()=> {
                 style={{ width: "100%", Height: "100%" }}
                 src="../../../Imgs/Logo.png"
                 alt="Furni Pro"
+                loading='lazy'
               />
             </Box>
           </Toolbar>
@@ -319,6 +317,7 @@ size="large" aria-label="Favorite" color="inherit" >
                   style={{ width: "100%", Height: "100%" }}
                   src="../../../Imgs/Logo.png"
                   alt="Furni Pro"
+                  loading='lazy'
                 />
               </Box>
             </Toolbar>

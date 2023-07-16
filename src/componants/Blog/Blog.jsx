@@ -80,7 +80,8 @@ key={blog.id}
     <img
       style={{ width: "100%", height: "100%" , borderRadius: "15px" }}
       src={blog.imageLink}
-      alt=""
+      alt="blog photo"
+      loading='lazy'
     />
     <Box sx={{position : "absolute" , bottom : "0" , right : "0",bgcolor : "#F3F2EE" , textAlign : "center" , width : "60px" , p : "5px 0" , borderTopLeftRadius : "15px"}}>
       <Typography variant='h6' fontSize="12px">{blog.date}</Typography>
@@ -154,7 +155,7 @@ key={blog.id}
 {data.slice(-3).map((blog) => (
   <Box key={blog.id} sx={{p : "10px 0" , m : "0 10px" ,display : "flex"}}>
 <Box sx={{width : "25%" , height : "80px" , mr : "5px"}}>
-     <img style={{width : "100%" , height : "100%"}} src={blog.imageLink} alt="" />
+     <img style={{width : "100%" , height : "100%"}} src={blog.imageLink} loading='lazy' alt="blod Details" />
 </Box>
 
 <Box sx={{width : "75%"}} >
@@ -182,7 +183,7 @@ key={blog.id}
 <hr style={{width : "90%" , margin : "0 auto"}}/>
 
 {Tags.map((tag) => (
-    <Button sx={{bgcolor : "#F3F2EE" , color : "black" , m : "5px" , borderRadius : "10px" , fontSize : "12px"}} >{tag.Tag}</Button>
+    <Button key={tag.Tag} sx={{bgcolor : "#F3F2EE" , color : "black" , m : "5px" , borderRadius : "10px" , fontSize : "12px"}} >{tag.Tag}</Button>
 ))}
 
 

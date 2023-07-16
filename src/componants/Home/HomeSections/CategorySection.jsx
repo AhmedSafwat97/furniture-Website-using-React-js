@@ -40,9 +40,7 @@ if (data) {
       uniqueProducts.push(product);
       categories.push(category);
     }
-  }
-  
-console.log(uniqueProducts)
+  }  
 }
 
     
@@ -135,7 +133,8 @@ key={Category.id}
               <img
                 style={{ width: "100%", height: "100%" }}
                 src={Category.imageLink}
-                alt=""
+                alt="category photo"
+                loading='lazy'
               />
             </Box>
             <Box
