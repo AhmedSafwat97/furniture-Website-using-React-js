@@ -126,10 +126,11 @@ const [removeIcon, setremoveIcon] = useState(false);
             if (TheComment !== []) {
             sessionStorage.setItem(CommentSecName , JSON.stringify([...TheComment , commentDetails]) )}
             console.log(commentDetails);
+            setEmail("")
+            setName("")
+            setcomment("")
            }
-          setEmail("")
-          setName("")
-          setcomment("")
+ 
           
           }}
             sx={{
