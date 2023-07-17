@@ -24,6 +24,7 @@ import BannerSection from '../Home/HomeSections/bannerSection';
 import { useNavigate } from "react-router-dom";
 import ScrollToTop from "../../ExternalMethods/ScrollToTop";
 import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
+import { Helmet } from "react-helmet";
 
 
 const Fav = () => {
@@ -44,6 +45,9 @@ const Fav = () => {
 
     return (
         <Box>
+          <Helmet>
+      <title>Favourite Frniture Product</title>
+    </Helmet>
                 <ScrollToTop/>
 
         <BannerSection  PageName="Favourite" />

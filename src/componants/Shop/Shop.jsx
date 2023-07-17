@@ -35,6 +35,7 @@ import FormControl from '@mui/material/FormControl';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import { Helmet } from 'react-helmet';
 
 
 
@@ -127,6 +128,9 @@ const valueFilter = ()=>{
 
     return (
         <>
+        <Helmet>
+      <title>Shop</title>
+    </Helmet>
     <ScrollToTop/>
     <BannerSection  PageName="Shop" {...{cat}}  />
 

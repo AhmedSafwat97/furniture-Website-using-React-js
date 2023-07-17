@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
 import DateRangeOutlinedIcon from '@mui/icons-material/DateRangeOutlined';
+import { Helmet } from 'react-helmet';
 
 const Blog = () => {
 
@@ -32,6 +33,10 @@ const Blog = () => {
 
     return (
         <>
+         <Helmet>
+      <meta charSet="utf-8" />
+      <title>Blog</title>
+    </Helmet>
     <ScrollToTop/>
     <BannerSection  PageName="Blog" />
 

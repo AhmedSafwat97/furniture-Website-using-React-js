@@ -13,6 +13,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import Commentsec from '../Global Section/CommentSec';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -45,6 +46,9 @@ const BlogDetails = () => {
 
     return (
         <>
+         <Helmet>
+      <title>Blod Details</title>
+    </Helmet>
     <ScrollToTop/>
     <BannerSection  PageName="Blog Details" />
 

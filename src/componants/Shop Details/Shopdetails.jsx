@@ -14,6 +14,7 @@ import { AddToCart, decrement, increment } from "../../services/CartSlice";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Commentsec from "../Global Section/CommentSec";
+import { Helmet } from "react-helmet";
 
 const Shopdetails = () => {
 
@@ -39,6 +40,9 @@ const {id} = useParams()
 
   return (
     <>
+    <Helmet>
+      <title>Shop Details</title>
+    </Helmet>
     <ScrollToTop/>
     <BannerSection  PageName="Shop Details" />
 
