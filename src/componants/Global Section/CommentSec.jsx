@@ -133,7 +133,12 @@ const [error, setError] = useState(false)
             setName("")
             setcomment("")
            }
+<<<<<<< HEAD
+ 
+          
+=======
            setError(true);
+>>>>>>> 56be82b567d47aff8fe4e7550f2b494287baa5aa
           }}
             sx={{
               my : "10px" ,
