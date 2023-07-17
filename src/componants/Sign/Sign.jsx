@@ -61,29 +61,45 @@ const Navigate = useNavigate()
         }};
 
 
-      const handleSignin = async () => {
-        try {
-            const { data } = await SignIn({ UserName, Password });
-            const token = data.token;
+      // const handleSignin = async () => {
+      //   try {
+      //       const { data } = await SignIn({ UserName, Password });
+      //       const token = data.token;
         
-            if (token) {
-              console.log('Signin successful!');
-              localStorage.setItem('token', token); // Save the token in session storage
-            } else {
-              console.error('Signin failed: Token not received');
-            }
+          
 
-           if (localStorage.getItem("token")) {
-            setOpen(false)
-            Navigate("/") }
-
-          } catch (error) {
-            console.error('Signin failed:', error);
-          }        
+      //       console.error('Signin failed:', error);
+      //     }        
        
-      };
+      // };
 
 
+
+                // Call the login mutation from the API slice
+                const handleSignin  = async () => {
+                  // Call the login mutation from the API slice
+                  const result = await SignIn({ UserName  , Password });
+              
+                  if (result.error) {
+                    console.log('Error:', result);
+                  } else {
+                    const { token } = result.data;
+                    // Store the token securely (e.g., local storage or cookies)
+                    console.log('Token:', token);
+                    if (token) {
+                      console.log('Signin successful!');
+                      localStorage.setItem('token', token); // Save the token in session storage
+                    } else {
+                      console.error('Signin failed: Token not received');
+                    }
+        
+                   if (localStorage.getItem("token")) {
+                    setOpen(false)
+                    Navigate("/") }
+                  }
+
+           
+                };
 
 
 

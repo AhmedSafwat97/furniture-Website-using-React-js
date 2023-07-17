@@ -20,6 +20,7 @@ import { useEffect } from "react";
 import FormDialog from "../Sign/Sign";
 import jwtDecode from "jwt-decode";
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useSignoutMutation } from "../../services/SignApi";
 
 
 
@@ -46,6 +47,14 @@ function ResponsiveAppBar() {
   const Location = useLocation();
 
 
+
+  const [SignOut , { isLoading : signoutLoading }] = useSignoutMutation();
+
+
+
+
+
+
   const { SelectedProductsId   } = useSelector((state) => state.Cart);
 
   const { favProductsId  } = useSelector((state) => state.Fav);
@@ -59,12 +68,25 @@ function ResponsiveAppBar() {
   if (token) {
     decodedToken = jwtDecode(token);
   }
-
-  const handleSignOut = () => {
-    // Clear the token from session storage
-    localStorage.removeItem('token')
-    navigate("/")
+  const handleSignout = async () => {
+    if (token) {
+      const UserId = decodedToken.id
+      const result = await SignOut({token , UserId });
+      if (result.error) {
+        console.log('Sign out failed:', result.error);
+      } else {
+        console.log('Sign out success', result.data);
+      }
+    }
+    localStorage.removeItem("token")
+     navigate("/")
   };
+
+  // const handleSignOut = () => {
+  //   // Clear the token from session storage
+  //   localStorage.removeItem('token')
+  //   navigate("/")
+  // };
 
 const Searchdata = ()=> {
   if(Search !== ""){
@@ -149,7 +171,7 @@ const Searchdata = ()=> {
                                                     setSearch("")}}>
                <Box sx={{cursor : "pointer" ,display : "flex" , justifyContent : "space-between" ,m : "5px"}}>
                  <Box sx={{width : "25%" , height : "80px" , bgcolor:"#FFF"}}>
-                   <img style={{width : "100%" , height : "100%"}} src={product.imageLink} loading='lazy' alt="product Photo" />
+                   <img style={{width : "100%" , height : "100%"}} src={product.imageLink} loading='lazy' alt="product Photo2" />
                  </Box>
               
                <Box sx={{width : "50%"}}>
@@ -263,7 +285,7 @@ size="large" aria-label="Favorite" color="inherit" >
         )}
 
 
-      {decodedToken &&  <Button  onClick={handleSignOut} >
+      {decodedToken &&  <Button  onClick={handleSignout} >
           <LogoutIcon sx={{color : "#92764E"}} />
           <Typography sx={{fontSize : "12px" ,color : "#92764E"}}>Logout</Typography>
           </Button> }
@@ -425,7 +447,7 @@ size="large" aria-label="Favorite" color="inherit" >
                 </IconButton>
 
 
-                {decodedToken &&  <Button  onClick={handleSignOut} >
+                {decodedToken &&  <Button  onClick={handleSignout} >
           <LogoutIcon sx={{color : "#92764E"}} />
           <Typography sx={{fontSize : "12px" ,color : "#92764E"}}>Logout</Typography>
           </Button> }

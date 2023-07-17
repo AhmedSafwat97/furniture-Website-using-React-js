@@ -19,6 +19,13 @@ const SignApi = createApi({
         body: user,
       }),
     }), 
+    Signout: builder.mutation({
+      query: (user) => ({
+        url: '/signout',
+        method: 'POST',
+        body: user,
+      }),
+    }), 
     
     
   }),
@@ -38,7 +45,7 @@ export const userApi = createApi({
 
 
 
-export const { useSignupMutation , useSignInMutation  } = SignApi;
+export const { useSignupMutation , useSignInMutation , useSignoutMutation  } = SignApi;
 export const {  useGetUserQuery   } = userApi;
 export default SignApi;
 

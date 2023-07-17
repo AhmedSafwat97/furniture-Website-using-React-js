@@ -39,7 +39,7 @@ const Section1 = () => {
       price: 250,
     },    
      {
-      img: "../../../../Imgs/Design3.jpg",
+      img: "../../../../Imgs/Design4.jpg",
       discount: "30% Discount",
       title: `New Stylish Decor Furniture`,
       discription : "Unique Furniture Stylr Design for Your Family" ,

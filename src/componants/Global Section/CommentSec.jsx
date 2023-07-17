@@ -27,7 +27,7 @@ const [error, setError] = useState(false)
 
     return (
         <Box sx={{m : "20px 0"}}>
-    <Box sx={{ border : "1px solid black", mx: "auto" ,p : "15px" ,borderRadius : "15px"  , width : {xs : "90%" , md : `${CommentSecWidth}%`} , mb:"20px" }}>
+    <Box sx={{ border : "1px solid black", mx: "auto" ,p : "15px" ,borderRadius : "15px"  , width : {xs : "85%" , md : `${CommentSecWidth}%`} , mb:"20px" }}>
     
         <Typography variant='h6' sx={{mx : "auto" , width : "95%" , fontSize: "18px" ,fontWeight : "700"}}>Comments</Typography>
         {/* {map} */}
@@ -91,7 +91,7 @@ const [error, setError] = useState(false)
 
 
 
-    <Box sx={{ border : "1px solid black", mx: "auto" ,p : "15px" ,borderRadius : "15px"  , width : {xs : "90%" , md : `${CommentSecWidth}%`} }}>
+    <Box sx={{ border : "1px solid black", mx: "auto" ,p : "15px" ,borderRadius : "15px"  , width : {xs : "85%" , md : `${CommentSecWidth}%`} }}>
     
     <Typography variant='h5' sx={{mx : "auto" , width : "95%" , fontSize: "18px" ,fontWeight : "700"}}>Write your Comment</Typography>
           {error && <Typography sx={{color:"red",fontSize:"12px",textAlign:"center"}}>Please ,Fill all the Form inputs</Typography>}
@@ -133,12 +133,7 @@ const [error, setError] = useState(false)
             setName("")
             setcomment("")
            }
-<<<<<<< HEAD
- 
-          
-=======
            setError(true);
->>>>>>> 56be82b567d47aff8fe4e7550f2b494287baa5aa
           }}
             sx={{
               my : "10px" ,

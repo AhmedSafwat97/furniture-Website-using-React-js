@@ -1,11 +1,11 @@
 import { Box, Button, Chip, CircularProgress, IconButton, Rating, Typography, useMediaQuery, useTheme } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { Stack } from "@mui/system";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import PinterestIcon from "@mui/icons-material/Pinterest";
 import { useGetOneProductQuery } from "../../services/productApi";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import SwiperSection from "../Home/HomeSections/SwiperSection";
 import ScrollToTop from "../../ExternalMethods/ScrollToTop";
 import BannerSection from "../Home/HomeSections/bannerSection";
@@ -14,18 +14,22 @@ import { AddToCart, decrement, increment } from "../../services/CartSlice";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Commentsec from "../Global Section/CommentSec";
+import FormDialog from "./Rate";
 
 const Shopdetails = () => {
 
 const {id} = useParams()
   const { data , error, isLoading } = useGetOneProductQuery(id);
   let catdata = useGetOneProductQuery(id).data?.category
+
+  const [review, setreview] = useState("");
   
+const [Reviewid, setReviewid] = useState([]);
+
   const CommentSecWidth = 75;
   const CommentSecName = "ShopComment";
 
   const { SelectedProductsId , SelectedProducts } = useSelector((state) => state.Cart);
-  
   const dispatch = useDispatch();
 
   function ProductQuantity(item) {
@@ -91,8 +95,8 @@ const {id} = useParams()
         <img
           style={{ width: "100%" }}
           src={data.imageLink}
-          alt="product Photo"
           loading="lazy"
+          alt="product Photo1"
         />
       </Box>
       <Box
@@ -108,22 +112,24 @@ const {id} = useParams()
           <span style={{ color: "#ac8c5b" }}>Category: </span>Furniture
           , {data.category} 
 
+{data.discount && 
           <Chip
-  label={Math.floor( 100 -  (data.sale / data.price) * 100) +"%"}
-  sx={{
-    height: "20px",
-    borderRadius: "5px",
-    backgroundColor: "#AC8C5B",
-    color: "#FFF",
-    ml : "10px"
-  }}
-/>
+          label={Math.floor( 100 -  (data.sale / data.price) * 100) +"%"}
+          sx={{
+            height: "20px",
+            borderRadius: "5px",
+            backgroundColor: "#AC8C5B",
+            color: "#FFF",
+            ml : "10px"
+          }}
+        />
+}
 
         </Box>
         <Typography sx={{ fontSize: "24px", fontWeight: "600" }}>
           {data.Name}
         </Typography>
-        <Box sx={{ display: "flex" , alignItems : "center"}}>
+        <Box sx={{ display: "flex" , alignItems : "center" , flexWrap : "wrap"}}>
           <Box sx={{ mt: "5px", display: "flex" }}>
             <del style={{ marginRight: "7px", color: "gray" }}> ${data.price}</del>
             <Typography>${data.sale}</Typography>
@@ -137,7 +143,10 @@ const {id} = useParams()
               readOnly
             />
           </Stack>
-          {data.reviews} Reviews
+          {Reviewid.includes(data.reviews) ? review : data.reviews} Reviews
+          <Box sx={{ml : "10px" , color : "blue" , textDecoration : "underline" , cursor : "pointer"}}>
+            <FormDialog {...{data , setreview , Reviewid , setReviewid}}/>
+            </Box>
         </Box>
         <Box>
           <Typography sx={{ color: "gray" }}>
@@ -153,15 +162,18 @@ const {id} = useParams()
         <hr style={{ margin: "30px 0" }} />
         <Box sx={{ display: "flex" }}>
           <Box sx={{ width: "20%" }}>
-<Box height="31px" display="flex" alignItems="center">
+<Box height="37px" m="10px 0" display="flex" alignItems="center">
               <Typography >Quantity</Typography>    
 </Box>      
-
+<Box height="37px" m="10px 0" display="flex" alignItems="center">
       <Typography>Tags </Typography>
-            <Typography sx={{mt : "9px"}}>Share </Typography>
+      </Box>
+      <Box height="37px" m="10px 0" display="flex" alignItems="center">
+            <Typography>Share </Typography>
+            </Box>
           </Box>
           <Box sx={{ width: "70%", color: "gray", fontSize: "10px" }}>
-            <Box display="flex" alignItems="center">
+            <Box display="flex" m="10px 0" alignItems="center" sx={{pl : {xs : "10px" , md : "0"}}}>
                  {SelectedProductsId.includes(data.id) ?
 
                 (<Box className="btn-tocart">
@@ -227,8 +239,12 @@ const {id} = useParams()
                   
                   }
             </Box>
+
+            <Box height="37px" m="10px 0" display="flex" alignItems="center" sx={{pl : {xs : "10px" , md : "0"}}}>
             <Typography>{data.tags} </Typography>
-          <Box>
+            </Box>
+
+          <Box height="37px" m="10px 0" display="flex" alignItems="center" sx={{pl : {xs : "10px" , md : "0"}}}>
               <IconButton >
                 <FacebookOutlinedIcon />
               </IconButton>

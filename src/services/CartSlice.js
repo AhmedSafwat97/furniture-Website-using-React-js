@@ -11,8 +11,10 @@ const initialState = {
    ? JSON.parse(localStorage.getItem("SelectedProId")) : []
 
  , disable : localStorage.getItem("copon") ? JSON.parse(localStorage.getItem("copon")) : false
+,
+ proadata : localStorage.getItem("newdata")
+ ? JSON.parse(localStorage.getItem("newdata")) : []
 
- 
 }
 
 export const CartSlice = createSlice({
@@ -127,7 +129,7 @@ export const CartSlice = createSlice({
      localStorage.setItem("copon" , JSON.stringify(state.disable))
 
 
-    }
+    } ,
 
   },
 })
