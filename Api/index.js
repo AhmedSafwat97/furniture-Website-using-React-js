@@ -115,7 +115,7 @@ app.post('/signup', (req, res) => {
   const newUser = {
     id: users.length + 1,
     UserName,
-    password: hashedPassword,
+    password : hashedPassword ,
     firstName , 
     LastName ,
     Email ,
@@ -149,33 +149,18 @@ app.post('/signin', (req, res) => {
   const { UserName, Password } = req.body;
 
   // Find the user by username
-  const user = users.find(
-    (user) => user.UserName === UserName
-  );
+ const user = users.find(user => user.UserName === UserName);
+
   if (!user) {
     return res.status(401).json({ message: 'Invalid UserName' });
   }
 
-  // // Compare the password
-  // const isPasswordValid = bcrypt.compareSync(Password, user.password);
-  // if (!isPasswordValid) {
-  //   return res.status(401).json({ message: 'Invalid Password' });
-  // }
+  // Compare the password
+  const isPasswordValid = bcrypt.compareSync(Password, user.password);
+  if (!isPasswordValid) {
+    return res.status(401).json({ message: 'Invalid Password' });
+  }
   
-// try {
-//   const {token} = LogOutusers.find(
-//     (userlog) => userlog.id === user.id
-//   );
-//   if (!token) {
-//     // Generate JWT token
-//   const NewToken = jwt.sign(user, secretKey)
-//     res.json({ NewToken });
-//   } else {
-//     res.json({ token });
-//   }
-// }catch(err){
-//   console.log(err , "token error");
-// }
 
 // Check if user is already logged in
 const loggedUser = LogOutusers.find((userlog) => userlog.id === user.id);

@@ -46,7 +46,6 @@ const [Message, setMessage] = useState("");
 
 const Navigate = useNavigate()
 
-
     
     const handleSignUp = async () => {
         const result = await Signup({UserName , Password , firstName , LastName , Email , Phone , Country , Town , address });
@@ -168,9 +167,33 @@ const Navigate = useNavigate()
             sx={{outline : "none"  ,width : { xs : "95%" , md : "80%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
             id="username" label="UserName" type="text" />
     
-    
-    
-    <FormControl sx={{outline : "none"  ,width : { xs : "95%" , md : "80%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
+?
+<FormControl sx={{outline : "none"  ,width : { xs : "95%" , md : "80%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
+    variant="outlined">
+              <InputLabel htmlFor="filled-adornment-password">Password</InputLabel>
+              <OutlinedInput
+              label="Password"
+                id="filled-adornment-password"
+                type={showPassword ? 'text' : 'password'}
+                onChange={(e) => {setPassword(e.target.value)
+                  console.log(Password);
+                }}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+            </FormControl>
+
+    {/* <FormControl sx={{outline : "none"  ,width : { xs : "95%" , md : "80%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
     variant="outlined">
               <InputLabel htmlFor="filled-adornment-password">Password</InputLabel>
               <OutlinedInput
@@ -183,7 +206,10 @@ const Navigate = useNavigate()
                       aria-label="toggle password visibility"
                       onClick={handleClickShowPassword}
                       onMouseDown={handleMouseDownPassword}
-                      onChange={(e) => {setPassword(e.target.value)}}
+                      onChange={(e) => {setPassword(e.target.value)
+                        console.log(Password);
+
+                      }}
                       edge="end"
                     >
                       {showPassword ? <VisibilityOff /> : <Visibility />}
@@ -191,7 +217,7 @@ const Navigate = useNavigate()
                   </InputAdornment>
                 }
               />
-            </FormControl>
+            </FormControl> */}
     
                 <Button 
                 onClick={() => {handleSignin()}}
@@ -273,8 +299,8 @@ const Navigate = useNavigate()
                 <InputAdornment position="end">
                   <IconButton
                     aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
+                    onClick={handleClickShowPassword}
                     edge="end"
                   >
                     {showPassword ? <VisibilityOff /> : <Visibility />}
