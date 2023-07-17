@@ -7,11 +7,16 @@ import AllProductsSection from './HomeSections/AllProductsSection';
 import Productsection from './HomeSections/Productsection';
 import ScrollToTop from '../../ExternalMethods/ScrollToTop';
 import BlogsSection from '../Blog/BlogsSection;';
+import { Helmet } from 'react-helmet';
 
 const Home = () =>{
 
   return (
  <>
+ <Helmet>
+      <meta charSet="utf-8" />
+      <title>Home</title>
+    </Helmet>
      <ScrollToTop/>
     <Section1/>
     <Section2/>

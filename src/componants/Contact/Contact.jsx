@@ -7,6 +7,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { useNavigate } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 
 
 
@@ -17,7 +18,10 @@ const Contact = () => {
 
 
     return (
-      <>
+      <> 
+      <Helmet>
+      <title>Contact Us</title>
+    </Helmet>
           <ScrollToTop/>
     <BannerSection  PageName="Contact" />
 

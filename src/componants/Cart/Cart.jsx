@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { CoponCoode, decrement, deleteFromCart, increment } from '../../services/CartSlice';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
+import { Helmet } from 'react-helmet';
 
 
 const Cart = () => {
@@ -44,6 +45,10 @@ const Cart = () => {
 
     return (
         <>
+         <Helmet>
+      <meta charSet="utf-8" />
+      <title>Cart</title>
+    </Helmet>
     <ScrollToTop/>
     <BannerSection  PageName="Shopping Cart" />
 

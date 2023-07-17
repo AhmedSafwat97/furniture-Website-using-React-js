@@ -15,6 +15,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Commentsec from "../Global Section/CommentSec";
 import FormDialog from "./Rate";
+import { Helmet } from "react-helmet";
 
 const Shopdetails = () => {
 
@@ -43,6 +44,9 @@ const [Reviewid, setReviewid] = useState([]);
 
   return (
     <>
+    <Helmet>
+      <title>Shop Details</title>
+    </Helmet>
     <ScrollToTop/>
     <BannerSection  PageName="Shop Details" />
 

@@ -16,6 +16,7 @@ import FormLabel from '@mui/material/FormLabel';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import { Helmet } from 'react-helmet';
 
 const Check = () => {
     const Navigate = useNavigate()
@@ -43,6 +44,9 @@ const Check = () => {
    
     return (
         <>
+         <Helmet>
+         <title>Check Out</title>
+        </Helmet>
         <ScrollToTop/>
 
         <BannerSection PageName="CheckOut"/>
