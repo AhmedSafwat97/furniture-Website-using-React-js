@@ -26,7 +26,7 @@ const products = [
     date: "7/13/2023",
     Comment: " Experience pure bliss as you sink into its plush embrace.", },
     {      
-      Name: "",
+      Name: "Grace",
     Email: "",
     date: "7/13/2023",
     Comment: " Your perfect companion for cozy evenings and lazy weekends.", },
@@ -42,25 +42,24 @@ const products = [
 ,
  {
    id: 2,
-   Name: "Chair" ,
+   Name: "Zen Retreat Chair" ,
    category : "Chairs",
-   description:
-     "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+   description: "Immerse yourself in a state of tranquility with the Zen Retreat Chair, offering a serene and calming seating experience.",
    price: 200,
    discount : true ,
     sale : 150 , 
   rate : 3 ,
-   imageLink: "../../Imgs/Products/chair.png",
+   imageLink:    "https://res.cloudinary.com/drkevmgk2/image/upload/v1689589703/FurniProApp/Products/Chairs/chair_hjsggc.png",
  count : 22 ,
  sold : 16 ,
  tags : "Chair , Sofa , ArmChair"  ,
  reviews : 13 ,
  comments: [
   {      
-    Name: "dfdfdf",
-  Email: "dfdfddff",
+    Name: "Scarlett",
+  Email: "",
   date: "7/13/2023",
-  Comment: "dfdffddfdf", }
+  Comment: "Embrace elegance and comfort in this timeless seating masterpiece.", }
 
 
  ],
@@ -68,15 +67,15 @@ const products = [
  },
  {
    id: 3,
-   Name: "Commode",
+   Name: "Comfort Haven Commode",
    category : "Commodes",
    description:
-     "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+   "Discover a haven of comfort in your bathroom with this commode, offering a comfortable seating experience and efficient functionality.",
    price: 300,
    discount : false ,
     sale : 200 , 
   rate : 5 ,
-   imageLink: "../../Imgs/Products/komod.png",
+   imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689642242/FurniProApp/Products/Commodes/dresser-g35b8b9956_1280_kdshwz.png",
  count : 11  ,
  sold : 8 ,
  tags : "Commode , wooden Commode , single Comode"  ,
@@ -84,10 +83,10 @@ const products = [
  comments: [
 
   {      
-    Name: "dfdfdf",
-  Email: "dfdfddff",
-  date: "7/13/2023",
-  Comment: "dfdffddfdf", }
+    Name: "Elizabeth",
+  Email: "",
+  date: "4/3/2023",
+  Comment: " Experience comfort and efficiency with this reliable bathroom fixture.", }
 
  ],
  
@@ -95,25 +94,25 @@ const products = [
 },
  {
    id: 4,
-   Name: "Dresser" ,
+   Name: "Cozy Haven Dresser" ,
    category : "Dressers",
    description:
-     "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+   "Transform your bedroom into a serene retreat with this stylish and spacious dresser, providing ample storage and tranquility.",
    price: 400,
    discount : true ,
     sale : 100 , 
   rate : 3.5 ,
-  imageLink: "../../Imgs/Products/dresser.png",
+  imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689644197/FurniProApp/Products/Dressers/cupboard-g3ab8729a5_1280_pdb8on.png",
   count : 12 ,
   sold : 25 ,
   tags : "Dresser , Wooden Dresser , Double Dresser " ,
   reviews : 22 ,
   comments: [
     {      
-      Name: "dfdfdf",
-    Email: "dfdfddff",
-    date: "7/13/2023",
-    Comment: "dfdffddfdf", }
+      Name: "Matthew",
+    Email: "",
+    date: "7/7/2023",
+    Comment: "Find tranquility and storage solutions in this stylish dresser.", }
 
   ],
 
@@ -121,25 +120,25 @@ const products = [
 },
  {
   id: 5,
-  Name: "Table" ,
+  Name: "Cozy Haven Side Table" ,
   category : "Tables",
   description:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+  "Gather around the Harmony Dining Table and enjoy harmonious meals, as its elegant design and sturdy construction create a welcoming atmosphere.",
   price: 400,
   discount : true ,
    sale : 200 , 
   rate : 4 ,
-  imageLink: "../../Imgs/Products/table.png",
+  imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689644180/FurniProApp/Products/Tables/wooden-g25b2e182f_1280_k3jzhk.png",
   count : 16 ,
   sold : 14 ,
   tags : "Table , Wooden Table , Disk" ,
   reviews : 44,
   comments: [
     {      
-      Name: "dfdfdf",
-    Email: "dfdfddff",
+      Name: "James",
+    Email: "",
     date: "7/13/2023",
-    Comment: "dfdffddfdf", }
+    Comment: "A harmonious centerpiece for delightful meals and memorable gatherings.", }
 
   ],
 
@@ -206,25 +205,24 @@ description:
 ,
 {
   id: 8,
-  Name: "Chair" ,
+  Name: "Elegance Accent Chair" ,
   category : "Chairs",
-  description:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+  description: " Elevate the aesthetic of your space with the Elegance Accent Chair, a sophisticated and stylish addition to any room.",
   price: 200,
   discount : true ,
    sale : 150 , 
  rate : 3 ,
-  imageLink: "../../Imgs/Products/chair.png",
+  imageLink:   "https://res.cloudinary.com/drkevmgk2/image/upload/v1689589616/FurniProApp/Products/Chairs/chair-ga087e88d2_1280_ckw5k0.png",
 count : 22 ,
 sold : 16 ,
 tags : "Chair , Sofa , ArmChair"  ,
 reviews : 13 ,
 comments: [
  {      
-   Name: "dfdfdf",
- Email: "dfdfddff",
+   Name: "Noah",
+ Email: "",
  date: "7/13/2023",
- Comment: "dfdffddfdf", }
+ Comment: " Find inner peace and tranquility in the serene embrace of this chair.", }
 
 
 ],
@@ -232,15 +230,15 @@ comments: [
 },
 {
   id: 9,
-  Name: "Commode",
+  Name: "Elegance Essence Commode",
   category : "Commodes",
   description:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+  "Elevate the elegance of your bathroom with the Essence Commode, showcasing a perfect balance of style and functionality." ,
   price: 300,
   discount : false ,
    sale : 200 , 
  rate : 5 ,
-  imageLink: "../../Imgs/Products/komod.png",
+  imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689642244/FurniProApp/Products/Commodes/antique-furniture-g20d624b0e_1280_oultn4.png",
 count : 11  ,
 sold : 8 ,
 tags : "Commode , wooden Commode , single Comode"  ,
@@ -248,10 +246,10 @@ reviews : 12 ,
 comments: [
 
  {      
-   Name: "dfdfdf",
- Email: "dfdfddff",
- date: "7/13/2023",
- Comment: "dfdffddfdf", }
+   Name: "Joseph",
+ Email: "",
+ date: "15/1/2023",
+ Comment: "Enhance your bathroom with the essence of elegance and sophistication.", }
 
 ],
 
@@ -259,25 +257,25 @@ comments: [
 },
 {
   id: 10,
-  Name: "Dresser" ,
+  Name: "Tranquil Oasis Dresser" ,
   category : "Dressers",
   description:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+  "Experience perfect harmony in your bedroom with the Harmony Haven Dresser, offering a blend of functionality and soothing aesthetics.",
   price: 400,
   discount : true ,
    sale : 100 , 
  rate : 3.5 ,
- imageLink: "../../Imgs/Products/dresser.png",
+ imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689644197/FurniProApp/Products/Dressers/cupboard-g713b6d5fa_1280_u8oqgx.png",
  count : 12 ,
  sold : 25 ,
  tags : "Dresser , Wooden Dresser , Double Dresser " ,
  reviews : 22 ,
  comments: [
    {      
-     Name: "dfdfdf",
-   Email: "dfdfddff",
-   date: "7/13/2023",
-   Comment: "dfdffddfdf", }
+     Name: "Abigail",
+   Email: "",
+   date: "7/6/2023",
+   Comment: "Find tranquility and storage solutions in this stylish dresser.", }
 
  ],
 
@@ -285,25 +283,25 @@ comments: [
 },
 {
  id: 11,
- Name: "Table" ,
+ Name: "Zen Retreat Study Table" ,
  category : "Tables",
  description:
-   "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+ "Enhance your living space with the Serenity Coffee Table, offering a serene focal point and practical surface for relaxation and socializing.",
  price: 400,
  discount : true ,
   sale : 200 , 
  rate : 4 ,
- imageLink: "../../Imgs/Products/table.png",
+ imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689644144/FurniProApp/Products/Tables/table_vjazk7.png",
  count : 16 ,
  sold : 14 ,
  tags : "Table , Wooden Table , Disk" ,
  reviews : 44,
  comments: [
    {      
-     Name: "dfdfdf",
-   Email: "dfdfddff",
+     Name: "William",
+   Email: "",
    date: "7/13/2023",
-   Comment: "dfdffddfdf", }
+   Comment: "Elevate your living space with serene style and functionality.", }
 
  ],
 
@@ -361,25 +359,24 @@ description:
 ,
 {
   id: 14,
-  Name: "Chair" ,
+  Name: "Cozy Cocoon Chair" ,
   category : "Chairs",
-  description:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+  description: "Nestle into the cozy embrace of the Cocoon Chair, designed to provide a sense of security and comfort like no other.",
   price: 200,
   discount : true ,
    sale : 150 , 
  rate : 3 ,
-  imageLink: "../../Imgs/Products/chair.png",
+  imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689589583/FurniProApp/Products/Chairs/chair-g0a303b067_1280-transformed_jxqopi.png",
 count : 22 ,
 sold : 16 ,
 tags : "Chair , Sofa , ArmChair"  ,
 reviews : 13 ,
 comments: [
  {      
-   Name: "dfdfdf",
- Email: "dfdfddff",
+   Name: "Liam",
+ Email: "",
  date: "7/13/2023",
- Comment: "dfdffddfdf", }
+ Comment: "Add a touch of sophistication and style to any space with this elegant chair.", }
 
 
 ],
@@ -387,15 +384,15 @@ comments: [
 },
 {
   id: 15,
-  Name: "Commode",
+  Name: "Tranquil Retreat Commode",
   category : "Commodes",
   description:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+  "Create a tranquil retreat in your bathroom with this thoughtfully designed commode, combining aesthetics with practicality for a serene experience." ,
   price: 300,
   discount : false ,
    sale : 200 , 
  rate : 5 ,
-  imageLink: "../../Imgs/Products/komod.png",
+  imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689642246/FurniProApp/Products/Commodes/work-table-g85232ff95_1280_cryfsd.png",
 count : 11  ,
 sold : 8 ,
 tags : "Commode , wooden Commode , single Comode"  ,
@@ -403,10 +400,10 @@ reviews : 12 ,
 comments: [
 
  {      
-   Name: "dfdfdf",
- Email: "dfdfddff",
- date: "7/13/2023",
- Comment: "dfdffddfdf", }
+   Name: "Emily",
+ Email: "",
+ date: "5/14/2023",
+ Comment: " A stylish and serene addition to any bathroom retreat.", }
 
 ],
 
@@ -414,25 +411,25 @@ comments: [
 },
 {
   id: 16,
-  Name: "Dresser" ,
+  Name: "Elegance Essence Dresser" ,
   category : "Dressers",
   description:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+  "Elevate the elegance of your bedroom with the Essence Dresser, featuring a timeless design and impeccable craftsmanship.",
   price: 400,
   discount : true ,
    sale : 100 , 
  rate : 3.5 ,
- imageLink: "../../Imgs/Products/dresser.png",
+ imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689644195/FurniProApp/Products/Dressers/armoire-g8d30bd634_1280_qzgf9s.png",
  count : 12 ,
  sold : 25 ,
  tags : "Dresser , Wooden Dresser , Double Dresser " ,
  reviews : 22 ,
  comments: [
    {      
-     Name: "dfdfdf",
-   Email: "dfdfddff",
-   date: "7/13/2023",
-   Comment: "dfdffddfdf", }
+     Name: "Samuel",
+   Email: "",
+   date: "1/13/2023",
+   Comment: "Add a touch of timeless elegance to your bedroom decor.", }
 
  ],
 
@@ -440,25 +437,25 @@ comments: [
 },
 {
  id: 17,
- Name: "Table" ,
+ Name: "Elegance Console Table" ,
  category : "Tables",
  description:
-   "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+ "Make a statement with the Elegance Console Table, featuring a sleek design that adds a touch of sophistication to any entryway or hallway.",
  price: 400,
  discount : true ,
   sale : 200 , 
  rate : 4 ,
- imageLink: "../../Imgs/Products/table.png",
+ imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689644179/FurniProApp/Products/Tables/gothic-desk-g183c1c2c8_1280_ahvsma.png",
  count : 16 ,
  sold : 14 ,
  tags : "Table , Wooden Table , Disk" ,
  reviews : 44,
  comments: [
    {      
-     Name: "dfdfdf",
-   Email: "dfdfddff",
+     Name: "Benjamin",
+   Email: "",
    date: "7/13/2023",
-   Comment: "dfdffddfdf", }
+   Comment: "Exude elegance and sophistication with this stunning console table.", }
 
  ],
 
@@ -526,25 +523,24 @@ description:
 ,
 {
   id: 20,
-  Name: "Chair" ,
+  Name: "Serenity Recliner Chair" ,
   category : "Chairs",
-  description:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+  description: "Indulge in ultimate relaxation with the Serenity Recliner Chair, featuring adjustable positions and plush cushioning for pure comfort." ,
   price: 200,
   discount : true ,
    sale : 150 , 
  rate : 3 ,
-  imageLink: "../../Imgs/Products/chair.png",
+  imageLink:   "https://res.cloudinary.com/drkevmgk2/image/upload/v1689589567/FurniProApp/Products/Chairs/throne-g175d60255_1280_huu1ea.png",
 count : 22 ,
 sold : 16 ,
 tags : "Chair , Sofa , ArmChair"  ,
 reviews : 13 ,
 comments: [
  {      
-   Name: "dfdfdf",
- Email: "dfdfddff",
+   Name: "Ethan",
+ Email: "",
  date: "7/13/2023",
- Comment: "dfdffddfdf", }
+ Comment: "Snuggle up in this cozy chair and escape into your own personal sanctuary.", }
 
 
 ],
@@ -552,15 +548,15 @@ comments: [
 },
 {
   id: 21,
-  Name: "Commode",
+  Name: "Harmony Haven Commode",
   category : "Commodes",
   description:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+  "Experience harmony and convenience in your bathroom with the Harmony Haven Commode, designed for utmost comfort and functionality.",
   price: 300,
   discount : false ,
    sale : 200 , 
  rate : 5 ,
-  imageLink: "../../Imgs/Products/komod.png",
+  imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689642277/FurniProApp/Products/Commodes/komod_ojk0ly.png",
 count : 11  ,
 sold : 8 ,
 tags : "Commode , wooden Commode , single Comode"  ,
@@ -568,10 +564,10 @@ reviews : 12 ,
 comments: [
 
  {      
-   Name: "dfdfdf",
- Email: "dfdfddff",
- date: "7/13/2023",
- Comment: "dfdffddfdf", }
+   Name: "David",
+ Email: "",
+ date: "6/13/2023",
+ Comment: " Transform your bathroom into a tranquil and peaceful sanctuary.", }
 
 ],
 
@@ -579,25 +575,25 @@ comments: [
 },
 {
   id: 22,
-  Name: "Dresser" ,
+  Name: "Harmony Haven Dresser" ,
   category : "Dressers",
   description:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+  "Create a tranquil oasis in your bedroom with this dresser, offering a calming atmosphere and organized storage solutions.",
   price: 400,
   discount : true ,
    sale : 100 , 
  rate : 3.5 ,
- imageLink: "../../Imgs/Products/dresser.png",
+ imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689644202/FurniProApp/Products/Dressers/armoire-g83f5d1b42_1280_urwqrz.png",
  count : 12 ,
  sold : 25 ,
  tags : "Dresser , Wooden Dresser , Double Dresser " ,
  reviews : 22 ,
  comments: [
    {      
-     Name: "dfdfdf",
-   Email: "dfdfddff",
-   date: "7/13/2023",
-   Comment: "dfdffddfdf", }
+     Name: "Sophia",
+   Email: "",
+   date: "7/2/2023",
+   Comment: "Experience harmony and beauty with this functional bedroom dresser.", }
 
  ],
 
@@ -605,25 +601,25 @@ comments: [
 },
 {
  id: 23,
- Name: "Table" ,
+ Name: "Serenity Coffee Table" ,
  category : "Tables",
  description:
-   "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+ "Find your study sanctuary with the Zen Retreat Study Table, providing a serene and organized space for focused work and creativity.",
  price: 400,
  discount : true ,
   sale : 200 , 
  rate : 4 ,
- imageLink: "../../Imgs/Products/table.png",
+ imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689644184/FurniProApp/Products/Tables/card-table-ga1af227f4_1280_rjsrb7.png",
  count : 16 ,
  sold : 14 ,
  tags : "Table , Wooden Table , Disk" ,
  reviews : 44,
  comments: [
    {      
-     Name: "dfdfdf",
-   Email: "dfdfddff",
+     Name: "Isabella",
+   Email: "",
    date: "7/13/2023",
-   Comment: "dfdffddfdf", }
+   Comment: " Find your zen and boost productivity with this peaceful study table.", }
 
  ],
 
@@ -663,7 +659,7 @@ description:
   discount : false ,
   sale : 50 ,
  rate : 4.5 ,
-  imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689550215/FurniProApp/Products/sofa/sofa-ge3408ae2b_1280_qrntj3.png",
+  imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689646658/FurniProApp/Products/sofa/couch-g2d9fca6d0_1280_ly5euk.png",
   count : 12 ,
   sold : 2 ,
   tags : "Chair , Sofa , Single Sofa" ,
@@ -681,25 +677,24 @@ description:
 ,
 {
   id: 26,
-  Name: "Chair" ,
+  Name: "Serenity Recliner Chair" ,
   category : "Chairs",
-  description:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+  description: "Indulge in ultimate relaxation with the Serenity Recliner Chair, featuring adjustable positions and plush cushioning for pure comfort.",
   price: 200,
   discount : true ,
    sale : 150 , 
  rate : 3 ,
-  imageLink: "../../Imgs/Products/chair.png",
+  imageLink:   "https://res.cloudinary.com/drkevmgk2/image/upload/v1689589561/FurniProApp/Products/Chairs/oversized-gd144344e0_1280_d7ojtw.png" ,
 count : 22 ,
 sold : 16 ,
 tags : "Chair , Sofa , ArmChair"  ,
 reviews : 13 ,
 comments: [
  {      
-   Name: "dfdfdf",
+   Name: "Olivia",
  Email: "dfdfddff",
  date: "7/13/2023",
- Comment: "dfdffddfdf", }
+ Comment: "Experience ultimate relaxation with this luxurious and ergonomically designed chair.", }
 
 
 ],
@@ -707,15 +702,15 @@ comments: [
 },
 {
   id: 27,
-  Name: "Commode",
+  Name: "Serene Oasis Commode",
   category : "Commodes",
-  description:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+  description: 
+  "Transform your bathroom into a serene oasis with this stylish and functional commode, offering both comfort and elegance.",
   price: 300,
   discount : false ,
    sale : 200 , 
  rate : 5 ,
-  imageLink: "../../Imgs/Products/komod.png",
+  imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689642239/FurniProApp/Products/Commodes/night-table-g6a644663b_1280_j50ebm.png",
 count : 11  ,
 sold : 8 ,
 tags : "Commode , wooden Commode , single Comode"  ,
@@ -723,10 +718,10 @@ reviews : 12 ,
 comments: [
 
  {      
-   Name: "dfdfdf",
- Email: "dfdfddff",
- date: "7/13/2023",
- Comment: "dfdffddfdf", }
+   Name: "Grace",
+ Email: "",
+ date: "2/15/2023",
+ Comment: " Find harmony and convenience in this functional commode design.", }
 
 ],
 
@@ -734,25 +729,25 @@ comments: [
 },
 {
   id: 28,
-  Name: "Dresser" ,
+  Name: "Serene Retreat Dresser" ,
   category : "Dressers",
   description:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+  "Create a tranquil oasis in your bedroom with this dresser, offering a calming atmosphere and organized storage solutions.",
   price: 400,
   discount : true ,
    sale : 100 , 
  rate : 3.5 ,
- imageLink: "../../Imgs/Products/dresser.png",
+ imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689644206/FurniProApp/Products/Dressers/dresser_rgzwjy.png",
  count : 12 ,
  sold : 25 ,
  tags : "Dresser , Wooden Dresser , Double Dresser " ,
  reviews : 22 ,
  comments: [
    {      
-     Name: "dfdfdf",
-   Email: "dfdfddff",
-   date: "7/13/2023",
-   Comment: "dfdffddfdf", }
+     Name: "Charlotte",
+   Email: "",
+   date: "6/2/2023",
+   Comment: "Create a serene and organized haven with this spacious dresser.", }
 
  ],
 
@@ -760,25 +755,25 @@ comments: [
 },
 {
  id: 29,
- Name: "Table" ,
+ Name: "Harmony Dining Table" ,
  category : "Tables",
  description:
-   "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
+ "Add a cozy touch to your living area with the Cozy Haven Side Table, a functional and stylish addition for displaying decor and essentials.",
  price: 400,
  discount : true ,
   sale : 200 , 
  rate : 4 ,
- imageLink: "../../Imgs/Products/table.png",
+ imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689644183/FurniProApp/Products/Tables/small-table-g3b3821407_1280_r9liyw.png",
  count : 16 ,
  sold : 14 ,
  tags : "Table , Wooden Table , Disk" ,
  reviews : 44,
  comments: [
    {      
-     Name: "dfdfdf",
-   Email: "dfdfddff",
+     Name: "Charlotte",
+   Email: "",
    date: "7/13/2023",
-   Comment: "dfdffddfdf", }
+   Comment: " Find your zen and boost productivity with this peaceful study table.", }
 
  ],
 

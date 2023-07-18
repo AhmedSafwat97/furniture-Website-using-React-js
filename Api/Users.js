@@ -1,1 +1,1 @@
-module.exports = [{"id":1,"UserName":"xxx","password":"$2a$10$0e6rPVjPErTR7wTlOYwuOOWpFGJ4pLOhYjO4zLSbrksv8yztIFIZ6","firstName":"Ahmed","LastName":"safwat","Email":"xppahmad@gmail.com","Phone":"","Country":"Canada","Town":"","address":""}]
+module.exports = [{"id":1,"UserName":"Ahmed","password":"$2a$10$tUgmNH/oiJpImAucKWidFOrSDvw/kbDcGASQbaXbD0UFRbNq1A0vC","firstName":"Ahmed","LastName":"safwat","Email":"xppahmad@gmail.com","Phone":"","Country":"Egypt","Town":"","address":""}]
