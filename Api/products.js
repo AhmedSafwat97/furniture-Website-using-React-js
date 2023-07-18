@@ -11,30 +11,30 @@ const products = [
   rate : 4.5 ,
    imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689550186/FurniProApp/Products/sofa/sofa_d2bhdd.png",
    count : 12 ,
-   sold : 2 ,
+   sold : 20 ,
    tags : "Chair , Sofa , Single Sofa" ,
-   reviews : 25,
+   reviews : 15,
    comments: [
     {      
       Name: "Olivia",
     Email: "",
-    date: "7/13/2023",
+    date: "6/3/2023",
     Comment: " The epitome of relaxation and unwavering comfort.", } ,
     {      
       Name: "JamesAbigail",
     Email: "",
-    date: "7/13/2023",
+    date: "6/19/2023",
     Comment: " Experience pure bliss as you sink into its plush embrace.", },
-    {      
-      Name: "",
-    Email: "",
-    date: "7/13/2023",
-    Comment: " Your perfect companion for cozy evenings and lazy weekends.", },
     {      
       Name: "Joseph",
     Email: "",
+    date: "7/1/2023",
+    Comment: "A haven of comfort that welcomes you with open arms.", },
+    {      
+      Name: "Liam",
+    Email: "",
     date: "7/13/2023",
-    Comment: "A haven of comfort that welcomes you with open arms.", }
+    Comment: " Your perfect companion for cozy evenings and lazy weekends.", },
 
    ],
 
@@ -57,8 +57,8 @@ const products = [
  reviews : 13 ,
  comments: [
   {      
-    Name: "dfdfdf",
-  Email: "dfdfddff",
+    Name: "Mia",
+  Email: "",
   date: "7/13/2023",
   Comment: "dfdffddfdf", }
 
@@ -77,14 +77,14 @@ const products = [
     sale : 200 , 
   rate : 5 ,
    imageLink: "../../Imgs/Products/komod.png",
- count : 11  ,
- sold : 8 ,
+ count : 32  ,
+ sold : 16 ,
  tags : "Commode , wooden Commode , single Comode"  ,
  reviews : 12 , 
  comments: [
 
   {      
-    Name: "dfdfdf",
+    Name: "Sophia",
   Email: "dfdfddff",
   date: "7/13/2023",
   Comment: "dfdffddfdf", }
@@ -110,11 +110,15 @@ const products = [
   reviews : 22 ,
   comments: [
     {      
-      Name: "dfdfdf",
+      Name: "Emily",
+    Email: "dfdfddff",
+    date: "7/13/2023",
+    Comment: "dfdffddfdf", },
+    {      
+      Name: "Isabella",
     Email: "dfdfddff",
     date: "7/13/2023",
     Comment: "dfdffddfdf", }
-
   ],
 
 
@@ -133,10 +137,10 @@ const products = [
   count : 16 ,
   sold : 14 ,
   tags : "Table , Wooden Table , Disk" ,
-  reviews : 44,
+  reviews : 7,
   comments: [
     {      
-      Name: "dfdfdf",
+      Name: "Liam",
     Email: "dfdfddff",
     date: "7/13/2023",
     Comment: "dfdffddfdf", }
@@ -151,15 +155,15 @@ const products = [
 category : "Beds"  ,
 description:
     "DreamCloud Bed: Experience the ultimate luxury and comfort with the DreamCloud Bed, designed to provide a restful and rejuvenating sleep experience like never before.",
-  price: 400,
+  price: 450,
   discount : false ,
-  sale : 200 , 
+  sale : 300 , 
   rate : 4.5 ,
   imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689547092/FurniProApp/Products/Beds/4_nrjxsq.png" ,
   count : 20 ,
-  sold : 11 ,
+  sold : 13 ,
   tags : "Bed , wooden Bed , steel Bed" ,
-  reviews : 23 ,
+  reviews : 11 ,
   comments: [
     {      
       Name: "Emily",
@@ -184,15 +188,15 @@ description:
   category : "Sofa" ,
   description:
   "Embrace the tranquility of the Serene Lounge Sofa, offering a perfect blend of elegance and cozy comfort.",
-  price: 100,
-  discount : false ,
-  sale : 50 ,
+  price: 200,
+  discount : true ,
+  sale : 150 ,
  rate : 4.5 ,
   imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689550236/FurniProApp/Products/sofa/sofa-ga8577cf49_1280-transformed_ke8hei.png",
-  count : 12 ,
-  sold : 2 ,
+  count : 32 ,
+  sold : 8 ,
   tags : "Chair , Sofa , Single Sofa" ,
-  reviews : 25,
+  reviews : 4,
   comments: [
    {      
      Name: "Mia",
@@ -221,7 +225,7 @@ tags : "Chair , Sofa , ArmChair"  ,
 reviews : 13 ,
 comments: [
  {      
-   Name: "dfdfdf",
+   Name: "Matthew",
  Email: "dfdfddff",
  date: "7/13/2023",
  Comment: "dfdffddfdf", }
@@ -241,14 +245,14 @@ comments: [
    sale : 200 , 
  rate : 5 ,
   imageLink: "../../Imgs/Products/komod.png",
-count : 11  ,
-sold : 8 ,
+count : 23  ,
+sold : 16 ,
 tags : "Commode , wooden Commode , single Comode"  ,
 reviews : 12 , 
 comments: [
 
  {      
-   Name: "dfdfdf",
+   Name: "Henry",
  Email: "dfdfddff",
  date: "7/13/2023",
  Comment: "dfdffddfdf", }
@@ -263,18 +267,18 @@ comments: [
   category : "Dressers",
   description:
     "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
-  price: 400,
+  price: 500,
   discount : true ,
-   sale : 100 , 
+   sale : 350 , 
  rate : 3.5 ,
  imageLink: "../../Imgs/Products/dresser.png",
- count : 12 ,
+ count : 32 ,
  sold : 25 ,
  tags : "Dresser , Wooden Dresser , Double Dresser " ,
  reviews : 22 ,
  comments: [
    {      
-     Name: "dfdfdf",
+     Name: "Sophia",
    Email: "dfdfddff",
    date: "7/13/2023",
    Comment: "dfdffddfdf", }
@@ -291,16 +295,16 @@ comments: [
    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
  price: 400,
  discount : true ,
-  sale : 200 , 
+  sale : 300 , 
  rate : 4 ,
  imageLink: "../../Imgs/Products/table.png",
- count : 16 ,
+ count : 22 ,
  sold : 14 ,
  tags : "Table , Wooden Table , Disk" ,
- reviews : 44,
+ reviews : 10,
  comments: [
    {      
-     Name: "dfdfdf",
+     Name: "Mia",
    Email: "dfdfddff",
    date: "7/13/2023",
    Comment: "dfdffddfdf", }
@@ -320,10 +324,10 @@ description:
  sale : 300 , 
  rate : 3 ,
  imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689547089/FurniProApp/Products/Beds/5_gdpbv6.png" ,
- count : 15 ,
- sold : 2 ,
+ count : 26 ,
+ sold : 19 ,
  tags : "Bed , wooden Bed , steel Bed" ,
- reviews : 27 ,
+ reviews : 12 ,
  comments: [
    {      
      Name: "Alexander",
@@ -339,15 +343,15 @@ description:
   category : "Sofa" ,
   description: 
   "Indulge in luxury and unwind in the opulent embrace of the Luxe Retreat Sofa, designed for lavish lounging." ,
-  price: 100,
+  price: 300,
   discount : false ,
-  sale : 50 ,
+  sale : 250 ,
  rate : 4.5 ,
   imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689550324/FurniProApp/Products/sofa/couch-g12ba59590_1280_fqqai7.png",
-  count : 12 ,
-  sold : 2 ,
+  count : 29 ,
+  sold : 23 ,
   tags : "Chair , Sofa , Single Sofa" ,
-  reviews : 25,
+  reviews : 15,
   comments: [
    {      
      Name: "William",
@@ -370,13 +374,13 @@ description:
    sale : 150 , 
  rate : 3 ,
   imageLink: "../../Imgs/Products/chair.png",
-count : 22 ,
+count : 40 ,
 sold : 16 ,
 tags : "Chair , Sofa , ArmChair"  ,
-reviews : 13 ,
+reviews : 11 ,
 comments: [
  {      
-   Name: "dfdfdf",
+   Name: "Liam",
  Email: "dfdfddff",
  date: "7/13/2023",
  Comment: "dfdffddfdf", }
@@ -393,17 +397,17 @@ comments: [
     "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
   price: 300,
   discount : false ,
-   sale : 200 , 
+   sale : 270 , 
  rate : 5 ,
   imageLink: "../../Imgs/Products/komod.png",
 count : 11  ,
-sold : 8 ,
+sold : 9 ,
 tags : "Commode , wooden Commode , single Comode"  ,
-reviews : 12 , 
+reviews : 7 , 
 comments: [
 
  {      
-   Name: "dfdfdf",
+   Name: "Henry",
  Email: "dfdfddff",
  date: "7/13/2023",
  Comment: "dfdffddfdf", }
@@ -418,18 +422,18 @@ comments: [
   category : "Dressers",
   description:
     "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
-  price: 400,
-  discount : true ,
-   sale : 100 , 
+  price: 600,
+  discount : false ,
+   sale : 400 , 
  rate : 3.5 ,
  imageLink: "../../Imgs/Products/dresser.png",
- count : 12 ,
+ count : 30 ,
  sold : 25 ,
  tags : "Dresser , Wooden Dresser , Double Dresser " ,
  reviews : 22 ,
  comments: [
    {      
-     Name: "dfdfdf",
+     Name: "Sophia",
    Email: "dfdfddff",
    date: "7/13/2023",
    Comment: "dfdffddfdf", }
@@ -444,18 +448,18 @@ comments: [
  category : "Tables",
  description:
    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
- price: 400,
+ price: 300,
  discount : true ,
-  sale : 200 , 
+  sale : 250 , 
  rate : 4 ,
  imageLink: "../../Imgs/Products/table.png",
- count : 16 ,
- sold : 14 ,
+ count : 23 ,
+ sold : 16 ,
  tags : "Table , Wooden Table , Disk" ,
- reviews : 44,
+ reviews : 10,
  comments: [
    {      
-     Name: "dfdfdf",
+     Name: "Emily",
    Email: "dfdfddff",
    date: "7/13/2023",
    Comment: "dfdffddfdf", }
@@ -470,15 +474,15 @@ comments: [
 category : "Beds"  ,
 description:
 "Heavenly Haven Bed: Discover a heavenly escape with the indulgent comfort and serene bliss of the Heavenly Haven Bed, a sanctuary for deep relaxation."
- ,price: 400,
- discount : false ,
- sale : 200 , 
+ ,price: 500,
+ discount : true ,
+ sale : 300 , 
  rate : 4.5 ,
  imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689547093/FurniProApp/Products/Beds/3_jgrw4w.png" ,
- count : 20 ,
+ count : 27 ,
  sold : 11 ,
  tags : "Bed , wooden Bed , steel Bed" ,
- reviews : 23 ,
+ reviews : 9 ,
  comments: [
    {      
      Name: "Liam",
@@ -504,15 +508,15 @@ description:
   category : "Sofa" ,
   description:
   "Create a cozy haven in your living space with the inviting and snug embrace of the Cozy Haven Sofa." , 
-  price: 100,
+  price: 200,
   discount : false ,
-  sale : 50 ,
+  sale : 150 ,
  rate : 4.5 ,
   imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689550267/FurniProApp/Products/sofa/couch-gf5402c179_1280-transformed_rpfoyj.png",
-  count : 12 ,
-  sold : 2 ,
+  count : 24 ,
+  sold : 16 ,
   tags : "Chair , Sofa , Single Sofa" ,
-  reviews : 25,
+  reviews : 13,
   comments: [
    {      
      Name: "Henry",
@@ -530,9 +534,9 @@ description:
   category : "Chairs",
   description:
     "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
-  price: 200,
+  price: 150,
   discount : true ,
-   sale : 150 , 
+   sale : 100 , 
  rate : 3 ,
   imageLink: "../../Imgs/Products/chair.png",
 count : 22 ,
@@ -541,7 +545,7 @@ tags : "Chair , Sofa , ArmChair"  ,
 reviews : 13 ,
 comments: [
  {      
-   Name: "dfdfdf",
+   Name: "Henry",
  Email: "dfdfddff",
  date: "7/13/2023",
  Comment: "dfdffddfdf", }
@@ -561,14 +565,14 @@ comments: [
    sale : 200 , 
  rate : 5 ,
   imageLink: "../../Imgs/Products/komod.png",
-count : 11  ,
-sold : 8 ,
+count : 21  ,
+sold : 18 ,
 tags : "Commode , wooden Commode , single Comode"  ,
 reviews : 12 , 
 comments: [
 
  {      
-   Name: "dfdfdf",
+   Name: "Alexander",
  Email: "dfdfddff",
  date: "7/13/2023",
  Comment: "dfdffddfdf", }
@@ -585,16 +589,16 @@ comments: [
     "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
   price: 400,
   discount : true ,
-   sale : 100 , 
+   sale : 300 , 
  rate : 3.5 ,
  imageLink: "../../Imgs/Products/dresser.png",
- count : 12 ,
+ count : 30 ,
  sold : 25 ,
  tags : "Dresser , Wooden Dresser , Double Dresser " ,
- reviews : 22 ,
+ reviews : 17 ,
  comments: [
    {      
-     Name: "dfdfdf",
+     Name: "Isabella",
    Email: "dfdfddff",
    date: "7/13/2023",
    Comment: "dfdffddfdf", }
@@ -614,13 +618,13 @@ comments: [
   sale : 200 , 
  rate : 4 ,
  imageLink: "../../Imgs/Products/table.png",
- count : 16 ,
- sold : 14 ,
+ count : 32 ,
+ sold : 19 ,
  tags : "Table , Wooden Table , Disk" ,
- reviews : 44,
+ reviews : 12,
  comments: [
    {      
-     Name: "dfdfdf",
+     Name: "Matthew",
    Email: "dfdfddff",
    date: "7/13/2023",
    Comment: "dfdffddfdf", }
@@ -636,14 +640,14 @@ category : "Beds"  ,
 description:
 "Blissful Rest Bed: Sink into pure bliss and experience unparalleled relaxation with the sumptuous comfort and support of the Blissful Rest Bed."
 , price: 400,
- discount : false ,
+ discount : true ,
  sale : 200 , 
  rate : 4.5 ,
  imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689547088/FurniProApp/Products/Beds/2_hgctb5.png" ,
- count : 20 ,
- sold : 11 ,
+ count : 21 ,
+ sold : 13 ,
  tags : "Bed , wooden Bed , steel Bed" ,
- reviews : 23 ,
+ reviews : 7 ,
  comments: [
    {      
      Name: "Noah",
@@ -659,15 +663,15 @@ description:
   category : "Sofa" ,
   description: 
   "Transform your living room into a serene oasis with the Tranquil Oasis Sofa, where comfort and serenity converge.",
-  price: 100,
+  price: 150,
   discount : false ,
-  sale : 50 ,
- rate : 4.5 ,
+  sale : 100 ,
+ rate : 3.5 ,
   imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689550215/FurniProApp/Products/sofa/sofa-ge3408ae2b_1280_qrntj3.png",
   count : 12 ,
-  sold : 2 ,
+  sold : 9 ,
   tags : "Chair , Sofa , Single Sofa" ,
-  reviews : 25,
+  reviews : 4,
   comments: [
    {      
      Name: "Matthew",
@@ -690,13 +694,13 @@ description:
    sale : 150 , 
  rate : 3 ,
   imageLink: "../../Imgs/Products/chair.png",
-count : 22 ,
+count : 23 ,
 sold : 16 ,
 tags : "Chair , Sofa , ArmChair"  ,
-reviews : 13 ,
+reviews : 11 ,
 comments: [
  {      
-   Name: "dfdfdf",
+   Name: "Liam",
  Email: "dfdfddff",
  date: "7/13/2023",
  Comment: "dfdffddfdf", }
@@ -719,11 +723,11 @@ comments: [
 count : 11  ,
 sold : 8 ,
 tags : "Commode , wooden Commode , single Comode"  ,
-reviews : 12 , 
+reviews : 6 , 
 comments: [
 
  {      
-   Name: "dfdfdf",
+   Name: "Daniel",
  Email: "dfdfddff",
  date: "7/13/2023",
  Comment: "dfdffddfdf", }
@@ -740,16 +744,16 @@ comments: [
     "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
   price: 400,
   discount : true ,
-   sale : 100 , 
+   sale : 200 , 
  rate : 3.5 ,
  imageLink: "../../Imgs/Products/dresser.png",
- count : 12 ,
+ count : 32 ,
  sold : 25 ,
  tags : "Dresser , Wooden Dresser , Double Dresser " ,
  reviews : 22 ,
  comments: [
    {      
-     Name: "dfdfdf",
+     Name: "Sophia",
    Email: "dfdfddff",
    date: "7/13/2023",
    Comment: "dfdffddfdf", }
@@ -766,16 +770,16 @@ comments: [
    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
  price: 400,
  discount : true ,
-  sale : 200 , 
+  sale : 300 , 
  rate : 4 ,
  imageLink: "../../Imgs/Products/table.png",
  count : 16 ,
  sold : 14 ,
  tags : "Table , Wooden Table , Disk" ,
- reviews : 44,
+ reviews : 9,
  comments: [
    {      
-     Name: "dfdfdf",
+     Name: "Matthew",
    Email: "dfdfddff",
    date: "7/13/2023",
    Comment: "dfdffddfdf", }
@@ -793,12 +797,12 @@ description:
  ,price: 400,
  discount : false ,
  sale : 200 , 
- rate : 4.5 ,
+ rate : 4 ,
  imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689547693/FurniProApp/Products/Beds/Bed_room_hclccl.png" ,
  count : 20 ,
  sold : 11 ,
  tags : "Bed , wooden Bed , steel Bed" ,
- reviews : 23 ,
+ reviews : 7 ,
  comments: [
    {      
      Name: "Michael",
