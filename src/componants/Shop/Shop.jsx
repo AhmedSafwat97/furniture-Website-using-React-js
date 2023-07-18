@@ -7,8 +7,6 @@ import {
     Rating,
     Stack,
     Typography,
-    useMediaQuery,
-    useTheme,
     Checkbox,
     FormControlLabel,
     FormGroup,
@@ -121,10 +119,6 @@ const valueFilter = ()=>{
       return useritem.quantity;
     }
 
-    const theme = useTheme();
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
-    
-
 
     return (
         <>
@@ -198,7 +192,7 @@ const valueFilter = ()=>{
         )
         }
          <Box sx={{ml:"15px", mt: "5px", display: "flex" }}>
-                <del style={{ marginRight: "7px",color: "gray" }}> ${Product.price}</del>
+                {Product.discount && <del style={{ marginRight: "7px",color: "gray" }}> ${Product.price}</del>}
                 <Typography>${Product.sale}</Typography>
                 </Box>
         
@@ -225,7 +219,7 @@ const valueFilter = ()=>{
                     <img
                     style={{ width: "100%", height: "100%" }}
                     src={Product.imageLink}
-                    alt="product photo"
+                    alt="product detailing"
                     loading='lazy'
                     />
 

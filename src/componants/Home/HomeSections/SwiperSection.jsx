@@ -9,7 +9,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -32,7 +32,7 @@ const SwiperSection = ({catdata}) => {
 
 
   const { SelectedProductsId , SelectedProducts  } = useSelector((state) => state.Cart);
-  const { favProductsId , favProducts  } = useSelector((state) => state.Fav);
+  const { favProductsId } = useSelector((state) => state.Fav);
 
 
 
@@ -174,7 +174,7 @@ const Navigate = useNavigate();
     <img
       style={{ width: "100%", height: "100%" }}
       src={Product.imageLink}
-      alt="product photo"
+      alt="product"
       loading='lazy'
     />
   </Box>
@@ -202,7 +202,7 @@ const Navigate = useNavigate();
       />
     </Stack>
     <Box sx={{ mt: "5px", display: "flex" }}>
-      <del style={{ marginRight: "7px" }}> ${Product.price}</del>
+      {Product.discount && <del style={{ marginRight: "7px" }}> ${Product.price}</del>}
       <Typography>${Product.sale}</Typography>
     </Box>
 

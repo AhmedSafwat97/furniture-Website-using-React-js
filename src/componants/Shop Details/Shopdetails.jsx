@@ -5,7 +5,7 @@ import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import PinterestIcon from "@mui/icons-material/Pinterest";
 import { useGetOneProductQuery } from "../../services/productApi";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import SwiperSection from "../Home/HomeSections/SwiperSection";
 import ScrollToTop from "../../ExternalMethods/ScrollToTop";
 import BannerSection from "../Home/HomeSections/bannerSection";
@@ -135,7 +135,7 @@ const [Reviewid, setReviewid] = useState([]);
         </Typography>
         <Box sx={{ display: "flex" , alignItems : "center" , flexWrap : "wrap"}}>
           <Box sx={{ mt: "5px", display: "flex" }}>
-            <del style={{ marginRight: "7px", color: "gray" }}> ${data.price}</del>
+            {data.discount &&<del style={{ marginRight: "7px", color: "gray" }}> ${data.price}</del>}
             <Typography>${data.sale}</Typography>
           </Box>
           <Stack spacing={1}>

@@ -95,7 +95,7 @@ const num = isSmallScreen ? 1 : 3;
 >
 
     <Box sx={{width : "85%"}}>
-        <img style={{width : "70px"}} loading='lazy' src="../../../../Imgs/About/review.png" alt="" />
+        <img style={{width : "70px"}} loading='lazy' src="../../../../Imgs/About/review.png" alt="user" />
     </Box>
 
 

@@ -42,7 +42,7 @@ export default function Section2() {
 
                          </Box>
                     <Box  sx={{width:"250px", textAlign:"center", m: "20px 0"  }}>
-                    <Badge badgeContent="01" color="secondary">
+                    <Badge badgeContent="02" color="secondary">
                       <Box sx={{width: "80px", height : "80px",borderRadius: "50%",bgcolor : "#FFF", display:"flex",
                            alignItems: "center",justifyContent: "center",margin:'15px auto'}}>
                             <RoomOutlinedIcon sx={{color: "#AC8C5B" , fontSize: '35px'}}/>
@@ -64,7 +64,7 @@ export default function Section2() {
  
                           </Box>
                     <Box  sx={{width:"250px", textAlign:"center", m: "20px 0"  }}>
-                    <Badge badgeContent="01" color="secondary">
+                    <Badge badgeContent="03" color="secondary">
                       <Box sx={{width: "80px", height : "80px",borderRadius: "50%",bgcolor : "#FFF", display:"flex",
                            alignItems: "center",justifyContent: "center",margin:'15px auto'}}>
                             <EmojiPeopleOutlinedIcon sx={{color: "#AC8C5B" , fontSize: '35px'}}/>

@@ -13,7 +13,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
 
-export default function FormDialog({paymentvalue ,  Code , address ,Phone ,Email , LastName , firstName , Town , Country}) {
+export default function FormDialog({paymentvalue }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState('');
 const [maxLength, setmaxLength] = useState(16);
