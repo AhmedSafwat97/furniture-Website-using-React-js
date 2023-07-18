@@ -12,6 +12,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useSignInMutation, useSignupMutation } from '../../services/SignApi';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 
@@ -19,13 +20,13 @@ export default function FormDialog() {
 
 
 
-const [Signup , { isLoading : signupLoading }] = useSignupMutation();
+const [Signup , { isLoading : signupLoading , error : signuperror }] = useSignupMutation();
 const [SignIn , { isLoading : signinLoading , isError: signInError} ] = useSignInMutation();
 
 
 
   const [open, setOpen] = React.useState(false);
-    const [RouteSign , setRouteSign ] = useState(true);
+    const [RouteSign , setRouteSign ] = useState("signin");
     const [stepnum, setstepnum] = useState(1);
 
     const [showPassword, setShowPassword] = React.useState(false);
@@ -46,32 +47,15 @@ const [Message, setMessage] = useState("");
 
 const Navigate = useNavigate()
 
-    
+
+
     const handleSignUp = async () => {
         const result = await Signup({UserName , Password , firstName , LastName , Email , Phone , Country , Town , address });
         if (result.error) {
           console.log('Sign up failed:', result.error);
-          setRouteSign(true)
-          setstepnum(1)
         } else {
           console.log('Sign up successful:', result.data);
-          setRouteSign(true)
-        setstepnum(1)
         }};
-
-
-      // const handleSignin = async () => {
-      //   try {
-      //       const { data } = await SignIn({ UserName, Password });
-      //       const token = data.token;
-        
-          
-
-      //       console.error('Signin failed:', error);
-      //     }        
-       
-      // };
-
 
 
                 // Call the login mutation from the API slice
@@ -121,7 +105,14 @@ const Navigate = useNavigate()
   return (
     <>
 
-             <Box sx={{display : "flex" , justifyContent : "center" , alignItems : "center"}}  onClick={handleClickOpen}>
+{/* {!signuperror } */}
+
+             <Box sx={{display : "flex" , justifyContent : "center" , alignItems : "center"}}  onClick={
+              ()=>{
+                handleClickOpen()
+                setRouteSign("signin")
+              }
+              }>
                  <LoginIcon
                    sx={{ fontSize: "30px", color: "black" ,}}
                  />
@@ -135,7 +126,7 @@ const Navigate = useNavigate()
             {/* <Button variant="outlined" startIcon={<PersonAddAltIcon sx={{fontSize : "30px"}}/>}>Sign Up</Button> */}
 
 
-{RouteSign ? (
+{RouteSign === "signin" &&
     <Box sx={{width : {xs : "290px" , sm : "500px" , md : "600px"}, py : "20px"  ,display : "flex" , flexDirection : "column" , alignItems : "center" }}>
    
    
@@ -143,7 +134,9 @@ const Navigate = useNavigate()
     <Box sx={{width : "calc(100% - 20px)"  ,display : "flex" , justifyContent : "center" , alignItems : "center" }}  >
     <Typography sx={{mr:"10px" , fontSize:{xs : "16px" , md : "20px"} ,color : "#92764E"}} variant='h6'>You don't have account ?</Typography>
     <Typography
-       onClick={() => {setRouteSign(false)}}
+       onClick={() => {setRouteSign("signup")
+      setMessage("")
+      }}
     sx={{fontSize:{xs : "16px" , md : "20px"} ,color : "blue" , textDecoration : "underline" ,
     cursor : "pointer" , 
     ":hover" : {
@@ -166,8 +159,7 @@ const Navigate = useNavigate()
             onChange={(e) => {setUserName(e.target.value)}}
             sx={{outline : "none"  ,width : { xs : "95%" , md : "80%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
             id="username" label="UserName" type="text" />
-    
-?
+            
 <FormControl sx={{outline : "none"  ,width : { xs : "95%" , md : "80%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
     variant="outlined">
               <InputLabel htmlFor="filled-adornment-password">Password</InputLabel>
@@ -247,23 +239,28 @@ const Navigate = useNavigate()
     ":hover" : {
         color : "gray"
     }
-    }} variant='h6'>Forgot Password ?</Typography>
+    }} variant='h6'
+    onClick={()=>{
+      setRouteSign("forgotpass")
+    }}
+    >Forgot Password ?</Typography>
     
     </Box>
     
-    </Box>
-) : 
+    </Box>}
 
-// _____________________________________________________________________________________
+{/* ______________________________________________________________________________ */}
 
-(
 
+{RouteSign === "signup" &&
 <Box sx={{width : {xs : "290px" , sm : "500px" , md : "600px"}, py : "20px"  ,display : "flex" , flexDirection : "column" , alignItems : "center" }}>
 
    <Box sx={{width : "calc(100% - 20px)"  ,display : "flex" , justifyContent : "center" , alignItems : "center" }}  >
    <Typography sx={{mr:"10px" , fontSize:{xs : "16px" , md : "20px"} ,color : "#92764E"}} variant='h6'>You have an account ?</Typography>
    <Typography 
-   onClick={() => {setRouteSign(true)}}
+   onClick={() => {setRouteSign("signin")
+  setMessage("")
+  }}
    sx={{fontSize:{xs : "16px" , md : "20px"} ,color : "blue" , textDecoration : "underline" ,
    cursor : "pointer" , 
    ":hover" : {
@@ -342,8 +339,12 @@ const Navigate = useNavigate()
 
             onClick={() => {
                 if (UserName !== "" && Password !== "" && Password === ConfirmPassword ) {
-                    setstepnum(2)
-                    setMessage("")
+                 if (Password.length < 6) {
+                  setMessage("Password must contains at least 6 characters")
+                 }else {
+                  setstepnum(2)
+                  setMessage("")
+                 }
                 } else {
                     setMessage("please fill user Name and Password, correctly.")
                 }
@@ -527,8 +528,15 @@ onClick={() => {setstepnum(2)}}
                     setMessage("")
                 } else {
                     setMessage("Please Choose Your Country")
-                }     
-
+                }
+                if (signuperror) {
+                  setMessage("User Name already exists")
+                }else {
+                  setRouteSign("signin")
+                  setstepnum(1)
+                  toast.success(`Account successfully created` , {position: "top-center"});
+                }
+            
               }}
 sx={{
     my : "10px" ,
@@ -556,11 +564,53 @@ startIcon={signupLoading ?     <CircularProgress />
    
    
    </Box>
-
-)
-
-
 }
+
+{RouteSign === "forgotpass" && 
+<Box sx={{width : {xs : "290px" , sm : "500px" , md : "600px"}, py : "20px"  ,display : "flex" , flexDirection : "column" , alignItems : "center" }}>
+
+<Typography sx={{width : "calc(100% - 20px)" , fontWeight : "700" , mt : "15px" ,color : "#92764E" ,textAlign : "center"}} variant='h4'>Recover Your Account</Typography>
+
+<Typography sx={{width : { xs : "95%" , md : "80%"}}}>Just enter the email you used to sign up and we’ll help you sort this out.</Typography>
+
+<TextField
+            onChange={(e) => {setUserName(e.target.value)}}
+            sx={{outline : "none"  ,width : { xs : "95%" , md : "80%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
+            id="Email" label="Enter Your email address" type="text" />
+
+
+
+                      <Button 
+                           sx={{
+                            my : "10px" ,
+                            backgroundColor: "#92764E",
+                            cursor: "pointer",
+                            color: "#FFF",
+                            padding: "5px 16px",
+                            borderRadius: "20px",
+                            width : {xs : "60%" , md : "fit-content" },
+                            ":hover": {
+                              color: "#92764E",
+                              outline: "1px solid #92764E",
+                            },
+                          }}
+                      >Recover My Account</Button>
+
+                   <Box sx={{display : "flex" , alignItems : "center"}}>
+                    <Typography>Not You ?</Typography>
+                    <Typography 
+                       onClick={() => {setRouteSign("signin")}}
+                      sx={{fontSize:{xs : "16px" , ml : "10px" ,md : "20px"} ,color : "blue" , textDecoration : "underline" ,
+                      cursor : "pointer" , 
+                      ":hover" : {
+                      color : "gray"
+                      }
+                      }} variant='h6'>Sign In</Typography>
+                    </Box>   
+
+</Box>
+}
+
 
 
       </Dialog>

@@ -3,6 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import jwtDecode from 'jwt-decode';
 
 
 const Commentsec = ({data , CommentSecWidth , CommentSecName}) => {
@@ -15,11 +16,20 @@ const [removeIcon, setremoveIcon] = useState(false);
 const [error, setError] = useState(false)
   
 
+
+let decodedToken;
+const token = localStorage.getItem('token')
+
+if (token) {
+  decodedToken = jwtDecode(token);
+}
+
+
     const commentDetails  = {
       UniqeId : Math.floor(Math.random() * 1000) , 
         Id : data.id ,
-        Name : Name ,
-        Email : Email , 
+        Name : decodedToken ? decodedToken.firstName : Name ,
+        Email : decodedToken ? decodedToken.Email : Email , 
         date : new Date().toLocaleDateString(),
         Comment : comment , 
     }
@@ -97,7 +107,23 @@ const [error, setError] = useState(false)
           {error && <Typography sx={{color:"red",fontSize:"12px",textAlign:"center"}}>Please ,Fill all the Form inputs</Typography>}
     <Box sx={{width:"95%",mx:"auto",borderRadius : "15px",display:"flex" }}>
        <form style={{width:"100%"}}>
-        <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
+          {decodedToken ? (
+              <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
+                         <TextField 
+                         disabled
+                    value={[decodedToken.firstName , decodedToken.LastName].join(" ")}
+                    sx={{width :"49%",fontSize:"10px" , borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
+                    size="small"
+                    label="Name" />
+                      <TextField 
+                      disabled
+                    value={decodedToken.Email}
+                    sx={{width :"49%",fontSize:"10px" , borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
+                    size="small"
+                    label="Email" />
+              </Box>
+          ) : (
+            <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
             <TextField required
                     value={Name}
                     onChange={(e) => {setName(e.target.value)}}
@@ -111,6 +137,7 @@ const [error, setError] = useState(false)
                     size="small"
                     label="Email" />
         </Box>
+          )}
         <TextField required
         value={comment}
         onChange={(e) => {setcomment(e.target.value)}}
@@ -124,16 +151,28 @@ const [error, setError] = useState(false)
         <Button       
 
         onClick={() => {
-           if (Name !== "" && Email !== "" && Email.includes("@") && comment !== "") {
+            if (decodedToken) {
+          if (comment !== "") {
             setTheComment([...TheComment , commentDetails])
             if (TheComment !== []) {
             sessionStorage.setItem(CommentSecName , JSON.stringify([...TheComment , commentDetails]) )}
-            console.log(commentDetails);
-            setEmail("")
-            setName("")
-            setcomment("")
-           }
-           setError(true);
+          
+          }
+            
+            } else {
+              if (Name !== "" && Email !== "" && Email.includes("@") && comment !== "") {
+                setTheComment([...TheComment , commentDetails])
+                if (TheComment !== []) {
+                sessionStorage.setItem(CommentSecName , JSON.stringify([...TheComment , commentDetails]) )}
+                console.log(commentDetails);
+                setEmail("")
+                setName("")
+                setcomment("")
+                setError(false)
+               } else {
+                setError(true)
+               }
+            }
           }}
             sx={{
               my : "10px" ,

@@ -55,8 +55,8 @@ const Contact = () => {
     <IconButton sx={{bgcolor : "#AC8C5B"}} >
         <EmailIcon sx={{color : "white"}}/>
     </IconButton>
-    <Typography variant='h6' fontSize="14px" >ahmed@gmail.com</Typography>
-    <Typography variant='h6' fontSize="14px" >aya@gmail.com</Typography>
+    <Typography variant='h6' fontSize="14px" >info@mydomain.com</Typography>
+    <Typography variant='h6' fontSize="14px" >info@mydomain.com</Typography>
 
 </Box>     
             </Box>
@@ -65,8 +65,8 @@ const Contact = () => {
     <IconButton sx={{bgcolor : "#AC8C5B"}} >
         <LocationOnIcon sx={{color : "white"}}/>
     </IconButton>
-    <Typography variant='h6' fontSize="14px" >+201110351045</Typography>
-    <Typography variant='h6' fontSize="14px" >+201110351045</Typography>
+    <Typography variant='h6' fontSize="14px" >New York City, United States</Typography>
+    <Typography variant='h6' fontSize="14px" >Egypt, Cairo</Typography>
 
 </Box>
 <Box sx={{width : "40%" , my : "10px"}}>

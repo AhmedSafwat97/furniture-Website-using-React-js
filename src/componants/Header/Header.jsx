@@ -46,15 +46,6 @@ function ResponsiveAppBar() {
 
   const Location = useLocation();
 
-
-
-  const [SignOut , { isLoading : signoutLoading }] = useSignoutMutation();
-
-
-
-
-
-
   const { SelectedProductsId   } = useSelector((state) => state.Cart);
 
   const { favProductsId  } = useSelector((state) => state.Fav);
@@ -68,25 +59,10 @@ function ResponsiveAppBar() {
   if (token) {
     decodedToken = jwtDecode(token);
   }
-  const handleSignout = async () => {
-    if (token) {
-      const UserId = decodedToken.id
-      const result = await SignOut({token , UserId });
-      if (result.error) {
-        console.log('Sign out failed:', result.error);
-      } else {
-        console.log('Sign out success', result.data);
-      }
-    }
+  const handleSignout =  () => {
     localStorage.removeItem("token")
      navigate("/")
   };
-
-  // const handleSignOut = () => {
-  //   // Clear the token from session storage
-  //   localStorage.removeItem('token')
-  //   navigate("/")
-  // };
 
 const Searchdata = ()=> {
   if(Search !== ""){
@@ -96,7 +72,6 @@ const Searchdata = ()=> {
     return null
   }
   } 
-
 
   // to close the list when we click on any place in the page 
   const searchRef = React.useRef(null)
