@@ -72,7 +72,7 @@ const products = [
  },
  {
    id: 3,
-   Name: "Comfort Haven Commode",
+   Name: "Comfort Commode",
    category : "Commodes",
    description:
    "Discover a haven of comfort in your bathroom with this commode, offering a comfortable seating experience and efficient functionality.",
@@ -99,7 +99,7 @@ const products = [
 },
  {
    id: 4,
-   Name: "Cozy Haven Dresser" ,
+   Name: "Cozy Dresser" ,
    category : "Dressers",
    description:
    "Transform your bedroom into a serene retreat with this stylish and spacious dresser, providing ample storage and tranquility.",
@@ -125,7 +125,7 @@ const products = [
 },
  {
   id: 5,
-  Name: "Cozy Haven Side Table" ,
+  Name: "Cozy Table" ,
   category : "Tables",
   description:
   "Gather around the Harmony Dining Table and enjoy harmonious meals, as its elegant design and sturdy construction create a welcoming atmosphere.",
@@ -235,7 +235,7 @@ comments: [
 },
 {
   id: 9,
-  Name: "Elegance Essence Commode",
+  Name: "Elegance Commode",
   category : "Commodes",
   description:
   "Elevate the elegance of your bathroom with the Essence Commode, showcasing a perfect balance of style and functionality." ,
@@ -262,7 +262,7 @@ comments: [
 },
 {
   id: 10,
-  Name: "Tranquil Oasis Dresser" ,
+  Name: "Tranquil Dresser" ,
   category : "Dressers",
   description:
   "Experience perfect harmony in your bedroom with the Harmony Haven Dresser, offering a blend of functionality and soothing aesthetics.",
@@ -288,7 +288,7 @@ comments: [
 },
 {
  id: 11,
- Name: "Zen Retreat Study Table" ,
+ Name: "Zen Table" ,
  category : "Tables",
  description:
  "Enhance your living space with the Serenity Coffee Table, offering a serene focal point and practical surface for relaxation and socializing.",
@@ -389,7 +389,7 @@ comments: [
 },
 {
   id: 15,
-  Name: "Tranquil Retreat Commode",
+  Name: "Tranquil Commode",
   category : "Commodes",
   description:
   "Create a tranquil retreat in your bathroom with this thoughtfully designed commode, combining aesthetics with practicality for a serene experience." ,
@@ -416,7 +416,7 @@ comments: [
 },
 {
   id: 16,
-  Name: "Elegance Essence Dresser" ,
+  Name: "Elegance Dresser" ,
   category : "Dressers",
   description:
   "Elevate the elegance of your bedroom with the Essence Dresser, featuring a timeless design and impeccable craftsmanship.",
@@ -442,7 +442,7 @@ comments: [
 },
 {
  id: 17,
- Name: "Elegance Console Table" ,
+ Name: "Elegance Table" ,
  category : "Tables",
  description:
  "Make a statement with the Elegance Console Table, featuring a sleek design that adds a touch of sophistication to any entryway or hallway.",
@@ -553,7 +553,7 @@ comments: [
 },
 {
   id: 21,
-  Name: "Harmony Haven Commode",
+  Name: "Harmony Commode",
   category : "Commodes",
   description:
   "Experience harmony and convenience in your bathroom with the Harmony Haven Commode, designed for utmost comfort and functionality.",
@@ -580,7 +580,7 @@ comments: [
 },
 {
   id: 22,
-  Name: "Harmony Haven Dresser" ,
+  Name: "Harmony Dresser" ,
   category : "Dressers",
   description:
   "Create a tranquil oasis in your bedroom with this dresser, offering a calming atmosphere and organized storage solutions.",
@@ -606,7 +606,7 @@ comments: [
 },
 {
  id: 23,
- Name: "Serenity Coffee Table" ,
+ Name: "Serenity Table" ,
  category : "Tables",
  description:
  "Find your study sanctuary with the Zen Retreat Study Table, providing a serene and organized space for focused work and creativity.",
@@ -707,7 +707,7 @@ comments: [
 },
 {
   id: 27,
-  Name: "Serene Oasis Commode",
+  Name: "Serene Commode",
   category : "Commodes",
   description: 
   "Transform your bathroom into a serene oasis with this stylish and functional commode, offering both comfort and elegance.",
@@ -734,7 +734,7 @@ comments: [
 },
 {
   id: 28,
-  Name: "Serene Retreat Dresser" ,
+  Name: "Serene Dresser" ,
   category : "Dressers",
   description:
   "Create a tranquil oasis in your bedroom with this dresser, offering a calming atmosphere and organized storage solutions.",
@@ -760,7 +760,7 @@ comments: [
 },
 {
  id: 29,
- Name: "Harmony Dining Table" ,
+ Name: "Harmony Table" ,
  category : "Tables",
  description:
  "Add a cozy touch to your living area with the Cozy Haven Side Table, a functional and stylish addition for displaying decor and essentials.",

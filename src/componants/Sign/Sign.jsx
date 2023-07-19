@@ -9,7 +9,7 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import LoginIcon from '@mui/icons-material/Login';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useSignInMutation, useSignupMutation } from '../../services/SignApi';
+import { useConfirmCodeMutation, useForgotpassMutation, useResetPassMutation, useSignInMutation, useSignupMutation } from '../../services/SignApi';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -20,8 +20,12 @@ export default function FormDialog() {
 
 
 
-const [Signup , { isLoading : signupLoading , error : signuperror }] = useSignupMutation();
+const [Signup , { isLoading : signupLoading }] = useSignupMutation();
 const [SignIn , { isLoading : signinLoading , isError: signInError} ] = useSignInMutation();
+const [Forgotpass , { isLoading : ForgotLoading } ] = useForgotpassMutation();
+const [ConfirmCode , { isLoading : codeLoading } ] = useConfirmCodeMutation();
+const [ ResetPass, { isLoading : resetLoading } ] = useResetPassMutation();
+
 
 
 
@@ -33,14 +37,14 @@ const [SignIn , { isLoading : signinLoading , isError: signInError} ] = useSignI
 
     const [Country, setCountry] = React.useState('');
     const [Town, setTown] = React.useState('');
-     const [firstName, setfirstName] = useState("");
-    const [LastName, setLastName] = useState("");
+     const [firstName, setName] = useState("");
     const [Email, setEmail] = useState("");
     const [Phone, setPhone] = useState("");
     const [address, setaddress] = useState("");
     const [UserName, setUserName] = useState("");
     const [ConfirmPassword, setConfirmPassword] = useState("");
     const [Password, setPassword] = useState("");
+    const [VerificationCode, setvCode] = useState("");
 
 const [Message, setMessage] = useState("");
 
@@ -50,12 +54,24 @@ const Navigate = useNavigate()
 
 
     const handleSignUp = async () => {
-        const result = await Signup({UserName , Password , firstName , LastName , Email , Phone , Country , Town , address });
-        if (result.error) {
-          console.log('Sign up failed:', result.error);
+      const result = await Signup({UserName , Password , firstName , Email , Phone , Country , Town , address });
+      try {
+        // Handle success case
+        if (result.data) {
+          // Code to execute when signup is successful
+          console.log('Signup successful');
+          setRouteSign("signin")
+          setstepnum(1)
+          toast.success(`Account successfully created` , {position: "top-center"});
         } else {
-          console.log('Sign up successful:', result.data);
-        }};
+          setMessage("User Name or Email already exists")
+        }
+      } catch (error) {
+        // Handle error case
+        console.log('Signup error:', error);
+      }
+    }
+
 
 
                 // Call the login mutation from the API slice
@@ -83,6 +99,41 @@ const Navigate = useNavigate()
 
            
                 };
+
+
+
+                const handleForgotpassword = async () => {
+                  const result = await Forgotpass({ Email });
+                  if (result.error) {
+                    console.log('Send code failed:', result.error);
+                    setMessage("This email does not exist")
+                  } else {
+                    console.log('Send code successful:', result.data);
+                  }};
+  
+const handleconfirmcode = async () => {
+  const result = await ConfirmCode({ Email , VerificationCode});
+  if (result.error) {
+    console.log('code not match :', result.error);
+  } else {
+    console.log(' code match successful:', result.data);
+    setRouteSign("resetpassword")
+
+  }
+}
+
+
+const NewPassword = Password
+
+const handleresetPassword = async () => {
+  const result = await ResetPass({ Email , NewPassword});
+  if (result.error) {
+    console.log('faild to reset password:', result.error);
+  } else {
+    toast.success(`Password has been changed successfully` , {position: "top-center"});
+    console.log('Reset Password successful:', result.data);
+  }
+}
 
 
 
@@ -378,18 +429,14 @@ const Navigate = useNavigate()
    ,md : "calc(100% - 20px)" } , display : "flex" , flexDirection : "column" , alignItems : "center"}}>
           
           
-          <Box sx={{width: {xs : "95%" , md : "80%" },display: "flex",justifyContent: "space-between"}}>
                         <TextField required
-                        onChange={(e) => {setfirstName(e.target.value)}}
-                sx={{width :"49%",fontSize:"10px", borderRadius : "30px" , backgroundColor:"#E9E7DB",border: "none" , my : "10px"}}
+                        onChange={(e) => {setName(e.target.value)}}
+                sx={{width: {xs : "95%" , md : "80%" },fontSize:"10px", borderRadius : "30px" , backgroundColor:"#E9E7DB",border: "none" , my : "10px"}}
                 id="first" label="First Name" type="text" />
 
 
 
-                <TextField onChange={(e) => {setLastName(e.target.value)}} required
-                sx={{width :"49%",fontSize:"10px", borderRadius : "30px" ,backgroundColor:"#E9E7DB",border: "none" , my : "10px"}}
-                id="last" label="Last Name" type="text" />
-                </Box>
+              
     
           <TextField
           required
@@ -429,7 +476,7 @@ onClick={() => {setstepnum(1)}}
 <IconButton 
 onClick={() => {
 
-if (firstName !== "" && LastName !== "" && Email !== "" && Email.includes("@")) {
+if (firstName !== "" && Email !== "" && Email.includes("@")) {
     setstepnum(3)
     setMessage("")
 } else {
@@ -529,13 +576,6 @@ onClick={() => {setstepnum(2)}}
                 } else {
                     setMessage("Please Choose Your Country")
                 }
-                if (signuperror) {
-                  setMessage("User Name already exists")
-                }else {
-                  setRouteSign("signin")
-                  setstepnum(1)
-                  toast.success(`Account successfully created` , {position: "top-center"});
-                }
             
               }}
 sx={{
@@ -566,21 +606,32 @@ startIcon={signupLoading ?     <CircularProgress />
    </Box>
 }
 
+{/* _______________________________________________________________________________ */}
 {RouteSign === "forgotpass" && 
 <Box sx={{width : {xs : "290px" , sm : "500px" , md : "600px"}, py : "20px"  ,display : "flex" , flexDirection : "column" , alignItems : "center" }}>
 
 <Typography sx={{width : "calc(100% - 20px)" , fontWeight : "700" , mt : "15px" ,color : "#92764E" ,textAlign : "center"}} variant='h4'>Recover Your Account</Typography>
-
+<Typography color="red" >{Message}</Typography>
 <Typography sx={{width : { xs : "95%" , md : "80%"}}}>Just enter the email you used to sign up and we’ll help you sort this out.</Typography>
 
 <TextField
-            onChange={(e) => {setUserName(e.target.value)}}
+            onChange={(e) => {setEmail(e.target.value)
+            console.log(Email)
+            }}
             sx={{outline : "none"  ,width : { xs : "95%" , md : "80%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
             id="Email" label="Enter Your email address" type="text" />
 
 
 
                       <Button 
+                      onClick={() => {
+                        handleForgotpassword()
+                        if (Email !== "") {
+                          setRouteSign("resetcode")
+                        } else {
+                          setMessage("Please enter your email")
+                        }
+                      }}
                            sx={{
                             my : "10px" ,
                             backgroundColor: "#92764E",
@@ -607,6 +658,138 @@ startIcon={signupLoading ?     <CircularProgress />
                       }
                       }} variant='h6'>Sign In</Typography>
                     </Box>   
+
+</Box>
+}
+
+{/* __________________________________________________________________ */}
+
+{RouteSign === "resetcode" && 
+
+<Box sx={{width : {xs : "290px" , sm : "500px" , md : "600px"}, py : "20px"  ,display : "flex" , flexDirection : "column" , alignItems : "center" }} >
+<Typography sx={{width : "calc(100% - 20px)" , fontWeight : "700" , mt : "15px" ,color : "#92764E" ,textAlign : "center"}} variant='h4'>Verification Code</Typography>
+
+<Typography sx={{width : { xs : "95%" , md : "80%"}}}>Please enter the verification code that was sent to your email</Typography>
+
+
+<TextField
+            onChange={(e) => {setvCode(e.target.value)
+            }}
+            sx={{outline : "none"  ,width : { xs : "90%" , md : "70%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
+            id="Email" label="Enter Your verification Code" type="text" />
+
+
+<Button 
+                      onClick={() => {
+                        handleconfirmcode()
+                      }}
+                           sx={{
+                            my : "10px" ,
+                            backgroundColor: "#92764E",
+                            cursor: "pointer",
+                            color: "#FFF",
+                            padding: "5px 16px",
+                            borderRadius: "20px",
+                            width : {xs : "60%" , md : "fit-content" },
+                            ":hover": {
+                              color: "#92764E",
+                              outline: "1px solid #92764E",
+                            },
+                          }}
+                      >Confirm Code</Button>
+
+
+
+<Box sx={{display : "flex"}}>
+<Typography>You haven't received the code yet ?</Typography>
+<Typography 
+onClick={() => {setRouteSign("forgotpass")}}
+sx={{color : "blue" , cursor : "pointer" , ml : "10px" , textDecoration : "underline"}}>Resend Code</Typography>
+
+</Box>
+
+</Box>
+}
+{/* _______________________________________________________________________ */}
+
+{RouteSign === "resetpassword" && 
+
+<Box sx={{width : {xs : "290px" , sm : "500px" , md : "600px"}, py : "20px"  ,display : "flex" , flexDirection : "column" , alignItems : "center" }} >
+<Typography sx={{width : "calc(100% - 20px)" , fontWeight : "700" , mt : "15px" ,color : "#92764E" ,textAlign : "center"}} variant='h4'>Reset Password</Typography>
+
+<Typography>{Message}</Typography>
+<FormControl sx={{outline : "none"  ,width : { xs : "95%" , md : "80%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
+  variant="outlined">
+            <InputLabel >Password</InputLabel>
+            <OutlinedInput
+            label="New Password"
+            onChange={(e) => {setPassword(e.target.value)}}
+              type={showPassword ? 'text' : 'password'}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onMouseDown={handleMouseDownPassword}
+                    onClick={handleClickShowPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
+
+             
+  <FormControl sx={{outline : "none"  ,width : { xs : "95%" , md : "80%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
+  variant="outlined">
+            <InputLabel>Confirm Password</InputLabel>
+            <OutlinedInput
+            label="Confirm New Password"
+            onChange={(e) => {setConfirmPassword(e.target.value)}}
+              type={showPassword ? 'text' : 'password'}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
+
+
+<Button 
+                      onClick={() => {
+
+                        if (Password !== "" && ConfirmPassword !=="" && Password === ConfirmPassword && Password.length > 6 ) {
+                          handleresetPassword()
+                          setOpen(false)
+                        } else {
+                          setMessage("Password must contains at least 6 characters")
+                        }
+
+                      }}
+                           sx={{
+                            my : "10px" ,
+                            backgroundColor: "#92764E",
+                            cursor: "pointer",
+                            color: "#FFF",
+                            padding: "5px 16px",
+                            borderRadius: "20px",
+                            width : {xs : "60%" , md : "fit-content" },
+                            ":hover": {
+                              color: "#92764E",
+                              outline: "1px solid #92764E",
+                            },
+                          }}
+                      >Confirm</Button>
+
 
 </Box>
 }

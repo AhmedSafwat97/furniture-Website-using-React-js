@@ -19,9 +19,27 @@ const SignApi = createApi({
         body: user,
       }),
     }), 
+    Forgotpass: builder.mutation({
+      query: (body) => ({
+        url: '/forgot-password',
+        method: 'POST',
+        body,
+      }),
+    }), 
+    ConfirmCode: builder.mutation({
+      query: (body) => ({
+        url: '/confirmcode',
+        method: 'POST',
+        body,
+      }), }), 
 
-    
-    
+      ResetPass: builder.mutation({
+        query: (body) => ({
+          url: '/reset-password',
+          method: 'POST',
+          body,
+        }),  }), 
+
   }),
 });
 
@@ -39,7 +57,7 @@ export const userApi = createApi({
 
 
 
-export const { useSignupMutation , useSignInMutation } = SignApi;
+export const { useSignupMutation , useSignInMutation , useForgotpassMutation , useConfirmCodeMutation , useResetPassMutation } = SignApi;
 export const {  useGetUserQuery   } = userApi;
 export default SignApi;
 

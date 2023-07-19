@@ -30,7 +30,7 @@ function App() {
     <>
 
 
-{error && 
+{false && 
 <>
 <Box sx={{height : "100vh" , display : "flex" , flexDirection : "column" , justifyContent : "center" , alignItems : "center"}}>
 
@@ -44,7 +44,7 @@ function App() {
 
 
 
-{isLoading && 
+{false && 
 <>
 <Box sx={{height : "100vh" , display : "flex" , flexDirection : "column" , justifyContent : "center" , alignItems : "center"}}>
 
@@ -66,7 +66,7 @@ function App() {
 
 }
 
-{data && 
+{true && 
 <Router>
 <CoponCode />
 <Header/>
