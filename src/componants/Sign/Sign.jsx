@@ -612,13 +612,13 @@ startIcon={signupLoading ?     <CircularProgress />
 
 <Typography sx={{width : "calc(100% - 20px)" , fontWeight : "700" , mt : "15px" ,color : "#92764E" ,textAlign : "center"}} variant='h4'>Recover Your Account</Typography>
 <Typography color="red" >{Message}</Typography>
-<Typography sx={{width : { xs : "95%" , md : "80%"}}}>Just enter the email you used to sign up and we’ll help you sort this out.</Typography>
+<Typography sx={{width : { xs : "80%" , md : "75%"}}}>Just enter the email you used to sign up and we’ll help you sort this out.</Typography>
 
 <TextField
             onChange={(e) => {setEmail(e.target.value)
             console.log(Email)
             }}
-            sx={{outline : "none"  ,width : { xs : "95%" , md : "80%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
+            sx={{outline : "none"  ,width : { xs : "80%" , md : "75%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
             id="Email" label="Enter Your email address" type="text" />
 
 
@@ -669,13 +669,13 @@ startIcon={signupLoading ?     <CircularProgress />
 <Box sx={{width : {xs : "290px" , sm : "500px" , md : "600px"}, py : "20px"  ,display : "flex" , flexDirection : "column" , alignItems : "center" }} >
 <Typography sx={{width : "calc(100% - 20px)" , fontWeight : "700" , mt : "15px" ,color : "#92764E" ,textAlign : "center"}} variant='h4'>Verification Code</Typography>
 
-<Typography sx={{width : { xs : "95%" , md : "80%"}}}>Please enter the verification code that was sent to your email</Typography>
+<Typography sx={{width : { xs : "80%" , md : "75%"}}}>Please enter the verification code that was sent to your email</Typography>
 
 
 <TextField
             onChange={(e) => {setvCode(e.target.value)
             }}
-            sx={{outline : "none"  ,width : { xs : "90%" , md : "70%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
+            sx={{outline : "none"  ,width : { xs : "80%" , md : "75%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
             id="Email" label="Enter Your verification Code" type="text" />
 
 
@@ -700,7 +700,7 @@ startIcon={signupLoading ?     <CircularProgress />
 
 
 
-<Box sx={{display : "flex"}}>
+<Box sx={{display : "flex" , width : { xs : "80%" , md : "75%"} }}>
 <Typography>You haven't received the code yet ?</Typography>
 <Typography 
 onClick={() => {setRouteSign("forgotpass")}}
@@ -718,7 +718,7 @@ sx={{color : "blue" , cursor : "pointer" , ml : "10px" , textDecoration : "under
 <Typography sx={{width : "calc(100% - 20px)" , fontWeight : "700" , mt : "15px" ,color : "#92764E" ,textAlign : "center"}} variant='h4'>Reset Password</Typography>
 
 <Typography>{Message}</Typography>
-<FormControl sx={{outline : "none"  ,width : { xs : "95%" , md : "80%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
+<FormControl sx={{outline : "none"  ,width : { xs : "80%" , md : "75%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
   variant="outlined">
             <InputLabel >Password</InputLabel>
             <OutlinedInput
@@ -741,7 +741,7 @@ sx={{color : "blue" , cursor : "pointer" , ml : "10px" , textDecoration : "under
           </FormControl>
 
              
-  <FormControl sx={{outline : "none"  ,width : { xs : "95%" , md : "80%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
+  <FormControl sx={{outline : "none"  ,width : { xs : "80%" , md : "75%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
   variant="outlined">
             <InputLabel>Confirm Password</InputLabel>
             <OutlinedInput

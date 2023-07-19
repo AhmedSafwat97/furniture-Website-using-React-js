@@ -47,7 +47,7 @@ const products = [
 ,
  {
    id: 2,
-   Name: "Zen Retreat Chair" ,
+   Name: "Retreat Chair" ,
    category : "Chairs",
    description:
      "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
@@ -211,7 +211,7 @@ description:
 ,
 {
   id: 8,
-  Name: "Elegance Accent Chair" ,
+  Name: "Accent Chair" ,
   category : "Chairs",
   description:
     "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
@@ -684,7 +684,7 @@ description:
 ,
 {
   id: 26,
-  Name: "Serenity Recliner Chair" ,
+  Name: "Serenity Chair" ,
   category : "Chairs",
   description: "Indulge in ultimate relaxation with the Serenity Recliner Chair, featuring adjustable positions and plush cushioning for pure comfort.",
   price: 200,

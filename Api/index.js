@@ -234,12 +234,13 @@ app.post('/confirmcode', async (req, res) => {
     const Usercode = user.verificationCode;
 
     // Check if the verification code sent to the email matches the code from the client
-    if (Usercode !== VerificationCode) {
-      return res.status(401).json({ message: 'Invalid verification code' });
+    if (Usercode === VerificationCode) {
+      return res.json({ message: 'Valid verification code', Usercode });
+    } else {
+      // If the verification code does not match, return an error response
+      return res.status(401).json({ message: 'Invalid verification code', Usercode });
     }
 
-    // If the verification code matches, return a success response
-    res.json({ message: 'Valid verification code' });
   } catch (error) {
     console.error('Error checking verification code:', error);
     return res.status(500).json({ message: 'Internal server error' });

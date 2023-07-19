@@ -48,7 +48,7 @@ const SwiperSection = ({catdata}) => {
 
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
-  const num = isSmallScreen ? 2 : 4;
+  const num = isSmallScreen ? 1 : 4;
 const Navigate = useNavigate();
 
  const { data, error, isLoading } = useGetproductByNameQuery();
