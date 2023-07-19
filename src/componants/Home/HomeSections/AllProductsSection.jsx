@@ -13,7 +13,7 @@ import {
     useTheme,
   } from
     "@mui/material";
-  import React, { useState } from "react";
+  import React from "react";
   import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
   import FavoriteIcon from "@mui/icons-material/Favorite";
 import PropTypes from 'prop-types';
@@ -256,7 +256,7 @@ const AllProductsSection = () => {
             />
           </Stack>
           <Box sx={{ mt: "5px", display: "flex" }}>
-            <del style={{ marginRight: "7px" }}> ${Product.price}</del>
+            {Product.price && <del style={{ marginRight: "7px" }}> ${Product.price}</del>}
             <Typography>${Product.sale}</Typography>
           </Box>
 

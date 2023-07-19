@@ -49,7 +49,8 @@ const products = [
    id: 2,
    Name: "Zen Retreat Chair" ,
    category : "Chairs",
-   description: "Immerse yourself in a state of tranquility with the Zen Retreat Chair, offering a serene and calming seating experience.",
+   description:
+     "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
    price: 200,
    discount : true ,
     sale : 150 , 
@@ -75,7 +76,7 @@ const products = [
    Name: "Comfort Commode",
    category : "Commodes",
    description:
-   "Discover a haven of comfort in your bathroom with this commode, offering a comfortable seating experience and efficient functionality.",
+     "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
    price: 300,
    discount : false ,
     sale : 200 , 
@@ -128,7 +129,7 @@ const products = [
   Name: "Cozy Table" ,
   category : "Tables",
   description:
-  "Gather around the Harmony Dining Table and enjoy harmonious meals, as its elegant design and sturdy construction create a welcoming atmosphere.",
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
   price: 400,
   discount : true ,
    sale : 200 , 
@@ -212,10 +213,11 @@ description:
   id: 8,
   Name: "Elegance Accent Chair" ,
   category : "Chairs",
-  description: " Elevate the aesthetic of your space with the Elegance Accent Chair, a sophisticated and stylish addition to any room.",
+  description:
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
   price: 200,
   discount : true ,
-   sale : 150 , 
+   sale : 100 , 
  rate : 3 ,
   imageLink:   "https://res.cloudinary.com/drkevmgk2/image/upload/v1689589616/FurniProApp/Products/Chairs/chair-ga087e88d2_1280_ckw5k0.png",
 count : 22 ,
@@ -394,7 +396,7 @@ comments: [
   description:
   "Create a tranquil retreat in your bathroom with this thoughtfully designed commode, combining aesthetics with practicality for a serene experience." ,
   price: 300,
-  discount : false ,
+  discount : true ,
    sale : 270 , 
  rate : 5 ,
   imageLink: "https://res.cloudinary.com/drkevmgk2/image/upload/v1689642246/FurniProApp/Products/Commodes/work-table-g85232ff95_1280_cryfsd.png",
@@ -709,8 +711,8 @@ comments: [
   id: 27,
   Name: "Serene Commode",
   category : "Commodes",
-  description: 
-  "Transform your bathroom into a serene oasis with this stylish and functional commode, offering both comfort and elegance.",
+  description:
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
   price: 300,
   discount : false ,
    sale : 200 , 

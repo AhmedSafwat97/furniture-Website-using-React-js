@@ -133,7 +133,7 @@ key={Category.id}
               <img
                 style={{ width: "100%", height: "100%" }}
                 src={Category.imageLink}
-                alt="category photo"
+                alt="category details"
                 loading='lazy'
               />
             </Box>

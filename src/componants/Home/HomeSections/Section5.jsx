@@ -90,7 +90,7 @@ const Navigate = useNavigate()
 </Box>
                   <Box sx={{display : " flex" , flexDirection : {xs : "row" , md : "column"} , alignItems : "baseline" ,width : "auto" }}>
                       <Box sx={{ m: "10px 0px", display: "flex" }}>
-                      <del style={{ color:"gray", marginRight: "7px" , fontWeight : "700" }}> ${Product.price}</del>
+                      {Product.discount &&<del style={{ color:"gray", marginRight: "7px" , fontWeight : "700" }}> ${Product.price}</del>}
                       <Typography sx={{fontWeight : "700"}}>${Product.sale}</Typography>
                       </Box>
 
