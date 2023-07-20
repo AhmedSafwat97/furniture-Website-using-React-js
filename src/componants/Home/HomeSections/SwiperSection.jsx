@@ -47,8 +47,22 @@ const SwiperSection = ({catdata}) => {
   }
 
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
-  const num = isSmallScreen ? 1 : 4;
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isLargScreen = useMediaQuery(theme.breakpoints.down("lg"));
+
+
+
+  let num 
+
+  if (isSmallScreen) {
+    num = 1
+  } else if (isLargScreen) {
+    num = 3
+  } else {
+      num = 4
+  }
+
+
 const Navigate = useNavigate();
 
  const { data, error, isLoading } = useGetproductByNameQuery();
@@ -94,7 +108,7 @@ const Navigate = useNavigate();
        slidesPerView={num}
        pagination={{ clickable: true }}
        navigation
-       style={{ width: "100%", height: "100%", padding: "30px 0" }}
+       style={{ width: "100%" ,height: "100%", padding: "30px 0" }}
      >
 
       
@@ -192,7 +206,7 @@ const Navigate = useNavigate();
       borderRadius: "15px",
     }}
   >
-    <Typography variant="h6" fontSize="20px" >{Product.Name}</Typography>
+    <Typography variant="h6" sx={{textAlign : "center" ,fontSize : {xs : "15px" , md : "18px"} }} >{Product.Name}</Typography>
     <Stack spacing={1}>
       <Rating
         name="half-rating-read"

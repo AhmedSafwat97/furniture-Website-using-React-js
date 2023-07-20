@@ -1,6 +1,5 @@
 /* eslint-disable eqeqeq */
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const products = require("./products");
 const blogs = require("./blogs");
@@ -14,7 +13,6 @@ const crypto = require('crypto');
 
 
 const app = express();
-app.use(bodyParser.json());
 app.use(cors());
 
 

@@ -111,7 +111,7 @@ if (token) {
               <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>
                          <TextField 
                          disabled
-                    value={[decodedToken.firstName , decodedToken.LastName].join(" ")}
+                    value={decodedToken.firstName}
                     sx={{width :"49%",fontSize:"10px" , borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
                     size="small"
                     label="Name" />
