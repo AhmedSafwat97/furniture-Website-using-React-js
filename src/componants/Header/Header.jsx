@@ -380,6 +380,7 @@ size="large" aria-label="Favorite" color="inherit" >
           {/* To view The List and the icon */}
           {viewlist && (
             <Box  
+            sx={{display : {xs : "block" , md : "none"}}}
             >
               <Box
                 className="MopIconBar"

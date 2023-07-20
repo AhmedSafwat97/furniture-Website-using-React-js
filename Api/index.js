@@ -10,11 +10,12 @@ const users = require('./Users');
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
+const bodyParser = require('body-parser'); 
 
 
 const app = express();
-app.use(cors({ origin: 'http://localhost:3000' }));
-
+app.use(cors());
+app.use(bodyParser.json());
 
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -154,11 +155,11 @@ app.post('/signup', async (req, res) => {
 });
 
 app.post('/signin', async (req, res) => {
-  const { UserName, Password } = req.body;
+  const { Email , Password } = req.body;
 
   try {
     // Find the user by username
-    const user = await User.findOne({ UserName });
+    const user = await User.findOne({ Email });
     if (!user) {
       return res.status(401).json({ message: 'Invalid UserName' });
     }
@@ -201,9 +202,16 @@ app.post('/forgot-password', async (req, res) => {
     const mailOptions = {
       from: 'Furnipro322@gmail.com',
       to: Email,
-      subject: 'Password Reset Verification Code',
-      text: `Your verification code is: ${verificationCode}`,
+      subject: 'Furni Pro Password Reset Verification Code',
+      html: `
+      <p>Hello,</p>
+      <p>Your verification code for password reset is: <strong>${verificationCode}</strong></p>
+      <p>If you didn't request this, please ignore this email.</p>
+      <p>Regards,</p>
+      <p>Furni Pro Team</p>
+    `
     };
+
 
     // Send the email
     await transporter.sendMail(mailOptions);

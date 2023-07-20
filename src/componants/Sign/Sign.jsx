@@ -77,7 +77,7 @@ const Navigate = useNavigate()
                 // Call the login mutation from the API slice
                 const handleSignin  = async () => {
                   // Call the login mutation from the API slice
-                  const result = await SignIn({ UserName  , Password });
+                  const result = await SignIn({ Email  , Password });
               
                   if (result.error) {
                     console.log('Error:', result);
@@ -207,13 +207,13 @@ const handleresetPassword = async () => {
             
             
             <TextField
-            onChange={(e) => {setUserName(e.target.value)}}
+            onChange={(e) => {setEmail(e.target.value)}}
             sx={{outline : "none"  ,width : { xs : "95%" , md : "80%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
-            id="username" label="UserName" type="text" />
+            id="Email" label="Enter your Email" type="text" />
             
 <FormControl sx={{outline : "none"  ,width : { xs : "95%" , md : "80%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
     variant="outlined">
-              <InputLabel htmlFor="filled-adornment-password">Password</InputLabel>
+              <InputLabel htmlFor="filled-adornment-password">Enter Your Password</InputLabel>
               <OutlinedInput
               label="Password"
                 id="filled-adornment-password"
@@ -429,20 +429,17 @@ const handleresetPassword = async () => {
    ,md : "calc(100% - 20px)" } , display : "flex" , flexDirection : "column" , alignItems : "center"}}>
           
           
-                        <TextField required
-                        onChange={(e) => {setName(e.target.value)}}
-                sx={{width: {xs : "95%" , md : "80%" },fontSize:"10px", borderRadius : "30px" , backgroundColor:"#E9E7DB",border: "none" , my : "10px"}}
-                id="first" label="First Name" type="text" />
-
-
-
-              
-    
           <TextField
           required
           onChange={(e) => {setEmail(e.target.value)}}
           sx={{outline : "none"  ,width : { xs : "95%" , md : "80%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
           id="Email" label="Email" type="email" />
+
+
+                        <TextField required
+                        onChange={(e) => {setName(e.target.value)}}
+                sx={{width: {xs : "95%" , md : "80%" },fontSize:"10px", borderRadius : "30px" , backgroundColor:"#E9E7DB",border: "none" , my : "10px"}}
+                id="first" label="First Name" type="text" />
 
 <TextField
           onChange={(e) => {setPhone(e.target.value)}}
@@ -676,7 +673,7 @@ startIcon={signupLoading ?     <CircularProgress />
             onChange={(e) => {setvCode(e.target.value)
             }}
             sx={{outline : "none"  ,width : { xs : "80%" , md : "75%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
-            id="Email" label="Enter Your verification Code" type="text" />
+            id="vcode" label="Enter Your verification Code" type="text" />
 
 
 <Button 
