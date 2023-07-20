@@ -13,7 +13,7 @@ const crypto = require('crypto');
 
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:3000' }));
 
 
 const transporter = nodemailer.createTransport({
