@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const SignApi = createApi({
   reducerPath: 'SignApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://furniture-website.onrender.com' }),
   endpoints: (builder) => ({
     // Define your API endpoints here
     Signup: builder.mutation({
