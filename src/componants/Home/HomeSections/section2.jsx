@@ -81,7 +81,7 @@ const section2 = () => {
                     {step.icon}
                 </Box>
                 <Box sx={{padding: '0 0 0 15px'}}>
-                  <Typography sx={{margin:'15px 0'}} fontSize={"22px"} fontWeight={'600'} >{step.title}</Typography>
+                  <Typography sx={{margin:'15px 0'}} fontSize={"20px"} fontWeight={'600'} >{step.title}</Typography>
                   <Typography fontSize={"14px"} color="gray">{step.desc}</Typography>
                 </Box>
               </Box>

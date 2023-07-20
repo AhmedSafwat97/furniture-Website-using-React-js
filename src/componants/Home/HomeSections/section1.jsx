@@ -125,7 +125,7 @@ const Section1 = () => {
                         },
                       }}
                       onClick={() => {
-                        Navigate("/prodetails");
+                        Navigate("/shop");
                       }}
                     >
                       Shop Now
@@ -185,7 +185,7 @@ const Section1 = () => {
                   ${item.price}
                 </Typography>
                   <Link
-                    to="/prodetails"
+                    to="/shop"
                     style={{
                       textDecoration: "underline",
                       color: "lightgray",

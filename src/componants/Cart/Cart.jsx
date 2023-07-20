@@ -53,7 +53,7 @@ const Cart = () => {
     <BannerSection  PageName="Shopping Cart" />
 
 
-    <Box sx={{width : "100%" , minHeight : "70vh" , display : "flex" , flexDirection : "column" , alignItems : "center"}}>
+    <Box sx={{width : "100%" , minHeight : "50vh" , display : "flex" , flexDirection : "column" , alignItems : "center" , justifyContent : {xs : "center" , md : "start"}}}>
         <Box className="container" sx={{ my : "50px" ,width : {xs : "70%" , md : "75%"} , overflow : "hidden" , height : "fit-content" , border : "0.5px solid #E9E7DB"}}>
 
 <Box display="flex" alignItems="center">
@@ -91,7 +91,7 @@ const Cart = () => {
             <Box sx={{width : "100%" , mt : {xs : "10px" , md : "0px"} ,display : "flex" ,height : {xs : "200px" , md : "120px"} }}>
              <Box sx={{border : {xs : "none" , md :"0.5px solid #E9E7DB"}, borderRight : {xs : "0.5px solid #E9E7DB" , md : "none"}   , width : {xs : "45%" , md : "15%"} , height : {xs : "200px" , md : "120px"} , display : "flex", flexDirection : {xs : "column" , md : "row"} , alignItems : "center" , justifyContent : "center"}}>
             <Box sx={{width : {xs : "70%" , md : "60px"} , height : {xs : "60%" , md : "auto"} , bgcolor : "#F3F2EE" , p : "10px" , borderRadius : "5px"}}>
-                <img style={{width : "100%" , height : "100%"}} src={product.imageLink} loading='lazy' alt="product photo"/>
+                <img style={{width : "100%" , height : "100%"}} src={product.imageLink} loading='lazy' alt="product photo3"/>
             </Box>
     
     

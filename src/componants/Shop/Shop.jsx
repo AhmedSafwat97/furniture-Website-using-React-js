@@ -192,8 +192,8 @@ const valueFilter = ()=>{
         )
         }
          <Box sx={{ml:"15px", mt: "5px", display: "flex" }}>
-                {Product.discount && <del style={{ marginRight: "7px",color: "gray" }}> ${Product.price}</del>}
-                <Typography>${Product.sale}</Typography>
+                {Product.discount && <del style={{ marginRight: "7px",color: "gray" }}> ${Product.sale}</del>}
+                <Typography>${Product.price}</Typography>
                 </Box>
         
             <Box sx={{ width: "90%", height: "55%" ,mx: "auto",}}  
