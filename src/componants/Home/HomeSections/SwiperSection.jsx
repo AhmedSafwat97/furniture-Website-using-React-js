@@ -192,7 +192,7 @@ const Navigate = useNavigate();
       borderRadius: "15px",
     }}
   >
-    <Typography variant="h6">{Product.Name}</Typography>
+    <Typography variant="h6" fontSize="20px" >{Product.Name}</Typography>
     <Stack spacing={1}>
       <Rating
         name="half-rating-read"

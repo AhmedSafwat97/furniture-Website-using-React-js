@@ -155,7 +155,6 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-
 app.post('/signin', async (req, res) => {
   const { UserName, Password } = req.body;
 
@@ -197,6 +196,9 @@ app.post('/forgot-password', async (req, res) => {
     // Generate a verification code
     const verificationCode = crypto.randomBytes(3).toString('hex');
 
+    // Update the user record with the verification code
+    await User.updateOne({ Email }, { verificationCode })
+
     // Compose the email message
     const mailOptions = {
       from: 'Furnipro322@gmail.com',
@@ -208,8 +210,11 @@ app.post('/forgot-password', async (req, res) => {
     // Send the email
     await transporter.sendMail(mailOptions);
 
+
+    const Usercode = verificationCode
+
     // Return success response
-    res.json({ message: 'Verification code sent successfully', Usercode: verificationCode });
+    res.json({ message: 'Verification code sent successfully', Usercode });
   } catch (error) {
     console.error('Error sending verification code:', error);
     return res.status(500).json({ message: 'Internal server error' });
@@ -231,15 +236,17 @@ app.post('/confirmcode', async (req, res) => {
       return res.status(401).json({ message: 'Invalid email address' });
     }
 
-    const Usercode = user.verificationCode;
+    const Usercode = user.verificationCode
 
     // Check if the verification code sent to the email matches the code from the client
     if (Usercode === VerificationCode) {
       return res.json({ message: 'Valid verification code', Usercode });
-    } else {
+    }else {
       // If the verification code does not match, return an error response
       return res.status(401).json({ message: 'Invalid verification code', Usercode });
     }
+
+    
 
   } catch (error) {
     console.error('Error checking verification code:', error);

@@ -767,7 +767,7 @@ sx={{color : "blue" , cursor : "pointer" , ml : "10px" , textDecoration : "under
 <Button 
                       onClick={() => {
 
-                        if (Password !== "" && ConfirmPassword !=="" && Password === ConfirmPassword && Password.length > 6 ) {
+                        if (Password !== "" && ConfirmPassword !=="" && Password === ConfirmPassword && Password.length >= 6 ) {
                           handleresetPassword()
                           setOpen(false)
                         } else {
