@@ -139,7 +139,7 @@ const Searchdata = ()=> {
   
   <Box 
   ref={searchRef}
-  sx={{zIndex : "10" ,width : {xs : "70%" , md : "300px"} , bgcolor : "#F3F2EE" , MaxHeight : "300px" , overflowY : "scroll" , position : "absolute" , right : {xs :"16%" , md : "20%"} , top : {xs : "90px" , md : "120px"} }}>
+  sx={{zIndex : "10" ,width : {xs : "70%" , md : "300px"} , bgcolor : "#F3F2EE" , height : "300px" , overflowY : "scroll" , position : "absolute" , right : {xs :"16%" , md : "20%"} , top : {xs : "90px" , md : "120px"} }}>
             
             {Searchdata().map((product) => (
              <Box  key={product.id} onClick={() => {navigate(`/prodetails/${product.id}`) 
