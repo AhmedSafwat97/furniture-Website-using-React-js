@@ -61,7 +61,7 @@ const secretKey =  'your-secret-key' ;
 
 
 app.get("/", (req, res) => {
-  res.send("Welcome our to online shop API...");
+  res.send("Welcome our to online Furniture shop API...");
 });
 
 
