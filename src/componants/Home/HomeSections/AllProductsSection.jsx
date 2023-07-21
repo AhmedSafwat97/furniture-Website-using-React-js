@@ -73,7 +73,7 @@ const AllProductsSection = () => {
     const TabsArray = [
       {label : "All"  } , 
       {label : "Chairs" } , 
-      {label : "Sofa"  } , 
+      {label : "Sofas"  } , 
       {label : "Beds"  } , 
       {label : "Commodes"  } , 
       {label : "Dressers"  } , 

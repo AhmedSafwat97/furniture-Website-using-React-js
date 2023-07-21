@@ -188,7 +188,7 @@ const Fav = () => {
                         ${Product.price}
                       </del>
                     )}
-                    <Typography>${Product.sale}</Typography>
+                    <Typography>${Product.discount? Product.sale : Product.price}</Typography>
                   </Box>
 
                   {SelectedProductsId.includes(Product.id) ? (

@@ -131,7 +131,7 @@ const Contact = () => {
                         },
                       }}
                       onClick={() => {
-                        Navigate("/prodetails");
+                        Navigate("/shop");
                       }}
                     >
                       Shop Now
