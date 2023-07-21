@@ -17,6 +17,7 @@ import BlogDetails from "./componants/BlogDetails/BlogDetails";
 import { useGetproductByNameQuery } from "./services/productApi";
 import { Box, Typography } from "@mui/material";
 import CircularProgress from '@mui/material/CircularProgress';
+import Profile from "./componants/Profile/Profile";
 
 
 
@@ -81,6 +82,8 @@ function App() {
   <Route path="/cart" element={<Cart />} />
   <Route path="/Checkout" element={<Check />} />
   <Route path="/fav" element={<Fav />} />
+  <Route path="/profile" element={<Profile />} />
+
 
 </Routes>
 <Notifiction/>

@@ -215,7 +215,7 @@ const handleresetPassword = async () => {
     variant="outlined">
               <InputLabel htmlFor="filled-adornment-password">Enter Your Password</InputLabel>
               <OutlinedInput
-              label="Password"
+              label="Enter Your Password"
                 id="filled-adornment-password"
                 type={showPassword ? 'text' : 'password'}
                 onChange={(e) => {setPassword(e.target.value)
@@ -721,7 +721,7 @@ sx={{color : "blue" , cursor : "pointer" , ml : "10px" , textDecoration : "under
 <Typography>{Message}</Typography>
 <FormControl sx={{outline : "none"  ,width : { xs : "80%" , md : "75%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
   variant="outlined">
-            <InputLabel >Password</InputLabel>
+            <InputLabel >New Password</InputLabel>
             <OutlinedInput
             label="New Password"
             onChange={(e) => {setPassword(e.target.value)}}
@@ -744,7 +744,7 @@ sx={{color : "blue" , cursor : "pointer" , ml : "10px" , textDecoration : "under
              
   <FormControl sx={{outline : "none"  ,width : { xs : "80%" , md : "75%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
   variant="outlined">
-            <InputLabel>Confirm Password</InputLabel>
+            <InputLabel>Confirm New Password</InputLabel>
             <OutlinedInput
             label="Confirm New Password"
             onChange={(e) => {setConfirmPassword(e.target.value)}}
