@@ -155,7 +155,7 @@ const Cart = () => {
     </Box>
         
                   <Box>
- {product.discount && 
+                {product.discount && 
                   <Chip
                   label={Math.floor( 100 -  (product.sale / product.price) * 100) +"%"}
                   sx={{

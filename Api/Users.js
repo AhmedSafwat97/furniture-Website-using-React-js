@@ -1,1 +1,26 @@
-module.exports = [{"id":1,"UserName":"Ahmed","password":"$2a$10$tUgmNH/oiJpImAucKWidFOrSDvw/kbDcGASQbaXbD0UFRbNq1A0vC","firstName":"Ahmed","LastName":"safwat","Email":"xppahmad@gmail.com","Phone":"","Country":"Egypt","Town":"","address":""},{"id":2,"UserName":"ahmed66","password":"$2a$10$ZwGdIZL9JDmYpuNmnrRUJusglTbbBlCrJ.UxM7BcWNfra7IeJKN5a","firstName":"Ahmed","LastName":"safwat","Email":"ahmadxpp53@gmail.com","Phone":"","Country":"Egypt","Town":"","address":""}]
+module.exports = [
+  {
+    id: 1,
+    UserName: "Ahmed",
+    password: "$2a$10$tUgmNH/oiJpImAucKWidFOrSDvw/kbDcGASQbaXbD0UFRbNq1A0vC",
+    firstName: "Ahmed",
+    LastName: "safwat",
+    Email: "xppahmad@gmail.com",
+    Phone: "",
+    Country: "Egypt",
+    Town: "",
+    address: "",
+  },
+  {
+    id: 2,
+    UserName: "ahmed66",
+    password: "$2a$10$ZwGdIZL9JDmYpuNmnrRUJusglTbbBlCrJ.UxM7BcWNfra7IeJKN5a",
+    firstName: "Ahmed",
+    LastName: "safwat",
+    Email: "ahmadxpp53@gmail.com",
+    Phone: "",
+    Country: "Egypt",
+    Town: "",
+    address: "",
+  },
+];

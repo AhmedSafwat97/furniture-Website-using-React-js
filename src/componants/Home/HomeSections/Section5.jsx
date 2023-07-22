@@ -112,7 +112,7 @@ const Navigate = useNavigate()
 
               }}
               onClick={() => {
-                Navigate(`/prodetails/${Product.id}`);
+                Navigate(`/shop`);
               }}
             >
               Shop Now
