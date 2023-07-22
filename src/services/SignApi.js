@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+
 const SignApi = createApi({
   reducerPath: 'SignApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://furniture-website.onrender.com' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
   endpoints: (builder) => ({
     // Define your API endpoints here
     Signup: builder.mutation({
@@ -11,7 +12,7 @@ const SignApi = createApi({
         method: 'POST',
         body: userData
       }),
-    }),    
+    }),
     SignIn: builder.mutation({
       query: (user) => ({
         url: '/signin',
@@ -39,6 +40,18 @@ const SignApi = createApi({
           method: 'POST',
           body,
         }),  }), 
+        UpdateInfo : builder.mutation({
+          query: (body) => ({
+            url: '/update-profile',
+            method: 'POST',
+            body,
+          }),  }), 
+          Updatepass : builder.mutation({
+            query: (body) => ({
+              url: '/changepass',
+              method: 'POST',
+              body,
+            }),  }), 
 
   }),
 });
@@ -47,7 +60,9 @@ const SignApi = createApi({
 
 
 
-export const { useSignupMutation , useSignInMutation , useForgotpassMutation , useConfirmCodeMutation , useResetPassMutation } = SignApi;
+export const { useSignupMutation , useSignInMutation , 
+  useForgotpassMutation , useConfirmCodeMutation , useResetPassMutation , 
+  useUpdateInfoMutation , useUpdatepassMutation } = SignApi;
 export default SignApi;
 
 

@@ -10,7 +10,10 @@ import {
     Checkbox,
     FormControlLabel,
     FormGroup,
-    Pagination
+    Pagination,
+    Accordion,
+    AccordionSummary,
+    AccordionDetails
   } from
     "@mui/material";
   import { useState } from "react";
@@ -371,16 +374,20 @@ sx={{display : {xs : "flex" , md : "none"} , cursor : "pointer" , ml : "10px"}}>
             borderRadius: "15px",
             overflow : "hidden"
             }}>
-                <Box sx={{display:"flex", justifyContent:"space-between",my:"10px", mx:"25px"}}>
-                    <Typography variant="h6">Category</Typography>
-                <IconButton onClick={() => {setcategoryHeight(categoryHeight ? false : true)}} >
-                       {categoryHeight ? <ExpandLessIcon /> : <ExpandMoreIcon/>}
-                </IconButton>
-                </Box>
-                <Box sx={{width: "80%",margin:"10px auto", height:"1px",bgcolor:"black"}} />
-              { categoryHeight  && 
-                <FormGroup sx={{my:"10px" }}>
 
+
+<Accordion >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+          sx={{display:"flex", justifyContent:"space-between",my:"10px", mx:"25px"}}
+        >
+          <Typography >Category</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+       
+                <FormGroup sx={{my:"10px" }}>
 
                 <Box sx={{display:"flex",alignItems:"center", 
                     justifyContent:"space-between", mx:"25px", color:"gray"}}>
@@ -411,20 +418,40 @@ sx={{display : {xs : "flex" , md : "none"} , cursor : "pointer" , ml : "10px"}}>
                      )}
                 </FormGroup>
               
-              }
-            </Box>       
+        </AccordionDetails>
+      </Accordion>
+            </Box>   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
     <Box sx={{width : "100%" , mt :"15px" ,border : "1px solid black" , borderRadius : "15px"}}>
-  <Box sx={{display:"flex", justifyContent:"space-between",my:"10px", mx:"25px"}}>
-          <Typography mb="10px" variant='h6'>Price Filter</Typography>
-          <IconButton onClick={() => {setPriceHeight(PriceHeight ? false : true)}} >
-                         {PriceHeight ? <ExpandLessIcon /> : <ExpandMoreIcon/>}
-                  </IconButton>
-          </Box>
-          <Box sx={{width: "80%",margin:"10px auto", height:"1px",bgcolor:"black"}} />
-
-         { PriceHeight && 
-          <FormControl  sx={{mx : "25px"}}>
+  
+    <Accordion >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+          sx={{display:"flex", justifyContent:"space-between",my:"10px", mx:"25px"}}
+        >
+          <Typography >Price Filter</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+       
+        <FormControl  sx={{mx : "25px"}}>
           <RadioGroup
             aria-labelledby="price filter"
             defaultValue=""
@@ -456,9 +483,10 @@ sx={{display : {xs : "flex" , md : "none"} , cursor : "pointer" , ml : "10px"}}>
                  />} label="$300 - $500" />
           </RadioGroup>
         </FormControl>
-         
-         }
-    
+              
+        </AccordionDetails>
+      </Accordion>
+
     </Box>
   
   

@@ -100,6 +100,8 @@ app.get("/blogs/comments/:id", (req, res) => {
 app.get("/Review", (req, res) => {
   res.send(ClientReview);
 });
+// ___________________________________________________________________
+
 
 app.post('/signup', async (req, res) => {
   const {
@@ -180,6 +182,7 @@ app.post('/signin', async (req, res) => {
     return res.status(500).json({ message: 'Internal server error' });
   }
 });
+// ___________________________________________________________________
 
 
 app.post('/forgot-password', async (req, res) => {
@@ -277,6 +280,103 @@ app.post('/reset-password', async (req, res) => {
     return res.status(500).json({ message: 'Internal server error' });
   }
 });
+// ___________________________________________________________________
+
+app.post('/update-profile', async (req, res) => {
+  const { UserName, Email, firstName, Phone, Country, Town, address } = req.body;
+
+  try {
+    // Access the signed-in user object from the request
+    const user = await User.findOne({ Email });
+    if (!user) {
+      return res.status(401).json({ message: 'Invalid UserName' });
+    }
+
+    // Check if the user wants to update the UserName
+    if (UserName && user.UserName !== UserName) {
+      // Check if the new UserName is already taken
+      const existingUserName = await User.findOne({ UserName });
+      if (existingUserName && existingUserName._id.toString() !== user._id.toString()) {
+        return res.status(400).json({ message: 'UserName already exists' });
+      }
+    }
+
+    // Check if the user wants to update the Email
+    if (Email && user.Email !== Email) {
+      // Check if the new Email is already taken
+      const existingEmail = await User.findOne({ Email });
+      if (existingEmail && existingEmail._id.toString() !== user._id.toString()) {
+        return res.status(400).json({ message: 'Email already exists' });
+      }
+    }
+
+    // Prepare the update object with the fields to update
+    const updateObject = {};
+
+    if (UserName) {
+      updateObject.UserName = UserName;
+    }
+
+    if (Email) {
+      updateObject.Email = Email;
+    }
+
+    if (firstName) {
+      updateObject.firstName = firstName;
+    }
+
+    if (Phone) {
+      updateObject.Phone = Phone;
+    }
+
+    if (Country) {
+      updateObject.Country = Country;
+    }
+
+    if (Town) {
+      updateObject.Town = Town;
+    }
+
+    if (address) {
+      updateObject.address = address;
+    }
+
+    // Update the user in the database
+    await User.updateOne({ Email }, updateObject);
+
+    // Send the success message in the response
+    res.json({ message: 'Profile updated successfully' });
+  } catch (error) {
+    console.error('Error updating user profile:', error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+app.post('/changepass', async (req, res) => {
+  const { Email, Password } = req.body;
+
+  try {
+    // Access the signed-in user object from the request
+    const user = await User.findOne({ Email });
+    if (!user) {
+      return res.status(401).json({ message: 'Invalid Email' });
+    }
+
+  const hashedPassword = bcrypt.hashSync(Password, 10);
+
+  // Update the user's password in the database
+  await User.updateOne({ Email }, { password: hashedPassword });
+;
+
+    // Send the updated user in the response
+    res.json({ message: 'password updated successfully' });
+  } catch (error) {
+    console.error('Error updating user profile:', error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+});
+// ___________________________________________________________________
+
 
 app.get('/users', (req, res) => {
   res.status(200).json(users);

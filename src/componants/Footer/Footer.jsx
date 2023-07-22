@@ -9,6 +9,7 @@ import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Subscribe from "./Subscribe";
+import jwtDecode from "jwt-decode";
 
 const Footer = () => {
   const pages = [
@@ -19,6 +20,20 @@ const Footer = () => {
     { name: "Contact", Link: "Contact" },
   ];
   const navigate = useNavigate();
+
+
+
+  let decodedToken;
+  const token = localStorage.getItem('token')
+
+  if (token) {
+    decodedToken = jwtDecode(token);
+  }
+  const handleSignout =  () => {
+    localStorage.removeItem("token")
+     navigate("/")
+  };
+
   return (
     <>
     <Subscribe/>
@@ -153,16 +168,19 @@ const Footer = () => {
                   fontWeight: "100",
                 }}
               >
-                <Typography variant="p" sx={{ color: "gray", m: "5px 0" }}>
+                <Typography onClick={() => {decodedToken ? navigate("/profile") : navigate("/") }} variant="p" sx={{ color: "gray", m: "5px 0" , cursor : "pointer" }}>
                   My Order
                 </Typography>
-                <Typography variant="p" sx={{ color: "gray", m: "5px 0" }}>
+                <Typography variant="p" sx={{ color: "gray", m: "5px 0" ,  cursor : "pointer"}}>
                   My Credit
                 </Typography>
-                <Typography variant="p" sx={{ color: "gray", m: "5px 0" }}>
+                <Typography variant="p" onClick={() => { 
+                  decodedToken ? navigate("/profile") : navigate("/")
+
+                }} sx={{ color: "gray", m: "5px 0" ,  cursor : "pointer" }}>
                   My Adresses
                 </Typography>
-                <Typography variant="p" sx={{ color: "gray", m: "5px 0" }}>
+                <Typography variant="p" onClick={() => {decodedToken ? navigate("/profile") : navigate("/") }}  sx={{ color: "gray", m: "5px 0" , cursor : "pointer" }}>
                   My Personal Info
                 </Typography>
               </Box>

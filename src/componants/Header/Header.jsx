@@ -20,7 +20,6 @@ import { useEffect } from "react";
 import FormDialog from "../Sign/Sign";
 import jwtDecode from "jwt-decode";
 import LogoutIcon from '@mui/icons-material/Logout';
-import { useSignoutMutation } from "../../services/SignApi";
 
 
 
@@ -244,9 +243,14 @@ size="large" aria-label="Favorite" color="inherit" >
                 <Badge badgeContent={SelectedProductsId.length} color="error"></Badge>
               </IconButton>
         {decodedToken ? (
-             <Box sx={{mx : "5px"}}>
+             <Box 
+             sx={{mx : "5px"}}>
                  <Button size="large" aria-label="profile" color="inherit"  border="2px solid black" >
-                 <AccountCircleOutlinedIcon className="profileIcon" sx={{ fontSize: "30px", color: "black" }}/>
+                 <AccountCircleOutlinedIcon
+                 onClick={() => {
+                  navigate("/profile")
+                }}
+                 className="profileIcon" sx={{ fontSize: "30px", color: "black" }}/>
                  <Typography color="black">Hi {decodedToken.firstName}</Typography>
                  </Button>
              </Box>
@@ -324,7 +328,9 @@ size="large" aria-label="Favorite" color="inherit" >
               {decodedToken ? (
              <Box sx={{mx : "5px"}}>
                  <Button  size="large" aria-label="profile" color="inherit"  border="2px solid black" >
-                 <AccountCircleOutlinedIcon className="profileIcon"  sx={{ fontSize: "30px", color: "black" }}/>
+                 <AccountCircleOutlinedIcon
+                  onClick={() => {navigate("/profile")}}
+                 className="profileIcon"  sx={{ fontSize: "30px", color: "black" }}/>
                  <Typography color="black">Hi {decodedToken.firstName}</Typography>
                  </Button>
              </Box>
