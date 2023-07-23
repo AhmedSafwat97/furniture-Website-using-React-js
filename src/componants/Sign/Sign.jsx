@@ -294,7 +294,7 @@ const handleresetPassword = async () => {
    
    <Typography sx={{width : "calc(100% - 20px)" , fontWeight : "700" , mt : "15px" ,color : "#92764E" ,textAlign : "center"}} variant='h4'>Sign Up</Typography>
    
-    <Typography color="red" >{Message}</Typography>
+    <Typography color="red" sx={{textAlign : "center"}} >{Message}</Typography>
      {/* _____________________________________________________________________________ */}
    {stepnum === 1 &&
    <Box sx={{width :{xs : "calc(100% - 20px)"

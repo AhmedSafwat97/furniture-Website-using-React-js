@@ -57,7 +57,7 @@ const Section1 = () => {
       <Box sx={{ padding: "16px",paddingBottom: "0px" , display : "flex" , justifyContent : "center" , alignItems : "center" , flexDirection : {xs : "column" , md : "row"} }}>
        
        
-<Box sx={{ width: {xs :"75%" , md :"50%"} , mb : "20px" , height : "auto" , mr : {md:"20px"} }}
+<Box sx={{ width: {xs :"90%" , md :"50%"} , mb : "20px" , height : "auto" , mr : {md:"20px"} }}
 >
           <Carousel autoPlay={true} interval={3000} infiniteLoop={true} showThumbs={false}>
   {ItemData1.map((item) => (
@@ -137,7 +137,7 @@ const Section1 = () => {
   </Box>
 
 
-<Box sx={{ width: {xs :"75%" , md :"25%"} ,height: "auto"  }}>
+<Box sx={{ width: {xs :"90%" , md :"25%"} ,height: "auto"  }}>
           {itemData.map((item) => (
             <Box
               key={item.title}
@@ -210,7 +210,7 @@ const Section1 = () => {
       >
         <Box
           sx={{
-            width: "75%",
+            width: {xs :"90%" , md :"75%"} ,
             paddingBottom: "0px",
             display : {xs : "block" , md : "flex"} ,
             mt : "16px"

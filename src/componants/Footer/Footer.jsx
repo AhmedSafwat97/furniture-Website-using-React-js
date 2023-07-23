@@ -93,7 +93,7 @@ const Footer = () => {
                 alignItems: "center",
               }}
             >
-              <Box sx={{ width: "100px", cursor: "pointer" }}>
+              <Box sx={{ width: "100px" , cursor: "pointer" }}>
                 <img
                   style={{ width: "100%", Height: "100%" }}
                   src="../../../Imgs/Logo.png"
@@ -101,27 +101,27 @@ const Footer = () => {
                   loading='lazy'
                 />
               </Box>
-              <Box>
+              <Box sx={{}}>
                 <Typography
                   variant="p"
-                  sx={{ color: "gray", marginRight: "25px" }}
+                  sx={{ color: "gray", marginRight: "10px" }}
                 >
                   Follow Us
                 </Typography>
                 <IconButton  sx={{ color: "orange"}}>
-                  <FacebookOutlinedIcon sx={{fontSize : {xs : "13px" , md : "20px"}}} />
+                  <FacebookOutlinedIcon sx={{fontSize : {xs : "18px" , md : "20px"}}} />
                 </IconButton>
                 <IconButton  sx={{ color: "orange"}}>
-                  <TwitterIcon sx={{fontSize : {xs : "13px" , md : "20px"}}} />
+                  <TwitterIcon sx={{fontSize : {xs : "18px" , md : "20px"}}} />
                 </IconButton>{" "}
                 <IconButton  sx={{ color: "orange" }}>
-                  <PinterestIcon sx={{fontSize : {xs : "13px" , md : "20px"}}} />
+                  <PinterestIcon sx={{fontSize : {xs : "18px" , md : "20px"}}} />
                 </IconButton>{" "}
                 <IconButton  sx={{ color: "orange"}}>
-                  <LinkedInIcon sx={{fontSize : {xs : "13px" , md : "20px"}}} />
+                  <LinkedInIcon sx={{fontSize : {xs : "18px" , md : "20px"}}} />
                 </IconButton>{" "}
                 <IconButton  sx={{ color: "orange" }}>
-                  <WhatsAppIcon sx={{fontSize : {xs : "13px" , md : "20px"}}} />
+                  <WhatsAppIcon sx={{fontSize : {xs : "18px" , md : "20px"}}} />
                 </IconButton>
               </Box>
 
@@ -186,7 +186,7 @@ const Footer = () => {
           <Box sx={{ width: "97%", height: {xs : "fit-content" , md : "50px"}, border: "1px solid gray",
            display : "flex" , justifyContent : "center" , alignItems : "center"
            }}>
-          <Box sx={{width : "70%" , display : "flex" , flexDirection : {xs : "column" , md : "row"} ,alignItems : "center" , justifyContent : "space-between" }}>
+          <Box sx={{mt : {xs : "10px" , md : "0"} ,width : "70%" , display : "flex" , flexDirection : {xs : "column" , md : "row"} ,alignItems : "center" , justifyContent : "space-between" }}>
               <Box display="flex" justifyContent="space-between">
                   <Typography  variant="p" sx={{color : "gray" , fontSize : "13px"}} >Terms Of Service</Typography>
                   <Typography variant="p"  sx={{m : "0 20px" ,color : "gray", fontSize : "13px"}} >|</Typography>

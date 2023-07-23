@@ -55,10 +55,10 @@ if (token) {
             <Box key={comment.UniqeId} sx={{ width:"95%", my : "10px",mx:"auto",bgcolor:"#F3F2EE", minheight : "300px",borderRadius : "15px",display:"flex" }}>
             <Avatar sx={{m: "20px",  width: 56, height: 56 }} alt={comment.Name} src="/broken-image.jpg" />
             <Box
-            sx={{flexGrow : 1 }} >
+            sx={{flexGrow : 1}} >
                 <Typography sx={{mt: "20px", fontWeight:"800"}}>{comment.Name}</Typography>
                 <Typography sx={{color: "gray", fontSize:"10px"}}>{comment.date}</Typography>
-                <Typography sx={{color: "gray", fontSize:"14px"  , mb : "20px", width : "100%"}}>{comment.Comment}</Typography>
+                <Typography sx={{color: "gray", fontSize:"14px"  , mb : "20px", width : "95%"}}>{comment.Comment}</Typography>
             </Box>
 
             
@@ -102,7 +102,7 @@ if (token) {
     
     <Typography variant='h5' sx={{mx : "auto" , width : "95%" , fontSize: "18px" ,fontWeight : "700"}}>Write your Comment</Typography>
           {error && <Typography sx={{color:"red",fontSize:"12px",textAlign:"center"}}>Please ,Fill all the Form inputs</Typography>}
-    <Box sx={{width:"95%",mx:"auto",borderRadius : "15px",display:"flex" }}>
+    <Box sx={{width:"100%",mx:"auto",borderRadius : "15px",display:"flex" }}>
        <form style={{width:"100%"}}>
           {decodedToken ? (
               <Box sx={{width:"100%",display:"flex", justifyContent:"space-between"}}>

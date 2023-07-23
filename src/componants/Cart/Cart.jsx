@@ -24,7 +24,6 @@ const Cart = () => {
     SelectedProducts.length === 0 ?  dispatch(CoponCoode(false)) : dispatch(CoponCoode(disable))
 
     let total = 0;
-    
     function TotalPrice(product) {
        let subtotal = 0;
        subtotal = Math.floor(product.quantity * (product.discount? product.sale:product.price))
@@ -44,7 +43,7 @@ const Cart = () => {
 
 
     <Box sx={{width : "100%" , minHeight : "50vh" , display : "flex" , flexDirection : "column" , alignItems : "center" , justifyContent : {xs : "center" , md : "start"}}}>
-        <Box className="container" sx={{ my : "50px" ,width : {xs : "70%" , md : "75%"} , overflow : "hidden" , height : "fit-content" , border : "0.5px solid #E9E7DB"}}>
+        <Box className="container" sx={{ my : "50px" ,width : {xs : "90%" , md : "75%"} , overflow : "hidden" , height : "fit-content" , border : "0.5px solid #E9E7DB"}}>
 
 <Box display="flex" alignItems="center">
     <Typography>{SelectedProducts.length} Items</Typography>
@@ -256,7 +255,7 @@ const Cart = () => {
      {SelectedProducts.length > 0 && 
      
      <Box sx={{width : "100%" , display : "flex" , justifyContent : "center"}}>
-     <Box sx={{width : {xs : "70%" , md : "75%"}, display:"flex",justifyContent:{md : "space-between"} , flexDirection : {xs : "column" , md : "row" , alignItems : "center"} }}>   
+     <Box sx={{width : {xs : "100%" , md : "75%"}, display:"flex",justifyContent:{md : "space-between"} , flexDirection : {xs : "column" , md : "row" , alignItems : "center"} }}>   
          <Box sx={{width:{xs:"90%" ,md:"47%"},height:"330px",my:"30px" , border:"1px solid gray", borderRadius:"15px"}}>
              <Box sx={{display: "flex",flexDirection:"column", alignItems:"center" , justifyContent: "center", m:"20px"}}>
                  <Typography sx={{fontWeight:"bold",m:"10px", mx:"auto"}}>Coupon Code</Typography>

@@ -91,7 +91,7 @@ export default function FormDialog({setMessage ,setEmail  , UserName , Email , f
                   setMessage("")
                 }else {
                   setOpen(false)
-                  setMessage("invalid user Name")
+                  setMessage("You Can't Use Space in user Name")
                 }
                 
                 }}

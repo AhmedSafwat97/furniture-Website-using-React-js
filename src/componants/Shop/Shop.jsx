@@ -158,7 +158,7 @@ const valueFilter = ()=>{
             key={Product.id}
             className="Card fade-in"
             sx={{
-                width : {xs:"180px" , md: "210px"} ,
+                width : {xs:"220px" , md: "210px"} ,
                 height: "320px",
                 backgroundColor: "#F3F2EE",
                 borderRadius: "15px",
@@ -332,6 +332,9 @@ const valueFilter = ()=>{
 count={Math.ceil(valueFilter().length / productsPerPage)}
 page={currentPage}
 onChange={handlePageChange}
+onClick={() => {
+  window.scrollTo(0, 0);
+}}
 color="secondary" />
 </Box>
     

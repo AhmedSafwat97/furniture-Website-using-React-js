@@ -40,8 +40,8 @@ const Contact = () => {
                     </Box>
             </Box>
             
-            <Box sx={{border : "1px solid black" , borderRadius : "15px" , width : {xs : "90%" , md : "40%"} , height : "620px" , mx : "10px" }}>
-            <Box sx={{ width : "100%" , p : "16px 0px 16px 15px"}}>
+            <Box sx={{border : "1px solid black" , borderRadius : "15px" , width : {xs : "90%" , md : "40%"} , height : {xs : "fit-content" , md : "620px"} , mx : "10px" }}>
+            <Box sx={{ width : "calc(100% - 20px)" , p : "10px"}}>
             <Box sx={{display : "flex" , justifyContent : "space-around"}}>
 <Box sx={{ width : "40%" , my : "10px" , color : "gray"}}>
     <IconButton sx={{bgcolor : "#AC8C5B"}} >
@@ -118,9 +118,10 @@ const Contact = () => {
             </Box>
             <Button
                       sx={{
-                        fontSize: {xs : "10px" , md : "16px"},
+                        fontSize: {xs : "16px" , md : "16px"},
                         backgroundColor: "#AC8C5B",
                         ml : "20px" ,
+                        mb : "10px",
                         cursor: "pointer",
                         color: "#FFF",
                         borderRadius: "20px",

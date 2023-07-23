@@ -139,28 +139,24 @@ const Navigate = useNavigate()
 
 
 
-          <Box sx={{ m : "15px 0" , display : "flex"}} >
-          <Box sx={{display :" flex" , alignItems : "center"}}>
-              <Typography variant='h6' sx={{fontSize : { xs : "10px" , md : "14px"}}} >Hurry Up :
-              <br/>
-              <Typography variant='p' sx={{fontSize : "7px"}}>Offer end in</Typography>
-              </Typography>
-          </Box>
-
-          <Box sx={{display : "flex" , justifyContent : "space-around" , flexGrow : 1 }}>
-
-
-          {date.map((date) => (
-          <Box key={date.name} sx={{borderRadius : "50%" , width : {xs : "45px" , md : "55px"} , height : {xs : "45px" , md :"55px"} , p : "10px"  ,bgcolor : "#E9E7DB" , display : "flex" , justifyContent : "center" , alignItems : "center" , flexDirection : "column"}}>
-          <Typography fontSize="12px" variant='h6' >{date.num}</Typography>
-              <Typography  variant='h6' sx={{fontSize : "10px"}} >{date.name}</Typography>
-          </Box>
-          ) )}
-
-
-          </Box>
-
-          </Box>
+       <Box sx={{ m : "15px 0"}}>
+           <Box sx={{width : "100%" ,isplay :" flex" , alignItems : "center"}}>
+               <Typography variant='p' sx={{fontSize : "16px" , fontWeight:"600"}}>Offer end in</Typography>
+           </Box>
+           <Box sx={{ m : "5px 0" , display : "flex"}} >
+           <Box sx={{display : "flex" , justifyContent : "space-around" , flexGrow : 1 }}>
+           {date.map((date) => (
+           <Box key={date.name} sx={{borderRadius : "50%" , width : {xs : "45px" , md : "55px"} , height : {xs : "45px" , md :"55px"} , p : "10px"  ,bgcolor : "#E9E7DB" , display : "flex" , justifyContent : "center" , alignItems : "center" , flexDirection : "column"}}>
+           <Typography fontSize="12px" variant='h6' >{date.num}</Typography>
+               <Typography  variant='h6' sx={{fontSize : "10px"}} >{date.name}</Typography>
+           </Box>
+           ) )}
+        
+        
+           </Box>
+        
+           </Box>
+       </Box>
 
                         </Box>
 

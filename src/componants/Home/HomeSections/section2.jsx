@@ -72,7 +72,7 @@ const section2 = () => {
     
   return (
     <>
-     <Box sx={{ bgcolor: "#FFF", width: "75%" , margin: '50px auto'}}>
+     <Box sx={{ bgcolor: "#FFF", width: {xs :"90%" , md :"75%"}  , margin: '50px auto'}}>
         <hr></hr>
         <Box sx={{display : "flex" ,flexWrap : matchDownMd()?'wrap': 'nowrap', justifyContent : "space-around", m: "30px 0" , flexShrink: '0',}}>
           {Shipping.map((step)=>(
