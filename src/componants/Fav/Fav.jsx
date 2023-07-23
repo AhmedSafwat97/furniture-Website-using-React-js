@@ -44,7 +44,7 @@ const Fav = () => {
   return (
     <Box>
       <Helmet>
-        <title>Favourite Frniture Product</title>
+        <title>Favourite-FurniPro</title>
       </Helmet>
       <ScrollToTop />
 

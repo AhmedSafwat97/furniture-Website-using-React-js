@@ -12,8 +12,7 @@ const Commentsec = ({data , CommentSecWidth , CommentSecName}) => {
     const [Email, setEmail] = React.useState("");
     const [itemId, setitemId] = useState([]);
     const [TheComment, setTheComment] = useState(sessionStorage.getItem(CommentSecName) ? JSON.parse(sessionStorage.getItem(CommentSecName)) : [] );
-const [removeIcon, setremoveIcon] = useState(false);
-const [error, setError] = useState(false)
+    const [error, setError] = useState(false)
   
 
 
@@ -69,11 +68,9 @@ if (token) {
       if (!itemId.includes(comment.UniqeId)) {
         setitemId([...itemId , comment.UniqeId ])
       }
-     setremoveIcon(true)
    }}
    onMouseLeave={() => {
     setitemId([])
-     setremoveIcon(false)
    }}
    onClick={()=> {
     const NewTheComment = TheComment.filter((item) => {
@@ -156,7 +153,9 @@ if (token) {
             setTheComment([...TheComment , commentDetails])
             if (TheComment !== []) {
             sessionStorage.setItem(CommentSecName , JSON.stringify([...TheComment , commentDetails]) )}
-          
+            setEmail("")
+            setName("")
+            setcomment("")
           }
             
             } else {
@@ -164,14 +163,13 @@ if (token) {
                 setTheComment([...TheComment , commentDetails])
                 if (TheComment !== []) {
                 sessionStorage.setItem(CommentSecName , JSON.stringify([...TheComment , commentDetails]) )}
-                console.log(commentDetails);
-                setEmail("")
-                setName("")
-                setcomment("")
                 setError(false)
                } else {
                 setError(true)
                }
+               setEmail("")
+               setName("")
+               setcomment("")
             }
           }}
             sx={{

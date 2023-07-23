@@ -2,32 +2,16 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
-import { Box,FormControl, IconButton, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select, Typography } from '@mui/material';
-import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
-import { useState } from 'react';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
-import LoginIcon from '@mui/icons-material/Login';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useConfirmCodeMutation, useForgotpassMutation, useResetPassMutation, useSignInMutation, useSignupMutation, useUpdateInfoMutation } from '../../services/SignApi';
+import { Box, Typography } from '@mui/material';
+import { useUpdateInfoMutation } from '../../services/SignApi';
 import CircularProgress from '@mui/material/CircularProgress';
-import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import jwtDecode from 'jwt-decode';
 
 
 
-export default function FormDialog({setEmail  , UserName , Email , firstName , Phone , Country , Town , address}) {
+export default function FormDialog({setMessage ,setEmail  , UserName , Email , firstName , Phone , Country , Town , address}) {
 
     const [open, setOpen] = React.useState(false);
-
-    let User;
-    const token = localStorage.getItem('token')
-  
-    if (token) {
-      User = jwtDecode(token);
-    }
-
 
 
     const [ UpdateInfo, { isLoading : updateLoading } ] = useUpdateInfoMutation();
@@ -38,10 +22,21 @@ export default function FormDialog({setEmail  , UserName , Email , firstName , P
         const result = await UpdateInfo({ UserName , Email , firstName , Phone , Country , Town , address });
         if (result.error) {
           console.log('update failed:', result.error);
+          setOpen(false)
+          setMessage("The user Name Or Email Already exsist")
         } else {
-            setOpen(false)
             toast.success(`info updated successfully` , {position: "top-center"});
-          console.log('update successful:', result.data);
+            setOpen(false)
+            console.log('update successful:', result.data);
+            const { token } = result.data;
+              // Store the token securely (e.g., local storage or cookies)
+              console.log('Token:', token);
+              if (token) {
+                console.log('Signin successful!');
+                localStorage.setItem('token', token); // Save the token in session storage
+              } else {
+                console.error('Signin failed: Token not received');
+              }
         }};
 
 
@@ -90,7 +85,16 @@ export default function FormDialog({setEmail  , UserName , Email , firstName , P
                 id="Email" label="Enter Your Current Email" type="text" />
 
 <Button 
-                onClick={() => {handleUpdateInfo()}}
+                onClick={() => {
+                if (!UserName.includes(" ")) {
+                  handleUpdateInfo()
+                  setMessage("")
+                }else {
+                  setOpen(false)
+                  setMessage("invalid user Name")
+                }
+                
+                }}
                     sx={{
                         my : "10px" ,
                         backgroundColor: "#92764E",
@@ -103,7 +107,7 @@ export default function FormDialog({setEmail  , UserName , Email , firstName , P
                           color: "#92764E",
                           outline: "1px solid #92764E",
                         },
-                      }}>Save</Button>
+                      }}>{updateLoading ?  <CircularProgress /> : "Save" }</Button>
 
 </Box>
 

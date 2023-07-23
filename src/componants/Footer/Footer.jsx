@@ -7,9 +7,9 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import MailIcon from "@mui/icons-material/Mail";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import Subscribe from "./Subscribe";
 import jwtDecode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const pages = [
@@ -29,10 +29,6 @@ const Footer = () => {
   if (token) {
     decodedToken = jwtDecode(token);
   }
-  const handleSignout =  () => {
-    localStorage.removeItem("token")
-     navigate("/")
-  };
 
   return (
     <>
@@ -208,6 +204,14 @@ const Footer = () => {
               </Box>
           </Box>
           </Box>
+
+          <Box sx={{width : "90%" , height : "50px" , display : "flex" , alignItems : "center" , justifyContent : "center"}}>
+           <Typography sx={{color : "#FFF" , fontSize : {xs : "16px" , md : "20px"}}}>Develop By :</Typography>
+           
+<Typography sx={{mx : "2px"}} ><a href="https://github.com/AhmedSafwat97"  target="_blank" rel="noreferrer" style={{color : "yellow" ,textDecoration : "none"}}>Ahmed Safwat</a></Typography>           
+           <Typography color="#FFF" >and</Typography>
+           <Typography sx={{mx : "2px"}}><a href="https://github.com/AyaRagab555"  target="_blank" rel="noreferrer" style={{color : "yellow" ,textDecoration : "none"}}>Aya Ragab</a></Typography>
+            </Box>
         </Box>
       </Box>
     </>

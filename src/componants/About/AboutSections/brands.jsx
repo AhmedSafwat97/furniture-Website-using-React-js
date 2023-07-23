@@ -19,11 +19,10 @@ export default function brands() {
     sx={{
         width:"75%",
         mx:"auto",
-    bgcolor: "#FFF",
-    mt:"50px"}}>
-        <Typography sx={{fontWeight: '900',m : '40px 0', fontSize : {xs : "20px" , md : "40px"}}} 
+    bgcolor: "#FFF", mt : "50px"}}>
+        <Typography sx={{fontWeight: '900', fontSize : {xs : "20px" , md : "40px"}}} 
             variant='h4'>Brands</Typography>
-        <Box sx={{width : '100%',height : {xs : "fit-content" , md : "250px"},m: "40px 0",display : "flex", justifyContent:"space-evenly", alignItems:"center", flexWrap:{xs:"wrap"}}}>
+        <Box sx={{width : '100%',height : {xs : "fit-content" , md : "180px"},display : "flex", justifyContent:"space-evenly", alignItems:"center", flexWrap:{xs:"wrap"}}}>
         {brands.map((brand)=>
             <Box key={brand.id} sx={{width:"100px"}}> <img src={brand.path} loading="lazy" alt="" style={{width:"80%"}}/> </Box>
         )}

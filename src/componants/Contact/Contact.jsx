@@ -20,7 +20,7 @@ const Contact = () => {
     return (
       <> 
       <Helmet>
-      <title>Contact Us</title>
+      <title>Contact Us-FurniPro</title>
     </Helmet>
           <ScrollToTop/>
     <BannerSection  PageName="Contact" />
@@ -47,8 +47,8 @@ const Contact = () => {
     <IconButton sx={{bgcolor : "#AC8C5B"}} >
         <LocalPhoneIcon sx={{color : "white"}}/>
     </IconButton>
-    <Typography variant='h6' fontSize="14px" >+201110351045</Typography>
-    <Typography variant='h6' fontSize="14px" >+201110351045</Typography>
+    <Typography variant='h6' fontSize="14px" >+201111111111</Typography>
+    <Typography variant='h6' fontSize="14px" >+201222222222</Typography>
 
 </Box>
 <Box sx={{ width : "40%" , my : "10px" , color : "gray"}}>
@@ -66,7 +66,7 @@ const Contact = () => {
         <LocationOnIcon sx={{color : "white"}}/>
     </IconButton>
     <Typography variant='h6' fontSize="14px" >New York City, United States</Typography>
-    <Typography variant='h6' fontSize="14px" >Egypt, Cairo</Typography>
+    <Typography variant='h6' fontSize="14px" >Egypt, Alexanderia</Typography>
 
 </Box>
 <Box sx={{width : "40%" , my : "10px"}}>

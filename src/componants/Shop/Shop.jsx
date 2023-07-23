@@ -53,8 +53,6 @@ const Shop = () => {
   const [Search, setSearch] = useState("");
   const dispatch = useDispatch();
   const Navigate = useNavigate();
-  const [categoryHeight, setcategoryHeight] = useState(false);
-  const [PriceHeight, setPriceHeight] = useState(false);
   const [Showfilter, setShowfilter] = useState(true);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -126,7 +124,7 @@ const valueFilter = ()=>{
     return (
         <>
         <Helmet>
-      <title>Shop</title>
+      <title>Shop-FurniPro</title>
     </Helmet>
     <ScrollToTop/>
     <BannerSection  PageName="Shop" {...{cat}}  />
@@ -158,7 +156,7 @@ const valueFilter = ()=>{
             (
             <Box
             key={Product.id}
-            className="Card"
+            className="Card fade-in"
             sx={{
                 width : {xs:"180px" , md: "210px"} ,
                 height: "320px",
@@ -341,15 +339,6 @@ color="secondary" />
 </Box> 
 
 
-
-
-
-
-
-
-
-
-
     <Box sx={{width : {xs :"90%" , md : "20%"} }} >
     
     <Box sx={{ width : "100%" ,display: "flex", alignItems: "center" , position : "relative" , my : "10px" }}>
@@ -421,22 +410,6 @@ sx={{display : {xs : "flex" , md : "none"} , cursor : "pointer" , ml : "10px"}}>
         </AccordionDetails>
       </Accordion>
             </Box>   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         
     <Box sx={{width : "100%" , mt :"15px" ,border : "1px solid black" , borderRadius : "15px"}}>
   

@@ -35,7 +35,7 @@ const Blog = () => {
         <>
          <Helmet>
       <meta charSet="utf-8" />
-      <title>Blog</title>
+      <title>Blog-FurniPro</title>
     </Helmet>
     <ScrollToTop/>
     <BannerSection  PageName="Blog" />
@@ -85,7 +85,7 @@ key={blog.id}
     <img
       style={{ width: "100%", height: "100%" , borderRadius: "15px" }}
       src={blog.imageLink}
-      alt="blog photo"
+      alt="blogphoto"
       loading='lazy'
     />
     <Box sx={{position : "absolute" , bottom : "0" , right : "0",bgcolor : "#F3F2EE" , textAlign : "center" , width : "60px" , p : "5px 0" , borderTopLeftRadius : "15px"}}>

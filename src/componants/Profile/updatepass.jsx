@@ -2,11 +2,10 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
-import { Box,FormControl, IconButton, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select, Typography } from '@mui/material';
+import { Box,CircularProgress,FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Typography } from '@mui/material';
 import { useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { toast } from 'react-toastify';
-import jwtDecode from 'jwt-decode';
 import { useUpdatepassMutation } from '../../services/SignApi';
 
 
@@ -179,7 +178,7 @@ const [Reset, setReset] = useState(true);
                               outline: "1px solid #92764E",
                             },
                           }}
-                      >Confirm</Button>
+                      >{updateLoading ?  <CircularProgress /> : "Confirm" }</Button>
 
 
 </Box>

@@ -73,7 +73,7 @@ const AllProductsSection = () => {
     const TabsArray = [
       {label : "All"  } , 
       {label : "Chairs" } , 
-      {label : "Sofas"  } , 
+      {label : "Sofa"  } , 
       {label : "Beds"  } , 
       {label : "Commodes"  } , 
       {label : "Dressers"  } , 
@@ -167,7 +167,7 @@ const AllProductsSection = () => {
       (
         <Box
         key={Product.id}
-        className="Card"
+        className="Card fade-in"
         sx={{
           width : {xs:"150px" , md: "200px"} ,
           height: "290px",

@@ -310,8 +310,16 @@ app.post('/update-profile', async (req, res) => {
       }
     }
 
-    // Prepare the update object with the fields to update
-    const updateObject = {};
+    // // Prepare the update object with the fields to update
+    const updateObject = {
+      UserName : user.UserName,
+      firstName : user.firstName,
+      Email : user.Email,
+      Phone : user.Phone,
+      Country : user.Countery,
+      Town : user.Town,
+      addres : user.address,
+    };
 
     if (UserName) {
       updateObject.UserName = UserName;
@@ -344,8 +352,11 @@ app.post('/update-profile', async (req, res) => {
     // Update the user in the database
     await User.updateOne({ Email }, updateObject);
 
+        // Generate JWT token
+        const token = jwt.sign(updateObject, secretKey);
+
     // Send the success message in the response
-    res.json({ message: 'Profile updated successfully' });
+    res.json({ message: 'Profile updated successfully' , token });
   } catch (error) {
     console.error('Error updating user profile:', error);
     return res.status(500).json({ message: 'Internal server error' });

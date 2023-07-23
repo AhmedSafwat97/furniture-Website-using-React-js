@@ -136,7 +136,7 @@ required
                      <Box sx={{width : "48%"}}>
 
                      <TextField required
-                    onChange={(e) => {setCode(e.target.value)}}
+                    onChange={(e) => {setTown(e.target.value)}}
 
                 sx={{width :"100%",fontSize:"10px" , borderRadius : "30px" ,backgroundColor:"#E9E7DB",border: "none"}}
                 id="Town" label="Town" type="text" />
@@ -198,7 +198,7 @@ required
 
 
 
-            <Box sx={{width:{xs:"100%" ,md:"40%"},my:"30px" , border:"1px solid gray", borderRadius:"15px"}}>
+            <Box sx={{width:{xs:"100%" ,md:"40%"},my:"30px" , border:"1px solid #E9E7DB", borderRadius:"15px"}}>
 
                 <Box sx={{width:"90%" ,display: "flex",flexDirection:"column", alignItems:"start" , justifyContent: "center", m:"20px"}}>
                     <Typography variant='h6' sx={{fontWeight:"bold",m:"10px "}}>Order Summary</Typography>

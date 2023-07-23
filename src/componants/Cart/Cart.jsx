@@ -14,27 +14,17 @@ import { Helmet } from 'react-helmet';
 
 
 const Cart = () => {
-
-
-
     const Navigate = useNavigate()
-    
     const dispatch = useDispatch()
     
-
-
   const [CoponCode, setCoponCode] = useState("");
-
-
 
     const { SelectedProducts , disable  } = useSelector((state) => state.Cart);
     
-
     SelectedProducts.length === 0 ?  dispatch(CoponCoode(false)) : dispatch(CoponCoode(disable))
 
-
     let total = 0;
-
+    
     function TotalPrice(product) {
        let subtotal = 0;
        subtotal = Math.floor(product.quantity * (product.discount? product.sale:product.price))
@@ -47,7 +37,7 @@ const Cart = () => {
         <>
          <Helmet>
       <meta charSet="utf-8" />
-      <title>Cart</title>
+      <title>Cart-FurniPro</title>
     </Helmet>
     <ScrollToTop/>
     <BannerSection  PageName="Shopping Cart" />

@@ -9,8 +9,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -20,6 +18,7 @@ import { useEffect } from "react";
 import FormDialog from "../Sign/Sign";
 import jwtDecode from "jwt-decode";
 import LogoutIcon from '@mui/icons-material/Logout';
+import MenuIcon from '@mui/icons-material/Menu';
 
 
 
@@ -354,7 +353,7 @@ size="large" aria-label="Favorite" color="inherit" >
     }
    }
    >
-    {arrowview ? <ExpandMoreIcon /> : <ExpandLessIcon/> }
+    <MenuIcon/>
    </IconButton>
               {/* ____________________________________________________________________________ */}
             </Box>
@@ -386,6 +385,7 @@ size="large" aria-label="Favorite" color="inherit" >
           {/* To view The List and the icon */}
           {viewlist && (
             <Box  
+            className="fade-in"
             sx={{display : {xs : "block" , md : "none"}}}
             >
               <Box

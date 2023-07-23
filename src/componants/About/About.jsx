@@ -11,7 +11,7 @@ const About = () => {
    return (
     <>
     <Helmet>
-      <title>About</title>
+      <title>About-FurniPro</title>
     </Helmet>
 
      <ScrollToTop/>

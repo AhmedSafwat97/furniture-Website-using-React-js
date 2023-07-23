@@ -1,4 +1,4 @@
-import { Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCountdown } from '../../../Hooks/useCountDown';
@@ -9,8 +9,6 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Shape from './Shape';
 
 const Section5 = () => {
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const { data, error, isLoading } = useGetproductByNameQuery();
 
@@ -112,7 +110,7 @@ const Navigate = useNavigate()
 
               }}
               onClick={() => {
-                Navigate(`/shop`);
+                Navigate(`/prodetails/${Product.id}`);
               }}
             >
               Shop Now

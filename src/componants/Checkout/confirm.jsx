@@ -16,8 +16,9 @@ import FormLabel from '@mui/material/FormLabel';
 export default function FormDialog({paymentvalue }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState('');
-const [maxLength, setmaxLength] = useState(16);
 const [paymentmethod, setpaymentmethod] = useState("");
+
+let maxLength = 16
 
 const Years =[
   {year : "2023"} , 

@@ -2,7 +2,6 @@ import * as React from 'react';
 import Dialog from '@mui/material/Dialog';
 import { Box, Rating, Typography } from '@mui/material';
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 
@@ -53,8 +52,6 @@ const [inView, setinView] = useState(true);
       value={value}
       onChange={(event, newValue) => {
         setValue(newValue);
-        console.log(Reviewid);
-        // setOpen(false)
       }}
     />
     <Box sx={{borderTop : "1px solid black" , width : "95%" , mt : "25px" , height : "60px" , display : "flex" , justifyContent : "center" , alignItems : "center"}} >

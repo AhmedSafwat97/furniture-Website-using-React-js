@@ -112,7 +112,9 @@ if (data) {
   {uniqueProducts.sort((a,b) => b.id - a.id).slice(0 , categoriynum).map((Category) => (
 
 <Box
-onClick={()=> {      Navigate(`/shop/${Category.category}`)
+className="fade-in "
+onClick={()=> {      
+  Navigate(`/shop/${Category.category}`)
 }}
 key={Category.id}
           sx={{

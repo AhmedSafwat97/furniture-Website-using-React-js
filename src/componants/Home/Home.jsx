@@ -15,7 +15,7 @@ const Home = () =>{
  <>
  <Helmet>
       <meta charSet="utf-8" />
-      <title>Home</title>
+      <title>Home-FurniPro</title>
     </Helmet>
      <ScrollToTop/>
     <Section1/>

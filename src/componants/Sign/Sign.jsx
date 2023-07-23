@@ -219,7 +219,6 @@ const handleresetPassword = async () => {
                 id="filled-adornment-password"
                 type={showPassword ? 'text' : 'password'}
                 onChange={(e) => {setPassword(e.target.value)
-                  console.log(Password);
                 }}
                 endAdornment={
                   <InputAdornment position="end">
@@ -235,33 +234,6 @@ const handleresetPassword = async () => {
                 }
               />
             </FormControl>
-
-    {/* <FormControl sx={{outline : "none"  ,width : { xs : "95%" , md : "80%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
-    variant="outlined">
-              <InputLabel htmlFor="filled-adornment-password">Password</InputLabel>
-              <OutlinedInput
-              label="Password"
-                id="filled-adornment-password"
-                type={showPassword ? 'text' : 'password'}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      onChange={(e) => {setPassword(e.target.value)
-                        console.log(Password);
-
-                      }}
-                      edge="end"
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-              />
-            </FormControl> */}
-    
                 <Button 
                 onClick={() => {handleSignin()}}
                     sx={{
@@ -617,7 +589,6 @@ startIcon={signupLoading ?     <CircularProgress />
 
 <TextField
             onChange={(e) => {setEmail(e.target.value)
-            console.log(Email)
             }}
             sx={{outline : "none"  ,width : { xs : "80%" , md : "75%"},fontSize:"10px", borderRadius : "30px",backgroundColor:"#E9E7DB",border: "none" , m : "10px"}}
             id="Email" label="Enter Your email address" type="text" />
@@ -645,8 +616,7 @@ startIcon={signupLoading ?     <CircularProgress />
                               color: "#92764E",
                               outline: "1px solid #92764E",
                             },
-                          }}
-                      >Recover My Account</Button>
+                          }} >{ForgotLoading  ? <CircularProgress />  : "Recover My Account"}</Button>
 
                    <Box sx={{display : "flex" , alignItems : "center"}}>
                     <Typography>Not You ?</Typography>
@@ -697,7 +667,7 @@ startIcon={signupLoading ?     <CircularProgress />
                               outline: "1px solid #92764E",
                             },
                           }}
-                      >Confirm Code</Button>
+                      > {codeLoading ?  <CircularProgress /> :  "Confirm Code" }</Button>
 
 
 
@@ -789,7 +759,7 @@ sx={{color : "blue" , cursor : "pointer" , ml : "10px" , textDecoration : "under
                               outline: "1px solid #92764E",
                             },
                           }}
-                      >Confirm</Button>
+                      >{resetLoading ?  <CircularProgress /> :  "Confirm" }</Button>
 
 
 </Box>

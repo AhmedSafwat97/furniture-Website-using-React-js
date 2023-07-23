@@ -1,5 +1,4 @@
 import {
-    Avatar,
     Box,
     Button,
     TextField,
@@ -11,8 +10,6 @@ import {
   import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import jwtDecode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import BannerSection from "../Home/HomeSections/bannerSection";
-import { useUpdateInfoMutation } from "../../services/SignApi";
 import FormDialog from "./Updateprofile";
 import Updatepass from "./updatepass";
 
@@ -28,20 +25,21 @@ import Updatepass from "./updatepass";
       User = jwtDecode(token);
     }
 
-    const [Country, setCountry] = React.useState('');
-    const [Town, setTown] = React.useState('');
-     const [firstName, setName] = useState("");
-    const [Email, setEmail] = useState("");
-    const [Phone, setPhone] = useState("");
-    const [address, setaddress] = useState("");
+    const [Country, setCountry] = React.useState(User.Country);
+    const [Town, setTown] = React.useState(User.Town);
+     const [firstName, setName] = useState(User.Name);
+    const [Email, setEmail] = useState(User.Email);
+    const [Phone, setPhone] = useState(User.Phone);
+    const [address, setaddress] = useState(User.address);
     const [UserName, setUserName] = useState(User.UserName);
+    const [Message, setMessage] = useState("");
 
 
 
     return (
       <Box sx={{bgcolor : "#F3F2EE" }}>
         <Helmet>
-          <title>Profile</title>
+          <title>Profile-FurniPro</title>
         </Helmet>
         <ScrollToTop />
   
@@ -60,6 +58,9 @@ import Updatepass from "./updatepass";
     <Box sx={{width : "90%" }}>
     <Typography variant="h6" >Information</Typography>
 
+<Box width="100%">
+<Typography sx={{textAlign : "center"}}>{Message}</Typography>
+</Box>
 <Box sx={{display : "flex"}}>
             <Box sx={{width : "25%"}}>
             <Typography sx={{ display : "flex" , alignItems : "center" ,height : "45px" , m : "15px 0"}}>User Name</Typography>
@@ -75,7 +76,6 @@ import Updatepass from "./updatepass";
             <Box sx={{ display : "flex" , justifyContent : "center" ,height : "45px" ,m : "15px 0"}}>
             <TextField
                 onChange={(e) => {setUserName(e.target.value)
-                console.log(UserName);
                 }}
                 defaultValue={UserName}
                 sx={{outline : "none"  ,width : "90%",fontSize:"10px", borderRadius : "30px" , border: "none"}}
@@ -126,7 +126,7 @@ import Updatepass from "./updatepass";
             </Box>
 </Box >
 
-<FormDialog  {...{setEmail , UserName , Email , firstName , Phone , Country , Town , address}}  />
+<FormDialog  {...{setMessage ,setEmail , UserName , Email , firstName , Phone , Country , Town , address}}  />
 
 <Box sx={{borderTop : "1px solid gray" , width : "90%" , mt : "10px"}}/>
 
@@ -135,7 +135,7 @@ import Updatepass from "./updatepass";
            <Box sx={{display : "flex"}} >
            <Typography sx={{ display : "flex" , alignItems : "center" ,height : "45px" , m : "15px 0" , width : "25%"}}>Password</Typography>
         
-           <Updatepass {...{setEmail , Email  }}/>
+           <Updatepass {...{setEmail , Email }}/>
      </Box>
 
         </Box>

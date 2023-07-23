@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ScrollToTop from '../../ExternalMethods/ScrollToTop';
 import BannerSection from '../Home/HomeSections/bannerSection';
 import {Box, Button, CircularProgress, IconButton, Typography } from '@mui/material';
