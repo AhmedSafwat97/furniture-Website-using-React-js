@@ -12,6 +12,8 @@ export const productApi = createApi({
   }),
 })
 
+
+
 export const oneproductsApi = createApi({
   reducerPath: "oneproductsApi",
   baseQuery: fetchBaseQuery({ baseUrl: "https://furniture-website.onrender.com/" }),
